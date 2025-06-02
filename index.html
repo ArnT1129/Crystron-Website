@@ -363,10 +363,10 @@
         font-weight: 600;
         margin-bottom: 1rem;
       }
-      .card h3 {
+      .card h3 { /* General card title */
         font-size: 1.85rem;
       }
-      .card h4 {
+      .card h4 { /* Sub-card title or smaller heading */
         font-size: 1.5rem;
       }
       .card p,
@@ -394,6 +394,26 @@
         background-color: rgba(var(--accent-primary-rgb, 79, 209, 197), 0.1);
         border-radius: 50%;
       }
+      /* Specific styling for market stat cards on home page */
+      .market-stat-card .card-icon {
+        font-size: 2.5rem; /* Slightly smaller icon for these cards */
+        color: var(--accent-primary);
+        margin-bottom: 1rem;
+        display: block; /* Center icon */
+        text-align: center;
+      }
+       .market-stat-card h3 { /* Title for market stat cards */
+        font-size: 1.5rem; /* Adjusted size for these specific cards */
+        text-align: center;
+        color: var(--text-primary);
+      }
+      .market-stat-card p { /* Paragraph for market stat cards */
+        font-size: 1rem;
+        text-align: center;
+        color: var(--text-secondary);
+        flex-grow: 1; /* Allow paragraph to take space for consistent card height */
+      }
+
 
       .btn {
         padding: 1rem 2.25rem;
@@ -464,13 +484,14 @@
         display: block;
       }
 
-      #home-page .hero-section {
-        min-height: calc(100vh - 8rem);
+      #home-page .hero-section-content { /* Renamed from hero-section to avoid conflict if used elsewhere */
+        min-height: calc(100vh - 8rem); /* Only apply min-height to the top hero part */
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
+        width: 100%; /* Ensure it takes full width of its container */
       }
       #home-page .hero-title {
         font-size: clamp(3.5rem, 8vw, 6rem);
@@ -570,10 +591,18 @@
         .page {
           padding: 5rem 2rem 3rem 2rem;
         }
-        #home-page .hero-section {
-          padding-top: 4rem;
+        #home-page .hero-section-content { /* Adjust padding for mobile hero */
+          padding-top: 0; /* Remove fixed padding top, rely on page padding */
+          min-height: calc(100vh - 8rem); /* Keep min-height for hero feel */
         }
       }
+      @media (max-width: 768px) {
+         #home-page .hero-section-content {
+             min-height: unset; /* Allow hero to shrink on smaller mobile */
+             padding-top: 2rem; /* Add some top padding if needed */
+         }
+      }
+
 
       body {
         --accent-primary-rgb: 79, 209, 197;
@@ -784,7 +813,7 @@
     <div id="main-content-area">
       <main id="main-content">
         <section id="home-page" class="page active">
-          <div class="w-full max-w-5xl mx-auto hero-section">
+          <div class="w-full max-w-5xl mx-auto hero-section-content px-4">
             <h1 class="hero-title">
               <span class="highlight">Transforming</span> the Future of, <br />
               <span class="highlight">Battery Technology</span>.
@@ -848,7 +877,38 @@
               </div>
             </div>
           </div>
-        </section>
+          <div class="w-full max-w-5xl mx-auto px-4 py-16 md:py-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-text-primary text-center mb-5">
+              The Surging Demand for Advanced Batteries
+            </h2>
+            <p class="text-lg text-text-secondary text-center max-w-3xl mx-auto mb-10 md:mb-12">
+              The global shift towards electrification is fueling unprecedented growth in the lithium-ion battery market, creating a significant opportunity for innovative solutions like Venus3.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              <div class="card market-stat-card p-6">
+                <i class="fas fa-chart-line card-icon"></i>
+                <h3>Li-Ion Market Skyrocketing</h3>
+                <p>
+                  Projected to soar from $132bn (2023) to <strong>$509bn by 2033</strong>, at a CAGR of over <strong>14%</strong>, driven by e-mobility and energy storage.
+                </p>
+              </div>
+              <div class="card market-stat-card p-6">
+                <i class="fas fa-car-side card-icon"></i>
+                <h3>EVs Driving Demand</h3>
+                <p>
+                  The Electric Vehicle market is expanding rapidly at a <strong>16% CAGR</strong>. Cathode Active Materials (CAMs) are critical, making up over <strong>27%</strong> of total battery costs.
+                </p>
+              </div>
+              <div class="card market-stat-card p-6">
+                <i class="fas fa-atom card-icon"></i>
+                <h3>Iron-Based CAMs: The Future</h3>
+                <p>
+                  Iron-based CAMs (e.g., LFP) are set to capture half the market, growing to <strong>9M metric tons/yr by 2035</strong> (13% CAGR). The US currently relies heavily on imports for these crucial materials.
+                </p>
+              </div>
+            </div>
+          </div>
+          </section>
 
         <section id="technology-page" class="page">
           <div class="container mx-auto">
@@ -1677,7 +1737,7 @@
               // IMPORTANT: This fetch URL ('http://localhost:3001/send-email') is for local development.
               // For a live website, you MUST replace this with the URL of your actual backend
               // service or serverless function that handles email sending.
-              const response = await fetch("/api/send-email", {
+              const response = await fetch("/api/send-email", { // SIMULATED - NO BACKEND PROVIDED
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
@@ -1697,9 +1757,8 @@
                   formStatus.textContent = "";
                 }, 5000);
               } else {
-                const errorResult = await response.json().catch(() => ({
-                  message: "Failed to send message. Server error. (Simulated)",
-                }));
+                 // Simulate an error if the /api/send-email endpoint doesn't exist or fails
+                const errorResult = { message: "Failed to send message. Server not available or error. (Simulated)" };
                 formStatus.textContent =
                   errorResult.message || "Failed to send message. (Simulated)";
                 formStatus.className =
@@ -1750,11 +1809,7 @@
             console.error("Map container not found");
             return;
           }
-          if (mapContainer._leaflet_id) {
-            // Check if map is already initialized
-            // If you want to re-center or re-fit bounds when theme changes or page re-renders:
-            // const markerGroup = L.featureGroup(mapContainer.leaflet_markers_group); // Assuming you store markers
-            // if (markerGroup && locations.length > 0) map.fitBounds(markerGroup.getBounds());
+          if (mapContainer._leaflet_id) { // Check if map is already initialized
             return;
           }
 
@@ -1767,63 +1822,48 @@
           }).addTo(map);
 
           const markerGroup = L.featureGroup().addTo(map);
-          // mapContainer.leaflet_markers_group = []; // Store markers if needed for re-fitting
-
+          
           locations.forEach((location) => {
             const marker = L.marker(location.coords)
               .bindPopup(`<b>${location.name}</b><br>${location.address}`)
               .addTo(markerGroup);
-            // mapContainer.leaflet_markers_group.push(marker);
           });
 
           if (locations.length > 0) {
             map.fitBounds(markerGroup.getBounds(), { padding: [30, 30] }); // Add some padding
           }
 
-          setTimeout(() => map.invalidateSize(), 150);
+          setTimeout(() => map.invalidateSize(), 150); // Ensure map renders correctly after layout changes
         }
 
         document.getElementById("currentYear").textContent =
           new Date().getFullYear();
 
-        // Set dates for policy pages
-        const today = new Date().toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-
         function handleNavigation() {
           const hash = window.location.hash.substring(1);
-          // Default to 'home' if hash is empty or just '#'
           const pageName = hash && hash !== "#" ? hash : "home";
           const pageIdToShow = pageName + "-page";
 
-          // Check if the target page exists, otherwise default to home
           if (document.getElementById(pageIdToShow)) {
             showPage(pageIdToShow);
           } else if (
             pageName !== "home" &&
             document.getElementById("home-page")
           ) {
-            // if invalid hash, go to home
-            window.location.hash = "home"; // This will trigger another hashchange
+            window.location.hash = "home"; 
           } else if (
             pageName === "home" &&
             document.getElementById("home-page")
           ) {
-            // if hash is empty, show home
             showPage("home-page");
           } else {
-            // Fallback if even home-page doesn't exist (should not happen with current HTML)
             console.error("Default page 'home-page' not found.");
           }
         }
 
         window.addEventListener("hashchange", handleNavigation);
-        handleNavigation(); // Initial page load based on hash or default
+        handleNavigation(); // Initial page load
 
-        // Update page-link hrefs to ensure they are valid hash links
         document.querySelectorAll(".page-link").forEach((link) => {
           const pageName = link.dataset.page;
           if (pageName) {
@@ -1831,9 +1871,8 @@
           }
         });
 
-        // Intersection Observer for animations (optional, can be enhanced)
         const animatedElements = document.querySelectorAll(
-          ".card, .section-title, .section-subtitle, .hero-title, .hero-subtitle, .btn, .grid > div > img, .external-chart-img, .team-member-photo, #map, .key-features-list li, .news-card"
+          ".card, .section-title, .section-subtitle, .hero-title, .hero-subtitle, .btn, .grid > div > img, .external-chart-img, .team-member-photo, #map, .key-features-list li, .news-card, .market-stat-card" // Added .market-stat-card
         );
         const observer = new IntersectionObserver(
           (entries) => {
@@ -1850,7 +1889,7 @@
         );
 
         animatedElements.forEach((el) => {
-          el.style.opacity = "0"; // Start elements as transparent for fade-in
+          el.style.opacity = "0"; 
           observer.observe(el);
         });
       });
