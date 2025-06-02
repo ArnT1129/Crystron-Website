@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crystron Technologies - Pioneering Battery Innovation</title>
+    <meta
+      name="description"
+      content="Crystron Technologies is revolutionizing battery technology with Venus3, a cleaner, cheaper, and superior Cathode Active Material for a circular economy."
+    />
+    <meta
+      name="keywords"
+      content="Crystron Technologies, Venus3, battery technology, cathode active material, CAM, LFP, NMC, sustainable energy, circular economy, battery innovation, EV batteries, grid storage"
+    />
+    <meta name="author" content="Crystron Technologies Inc." />
+
+    <meta
+      property="og:title"
+      content="Crystron Technologies - Pioneering Battery Innovation"
+    />
+    <meta
+      property="og:description"
+      content="Discover Venus3, our groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE" />
+    <meta
+      property="og:image"
+      content="https://static.wixstatic.com/media/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png/v1/fill/w_250,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,logo/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png"
+    />
+    <meta property="og:image:alt" content="Crystron Technologies Logo" />
+    <meta property="og:site_name" content="Crystron Technologies" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Crystron Technologies - Pioneering Battery Innovation"
+    />
+    <meta
+      name="twitter:description"
+      content="Discover Venus3, our groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior."
+    />
+    <meta
+      name="twitter:image"
+      content="https://static.wixstatic.com/media/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png/v1/fill/w_250,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,logo/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png"
+    />
+    <link rel="icon" href="/crystronlogo.png" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <style>
+      :root {
+        /* New Dark Theme (Default) - "Digital Crystal Dark" */
+        --bg-primary-dark: #0a0f1a;
+        --bg-secondary-dark: #101725;
+        --bg-nav-dark: #080c15;
+        --bg-tertiary-dark: #1a2333;
+        --text-primary-dark: #e0e7ff;
+        --text-secondary-dark: #a0aec0;
+        --text-nav-dark: #c0cfff;
+        --accent-primary-dark: #4fd1c5;
+        --accent-secondary-dark: #63b3ed;
+        --accent-glow-dark: rgba(79, 209, 197, 0.2);
+        --border-primary-dark: #2d3748;
+        --border-accent-dark: #4fd1c5;
+        --shadow-color-dark: rgba(0, 0, 0, 0.3);
+        --scrollbar-track-dark: #101725;
+        --scrollbar-thumb-dark: #2d3748;
+        --scrollbar-thumb-hover-dark: #4a5568;
+        --leaflet-popup-bg-dark: #101725;
+        --leaflet-popup-text-dark: #e0e7ff;
+
+        /* New Light Theme - "Crystalline Light" */
+        --bg-primary-light: #f7fafc;
+        --bg-secondary-light: #ffffff;
+        --bg-nav-light: #f0f5fa;
+        --bg-tertiary-light: #e2e8f0;
+        --text-primary-light: #1a202c;
+        --text-secondary-light: #4a5568;
+        --text-nav-light: #2d3748;
+        --accent-primary-light: #2b6cb0;
+        --accent-secondary-light: #319795;
+        --accent-glow-light: rgba(43, 108, 176, 0.15);
+        --border-primary-light: #e2e8f0;
+        --border-accent-light: #2b6cb0;
+        --shadow-color-light: rgba(100, 116, 139, 0.1);
+        --scrollbar-track-light: #e2e8f0;
+        --scrollbar-thumb-light: #cbd5e1;
+        --scrollbar-thumb-hover-light: #a0aec0;
+        --leaflet-popup-bg-light: #ffffff;
+        --leaflet-popup-text-light: #1a202c;
+      }
+
+      body {
+        --bg-primary: var(--bg-primary-dark);
+        --bg-secondary: var(--bg-secondary-dark);
+        --bg-nav: var(--bg-nav-dark);
+        --bg-tertiary: var(--bg-tertiary-dark);
+        --text-primary: var(--text-primary-dark);
+        --text-secondary: var(--text-secondary-dark);
+        --text-nav: var(--text-nav-dark);
+        --accent-primary: var(--accent-primary-dark);
+        --accent-secondary: var(--accent-secondary-dark);
+        --accent-glow: var(--accent-glow-dark);
+        --border-primary: var(--border-primary-dark);
+        --border-accent: var(--border-accent-dark);
+        --shadow-color: var(--shadow-color-dark);
+        --scrollbar-track: var(--scrollbar-track-dark);
+        --scrollbar-thumb: var(--scrollbar-thumb-dark);
+        --scrollbar-thumb-hover: var(--scrollbar-thumb-hover-dark);
+        --leaflet-popup-bg: var(--leaflet-popup-bg-dark);
+        --leaflet-popup-text: var(--leaflet-popup-text-dark);
+      }
+
+      .light-mode {
+        --bg-primary: var(--bg-primary-light);
+        --bg-secondary: var(--bg-secondary-light);
+        --bg-nav: var(--bg-nav-light);
+        --bg-tertiary: var(--bg-tertiary-light);
+        --text-primary: var(--text-primary-light);
+        --text-secondary: var(--text-secondary-light);
+        --text-nav: var(--text-nav-light);
+        --accent-primary: var(--accent-primary-light);
+        --accent-secondary: var(--accent-secondary-light);
+        --accent-glow: var(--accent-glow-light);
+        --border-primary: var(--border-primary-light);
+        --border-accent: var(--border-accent-light);
+        --shadow-color: var(--shadow-color-light);
+        --scrollbar-track: var(--scrollbar-track-light);
+        --scrollbar-thumb: var(--scrollbar-thumb-light);
+        --scrollbar-thumb-hover: var(--scrollbar-thumb-hover-light);
+        --leaflet-popup-bg: var(--leaflet-popup-bg-light);
+        --leaflet-popup-text: var(--leaflet-popup-text-light);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        scroll-behavior: smooth;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-size: 1.08rem;
+        line-height: 1.65;
+        display: flex;
+        overflow-x: hidden;
+      }
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--scrollbar-track);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--scrollbar-thumb-hover);
+      }
+
+      #sidebar-nav {
+        width: 300px;
+        background-color: var(--bg-nav);
+        color: var(--text-nav);
+        padding: 2.5rem 1.75rem;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+        z-index: 1000;
+        border-right: 1px solid var(--border-primary);
+      }
+      #sidebar-nav .logo-container {
+        margin-bottom: 3rem;
+        text-align: center;
+      }
+      #sidebar-nav .logo-img {
+        height: 85px;
+        width: auto;
+        max-width: 100%;
+        transition: transform 0.3s ease;
+      }
+      #sidebar-nav .logo-img:hover {
+        transform: scale(1.05);
+      }
+      #sidebar-nav .nav-link {
+        display: block;
+        color: var(--text-nav);
+        padding: 1rem 1.15rem;
+        margin-bottom: 0.6rem;
+        border-radius: 0.6rem;
+        font-weight: 500;
+        font-size: 1.15rem;
+        transition: background-color 0.2s ease, color 0.2s ease,
+          transform 0.2s ease, box-shadow 0.2s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      #sidebar-nav .nav-link i {
+        margin-right: 1.1rem;
+        width: 22px;
+        text-align: center;
+      }
+      #sidebar-nav .nav-link:hover {
+        background-color: rgba(var(--accent-primary-rgb, 79, 209, 197), 0.1);
+        color: var(--accent-primary);
+        transform: translateX(5px);
+        box-shadow: 0 0 15px var(--accent-glow);
+      }
+      #sidebar-nav .nav-link.active-link {
+        background-color: var(--accent-primary);
+        color: var(--bg-nav);
+        font-weight: 600;
+        box-shadow: 0 0 20px var(--accent-glow);
+      }
+      #sidebar-nav .nav-link.active-link i {
+        color: var(--bg-nav);
+      }
+
+      #sidebar-nav .theme-toggle-container {
+        margin-top: auto;
+        padding-top: 1.75rem;
+        border-top: 1px solid var(--border-primary);
+      }
+      .theme-toggle-button {
+        background-color: var(--bg-tertiary);
+        color: var(--text-secondary);
+        padding: 0.85rem;
+        border-radius: 0.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        font-weight: 500;
+        font-size: 1.15rem;
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+      .theme-toggle-button:hover {
+        background-color: var(--accent-primary);
+        color: var(--bg-nav);
+      }
+      .theme-toggle-button .fa-sun {
+        display: none;
+      }
+      .light-mode .theme-toggle-button .fa-sun {
+        display: inline-block;
+      }
+      .light-mode .theme-toggle-button .fa-moon {
+        display: none;
+      }
+
+      #main-content-area {
+        margin-left: 300px;
+        width: calc(100% - 300px);
+        height: 100vh;
+        overflow-y: auto;
+        padding: 0;
+        transition: margin-left 0.3s ease-in-out;
+      }
+
+      .page {
+        display: none;
+        min-height: 100vh;
+        padding: 4rem 3.5rem;
+        animation: fadeIn 0.6s ease-out forwards;
+        opacity: 0;
+        box-sizing: border-box;
+      }
+      .page.active {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center;  Removed to allow natural page flow */
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section-title {
+        font-size: clamp(2.85rem, 5.8vw, 4.25rem);
+        font-weight: 800;
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 1.25rem;
+        letter-spacing: -0.5px;
+      }
+      .section-title::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 90px;
+        height: 4.5px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        border-radius: 2px;
+      }
+      .section-subtitle {
+        text-align: center;
+        color: var(--text-secondary);
+        margin-bottom: 4rem;
+        font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+        max-width: 850px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.85;
+      }
+
+      .card {
+        background-color: var(--bg-secondary);
+        border-radius: 14px;
+        padding: 2.5rem;
+        box-shadow: 0 12px 35px -18px var(--shadow-color);
+        border: 1px solid var(--border-primary);
+        transition: transform 0.3s ease, box-shadow 0.3s ease,
+          border-color 0.3s ease, background-color 0.3s ease;
+        display: flex; /* Added for consistent card structure */
+        flex-direction: column; /* Added for consistent card structure */
+      }
+      .card:hover {
+        transform: translateY(-10px) scale(1.025);
+        box-shadow: 0 18px 40px -12px var(--accent-glow);
+      }
+      .card.border-l-4:hover {
+        border-left-color: var(
+          --hover-border-color,
+          var(--accent-primary)
+        ) !important; /* Ensure specific border hover takes precedence */
+      }
+      .card h3,
+      .card h4 {
+        color: var(--text-primary);
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .card h3 {
+        font-size: 1.85rem;
+      }
+      .card h4 {
+        font-size: 1.5rem;
+      }
+      .card p,
+      .card ul li {
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        line-height: 1.75;
+      }
+      .card ul {
+        list-style-position: inside;
+        padding-left: 0.5rem;
+      }
+      .card .text-accent {
+        color: var(--accent-primary);
+      }
+      .card .text-accent-secondary {
+        color: var(--accent-secondary);
+      }
+      .card .icon-feature {
+        font-size: 2.75rem;
+        color: var(--accent-primary);
+        margin-bottom: 1.25rem;
+        display: inline-block;
+        padding: 1rem;
+        background-color: rgba(var(--accent-primary-rgb, 79, 209, 197), 0.1);
+        border-radius: 50%;
+      }
+
+      .btn {
+        padding: 1rem 2.25rem;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+      }
+      .btn-primary {
+        background: linear-gradient(
+          90deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        color: #080c15;
+        box-shadow: 0 5px 18px -6px var(--accent-glow);
+      }
+      .btn-primary:hover {
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 8px 25px -6px var(--accent-glow);
+      }
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--accent-primary);
+        border: 2px solid var(--accent-primary);
+      }
+      .btn-secondary:hover {
+        background-color: rgba(var(--accent-primary-rgb, 79, 209, 197), 0.1);
+        color: var(--accent-primary);
+        transform: translateY(-3px);
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        background-color: var(--bg-tertiary);
+        border: 1px solid var(--border-primary);
+        color: var(--text-primary);
+        border-radius: 10px;
+        padding: 1.1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease,
+          background-color 0.3s ease;
+        font-size: 1.15rem;
+        width: 100%;
+      }
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: var(--text-secondary);
+        opacity: 0.7;
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3.5px var(--accent-glow);
+        outline: none;
+        background-color: var(--bg-secondary);
+      }
+      .contact-form label {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        margin-bottom: 0.6rem;
+        display: block;
+      }
+
+      #home-page .hero-section {
+        min-height: calc(100vh - 8rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      #home-page .hero-title {
+        font-size: clamp(3.5rem, 8vw, 6rem);
+        font-weight: 900;
+        margin-bottom: 1.75rem;
+        line-height: 1.15;
+        letter-spacing: -1.5px;
+      }
+      #home-page .hero-title .highlight {
+        background: linear-gradient(
+          90deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        /* text-fill-color: transparent; /* Standard property */
+      }
+      #home-page .hero-subtitle {
+        font-size: clamp(1.3rem, 3.3vw, 1.75rem);
+        max-width: 750px;
+        margin-bottom: 3rem;
+        color: var(--text-secondary);
+      }
+
+      .team-member-photo {
+        width: 230px;
+        height: 230px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 1.75rem auto;
+        border: 4px solid var(--bg-tertiary);
+        box-shadow: 0 0 18px var(--accent-glow);
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+      .card:hover .team-member-photo {
+        transform: scale(1.07);
+        border-color: var(--accent-primary);
+      }
+      .team-member-linkedin {
+        color: var(--accent-secondary);
+        font-weight: 500;
+        font-size: 1.2rem;
+      }
+      .team-member-linkedin:hover {
+        color: var(--accent-primary);
+        text-decoration: underline;
+      }
+
+      #map {
+        height: 420px;
+        border-radius: 14px;
+        border: 1px solid var(--border-primary);
+        box-shadow: 0 6px 18px var(--shadow-color);
+      }
+      .leaflet-popup-content-wrapper,
+      .leaflet-popup-tip {
+        background: var(--leaflet-popup-bg);
+        color: var(--leaflet-popup-text);
+        border-radius: 10px;
+        box-shadow: 0 3px 12px var(--shadow-color);
+      }
+      .leaflet-popup-content {
+        font-size: 1rem;
+      }
+
+      #mobile-menu-toggle {
+        display: none;
+        position: fixed;
+        top: 1.75rem;
+        right: 1.75rem;
+        z-index: 1001;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        border: 1px solid var(--border-primary);
+        border-radius: 0.6rem;
+        padding: 0.7rem 0.9rem;
+        font-size: 1.6rem;
+      }
+
+      @media (max-width: 1024px) {
+        #sidebar-nav {
+          transform: translateX(-100%);
+          box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+        }
+        #sidebar-nav.open {
+          transform: translateX(0);
+        }
+        #main-content-area {
+          width: 100%;
+          margin-left: 0;
+        }
+        #mobile-menu-toggle {
+          display: block;
+        }
+        .page {
+          padding: 5rem 2rem 3rem 2rem;
+        }
+        #home-page .hero-section {
+          padding-top: 4rem;
+        }
+      }
+
+      body {
+        --accent-primary-rgb: 79, 209, 197;
+        --accent-secondary-rgb: 99, 179, 237;
+      }
+      .light-mode {
+        --accent-primary-rgb: 43, 108, 176;
+        --accent-secondary-rgb: 49, 151, 149;
+      }
+
+      footer {
+        background-color: var(--bg-secondary);
+        border-top: 1px solid var(--border-primary);
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-top: auto; /* Pushes footer to bottom if content is short */
+      }
+      footer .logo-img-footer {
+        height: 55px;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+      }
+      footer .logo-img-footer:hover {
+        opacity: 1;
+      }
+      footer a {
+        color: var(--text-secondary);
+        transition: color 0.3s ease;
+      }
+      footer a:hover {
+        color: var(--accent-primary);
+      }
+
+      .key-features-list {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 1.5rem;
+      }
+      .key-features-list li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+      }
+      .key-features-list li i {
+        color: var(--accent-primary);
+        margin-right: 0.75rem;
+        margin-top: 0.25rem;
+        font-size: 1.2em;
+      }
+      .key-features-list li strong {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      /* News Page Specific Styles */
+      .news-card {
+        background-color: var(--bg-secondary);
+        border-radius: 14px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px -15px var(--shadow-color);
+        border: 1px solid var(--border-primary);
+        transition: transform 0.3s ease, box-shadow 0.3s ease,
+          border-color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Ensure cards in a row have same height */
+      }
+      .news-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 15px 35px -10px var(--accent-glow);
+        border-color: var(--accent-primary);
+      }
+      .news-card-image {
+        width: 100%;
+        height: 200px; /* Fixed height for consistency */
+        object-fit: cover; /* Crop image to fit */
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--border-primary);
+      }
+      .news-card-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+      }
+      .news-card-date {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        display: block;
+      }
+      .news-card-summary {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        flex-grow: 1; /* Allows summary to take available space */
+        margin-bottom: 1.5rem;
+      }
+      .news-card-read-more {
+        color: var(--accent-primary);
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        margin-top: auto; /* Pushes button to bottom of card */
+      }
+      .news-card-read-more:hover {
+        color: var(--accent-secondary);
+        text-decoration: underline;
+      }
+      .news-card-read-more i {
+        margin-left: 0.5rem;
+        transition: transform 0.2s ease;
+      }
+      .news-card-read-more:hover i {
+        transform: translateX(3px);
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Crystron Technologies Inc.",
+        "url": "YOUR_WEBSITE_URL_HERE",
+        "logo": "https://static.wixstatic.com/media/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png/v1/fill/w_250,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,logo/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png",
+        "description": "Crystron Technologies introduces Venus3: a groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior, designed for a circular economy.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1209 Orange St",
+          "addressLocality": "Wilmington",
+          "addressRegion": "DE",
+          "postalCode": "19801",
+          "addressCountry": "US"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-XXX-XXX-XXXX",
+          "contactType": "Customer Service / General Inquiry",
+          "email": "info@crystronmat.com"
+        },
+        "sameAs": ["https://www.linkedin.com/company/crystron/"]
+      }
+    </script>
+  </head>
+  <body>
+    <a
+      href="#main-content-area"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-[2000] focus:p-4 focus:bg-accent-primary focus:text-white"
+    >
+      Skip to Main Content
+    </a>
+
+    <button
+      id="mobile-menu-toggle"
+      aria-label="Toggle Menu"
+      aria-expanded="false"
+      aria-controls="sidebar-nav"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <aside id="sidebar-nav">
+      <div class="logo-container">
+        <a href="#home" data-page="home" class="page-link">
+          <img
+            src="https://static.wixstatic.com/media/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png/v1/fill/w_250,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,logo/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png"
+            alt="Crystron Technologies Logo"
+            class="logo-img"
+            onerror="this.onerror=null; this.src='https://placehold.co/220x83/080c15/e0e7ff?text=Crystron&font=inter';"
+          />
+        </a>
+      </div>
+      <nav class="flex-grow">
+        <a href="#home" data-page="home" class="nav-link page-link active-link"
+          ><i class="fas fa-home"></i>HOME</a
+        >
+        <a href="#technology" data-page="technology" class="nav-link page-link"
+          ><i class="fas fa-cogs"></i>TECHNOLOGY</a
+        >
+        <a href="#team" data-page="team" class="nav-link page-link"
+          ><i class="fas fa-users"></i>TEAM</a
+        >
+        <a href="#investors" data-page="investors" class="nav-link page-link"
+          ><i class="fas fa-chart-line"></i>INVESTORS</a
+        >
+        <a href="#news" data-page="news" class="nav-link page-link"
+          ><i class="fas fa-newspaper"></i>NEWS</a
+        >
+        <a href="#contact" data-page="contact" class="nav-link page-link"
+          ><i class="fas fa-envelope"></i>CONTACT</a
+        >
+      </nav>
+      <div class="theme-toggle-container">
+        <button
+          id="theme-toggle-button"
+          class="theme-toggle-button"
+          aria-label="Toggle Theme"
+        >
+          <i class="fas fa-moon mr-2"></i><i class="fas fa-sun mr-2"></i>
+          <span>Switch Theme</span>
+        </button>
+      </div>
+    </aside>
+
+    <div id="main-content-area">
+      <main id="main-content">
+        <section id="home-page" class="page active">
+          <div class="w-full max-w-5xl mx-auto hero-section">
+            <h1 class="hero-title">
+              <span class="highlight">Transforming</span> the Future of, <br />
+              <span class="highlight">Battery Technology</span>.
+            </h1>
+            <p class="hero-subtitle">
+              Crystron Technologies introduces Venus3: a groundbreaking Cathode
+              Active Material technology that's cleaner, cheaper, and superior,
+              designed for a circular economy.
+            </p>
+            <div class="space-x-4 mb-12 md:mb-16">
+              <a
+                href="#technology"
+                data-page="technology"
+                class="btn btn-primary page-link text-lg shadow-lg"
+              >
+                Explore Venus3 <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+              <a
+                href="#contact"
+                data-page="contact"
+                class="btn btn-secondary page-link text-lg"
+              >
+                Get In Touch <i class="fas fa-paper-plane ml-2"></i>
+              </a>
+            </div>
+
+            <div
+              class="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-10 w-full"
+            >
+              <div class="text-center p-5 card">
+                <i class="fas fa-leaf text-4xl text-accent-primary mb-4"></i>
+                <h3 class="text-xl font-semibold text-text-primary mb-2">
+                  Eco-Friendly Innovation
+                </h3>
+                <p class="text-base text-text-secondary">
+                  Achieving an 80% reduction in energy consumption and
+                  greenhouse gas emissions compared to conventional methods.
+                </p>
+              </div>
+              <div class="text-center p-5 card">
+                <i
+                  class="fas fa-dollar-sign text-4xl text-accent-primary mb-4"
+                ></i>
+                <h3 class="text-xl font-semibold text-text-primary mb-2">
+                  Significant Cost Savings
+                </h3>
+                <p class="text-base text-text-secondary">
+                  Lowering production costs by up to 40% through streamlined
+                  processes and efficient material utilization.
+                </p>
+              </div>
+              <div class="text-center p-5 card">
+                <i class="fas fa-recycle text-4xl text-accent-primary mb-4"></i>
+                <h3 class="text-xl font-semibold text-text-primary mb-2">
+                  Zero Waste Manufacturing
+                </h3>
+                <p class="text-base text-text-secondary">
+                  Our process eliminates harmful waste byproducts and consumes
+                  zero water, promoting true circularity.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="technology-page" class="page">
+          <div class="container mx-auto">
+            <h2 class="section-title">Venus3: The Next Leap in Battery Tech</h2>
+            <p class="section-subtitle">
+              Our proprietary Venus3 technology redefines Cathode Active
+              Material (CAM) manufacturing, overcoming the limitations of
+              traditional LFP and NMC processes while embracing sustainability
+              and performance.
+            </p>
+
+            <div
+              class="grid md:grid-cols-2 gap-10 lg:gap-14 items-stretch mb-16"
+            >
+              <div
+                class="card border-l-4 border-red-500/70 hover:border-red-400"
+                style="--hover-border-color: #f87171"
+              >
+                <h3
+                  class="text-2xl lg:text-3xl font-bold mb-5 text-red-400 flex items-center"
+                >
+                  <i class="fas fa-exclamation-triangle mr-3 text-3xl"></i
+                  >Traditional LFP Challenges
+                </h3>
+                <ul class="space-y-4 text-text-secondary text-lg">
+                  <li>
+                    <strong class="text-text-primary"
+                      >Complex & Inefficient:</strong
+                    >
+                    Multi-step pCAM synthesis from FeSO4 & H3PO4.
+                  </li>
+                  <li>
+                    <strong class="text-text-primary"
+                      >High Operational Costs:</strong
+                    >
+                    Requires extreme temperatures (800°C for 6-8 hours), leading
+                    to massive energy use.
+                  </li>
+                  <li>
+                    <strong class="text-text-primary"
+                      >Environmental Impact:</strong
+                    >
+                    Generates 1-2 tons of Na2SO4 waste per ton of CAM,
+                    contaminating ecosystems.
+                  </li>
+                  <li>
+                    <strong class="text-text-primary"
+                      >Supply Chain Vulnerabilities:</strong
+                    >
+                    Often reliant on imported materials and complex logistics.
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="card border-l-4 border-green-500/70 hover:border-green-400"
+                style="--hover-border-color: #4ade80"
+              >
+                <h3
+                  class="text-2xl lg:text-3xl font-bold mb-5 text-green-400 flex items-center"
+                >
+                  <i class="fas fa-rocket mr-3 text-3xl"></i>The Venus3
+                  Advantage
+                </h3>
+                <ul class="space-y-4 text-text-secondary text-lg">
+                  <li>
+                    <strong class="text-text-primary"
+                      >Simplified & Direct:</strong
+                    >
+                    Proprietary Li-salt reaction with an iron-based compound,
+                    eliminating pCAM steps.
+                  </li>
+                  <li>
+                    <strong class="text-text-primary"
+                      >Drastically Lower Costs:</strong
+                    >
+                    Up to 40% reduction via efficient flow, domestic raw
+                    materials, and smaller equipment footprint.
+                  </li>
+                  <li>
+                    <strong class="text-text-primary">True Circularity:</strong>
+                    81% lower energy & emissions, zero water consumption, and NO
+                    Na2SO4 or other harmful waste. Solvent is recycled.
+                  </li>
+                  <li>
+                    <strong class="text-text-primary"
+                      >Enhanced Performance:</strong
+                    >
+                    Potential for improved CAM characteristics leading to better
+                    battery life and efficiency.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="text-center my-12 md:my-16">
+              <img
+                src="https://static.wixstatic.com/media/e981c7_4d08ce57d98d4371a04645c25f1c0543~mv2.png/v1/fill/w_900,h_522,al_c,lg_1,q_90,enc_avif/e981c7_4d08ce57d98d4371a04645c25f1c0543~mv2.png"
+                alt="Venus3 Technology Advantage Diagram"
+                class="rounded-xl shadow-2xl w-full max-w-4xl mx-auto h-auto object-contain border border-border-primary"
+                onerror="this.onerror=null; this.src='https://placehold.co/900x522/101725/a0aec0?text=Venus3+Process+Diagram&font=inter';"
+              />
+              <p class="text-base text-text-secondary mt-5">
+                The Venus3 process: a paradigm shift in CAM production for a
+                sustainable future.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 lg:gap-14 mt-16">
+              <div class="card">
+                <h3 class="text-2xl font-bold text-accent-secondary mb-4">
+                  Key Technical Features
+                </h3>
+                <ul class="key-features-list">
+                  <li>
+                    <i class="fas fa-check-circle"></i
+                    ><strong>Novel Synthesis Route:</strong> Patented
+                    low-temperature reaction.
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i
+                    ><strong>Material Purity:</strong> High-purity CAM output
+                    for optimal performance.
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i
+                    ><strong>Scalability:</strong> Designed for rapid and
+                    cost-effective industrial scale-up.
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i
+                    ><strong>Versatility:</strong> Adaptable for various
+                    iron-based CAM chemistries.
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i
+                    ><strong>Reduced Carbon Footprint:</strong> Significantly
+                    lower cradle-to-gate emissions.
+                  </li>
+                </ul>
+              </div>
+              <div class="card">
+                <h3 class="text-2xl font-bold text-accent-secondary mb-4">
+                  Potential Applications
+                </h3>
+                <ul class="key-features-list">
+                  <li>
+                    <i class="fas fa-car-battery"></i
+                    ><strong>Electric Vehicles (EVs):</strong> Longer-lasting,
+                    more affordable batteries.
+                  </li>
+                  <li>
+                    <i class="fas fa-charging-station"></i
+                    ><strong>Grid-Scale Storage:</strong> Reliable and
+                    sustainable energy storage solutions.
+                  </li>
+                  <li>
+                    <i class="fas fa-mobile-alt"></i
+                    ><strong>Consumer Electronics:</strong> Higher performance
+                    batteries for everyday devices.
+                  </li>
+                  <li>
+                    <i class="fas fa-tools"></i
+                    ><strong>Industrial Equipment:</strong> Powering heavy-duty
+                    machinery efficiently.
+                  </li>
+                  <li>
+                    <i class="fas fa-solar-panel"></i
+                    ><strong>Renewable Energy Integration:</strong> Optimizing
+                    solar and wind power storage.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="team-page" class="page">
+          <div class="container mx-auto">
+            <h2 class="section-title">The Minds Behind Crystron</h2>
+            <p class="section-subtitle">
+              A fusion of seasoned leadership, deep scientific expertise, and
+              commercial acumen, collectively driving innovation in the advanced
+              battery materials landscape.
+            </p>
+            <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-10 xl:gap-12">
+              <div class="card text-center">
+                <img
+                  src="https://static.wixstatic.com/media/e981c7_2869446b64c9458190f0513caaee5c3f~mv2.jpg/v1/fill/w_200,h_200,al_c,lg_1,q_85,enc_avif/Akilesh%20Headshot_edited.jpg"
+                  alt="Akilesh Kumar"
+                  class="team-member-photo"
+                  onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=AK&font=inter';"
+                />
+                <h3 class="text-2xl font-bold text-accent-primary">
+                  Akilesh Kumar
+                </h3>
+                <p class="text-text-secondary mb-2 text-lg">
+                  Chief Executive Officer
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/akilesh-kumar-0072a8/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="team-member-linkedin"
+                  ><i class="fab fa-linkedin mr-1"></i>LinkedIn Profile</a
+                >
+                <p
+                  class="text-base text-text-secondary text-left leading-relaxed mt-4"
+                >
+                  With 30 years of experience spanning enterprise software,
+                  high-tech, retail, and consulting, Akilesh brings visionary
+                  leadership. Formerly EVP at Cooler X, Global VP at SAP, and
+                  consultant at McKinsey & Everest Group. Holds a Mech Eng. from
+                  IIT Delhi and an MBA from XLRI India.
+                </p>
+              </div>
+              <div class="card text-center">
+                <img
+                  src="https://static.wixstatic.com/media/e981c7_94975cb76f20477c957264c1006d02eb~mv2.jpg/v1/fill/w_200,h_200,al_c,lg_1,q_85,enc_avif/Rajesh%20Headshot_edited.jpg"
+                  alt="Dr Rajesh Tripathi"
+                  class="team-member-photo"
+                  onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=RT&font=inter';"
+                />
+                <h3 class="text-2xl font-bold text-accent-primary">
+                  Dr. Rajesh Tripathi
+                </h3>
+                <p class="text-text-secondary mb-2 text-lg">
+                  Chief Technology Officer
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/tripathirajesh/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="team-member-linkedin"
+                  ><i class="fab fa-linkedin mr-1"></i>LinkedIn Profile</a
+                >
+                <p
+                  class="text-base text-text-secondary text-left leading-relaxed mt-4"
+                >
+                  A co-founder of Crystron, Dr. Tripathi has over 15 years in
+                  battery technology and materials science. His extensive
+                  background includes a PhD from the University Of Waterloo, 7
+                  years at DuPont, Chief Scientist at iM3NY, and battery
+                  manufacturing lead engineer at Bechtel Corp.
+                </p>
+              </div>
+              <div class="card text-center">
+                <img
+                  src="https://static.wixstatic.com/media/e981c7_9677d58962e341babd5b418ac9fd09cd~mv2.jpg/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_avif/AJ_22_Headshot_Casual1.jpg"
+                  alt="Anurag Jain"
+                  class="team-member-photo"
+                  onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=AJ&font=inter';"
+                />
+                <h3 class="text-2xl font-bold text-accent-primary">
+                  Anurag Jain
+                </h3>
+                <p class="text-text-secondary mb-2 text-lg">
+                  Chief Commercial Officer
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/anurag-jain-0b77aa/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="team-member-linkedin"
+                  ><i class="fab fa-linkedin mr-1"></i>LinkedIn Profile</a
+                >
+                <p
+                  class="text-base text-text-secondary text-left leading-relaxed mt-4"
+                >
+                  Anurag brings 26 years of expertise in telecom, e-commerce,
+                  and enterprise software across India & USA. Co-founder of
+                  Prepay Nation & Elemt. He holds a Master’s in Tech Management
+                  from the University of Pennsylvania & Wharton School. An
+                  active investor and mentor.
+                </p>
+              </div>
+              <div class="card text-center">
+                <img
+                  src="https://static.wixstatic.com/media/e981c7_72c7b0d32dd040c3bf21d0471ff02c72~mv2.png/v1/fill/w_200,h_200,al_c,q_90,usm_0.66_1.00_0.01,enc_avif/Massouda.png"
+                  alt="Dr Debora Massouda"
+                  class="team-member-photo"
+                  onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=DM&font=inter';"
+                />
+                <h3 class="text-2xl font-bold text-accent-primary">
+                  Dr. Debora Massouda
+                </h3>
+                <p class="text-text-secondary mb-2 text-lg">Senior Scientist</p>
+                <a
+                  href="https://www.linkedin.com/in/dfmassouda/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="team-member-linkedin"
+                  ><i class="fab fa-linkedin mr-1"></i>LinkedIn Profile</a
+                >
+                <p
+                  class="text-base text-text-secondary text-left leading-relaxed mt-4"
+                >
+                  Dr. Massouda holds a PhD in Chemical Engineering from the
+                  University of Delaware and brings over 35 years of experience
+                  in the chemical industry, specializing in scale-up and
+                  commercialization. Her career includes roles at Conoco and
+                  technical leadership at DuPont, and CEO of Delaware Polymer
+                  R&D.
+                </p>
+              </div>
+            </div>
+            <section class="mt-16 md:mt-20">
+              <h3 class="text-3xl font-bold text-center text-text-primary mb-8">
+                Our Core Values
+              </h3>
+              <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="card p-6">
+                  <i
+                    class="fas fa-lightbulb text-4xl text-accent-secondary mb-4"
+                  ></i>
+                  <h4 class="text-xl font-semibold text-text-primary mb-2">
+                    Innovation
+                  </h4>
+                  <p class="text-text-secondary text-base">
+                    Continuously pushing the boundaries of science and
+                    engineering to create transformative solutions.
+                  </p>
+                </div>
+                <div class="card p-6">
+                  <i
+                    class="fas fa-globe-americas text-4xl text-accent-secondary mb-4"
+                  ></i>
+                  <h4 class="text-xl font-semibold text-text-primary mb-2">
+                    Sustainability
+                  </h4>
+                  <p class="text-text-secondary text-base">
+                    Committed to developing technologies that benefit our planet
+                    and future generations.
+                  </p>
+                </div>
+                <div class="card p-6">
+                  <i
+                    class="fas fa-handshake text-4xl text-accent-secondary mb-4"
+                  ></i>
+                  <h4 class="text-xl font-semibold text-text-primary mb-2">
+                    Collaboration
+                  </h4>
+                  <p class="text-text-secondary text-base">
+                    Fostering partnerships and teamwork to achieve shared goals
+                    and maximize impact.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="investors-page" class="page">
+          <div class="container mx-auto">
+            <h2 class="section-title">Invest in the Future of Energy</h2>
+            <p class="section-subtitle">
+              Crystron Technologies is at the forefront of the battery
+              revolution, offering a unique investment proposition in a rapidly
+              expanding global market. Our innovative Venus3 technology is
+              poised for significant growth and impact.
+            </p>
+            <div class="max-w-4xl mx-auto">
+              <div class="card mb-10 text-left p-8">
+                <h3
+                  class="text-3xl font-bold text-accent-primary mb-6 flex items-center"
+                >
+                  <i class="fas fa-rocket mr-3"></i>Why Crystron? The Investment
+                  Case
+                </h3>
+                <ul class="list-none space-y-5 text-lg">
+                  <li class="flex items-start">
+                    <i
+                      class="fas fa-check-circle text-accent-secondary mt-1 mr-3"
+                    ></i>
+                    <div>
+                      <strong class="text-text-primary"
+                        >Disruptive Patented Technology (Venus3):</strong
+                      >
+                      Fundamentally superior CAM manufacturing process with
+                      significant cost, environmental, and potential performance
+                      advantages.
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <i
+                      class="fas fa-chart-pie text-accent-secondary mt-1 mr-3"
+                    ></i>
+                    <div>
+                      <strong class="text-text-primary"
+                        >Massive & Growing Market:</strong
+                      >
+                      Targeting the multi-billion dollar CAM market, crucial for
+                      EVs, grid storage, and consumer electronics – all
+                      experiencing exponential growth.
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <i
+                      class="fas fa-seedling text-accent-secondary mt-1 mr-3"
+                    ></i>
+                    <div>
+                      <strong class="text-text-primary"
+                        >Unmatched Sustainability Profile:</strong
+                      >
+                      Addresses critical ESG concerns with drastically reduced
+                      energy, emissions, and zero waste.
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <i
+                      class="fas fa-users-cog text-accent-secondary mt-1 mr-3"
+                    ></i>
+                    <div>
+                      <strong class="text-text-primary"
+                        >Experienced & Visionary Leadership:</strong
+                      >
+                      A proven team with deep industry expertise in technology,
+                      commercialization, and corporate strategy.
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="card text-center p-8">
+                <p class="text-text-secondary text-xl mb-6">
+                  We invite you to join us in shaping a cleaner, more efficient
+                  energy future. For detailed information and to discuss
+                  investment opportunities, please reach out to our team.
+                </p>
+                <a
+                  href="#contact"
+                  data-page="contact"
+                  class="btn btn-primary page-link text-xl"
+                  ><i class="fas fa-handshake mr-2"></i>Contact Us for
+                  Investment Opportunities</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="news-page" class="page">
+          <div class="container mx-auto">
+            <h2 class="section-title">Latest News & Updates</h2>
+            <p class="section-subtitle">
+              Stay informed about Crystron Technologies' progress,
+              breakthroughs, and industry presence.
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <article class="news-card">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/D4E0BAQECU5ZxaXxZog/company-logo_200_200/B4EZaW5h2jHYAM-/0/1746288386149?e=2147483647&v=beta&t=F4TSc1eBxkl0NR0_GJOfdiSDNtNir1f6WfM9KyjNcrU"
+                  alt="Startup 302 Finalist Announcement Graphic"
+                  class="news-card-image"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/101725/a0aec0?text=News+Image&font=inter';"
+                />
+                <h3 class="news-card-title">
+                  Crystron Technologies Named Finalist in Startup302 Competition
+                </h3>
+                <span class="news-card-date">May 20, 2024</span>
+                <p class="news-card-summary">
+                  Crystron Technologies has been selected as a finalist in the
+                  prestigious Startup302 funding competition. This recognition
+                  highlights our innovative Venus3 CAM technology and its
+                  potential to revolutionize the battery industry. We look
+                  forward to presenting our vision for a sustainable energy
+                  future.
+                </p>
+                <a
+                  href="https://www.startup302.org/meet-the-finalist"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="news-card-read-more"
+                >
+                  Read Full Announcement
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact-page" class="page">
+          <div class="container mx-auto">
+            <h2 class="section-title">Connect With Us</h2>
+            <p class="section-subtitle">
+              Whether you're interested in our Venus3 technology, exploring
+              investment opportunities, or seeking strategic partnerships, our
+              team is ready to engage. Let's build a sustainable energy future
+              together.
+            </p>
+            <div
+              class="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start max-w-7xl mx-auto"
+            >
+              <div class="lg:col-span-3 contact-form card p-8 lg:p-10">
+                <h3
+                  class="text-2xl lg:text-3xl font-bold mb-7 text-text-primary"
+                >
+                  Send a Direct Message
+                </h3>
+                <form id="contactForm" class="space-y-6">
+                  <div>
+                    <label for="name">Full Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="e.g., Dr. Evelyn Reed"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="email">Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="evelyn.reed@example.com"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="subject">Subject</label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      placeholder="Inquiry about Venus3 Technology / Investment"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="message">Your Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="6"
+                      placeholder="Please provide details about your inquiry..."
+                      required
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-primary w-full text-lg py-3.5"
+                  >
+                    <i class="fas fa-paper-plane mr-2"></i>Submit Inquiry
+                  </button>
+                  <p
+                    id="form-submission-status"
+                    class="mt-5 text-center text-base"
+                  ></p>
+                </form>
+              </div>
+              <div class="lg:col-span-2 space-y-8">
+                <div class="card p-7">
+                  <h4
+                    class="text-xl lg:text-2xl font-semibold text-accent-primary mb-4 flex items-center"
+                  >
+                    <i class="fas fa-map-marked-alt mr-3 text-2xl"></i>Our
+                    Locations
+                  </h4>
+                  <div class="mb-4">
+                    <strong class="text-text-primary text-base"
+                      >Registered Office:</strong
+                    >
+                    <p class="text-text-secondary text-base">
+                      1209 Orange St, Wilmington, DE 19801
+                    </p>
+                  </div>
+                  <div class="mb-4">
+                    <strong class="text-text-primary text-base"
+                      >Delaware R&D Center:</strong
+                    >
+                    <p class="text-text-secondary text-base">
+                      200 Powder Mill Rd, E500/2402B, Wilmington, DE 19803
+                    </p>
+                  </div>
+                  <div>
+                    <strong class="text-text-primary text-base"
+                      >Pennsylvania Operations:</strong
+                    >
+                    <p class="text-text-secondary text-base">
+                      851 Duportail Rd, Chesterbrook, PA 19087
+                    </p>
+                  </div>
+                  <div id="map" class="mt-5"></div>
+                </div>
+                <div class="card p-7">
+                  <h4
+                    class="text-xl lg:text-2xl font-semibold text-accent-primary mb-3 flex items-center"
+                  >
+                    <i class="fas fa-envelope-open-text mr-3 text-2xl"></i
+                    >General Inquiries
+                  </h4>
+                  <a
+                    href="mailto:info@crystronmat.com"
+                    class="text-text-primary hover:text-accent-secondary transition text-lg lg:text-xl break-all"
+                    >info@crystronmat.com</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="text-center py-10 px-6">
+        <div class="mb-5">
+          <a href="#home" data-page="home" class="page-link inline-block">
+            <img
+              src="https://static.wixstatic.com/media/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png/v1/fill/w_160,h_60,al_c,q_85,usm_0.66_1.00_0.01,enc_avif/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png"
+              alt="Crystron Technologies Logo"
+              class="logo-img-footer"
+              onerror="this.onerror=null; this.src='https://placehold.co/160x60/0a0f1a/a0aec0?text=Crystron&font=inter';"
+            />
+          </a>
+        </div>
+        <div class="flex justify-center space-x-7 mb-5">
+          <a
+            href="https://www.linkedin.com/company/crystron/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="text-2xl hover:text-accent-primary transition"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+        </div>
+        <p class="text-base">
+          &copy; <span id="currentYear"></span> Crystron Technologies Inc. All
+          Rights Reserved.
+        </p>
+        <p class="text-sm mt-3">
+          Pioneering Sustainable Battery Solutions for a Cleaner Tomorrow.
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const pageLinks = document.querySelectorAll(".page-link");
+        const pages = document.querySelectorAll(".page");
+        const sidebarNav = document.getElementById("sidebar-nav");
+        const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+        const mainContentArea = document.getElementById("main-content-area");
+        const contactForm = document.getElementById("contactForm");
+        const formStatus = document.getElementById("form-submission-status");
+        let mapInitialized = false;
+
+        const themeToggleButton = document.getElementById(
+          "theme-toggle-button"
+        );
+        const body = document.body;
+
+        const accentPrimaryRGBDark = [79, 209, 197];
+        const accentPrimaryRGBLight = [43, 108, 176];
+
+        function applyTheme(theme) {
+          if (theme === "light") {
+            body.classList.add("light-mode");
+            body.style.setProperty(
+              "--accent-primary-rgb",
+              accentPrimaryRGBLight.join(",")
+            );
+          } else {
+            body.classList.remove("light-mode");
+            body.style.setProperty(
+              "--accent-primary-rgb",
+              accentPrimaryRGBDark.join(",")
+            );
+          }
+          updateButtonIcons(theme);
+          // Re-initialize map if it exists and contact page is active, to update tile styling if necessary
+          if (
+            mapInitialized &&
+            document.getElementById("contact-page").classList.contains("active")
+          ) {
+            // This is a bit tricky as Leaflet tiles don't auto-update theme.
+            // For simplicity, we're not re-styling tiles here, but a more complex solution might.
+          }
+        }
+
+        function updateButtonIcons(theme) {
+          const isLight = theme === "light";
+          if (themeToggleButton) {
+            const moonIcon = themeToggleButton.querySelector(".fa-moon");
+            const sunIcon = themeToggleButton.querySelector(".fa-sun");
+            if (moonIcon && sunIcon) {
+              moonIcon.style.display = isLight ? "none" : "inline-block";
+              sunIcon.style.display = isLight ? "inline-block" : "none";
+            }
+          }
+          // Mobile toggle icon color update
+          if (mobileMenuToggle) {
+            const mobileToggleIcon = mobileMenuToggle.querySelector("i");
+            if (mobileToggleIcon) {
+              mobileToggleIcon.style.color = isLight
+                ? "var(--text-primary-light)"
+                : "var(--text-primary-dark)";
+            }
+          }
+        }
+
+        function toggleTheme() {
+          const currentTheme = body.classList.contains("light-mode")
+            ? "light"
+            : "dark";
+          const newTheme = currentTheme === "light" ? "dark" : "light";
+          applyTheme(newTheme);
+          localStorage.setItem("theme", newTheme); // Save theme preference
+        }
+
+        if (themeToggleButton) {
+          themeToggleButton.addEventListener("click", toggleTheme);
+        }
+
+        // Load saved theme or default to dark
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        applyTheme(savedTheme);
+
+        function showPage(pageIdToShow) {
+          const targetPage = document.getElementById(pageIdToShow);
+          if (!targetPage) {
+            console.error(
+              "Page not found:",
+              pageIdToShow,
+              "Defaulting to home."
+            );
+            window.location.hash = "home";
+            // showPage("home-page"); // This would cause a loop if home-page is also missing.
+            // Instead, directly activate home if target is not found and it's not already home.
+            if (document.getElementById("home-page")) {
+              pages.forEach((page) => page.classList.remove("active"));
+              document.getElementById("home-page").classList.add("active");
+              updateActiveLink("home");
+            }
+            return;
+          }
+
+          pages.forEach((page) => page.classList.remove("active"));
+          targetPage.classList.add("active");
+
+          updateActiveLink(pageIdToShow.replace("-page", ""));
+
+          mainContentArea.scrollTo({ top: 0, behavior: "smooth" });
+
+          if (pageIdToShow === "contact-page" && !mapInitialized) {
+            initMap();
+            mapInitialized = true;
+          }
+          if (sidebarNav.classList.contains("open")) {
+            sidebarNav.classList.remove("open");
+            mobileMenuToggle.setAttribute("aria-expanded", "false");
+            mobileMenuToggle.querySelector("i").classList.remove("fa-times");
+            mobileMenuToggle.querySelector("i").classList.add("fa-bars");
+          }
+        }
+
+        function updateActiveLink(pageName) {
+          document
+            .querySelectorAll("#sidebar-nav .nav-link")
+            .forEach((link) => {
+              if (link.dataset.page === pageName) {
+                link.classList.add("active-link");
+              } else {
+                link.classList.remove("active-link");
+              }
+            });
+        }
+
+        pageLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            // e.preventDefault(); // Keep this to prevent default anchor jump before JS handles it
+            const pageName = link.dataset.page;
+            if (pageName) {
+              // Ensure pageName is defined
+              window.location.hash = pageName;
+              // showPage function will be called by hashchange listener
+            }
+          });
+        });
+
+        if (mobileMenuToggle && sidebarNav) {
+          mobileMenuToggle.addEventListener("click", () => {
+            const isOpen = sidebarNav.classList.toggle("open");
+            mobileMenuToggle.setAttribute("aria-expanded", isOpen.toString());
+            const icon = mobileMenuToggle.querySelector("i");
+            if (isOpen) {
+              icon.classList.remove("fa-bars");
+              icon.classList.add("fa-times");
+            } else {
+              icon.classList.remove("fa-times");
+              icon.classList.add("fa-bars");
+            }
+          });
+        }
+
+        mainContentArea.addEventListener("click", (event) => {
+          // Close sidebar if open and click is outside sidebar or menu toggle
+          if (
+            window.innerWidth <= 1024 &&
+            sidebarNav.classList.contains("open")
+          ) {
+            if (
+              !sidebarNav.contains(event.target) &&
+              !mobileMenuToggle.contains(event.target)
+            ) {
+              sidebarNav.classList.remove("open");
+              mobileMenuToggle.setAttribute("aria-expanded", "false");
+              mobileMenuToggle.querySelector("i").classList.remove("fa-times");
+              mobileMenuToggle.querySelector("i").classList.add("fa-bars");
+            }
+          }
+        });
+
+        if (contactForm) {
+          contactForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            formStatus.textContent = "Sending message...";
+            formStatus.className =
+              "mt-4 text-center text-base text-accent-secondary";
+
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+              // IMPORTANT: This fetch URL ('http://localhost:3001/send-email') is for local development.
+              // For a live website, you MUST replace this with the URL of your actual backend
+              // service or serverless function that handles email sending.
+              const response = await fetch("/api/send-email", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              });
+
+              if (response.ok) {
+                const result = await response.json();
+                formStatus.textContent =
+                  result.message ||
+                  "Message sent successfully! (Simulated - Check console)";
+                formStatus.className =
+                  "mt-4 text-center text-base text-green-500";
+                contactForm.reset();
+                // For demonstration if backend isn't live:
+                console.log("Form submitted (simulated):", data);
+                setTimeout(() => {
+                  formStatus.textContent = "";
+                }, 5000);
+              } else {
+                const errorResult = await response.json().catch(() => ({
+                  message: "Failed to send message. Server error. (Simulated)",
+                }));
+                formStatus.textContent =
+                  errorResult.message || "Failed to send message. (Simulated)";
+                formStatus.className =
+                  "mt-4 text-center text-base text-red-500";
+                console.error(
+                  "Form submission error (simulated):",
+                  errorResult
+                );
+              }
+            } catch (error) {
+              console.error("Error submitting form (simulated):", error);
+              formStatus.textContent =
+                "An error occurred. Please try again. (Note: This is a frontend simulation. A real backend is required.)";
+              formStatus.className = "mt-4 text-center text-base text-red-500";
+            }
+          });
+        }
+
+        function initMap() {
+          if (typeof L === "undefined") {
+            console.error("Leaflet library not loaded.");
+            const mapDiv = document.getElementById("map");
+            if (mapDiv)
+              mapDiv.innerHTML =
+                '<p class="text-center text-text-secondary p-4">Map could not be loaded. Leaflet library missing.</p>';
+            return;
+          }
+          const locations = [
+            {
+              name: "Registered Office",
+              coords: [39.745947, -75.547598],
+              address: "1209 Orange St, Wilmington, DE 19801",
+            },
+            {
+              name: "Delaware R&D Center",
+              coords: [39.775012, -75.572462],
+              address: "200 Powder Mill Rd, E500/2402B, Wilmington, DE 19803",
+            },
+            {
+              name: "Pennsylvania Operations",
+              coords: [40.068308, -75.465112],
+              address: "851 Duportail Rd, Chesterbrook, PA 19087",
+            },
+          ];
+
+          const mapContainer = document.getElementById("map");
+          if (!mapContainer) {
+            console.error("Map container not found");
+            return;
+          }
+          if (mapContainer._leaflet_id) {
+            // Check if map is already initialized
+            // If you want to re-center or re-fit bounds when theme changes or page re-renders:
+            // const markerGroup = L.featureGroup(mapContainer.leaflet_markers_group); // Assuming you store markers
+            // if (markerGroup && locations.length > 0) map.fitBounds(markerGroup.getBounds());
+            return;
+          }
+
+          const map = L.map("map").setView([39.9526, -75.1652], 8); // Initial broad view
+
+          L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution:
+              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 22,
+          }).addTo(map);
+
+          const markerGroup = L.featureGroup().addTo(map);
+          // mapContainer.leaflet_markers_group = []; // Store markers if needed for re-fitting
+
+          locations.forEach((location) => {
+            const marker = L.marker(location.coords)
+              .bindPopup(`<b>${location.name}</b><br>${location.address}`)
+              .addTo(markerGroup);
+            // mapContainer.leaflet_markers_group.push(marker);
+          });
+
+          if (locations.length > 0) {
+            map.fitBounds(markerGroup.getBounds(), { padding: [30, 30] }); // Add some padding
+          }
+
+          setTimeout(() => map.invalidateSize(), 150);
+        }
+
+        document.getElementById("currentYear").textContent =
+          new Date().getFullYear();
+
+        // Set dates for policy pages
+        const today = new Date().toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+
+        function handleNavigation() {
+          const hash = window.location.hash.substring(1);
+          // Default to 'home' if hash is empty or just '#'
+          const pageName = hash && hash !== "#" ? hash : "home";
+          const pageIdToShow = pageName + "-page";
+
+          // Check if the target page exists, otherwise default to home
+          if (document.getElementById(pageIdToShow)) {
+            showPage(pageIdToShow);
+          } else if (
+            pageName !== "home" &&
+            document.getElementById("home-page")
+          ) {
+            // if invalid hash, go to home
+            window.location.hash = "home"; // This will trigger another hashchange
+          } else if (
+            pageName === "home" &&
+            document.getElementById("home-page")
+          ) {
+            // if hash is empty, show home
+            showPage("home-page");
+          } else {
+            // Fallback if even home-page doesn't exist (should not happen with current HTML)
+            console.error("Default page 'home-page' not found.");
+          }
+        }
+
+        window.addEventListener("hashchange", handleNavigation);
+        handleNavigation(); // Initial page load based on hash or default
+
+        // Update page-link hrefs to ensure they are valid hash links
+        document.querySelectorAll(".page-link").forEach((link) => {
+          const pageName = link.dataset.page;
+          if (pageName) {
+            link.href = `#${pageName}`;
+          }
+        });
+
+        // Intersection Observer for animations (optional, can be enhanced)
+        const animatedElements = document.querySelectorAll(
+          ".card, .section-title, .section-subtitle, .hero-title, .hero-subtitle, .btn, .grid > div > img, .external-chart-img, .team-member-photo, #map, .key-features-list li, .news-card"
+        );
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.animation = `fadeIn 0.7s ${
+                  entry.target.dataset.delay || "0s"
+                } ease-out forwards`;
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.05 }
+        );
+
+        animatedElements.forEach((el) => {
+          el.style.opacity = "0"; // Start elements as transparent for fade-in
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>

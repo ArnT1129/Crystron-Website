@@ -1,0 +1,27 @@
+# File: .gitignore
+
+# Node.js dependencies folder
+node_modules/
+
+# Environment variable files (NEVER commit these if they contain secrets)
+.env
+.env*.local
+
+# Vercel build output directory
+.vercel/
+
+# macOS specific files
+.DS_Store
+
+# Log files
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# package-lock.json (optional, some prefer to commit for applications)
+# For Vercel, including it can sometimes help with deterministic builds.
+# If you choose to ignore it, Vercel will generate one based on package.json.
+# For simplicity in this guide, we can let Vercel handle it if you omit it from commit.
+# package-lock.json
