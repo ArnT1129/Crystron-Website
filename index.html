@@ -4,34 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crystron Technologies - Pioneering Battery Innovation</title>
-    <script src="https://vercel.com/analytics/script.js"></script>
     <meta
       name="description"
-      content="Crystron Technologies is revolutionizing battery technology with Venus3, a cleaner, cheaper, and superior Cathode Active Material for a circular economy."
+      content="Crystron Technologies is revolutionizing battery technology with our proprietary process for a cleaner, cheaper, and superior Cathode Active Material, enabling a circular economy."
     />
     <meta
       name="keywords"
-      content="Crystron Technologies, Venus3, battery technology, cathode active material, CAM, LFP, NMC, sustainable energy, circular economy, battery innovation, EV batteries, grid storage"
+      content="Crystron Technologies, battery technology, cathode active material, CAM, LFP, NMC, sustainable energy, circular economy, battery innovation, EV batteries, grid storage, clean cathodes"
     />
     <meta name="author" content="Crystron Technologies Inc." />
 
+    <!-- Open Graph / Facebook -->
     <meta
       property="og:title"
       content="Crystron Technologies - Pioneering Battery Innovation"
     />
     <meta
       property="og:description"
-      content="Discover Venus3, our groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior."
+      content="Discover Crystron's groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://crystron-website.vercel.app/" />
+    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE" />
     <meta
       property="og:image"
-      content="https://static.wixstatic.com/media/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png/v1/fill/w_250,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,logo/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png"
+      content="https://your-domain.com/crystron_og_image.png"
     />
+    <!-- Note: Replace with a real URL to your new logo/banner -->
     <meta property="og:image:alt" content="Crystron Technologies Logo" />
     <meta property="og:site_name" content="Crystron Technologies" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -39,12 +41,14 @@
     />
     <meta
       name="twitter:description"
-      content="Discover Venus3, our groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior."
+      content="Discover Crystron's groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior."
     />
     <meta
       name="twitter:image"
-      content="https://static.wixstatic.com/media/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png/v1/fill/w_250,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,logo/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png"
+      content="https://your-domain.com/crystron_twitter_image.png"
     />
+    <!-- Note: Replace with a real URL to your new logo/banner -->
+
     <link rel="icon" href="/crystronlogo.png" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -64,27 +68,7 @@
     ></script>
     <style>
       :root {
-        /* Light Theme (Now Default) - "Crystalline Light" */
-        --bg-primary-light: #f7fafc;
-        --bg-secondary-light: #ffffff;
-        --bg-nav-light: #f0f5fa;
-        --bg-tertiary-light: #e2e8f0;
-        --text-primary-light: #1a202c;
-        --text-secondary-light: #4a5568;
-        --text-nav-light: #2d3748;
-        --accent-primary-light: #2b6cb0;
-        --accent-secondary-light: #319795;
-        --accent-glow-light: rgba(43, 108, 176, 0.15);
-        --border-primary-light: #e2e8f0;
-        --border-accent-light: #2b6cb0;
-        --shadow-color-light: rgba(100, 116, 139, 0.1);
-        --scrollbar-track-light: #e2e8f0;
-        --scrollbar-thumb-light: #cbd5e1;
-        --scrollbar-thumb-hover-light: #a0aec0;
-        --leaflet-popup-bg-light: #ffffff;
-        --leaflet-popup-text-light: #1a202c;
-
-        /* Dark Theme (Secondary) - "Digital Crystal Dark" */
+        /* New Dark Theme - "Digital Crystal Dark" */
         --bg-primary-dark: #0a0f1a;
         --bg-secondary-dark: #101725;
         --bg-nav-dark: #080c15;
@@ -103,9 +87,28 @@
         --scrollbar-thumb-hover-dark: #4a5568;
         --leaflet-popup-bg-dark: #101725;
         --leaflet-popup-text-dark: #e0e7ff;
+
+        /* New Light Theme (Default) - "Crystalline Light" */
+        --bg-primary-light: #f7fafc;
+        --bg-secondary-light: #ffffff;
+        --bg-nav-light: #f0f5fa;
+        --bg-tertiary-light: #e2e8f0;
+        --text-primary-light: #1a202c;
+        --text-secondary-light: #4a5568;
+        --text-nav-light: #2d3748;
+        --accent-primary-light: #2b6cb0;
+        --accent-secondary-light: #319795;
+        --accent-glow-light: rgba(43, 108, 176, 0.15);
+        --border-primary-light: #e2e8f0;
+        --border-accent-light: #2b6cb0;
+        --shadow-color-light: rgba(100, 116, 139, 0.1);
+        --scrollbar-track-light: #e2e8f0;
+        --scrollbar-thumb-light: #cbd5e1;
+        --scrollbar-thumb-hover-light: #a0aec0;
+        --leaflet-popup-bg-light: #ffffff;
+        --leaflet-popup-text-light: #1a202c;
       }
 
-      /* Default theme is now Light Mode */
       body {
         --bg-primary: var(--bg-primary-light);
         --bg-secondary: var(--bg-secondary-light);
@@ -125,11 +128,8 @@
         --scrollbar-thumb-hover: var(--scrollbar-thumb-hover-light);
         --leaflet-popup-bg: var(--leaflet-popup-bg-light);
         --leaflet-popup-text: var(--leaflet-popup-text-light);
-        --accent-primary-rgb: 43, 108, 176;
-        --accent-secondary-rgb: 49, 151, 149;
       }
 
-      /* Dark mode class to override defaults */
       .dark-mode {
         --bg-primary: var(--bg-primary-dark);
         --bg-secondary: var(--bg-secondary-dark);
@@ -149,8 +149,6 @@
         --scrollbar-thumb-hover: var(--scrollbar-thumb-hover-dark);
         --leaflet-popup-bg: var(--leaflet-popup-bg-dark);
         --leaflet-popup-text: var(--leaflet-popup-text-dark);
-        --accent-primary-rgb: 79, 209, 197;
-        --accent-secondary-rgb: 99, 179, 237;
       }
 
       body {
@@ -200,7 +198,7 @@
         text-align: center;
       }
       #sidebar-nav .logo-img {
-        height: 85px;
+        height: 175px;
         width: auto;
         max-width: 100%;
         transition: transform 0.3s ease;
@@ -208,6 +206,7 @@
       #sidebar-nav .logo-img:hover {
         transform: scale(1.05);
       }
+
       #sidebar-nav .nav-link {
         display: block;
         color: var(--text-nav);
@@ -227,10 +226,13 @@
         text-align: center;
       }
       #sidebar-nav .nav-link:hover {
-        background-color: rgba(var(--accent-primary-rgb), 0.1);
+        background-color: rgba(var(--accent-primary-rgb, 43, 108, 176), 0.1);
         color: var(--accent-primary);
         transform: translateX(5px);
         box-shadow: 0 0 15px var(--accent-glow);
+      }
+      .dark-mode #sidebar-nav .nav-link:hover {
+        background-color: rgba(var(--accent-primary-rgb, 79, 209, 197), 0.1);
       }
       #sidebar-nav .nav-link.active-link {
         background-color: var(--accent-primary);
@@ -238,15 +240,8 @@
         font-weight: 600;
         box-shadow: 0 0 20px var(--accent-glow);
       }
-       /* In dark mode, active link text needs to be dark for contrast */
-      .dark-mode #sidebar-nav .nav-link.active-link {
-          color: #080c15; 
-      }
       #sidebar-nav .nav-link.active-link i {
         color: var(--bg-nav);
-      }
-      .dark-mode #sidebar-nav .nav-link.active-link i {
-          color: #080c15;
       }
 
       #sidebar-nav .theme-toggle-container {
@@ -271,22 +266,13 @@
         background-color: var(--accent-primary);
         color: var(--bg-nav);
       }
-      .dark-mode .theme-toggle-button:hover {
-          color: #080c15;
-      }
-
-      /* Default (Light) Mode: Show Moon, Hide Sun */
-      .theme-toggle-button .fa-sun {
+      .theme-toggle-button .fa-moon {
         display: none;
       }
-      .theme-toggle-button .fa-moon {
-        display: inline-block;
-      }
-      /* Dark Mode: Show Sun, Hide Moon */
-      .dark-mode .theme-toggle-button .fa-sun {
-        display: inline-block;
-      }
       .dark-mode .theme-toggle-button .fa-moon {
+        display: inline-block;
+      }
+      .dark-mode .theme-toggle-button .fa-sun {
         display: none;
       }
 
@@ -303,22 +289,20 @@
         display: none;
         min-height: 100vh;
         padding: 4rem 3.5rem;
-        animation: fadeIn 0.6s ease-out forwards;
         opacity: 0;
         box-sizing: border-box;
       }
       .page.active {
         display: flex;
         flex-direction: column;
+        animation: fadeInPage 0.6s ease-out forwards;
       }
-      @keyframes fadeIn {
+      @keyframes fadeInPage {
         from {
           opacity: 0;
-          transform: translateY(20px);
         }
         to {
           opacity: 1;
-          transform: translateY(0);
         }
       }
 
@@ -366,8 +350,8 @@
         border: 1px solid var(--border-primary);
         transition: transform 0.3s ease, box-shadow 0.3s ease,
           border-color 0.3s ease, background-color 0.3s ease;
-        display: flex; 
-        flex-direction: column; 
+        display: flex;
+        flex-direction: column;
       }
       .card:hover {
         transform: translateY(-10px) scale(1.025);
@@ -377,7 +361,7 @@
         border-left-color: var(
           --hover-border-color,
           var(--accent-primary)
-        ) !important; 
+        ) !important;
       }
       .card h3,
       .card h4 {
@@ -385,7 +369,7 @@
         font-weight: 600;
         margin-bottom: 1rem;
       }
-      .card h3 { 
+      .card h3 {
         font-size: 1.85rem;
       }
       .card h4 {
@@ -413,18 +397,21 @@
         margin-bottom: 1.25rem;
         display: inline-block;
         padding: 1rem;
-        background-color: rgba(var(--accent-primary-rgb), 0.1);
+        background-color: rgba(var(--accent-primary-rgb, 43, 108, 176), 0.1);
         border-radius: 50%;
       }
+      .dark-mode .card .icon-feature {
+        background-color: rgba(var(--accent-primary-rgb, 79, 209, 197), 0.1);
+      }
       .market-stat-card .card-icon {
-        font-size: 2.5rem; 
+        font-size: 2.5rem;
         color: var(--accent-primary);
         margin-bottom: 1rem;
-        display: block; 
+        display: block;
         text-align: center;
       }
-       .market-stat-card h3 { 
-        font-size: 1.5rem; 
+      .market-stat-card h3 {
+        font-size: 1.5rem;
         text-align: center;
         color: var(--text-primary);
       }
@@ -432,9 +419,8 @@
         font-size: 1rem;
         text-align: center;
         color: var(--text-secondary);
-        flex-grow: 1; 
+        flex-grow: 1;
       }
-
 
       .btn {
         padding: 1rem 2.25rem;
@@ -455,7 +441,7 @@
           var(--accent-primary),
           var(--accent-secondary)
         );
-        color: var(--bg-nav);
+        color: #ffffff;
       }
       .dark-mode .btn-primary {
         color: #080c15;
@@ -470,9 +456,12 @@
         border: 2px solid var(--accent-primary);
       }
       .btn-secondary:hover {
-        background-color: rgba(var(--accent-primary-rgb), 0.1);
+        background-color: rgba(var(--accent-primary-rgb, 43, 108, 176), 0.1);
         color: var(--accent-primary);
         transform: translateY(-3px);
+      }
+      .dark-mode .btn-secondary:hover {
+        background-color: rgba(var(--accent-primary-rgb, 79, 209, 197), 0.1);
       }
 
       .contact-form input,
@@ -507,14 +496,14 @@
         display: block;
       }
 
-      #home-page .hero-section-content { 
+      #home-page .hero-section-content {
         min-height: calc(100vh - 8rem);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        width: 100%; 
+        width: 100%;
       }
       #home-page .hero-title {
         font-size: clamp(2.8rem, 6.5vw, 5rem);
@@ -532,7 +521,6 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        /* text-fill-color: transparent; /* Standard property */
       }
       #home-page .hero-subtitle {
         font-size: clamp(1.3rem, 3.3vw, 1.75rem);
@@ -563,6 +551,27 @@
       .team-member-linkedin:hover {
         color: var(--accent-primary);
         text-decoration: underline;
+      }
+      .team-member-details {
+        text-align: left;
+        margin-top: 1.5rem;
+        padding-left: 1rem;
+      }
+      .team-member-details li {
+        position: relative;
+        padding-left: 1.75rem; /* Increased padding */
+        margin-bottom: 0.75rem; /* Increased margin */
+        line-height: 1.6;
+      }
+      .team-member-details li::before {
+        content: "\f00c"; /* Font Awesome check icon */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: var(--accent-primary);
+        position: absolute;
+        left: 0;
+        top: 6px; /* Adjusted position */
+        font-size: 0.9em;
       }
 
       #map {
@@ -614,16 +623,25 @@
         .page {
           padding: 5rem 2rem 3rem 2rem;
         }
-        #home-page .hero-section-content { 
+        #home-page .hero-section-content {
           padding-top: 0;
-          min-height: calc(100vh - 8rem); 
+          min-height: calc(100vh - 8rem);
         }
       }
       @media (max-width: 768px) {
-         #home-page .hero-section-content {
-             min-height: unset; 
-             padding-top: 2rem;
-         }
+        #home-page .hero-section-content {
+          min-height: unset;
+          padding-top: 2rem;
+        }
+      }
+
+      body {
+        --accent-primary-rgb: 43, 108, 176;
+        --accent-secondary-rgb: 49, 151, 149;
+      }
+      .dark-mode {
+        --accent-primary-rgb: 79, 209, 197;
+        --accent-secondary-rgb: 99, 179, 237;
       }
 
       footer {
@@ -634,7 +652,7 @@
         margin-top: auto;
       }
       footer .logo-img-footer {
-        height: 55px;
+        height: 150px;
         opacity: 0.8;
         transition: opacity 0.3s ease;
       }
@@ -672,6 +690,7 @@
         font-weight: 600;
       }
 
+      /* News Page Specific Styles */
       .news-card {
         background-color: var(--bg-secondary);
         border-radius: 14px;
@@ -691,8 +710,8 @@
       }
       .news-card-image {
         width: 100%;
-        height: 100px; 
-        object-fit: cover; 
+        height: 200px;
+        object-fit: contain;
         border-radius: 10px;
         margin-bottom: 1.5rem;
         border: 1px solid var(--border-primary);
@@ -714,7 +733,7 @@
         font-size: 1rem;
         color: var(--text-secondary);
         line-height: 1.6;
-        flex-grow: 1; 
+        flex-grow: 1;
         margin-bottom: 1.5rem;
       }
       .news-card-read-more {
@@ -722,7 +741,7 @@
         font-weight: 600;
         text-decoration: none;
         transition: color 0.2s ease;
-        margin-top: auto; 
+        margin-top: auto;
       }
       .news-card-read-more:hover {
         color: var(--accent-secondary);
@@ -735,15 +754,298 @@
       .news-card-read-more:hover i {
         transform: translateX(3px);
       }
+
+      /* --- NEW Mission Statement Section --- */
+      .mission-section-wrapper {
+        background-color: var(--bg-tertiary);
+        border-top: 1px solid var(--border-primary);
+        border-bottom: 1px solid var(--border-primary);
+        padding: 2rem 1rem;
+        margin: 2rem 0;
+      }
+      .mission-statement {
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .mission-statement .mission-icon {
+        font-size: 4rem;
+        color: var(--accent-primary);
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        line-height: 1;
+        text-shadow: 0 0 25px var(--accent-glow);
+      }
+      .mission-statement h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+      }
+      .mission-statement p {
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.7;
+        color: var(--text-secondary);
+      }
+      .mission-statement p strong {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+      @media (max-width: 768px) {
+        .mission-statement h2 {
+          font-size: 2rem;
+        }
+        .mission-statement p {
+          font-size: 1.25rem;
+        }
+      }
+
+      /* --- UPDATED Partners Page Scroller Styles --- */
+      .partner-scroller {
+        max-width: 1200px;
+        margin: 2rem auto 0 auto;
+        overflow: hidden;
+        -webkit-mask: linear-gradient(
+          90deg,
+          transparent,
+          white 15%,
+          white 85%,
+          transparent
+        );
+        mask: linear-gradient(
+          90deg,
+          transparent,
+          white 15%,
+          white 85%,
+          transparent
+        );
+      }
+      .partner-scroller[data-animated="true"] .partner-scroller-inner {
+        width: max-content;
+        display: flex;
+        flex-wrap: nowrap;
+        animation: scroll 40s linear infinite;
+      }
+      .partner-scroller:hover .partner-scroller-inner {
+        animation-play-state: paused;
+      }
+      .partner-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 3rem;
+        height: 120px;
+      }
+      .partner-logo img {
+        max-height: 65px;
+        width: auto;
+        filter: grayscale(1) opacity(0.6);
+        transition: filter 0.3s ease;
+      }
+      .dark-mode .partner-logo img {
+        /* Invert makes logos white for dark mode */
+        filter: grayscale(1) opacity(0.7) invert(1);
+      }
+      .partner-logo:hover img {
+        filter: none;
+      }
+
+      /* --- NEW Premier Facilities Section --- */
+      .premier-facilities-section {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        align-items: center;
+        margin-top: 5rem;
+        padding: 3rem;
+        background-color: var(--bg-secondary);
+        border: 1px solid var(--border-primary);
+        border-radius: 16px;
+      }
+      @media (min-width: 1024px) {
+        .premier-facilities-section {
+          grid-template-columns: 300px 1fr;
+        }
+      }
+      .premier-facilities-icon {
+        text-align: center;
+      }
+      .premier-facilities-icon i {
+        font-size: 120px;
+        color: var(--accent-secondary);
+        text-shadow: 0 0 20px var(--accent-glow);
+      }
+      .premier-facilities-content h3 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+      }
+      .premier-facilities-content p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+      }
+
+      @keyframes scroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Chart and Diagram Styles */
+      .chart-container {
+        background-color: var(--bg-secondary);
+        border: 1px solid var(--border-primary);
+        border-radius: 14px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px -15px var(--shadow-color);
+      }
+      .chart-container h3 {
+        text-align: center;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 2rem;
+      }
+      .bar-chart-large {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        height: 250px; /* Adjusted height for home page */
+        width: 100%;
+        border-left: 2px solid var(--border-primary);
+        border-bottom: 2px solid var(--border-primary);
+        padding: 0 1rem;
+        position: relative;
+      }
+      .bar-chart-large .bar {
+        width: 15%; /* Adjusted width for 3 bars */
+        background: linear-gradient(
+          to top,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        border-radius: 6px 6px 0 0;
+        position: relative;
+        transform-origin: bottom;
+      }
+      .bar-chart-large .bar-label {
+        position: absolute;
+        bottom: -2.5rem;
+        width: 100%;
+        text-align: center;
+        font-weight: 600;
+        color: var(--text-secondary);
+      }
+      .bar-chart-large .bar-value {
+        position: absolute;
+        top: -2rem;
+        width: 100%;
+        text-align: center;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      /* Comparison Chart Styles */
+      .comparison-chart {
+        background-color: var(--bg-secondary);
+        border-radius: 14px;
+        padding: 2rem;
+        border: 1px solid var(--border-primary);
+      }
+      .comparison-chart h4 {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+      }
+      .comparison-bars {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        height: 200px;
+        gap: 10%;
+      }
+      .comparison-bar-group {
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        height: 100%;
+        justify-content: flex-end;
+      }
+      .comparison-bar {
+        width: 100%;
+        border-radius: 4px 4px 0 0;
+        position: relative;
+        transform-origin: bottom;
+        transition: height 1.2s ease-out;
+      }
+      .comparison-bar.lfp {
+        background-color: #fca5a5;
+      }
+      .comparison-bar.crystron {
+        background-color: var(--accent-primary);
+      }
+      .dark-mode .comparison-bar.lfp {
+        background-color: #f87171;
+      }
+
+      .comparison-bar .value {
+        position: absolute;
+        top: -1.75rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+      .comparison-bar-group .label {
+        margin-top: 0.75rem;
+        font-weight: 500;
+      }
+      .comparison-footer {
+        text-align: center;
+        margin-top: 1.5rem;
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+      .comparison-footer.reduction {
+        color: var(--accent-secondary);
+      }
+      .dark-mode .comparison-footer.reduction {
+        color: var(--accent-secondary-dark);
+      }
+      .comparison-footer.zero {
+        color: var(--accent-primary);
+      }
+
+      /* Animation Classes */
+      .animated-element {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+      .animated-element.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
     </style>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Crystron Technologies Inc.",
-        "url": "https://crystron-website.vercel.app/",
-        "logo": "https://static.wixstatic.com/media/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png/v1/fill/w_250,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,logo/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png",
-        "description": "Crystron Technologies introduces Venus3: a groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior, designed for a circular economy.",
+        "url": "YOUR_WEBSITE_URL_HERE",
+        "logo": "YOUR_WEBSITE_URL_HERE/assets/crystron-logo.svg",
+        "description": "Crystron Technologies accelerates global electrification by developing novel resource-efficient and low-cost clean cathodes through circular manufacturing.",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "1209 Orange St",
@@ -754,7 +1056,6 @@
         },
         "contactPoint": {
           "@type": "ContactPoint",
-          "telephone": "+1-XXX-XXX-XXXX",
           "contactType": "Customer Service / General Inquiry",
           "email": "info@crystronmat.com"
         },
@@ -782,11 +1083,11 @@
     <aside id="sidebar-nav">
       <div class="logo-container">
         <a href="#home" data-page="home" class="page-link">
+          <!-- Logo Placeholder -->
           <img
-            src="https://static.wixstatic.com/media/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png/v1/fill/w_250,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,logo/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png"
+            src="/CrystronLogo-removebg-preview.png"
             alt="Crystron Technologies Logo"
             class="logo-img"
-            onerror="this.onerror=null; this.src='https://placehold.co/220x83/080c15/e0e7ff?text=Crystron&font=inter';"
           />
         </a>
       </div>
@@ -799,6 +1100,9 @@
         >
         <a href="#team" data-page="team" class="nav-link page-link"
           ><i class="fas fa-users"></i>TEAM</a
+        >
+        <a href="#partners" data-page="partners" class="nav-link page-link"
+          ><i class="fas fa-handshake"></i>PARTNERS</a
         >
         <a href="#investors" data-page="investors" class="nav-link page-link"
           ><i class="fas fa-chart-line"></i>INVESTORS</a
@@ -816,7 +1120,7 @@
           class="theme-toggle-button"
           aria-label="Toggle Theme"
         >
-          <i class="fas fa-moon mr-2"></i><i class="fas fa-sun mr-2"></i>
+          <i class="fas fa-sun mr-2"></i><i class="fas fa-moon mr-2"></i>
           <span>Switch Theme</span>
         </button>
       </div>
@@ -826,22 +1130,22 @@
       <main id="main-content">
         <section id="home-page" class="page active">
           <div class="w-full max-w-5xl mx-auto hero-section-content px-4">
-            <h1 class="hero-title">
-              <span class="highlight">Transforming</span> the Future of, <br />
+            <h1 class="hero-title animated-element">
+              <span class="highlight">Transforming</span> the Future of <br />
               <span class="highlight">Battery Technology</span>.
             </h1>
-            <p class="hero-subtitle">
-              Crystron Technologies introduces Venus3: a groundbreaking Cathode
+            <p class="hero-subtitle animated-element">
+              Crystron Technologies is pioneering a groundbreaking Cathode
               Active Material technology that's cleaner, cheaper, and superior,
               designed for a circular economy.
             </p>
-            <div class="space-x-4 mb-12 md:mb-16">
+            <div class="space-x-4 mb-12 md:mb-16 animated-element">
               <a
                 href="#technology"
                 data-page="technology"
                 class="btn btn-primary page-link text-lg shadow-lg"
               >
-                Explore Venus3 <i class="fas fa-arrow-right ml-2"></i>
+                Our Technology <i class="fas fa-arrow-right ml-2"></i>
               </a>
               <a
                 href="#contact"
@@ -851,245 +1155,295 @@
                 Get In Touch <i class="fas fa-paper-plane ml-2"></i>
               </a>
             </div>
+          </div>
 
-            <div
-              class="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-10 w-full"
-            >
-              <div class="text-center p-5 card">
-                <i class="fas fa-leaf text-4xl text-accent-primary mb-4"></i>
-                <h3 class="text-xl font-semibold text-text-primary mb-2">
-                  Eco-Friendly Innovation
-                </h3>
-                <p class="text-base text-text-secondary">
-                  Achieving an 80% reduction in energy consumption and
-                  greenhouse gas emissions compared to conventional methods.
-                </p>
+          <!-- NEW Mission Statement Section -->
+          <div class="mission-section-wrapper animated-element">
+            <div class="mission-statement">
+              <div class="mission-icon">
+                <i class="fas fa-atom"></i>
               </div>
-              <div class="text-center p-5 card">
-                <i
-                  class="fas fa-dollar-sign text-4xl text-accent-primary mb-4"
-                ></i>
-                <h3 class="text-xl font-semibold text-text-primary mb-2">
-                  Significant Cost Savings
-                </h3>
-                <p class="text-base text-text-secondary">
-                  Lowering production costs by up to 40% through streamlined
-                  processes and efficient material utilization.
-                </p>
-              </div>
-              <div class="text-center p-5 card">
-                <i class="fas fa-recycle text-4xl text-accent-primary mb-4"></i>
-                <h3 class="text-xl font-semibold text-text-primary mb-2">
-                  Zero Waste Manufacturing
-                </h3>
-                <p class="text-base text-text-secondary">
-                  Our process eliminates harmful waste byproducts and consumes
-                  zero water, promoting true circularity.
-                </p>
-              </div>
+              <h2>Our Mission</h2>
+              <p>
+                To accelerate <strong>global electrification</strong> by
+                developing novel resource-efficient and low-cost clean cathodes
+                through <strong>circular manufacturing</strong>.
+              </p>
             </div>
           </div>
-          <div class="w-full max-w-5xl mx-auto px-4 py-16 md:py-20">
-            <h2 class="text-3xl md:text-4xl font-bold text-text-primary text-center mb-5">
+
+          <!-- Updated Demand Section -->
+          <div class="w-full max-w-6xl mx-auto px-4 py-16 md:py-20">
+            <h2
+              class="text-3xl md:text-4xl font-bold text-text-primary text-center mb-5 animated-element"
+            >
               The Surging Demand for Advanced Batteries
             </h2>
-            <p class="text-lg text-text-secondary text-center max-w-3xl mx-auto mb-10 md:mb-12">
-              The global shift towards electrification is fueling unprecedented growth in the lithium-ion battery market, creating a significant opportunity for innovative solutions like Venus3.
+            <p
+              class="text-lg text-text-secondary text-center max-w-3xl mx-auto mb-10 md:mb-12 animated-element"
+            >
+              The global shift towards electrification is fueling unprecedented
+              growth in the lithium-ion battery market, with a projected 27%
+              CAGR to reach ~4,700 GWh by 2030, creating a significant
+              opportunity for innovative solutions.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              <div class="card market-stat-card p-6">
-                <i class="fas fa-chart-line card-icon"></i>
-                <h3>Li-Ion Market Skyrocketing</h3>
-                <p>
-                  Projected to soar from $132bn (2023) to <strong>$509bn by 2033</strong>, at a CAGR of over <strong>14%</strong>, driven by e-mobility and energy storage.
-                </p>
+            <div class="chart-container animated-element">
+              <div class="bar-chart-large">
+                <div class="bar animated-element" style="height: 15%">
+                  <div class="bar-value">~700</div>
+                  <div class="bar-label">2022</div>
+                </div>
+                <div class="bar animated-element" style="height: 36%">
+                  <div class="bar-value">~1,700</div>
+                  <div class="bar-label">2025</div>
+                </div>
+                <div class="bar animated-element" style="height: 100%">
+                  <div class="bar-value">~4,700</div>
+                  <div class="bar-label">2030</div>
+                </div>
               </div>
-              <div class="card market-stat-card p-6">
-                <i class="fas fa-car-side card-icon"></i>
-                <h3>EVs Driving Demand</h3>
-                <p>
-                  The Electric Vehicle market is expanding rapidly at a <strong>16% CAGR</strong>. Cathode Active Materials (CAMs) are critical, making up over <strong>27%</strong> of total battery costs.
-                </p>
-              </div>
-              <div class="card market-stat-card p-6">
-                <i class="fas fa-atom card-icon"></i>
-                <h3>Iron-Based CAMs: The Future</h3>
-                <p>
-                  Iron-based CAMs (e.g., LFP) are set to capture half the market, growing to <strong>9M metric tons/yr by 2035</strong> (13% CAGR). The US currently relies heavily on imports for these crucial materials.
-                </p>
-              </div>
+              <p class="text-center mt-12 text-text-secondary">
+                Global Li-ion battery cell demand, GWh, Base case. Source:
+                McKinsey Battery Insights
+              </p>
             </div>
           </div>
-          </section>
+        </section>
 
         <section id="technology-page" class="page">
           <div class="container mx-auto">
-            <h2 class="section-title">Venus3: The Next Leap in Battery Tech</h2>
-            <p class="section-subtitle">
-              Our proprietary Venus3 technology redefines Cathode Active
-              Material (CAM) manufacturing, overcoming the limitations of
-              traditional LFP and NMC processes while embracing sustainability
-              and performance.
+            <h2 class="section-title animated-element">
+              A Leap in Cathode Manufacturing
+            </h2>
+            <p class="section-subtitle animated-element">
+              Our proprietary technology redefines Cathode Active Material (CAM)
+              manufacturing, overcoming the critical limitations of traditional
+              processes while championing sustainability and performance.
             </p>
 
-            <div
-              class="grid md:grid-cols-2 gap-10 lg:gap-14 items-stretch mb-16"
-            >
-              <div
-                class="card border-l-4 border-red-500/70 hover:border-red-400"
-                style="--hover-border-color: #f87171"
+            <!-- Issues with Current LFP -->
+            <div class="max-w-5xl mx-auto mb-16">
+              <h3
+                class="text-3xl font-bold text-center text-text-primary mb-8 animated-element"
               >
-                <h3
-                  class="text-2xl lg:text-3xl font-bold mb-5 text-red-400 flex items-center"
-                >
-                  <i class="fas fa-exclamation-triangle mr-3 text-3xl"></i
-                  >Traditional LFP Challenges
-                </h3>
-                <ul class="space-y-4 text-text-secondary text-lg">
-                  <li>
-                    <strong class="text-text-primary"
-                      >Complex & Inefficient:</strong
-                    >
-                    Multi-step pCAM synthesis from FeSO4 & H3PO4.
-                  </li>
-                  <li>
-                    <strong class="text-text-primary"
-                      >High Operational Costs:</strong
-                    >
-                    Requires extreme temperatures (800°C for 6-8 hours), leading
-                    to massive energy use.
-                  </li>
-                  <li>
-                    <strong class="text-text-primary"
-                      >Environmental Impact:</strong
-                    >
-                    Generates 1-2 tons of Na2SO4 waste per ton of CAM,
-                    contaminating ecosystems.
-                  </li>
-                  <li>
-                    <strong class="text-text-primary"
-                      >Supply Chain Vulnerabilities:</strong
-                    >
-                    Often reliant on imported materials and complex logistics.
-                  </li>
-                </ul>
-              </div>
-              <div
-                class="card border-l-4 border-green-500/70 hover:border-green-400"
-                style="--hover-border-color: #4ade80"
-              >
-                <h3
-                  class="text-2xl lg:text-3xl font-bold mb-5 text-green-400 flex items-center"
-                >
-                  <i class="fas fa-rocket mr-3 text-3xl"></i>The Venus3
-                  Advantage
-                </h3>
-                <ul class="space-y-4 text-text-secondary text-lg">
-                  <li>
-                    <strong class="text-text-primary"
-                      >Simplified & Direct:</strong
-                    >
-                    Proprietary Li-salt reaction with an iron-based compound,
-                    eliminating pCAM steps.
-                  </li>
-                  <li>
-                    <strong class="text-text-primary"
-                      >Drastically Lower Costs:</strong
-                    >
-                    Up to 40% reduction via efficient flow, domestic raw
-                    materials, and smaller equipment footprint.
-                  </li>
-                  <li>
-                    <strong class="text-text-primary">True Circularity:</strong>
-                    81% lower energy & emissions, zero water consumption, and NO
-                    Na2SO4 or other harmful waste. Solvent is recycled.
-                  </li>
-                  <li>
-                    <strong class="text-text-primary"
-                      >Enhanced Performance:</strong
-                    >
-                    Potential for improved CAM characteristics leading to better
-                    battery life and efficiency.
-                  </li>
-                </ul>
+                The Problem with Conventional LFP Production
+              </h3>
+              <div class="grid md:grid-cols-2 gap-8">
+                <div class="card animated-element">
+                  <h4 class="text-xl font-bold flex items-center">
+                    <i class="fas fa-link text-red-500 mr-3"></i>Complex Supply
+                    Chain
+                  </h4>
+                  <p>
+                    Reliant on many input materials, the supply of which is
+                    dominated by Chinese companies, creating vulnerabilities.
+                  </p>
+                </div>
+                <div class="card animated-element">
+                  <h4 class="text-xl font-bold flex items-center">
+                    <i class="fas fa-cogs text-red-500 mr-3"></i>Inefficient
+                    Manufacturing
+                  </h4>
+                  <p>
+                    Involves multiple energy-intensive steps that result in
+                    sub-optimal throughput and higher operational complexity.
+                  </p>
+                </div>
+                <div class="card animated-element">
+                  <h4 class="text-xl font-bold flex items-center">
+                    <i class="fas fa-dollar-sign text-red-500 mr-3"></i>High
+                    Manufacturing Cost
+                  </h4>
+                  <p>
+                    Requires a large equipment footprint, high electricity
+                    consumption, and numerous input materials, driving up CAPEX
+                    and OPEX.
+                  </p>
+                </div>
+                <div class="card animated-element">
+                  <h4 class="text-xl font-bold flex items-center">
+                    <i class="fas fa-smog text-red-500 mr-3"></i>Significant
+                    Environmental Impact
+                  </h4>
+                  <p>
+                    Generates high volumes of toxic waste coupled with high
+                    water and electricity consumption, harming ecosystems.
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div class="text-center my-12 md:my-16">
-              <img
-                src="https://static.wixstatic.com/media/e981c7_4d08ce57d98d4371a04645c25f1c0543~mv2.png/v1/fill/w_900,h_522,al_c,lg_1,q_90,enc_avif/e981c7_4d08ce57d98d4371a04645c25f1c0543~mv2.png"
-                alt="Venus3 Technology Advantage Diagram"
-                class="rounded-xl shadow-2xl w-full max-w-4xl mx-auto h-auto object-contain border border-border-primary"
-                onerror="this.onerror=null; this.src='https://placehold.co/900x522/101725/a0aec0?text=Venus3+Process+Diagram&font=inter';"
-              />
-              <p class="text-base text-text-secondary mt-5">
-                The Venus3 process: a paradigm shift in CAM production for a
-                sustainable future.
+            <!-- Crystron Advantage -->
+            <div class="text-center my-16 md:my-24">
+              <h3
+                class="text-3xl font-bold text-center text-accent-primary mb-8 animated-element"
+              >
+                The Crystron Advantage: A Data-Driven Comparison
+              </h3>
+              <p
+                class="text-lg text-text-secondary text-center max-w-3xl mx-auto mb-12 animated-element"
+              >
+                Our process offers a cleaner, more efficient, and cost-effective
+                path to high-performance CAM production. The data speaks for
+                itself.
               </p>
+
+              <!-- Comparison Graphs -->
+              <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
+              >
+                <!-- Energy Consumption -->
+                <div class="comparison-chart animated-element">
+                  <h4>Energy Consumption (MJ/Kg)</h4>
+                  <div class="comparison-bars">
+                    <div class="comparison-bar-group">
+                      <div class="comparison-bar lfp" style="height: 100%">
+                        <span class="value">13.6</span>
+                      </div>
+                      <span class="label">LFP</span>
+                    </div>
+                    <div class="comparison-bar-group">
+                      <div
+                        class="comparison-bar crystron"
+                        style="height: 18.4%"
+                      >
+                        <span class="value">2.5</span>
+                      </div>
+                      <span class="label">Crystron</span>
+                    </div>
+                  </div>
+                  <p class="comparison-footer reduction">80% Lower Energy</p>
+                </div>
+                <!-- Water Consumption -->
+                <div class="comparison-chart animated-element">
+                  <h4>Water Consumption (Ton/Ton of CAM)</h4>
+                  <div class="comparison-bars">
+                    <div class="comparison-bar-group">
+                      <div class="comparison-bar lfp" style="height: 100%">
+                        <span class="value">1000</span>
+                      </div>
+                      <span class="label">LFP</span>
+                    </div>
+                    <div class="comparison-bar-group">
+                      <div
+                        class="comparison-bar crystron"
+                        style="height: 2px; --scale-y: 0.002"
+                      >
+                        <span class="value">0</span>
+                      </div>
+                      <span class="label">Crystron</span>
+                    </div>
+                  </div>
+                  <p class="comparison-footer zero">Zero Water Consumption</p>
+                </div>
+                <!-- Production Cost -->
+                <div class="comparison-chart animated-element">
+                  <h4>Production Cost ($/KWh)</h4>
+                  <div class="comparison-bars">
+                    <div class="comparison-bar-group">
+                      <div class="comparison-bar lfp" style="height: 100%">
+                        <span class="value">4.4</span>
+                      </div>
+                      <span class="label">LFP</span>
+                    </div>
+                    <div class="comparison-bar-group">
+                      <div
+                        class="comparison-bar crystron"
+                        style="height: 60.2%"
+                      >
+                        <span class="value">2.65</span>
+                      </div>
+                      <span class="label">Crystron</span>
+                    </div>
+                  </div>
+                  <p class="comparison-footer reduction">40% Lower Cost</p>
+                </div>
+                <!-- Toxic Waste -->
+                <div class="comparison-chart animated-element">
+                  <h4>Toxic Waste Generation (Ton/Ton of CAM)</h4>
+                  <div class="comparison-bars">
+                    <div class="comparison-bar-group">
+                      <div class="comparison-bar lfp" style="height: 100%">
+                        <span class="value">1</span>
+                      </div>
+                      <span class="label">LFP</span>
+                    </div>
+                    <div class="comparison-bar-group">
+                      <div
+                        class="comparison-bar crystron"
+                        style="height: 2px; --scale-y: 0.002"
+                      >
+                        <span class="value">0</span>
+                      </div>
+                      <span class="label">Crystron</span>
+                    </div>
+                  </div>
+                  <p class="comparison-footer zero">Zero Toxic Waste</p>
+                </div>
+              </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-10 lg:gap-14 mt-16">
-              <div class="card">
-                <h3 class="text-2xl font-bold text-accent-secondary mb-4">
-                  Key Technical Features
-                </h3>
-                <ul class="key-features-list">
-                  <li>
-                    <i class="fas fa-check-circle"></i
-                    ><strong>Novel Synthesis Route:</strong> Innovative
-                    low-temperature reaction.
+            <!-- Our Solution Section -->
+            <div class="max-w-5xl mx-auto my-16">
+              <h3
+                class="text-3xl font-bold text-center text-text-primary mb-8 animated-element"
+              >
+                Our Solution: A Clear Advantage
+              </h3>
+              <div class="card p-8 animated-element">
+                <ul class="space-y-4">
+                  <li class="flex items-start text-lg">
+                    <i
+                      class="fas fa-check-circle mr-4 mt-1"
+                      style="color: var(--accent-secondary)"
+                    ></i>
+                    <div>
+                      <strong class="text-text-primary"
+                        >Simpler Supply Chain:</strong
+                      >
+                      No pCAM needed. Uses fewer input materials that are
+                      abundantly available as by-products of steel & electrolyte
+                      making.
+                    </div>
                   </li>
-                  <li>
-                    <i class="fas fa-check-circle"></i
-                    ><strong>Material Purity:</strong> High-purity CAM output
-                    for optimal performance.
+                  <li class="flex items-start text-lg">
+                    <i
+                      class="fas fa-check-circle mr-4 mt-1"
+                      style="color: var(--accent-secondary)"
+                    ></i>
+                    <div>
+                      <strong class="text-text-primary"
+                        >Efficient Manufacturing:</strong
+                      >
+                      A streamlined process with fewer steps leads to
+                      significantly higher throughput and reliability.
+                    </div>
                   </li>
-                  <li>
-                    <i class="fas fa-check-circle"></i
-                    ><strong>Scalability:</strong> Designed for rapid and
-                    cost-effective industrial scale-up.
+                  <li class="flex items-start text-lg">
+                    <i
+                      class="fas fa-check-circle mr-4 mt-1"
+                      style="color: var(--accent-secondary)"
+                    ></i>
+                    <div>
+                      <strong class="text-text-primary"
+                        >Lower Manufacturing Cost:</strong
+                      >
+                      Reduced equipment footprint and low electricity
+                      consumption drive >40% savings in both OPEX & CAPEX.
+                    </div>
                   </li>
-                  <li>
-                    <i class="fas fa-check-circle"></i
-                    ><strong>Versatility:</strong> Adaptable for various
-                    iron-based CAM chemistries.
-                  </li>
-                  <li>
-                    <i class="fas fa-check-circle"></i
-                    ><strong>Reduced Carbon Footprint:</strong> Significantly
-                    lower cradle-to-gate emissions.
-                  </li>
-                </ul>
-              </div>
-              <div class="card">
-                <h3 class="text-2xl font-bold text-accent-secondary mb-4">
-                  Potential Applications
-                </h3>
-                <ul class="key-features-list">
-                  <li>
-                    <i class="fas fa-car-battery"></i
-                    ><strong>Electric Vehicles (EVs):</strong> Longer-lasting,
-                    more affordable batteries.
-                  </li>
-                  <li>
-                    <i class="fas fa-charging-station"></i
-                    ><strong>Grid-Scale Storage:</strong> Reliable and
-                    sustainable energy storage solutions.
-                  </li>
-                  <li>
-                    <i class="fas fa-mobile-alt"></i
-                    ><strong>Consumer Electronics:</strong> Higher performance
-                    batteries for everyday devices.
-                  </li>
-                  <li>
-                    <i class="fas fa-tools"></i
-                    ><strong>Industrial Equipment:</strong> Powering heavy-duty
-                    machinery efficiently.
-                  </li>
-                  <li>
-                    <i class="fas fa-solar-panel"></i
-                    ><strong>Renewable Energy Integration:</strong> Optimizing
-                    solar and wind power storage.
+                  <li class="flex items-start text-lg">
+                    <i
+                      class="fas fa-check-circle mr-4 mt-1"
+                      style="color: var(--accent-secondary)"
+                    ></i>
+                    <div>
+                      <strong class="text-text-primary"
+                        >Zero Environmental Impact:</strong
+                      >
+                      Our circular process features zero waste generation, zero
+                      water consumption, and full solvent recycling.
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -1099,14 +1453,16 @@
 
         <section id="team-page" class="page">
           <div class="container mx-auto">
-            <h2 class="section-title">The Minds Behind Crystron</h2>
-            <p class="section-subtitle">
+            <h2 class="section-title animated-element">
+              The Minds Behind Crystron
+            </h2>
+            <p class="section-subtitle animated-element">
               A fusion of seasoned leadership, deep scientific expertise, and
               commercial acumen, collectively driving innovation in the advanced
               battery materials landscape.
             </p>
             <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-10 xl:gap-12">
-              <div class="card text-center">
+              <div class="card text-center animated-element">
                 <img
                   src="https://static.wixstatic.com/media/e981c7_2869446b64c9458190f0513caaee5c3f~mv2.jpg/v1/fill/w_200,h_200,al_c,lg_1,q_85,enc_avif/Akilesh%20Headshot_edited.jpg"
                   alt="Akilesh Kumar"
@@ -1126,19 +1482,27 @@
                   class="team-member-linkedin"
                   ><i class="fab fa-linkedin mr-1"></i>LinkedIn Profile</a
                 >
-                <p
-                  class="text-base text-text-secondary text-left leading-relaxed mt-4"
-                >
-                  With 30 years of experience spanning enterprise software,
-                  high-tech, retail, and consulting, Akilesh brings visionary
-                  leadership. Formerly EVP at Cooler X, Global VP at SAP, and
-                  consultant at McKinsey & Everest Group. Holds a Mech Eng. from
-                  IIT Delhi and an MBA from XLRI India.
-                </p>
+                <ul class="team-member-details">
+                  <li>
+                    30+ years in tech, retail, media, and management consulting.
+                  </li>
+                  <li>
+                    Former EVP at RPM Labs; raised $150M+ in growth capital.
+                  </li>
+                  <li>
+                    Former SAP NA CFO ($3B Unit) & Global VP of Digital
+                    Transformation.
+                  </li>
+                  <li>Previously with McKinsey & Everest Group.</li>
+                  <li>
+                    B.E. in Mechanical Engineering from IIT Delhi; MBA from XLRI
+                    India.
+                  </li>
+                </ul>
               </div>
-              <div class="card text-center">
+              <div class="card text-center animated-element">
                 <img
-                  src="https://static.wixstatic.com/media/e981c7_94975cb76f20477c957264c1006d02eb~mv2.jpg/v1/fill/w_200,h_200,al_c,lg_1,q_85,enc_avif/Rajesh%20Headshot_edited.jpg"
+                  src="https://media.licdn.com/dms/image/v2/D4E03AQGrvgAbqh5rfw/profile-displayphoto-crop_800_800/B4EZg7PtHhGUAI-/0/1753340630447?e=1757548800&v=beta&t=g4t1Cz5vSYbnqO0br084lvyQTP7plEVv4tK3wNU9LJ4"
                   alt="Dr Rajesh Tripathi"
                   class="team-member-photo"
                   onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=RT&font=inter';"
@@ -1156,17 +1520,28 @@
                   class="team-member-linkedin"
                   ><i class="fab fa-linkedin mr-1"></i>LinkedIn Profile</a
                 >
-                <p
-                  class="text-base text-text-secondary text-left leading-relaxed mt-4"
-                >
-                  A co-founder of Crystron, Dr. Tripathi has over 15 years in
-                  battery technology and materials science. His extensive
-                  background includes a PhD from the University Of Waterloo, 7
-                  years at DuPont, Chief Scientist at iM3NY, and battery
-                  manufacturing lead engineer at Bechtel Corp.
-                </p>
+                <ul class="team-member-details">
+                  <li>
+                    15+ years as a battery technology and materials science
+                    expert.
+                  </li>
+                  <li>
+                    Expert in research, technical leadership, and market-driven
+                    development.
+                  </li>
+                  <li>
+                    Former battery manufacturing lead engineer at Bechtel Corp.
+                  </li>
+                  <li>
+                    Former Chief Scientist at iM3NY after 7 years at DuPont.
+                  </li>
+                  <li>
+                    B.S. in Material Science from IIT Kanpur; PhD from
+                    University of Waterloo.
+                  </li>
+                </ul>
               </div>
-              <div class="card text-center">
+              <div class="card text-center animated-element">
                 <img
                   src="https://static.wixstatic.com/media/e981c7_9677d58962e341babd5b418ac9fd09cd~mv2.jpg/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_avif/AJ_22_Headshot_Casual1.jpg"
                   alt="Anurag Jain"
@@ -1176,9 +1551,7 @@
                 <h3 class="text-2xl font-bold text-accent-primary">
                   Anurag Jain
                 </h3>
-                <p class="text-text-secondary mb-2 text-lg">
-                  Chief Commercial Officer
-                </p>
+                <p class="text-text-secondary mb-2 text-lg">Board Member</p>
                 <a
                   href="https://www.linkedin.com/in/anurag-jain-0b77aa/"
                   target="_blank"
@@ -1186,17 +1559,26 @@
                   class="team-member-linkedin"
                   ><i class="fab fa-linkedin mr-1"></i>LinkedIn Profile</a
                 >
-                <p
-                  class="text-base text-text-secondary text-left leading-relaxed mt-4"
-                >
-                  Anurag brings 26 years of expertise in telecom, e-commerce,
-                  and enterprise software across India & USA. Co-founder of
-                  Prepay Nation & Elemt. He holds a Master’s in Tech Management
-                  from the University of Pennsylvania & Wharton School. An
-                  active investor and mentor.
-                </p>
+                <ul class="team-member-details">
+                  <li>
+                    26+ years in global telecom, e-commerce, and enterprise
+                    software.
+                  </li>
+                  <li>
+                    CEO and co-founder of Prepay Nation (Cross Border Value
+                    transfer).
+                  </li>
+                  <li>
+                    Founder of Elemt, a Platform as a Service (PaaS) company for
+                    Telcos.
+                  </li>
+                  <li>
+                    Master’s in Tech Management from UPenn & Wharton Business
+                    School.
+                  </li>
+                </ul>
               </div>
-              <div class="card text-center">
+              <div class="card text-center animated-element">
                 <img
                   src="https://static.wixstatic.com/media/e981c7_72c7b0d32dd040c3bf21d0471ff02c72~mv2.png/v1/fill/w_200,h_200,al_c,q_90,usm_0.66_1.00_0.01,enc_avif/Massouda.png"
                   alt="Dr Debora Massouda"
@@ -1214,75 +1596,118 @@
                   class="team-member-linkedin"
                   ><i class="fab fa-linkedin mr-1"></i>LinkedIn Profile</a
                 >
-                <p
-                  class="text-base text-text-secondary text-left leading-relaxed mt-4"
-                >
-                  Dr. Massouda holds a PhD in Chemical Engineering from the
-                  University of Delaware and brings over 35 years of experience
-                  in the chemical industry, specializing in scale-up and
-                  commercialization. Her career includes roles at Conoco and
-                  technical leadership at DuPont, and CEO of Delaware Polymer
-                  R&D.
+                <ul class="team-member-details">
+                  <li>
+                    35+ years experience in scale-up & commercialization in the
+                    chemical industry.
+                  </li>
+                  <li>CEO of Delaware Polymer R&D, a contract R&D company.</li>
+                  <li>
+                    Held technical leadership roles at several companies,
+                    including DuPont.
+                  </li>
+                  <li>
+                    PhD in Chemical Engineering from the University of Delaware.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="partners-page" class="page">
+          <div class="container mx-auto">
+            <h2 class="section-title animated-element">
+              Our Collaborative Ecosystem
+            </h2>
+            <p class="section-subtitle animated-element">
+              Innovation thrives on collaboration. We are proud to work with a
+              network of world-class academic institutions and industry leaders
+              to accelerate our research, development, and path to
+              commercialization.
+            </p>
+
+            <!-- New Animated Scroller -->
+            <div class="partner-scroller">
+              <div class="partner-scroller-inner">
+                <div class="partner-logo">
+                  <img
+                    src="https://placehold.co/200x80/f7fafc/4a5568?text=Siemens&font=inter"
+                    alt="Siemens Logo"
+                  />
+                </div>
+                <div class="partner-logo">
+                  <img
+                    src="https://placehold.co/200x80/f7fafc/4a5568?text=Orbia&font=inter"
+                    alt="Orbia Logo"
+                  />
+                </div>
+                <div class="partner-logo">
+                  <img
+                    src="https://placehold.co/200x80/f7fafc/4a5568?text=Chemours&font=inter"
+                    alt="Chemours Logo"
+                  />
+                </div>
+                <div class="partner-logo">
+                  <img
+                    src="https://placehold.co/200x80/f7fafc/4a5568?text=Neogen&font=inter"
+                    alt="Neogen Chemicals Logo"
+                  />
+                </div>
+                <div class="partner-logo">
+                  <img
+                    src="https://placehold.co/200x80/f7fafc/4a5568?text=DISI&font=inter"
+                    alt="Delaware Innovation Space Logo"
+                  />
+                </div>
+                <div class="partner-logo">
+                  <img
+                    src="https://placehold.co/200x80/f7fafc/4a5568?text=Drexel&font=inter"
+                    alt="Drexel University Logo"
+                  />
+                </div>
+                <div class="partner-logo">
+                  <img
+                    src="https://placehold.co/200x80/f7fafc/4a5568?text=Binghamton&font=inter"
+                    alt="Binghamton University Logo"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- NEW Premier Facilities Section -->
+            <div class="premier-facilities-section animated-element">
+              <div class="premier-facilities-icon">
+                <i class="fas fa-microscope"></i>
+              </div>
+              <div class="premier-facilities-content">
+                <h3>Access to Premier Facilities</h3>
+                <p>
+                  Our strategic partnerships provide us with unparalleled access
+                  to state-of-the-art laboratories, testing equipment, and pilot
+                  scale-up facilities. This enables us to rapidly iterate,
+                  validate, and de-risk our technology, ensuring a faster and
+                  more capital-efficient journey from concept to market-ready
+                  product.
                 </p>
               </div>
             </div>
-            <section class="mt-16 md:mt-20">
-              <h3 class="text-3xl font-bold text-center text-text-primary mb-8">
-                Our Core Values
-              </h3>
-              <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div class="card p-6">
-                  <i
-                    class="fas fa-lightbulb text-4xl text-accent-secondary mb-4"
-                  ></i>
-                  <h4 class="text-xl font-semibold text-text-primary mb-2">
-                    Innovation
-                  </h4>
-                  <p class="text-text-secondary text-base">
-                    Continuously pushing the boundaries of science and
-                    engineering to create transformative solutions.
-                  </p>
-                </div>
-                <div class="card p-6">
-                  <i
-                    class="fas fa-globe-americas text-4xl text-accent-secondary mb-4"
-                  ></i>
-                  <h4 class="text-xl font-semibold text-text-primary mb-2">
-                    Sustainability
-                  </h4>
-                  <p class="text-text-secondary text-base">
-                    Committed to developing technologies that benefit our planet
-                    and future generations.
-                  </p>
-                </div>
-                <div class="card p-6">
-                  <i
-                    class="fas fa-handshake text-4xl text-accent-secondary mb-4"
-                  ></i>
-                  <h4 class="text-xl font-semibold text-text-primary mb-2">
-                    Collaboration
-                  </h4>
-                  <p class="text-text-secondary text-base">
-                    Fostering partnerships and teamwork to achieve shared goals
-                    and maximize impact.
-                  </p>
-                </div>
-              </div>
-            </section>
           </div>
         </section>
 
         <section id="investors-page" class="page">
           <div class="container mx-auto">
-            <h2 class="section-title">Invest in the Future of Energy</h2>
-            <p class="section-subtitle">
+            <h2 class="section-title animated-element">
+              Invest in the Future of Energy
+            </h2>
+            <p class="section-subtitle animated-element">
               Crystron Technologies is at the forefront of the battery
               revolution, offering a unique investment proposition in a rapidly
-              expanding global market. Our innovative Venus3 technology is
-              poised for significant growth and impact.
+              expanding global market. Our innovative technology is poised for
+              significant growth and impact.
             </p>
             <div class="max-w-4xl mx-auto">
-              <div class="card mb-10 text-left p-8">
+              <div class="card mb-10 text-left p-8 animated-element">
                 <h3
                   class="text-3xl font-bold text-accent-primary mb-6 flex items-center"
                 >
@@ -1292,45 +1717,50 @@
                 <ul class="list-none space-y-5 text-lg">
                   <li class="flex items-start">
                     <i
-                      class="fas fa-check-circle text-accent-secondary mt-1 mr-3"
+                      class="fas fa-check-circle mt-1 mr-3"
+                      style="color: var(--accent-secondary)"
                     ></i>
                     <div>
                       <strong class="text-text-primary"
-                        >Disruptive Technology (Venus3):</strong
+                        >Disruptive Patented Technology:</strong
                       >
                       Fundamentally superior CAM manufacturing process with
-                      significant cost, environmental, and potential performance
+                      significant cost, environmental, and performance
                       advantages.
                     </div>
                   </li>
                   <li class="flex items-start">
                     <i
-                      class="fas fa-chart-pie text-accent-secondary mt-1 mr-3"
+                      class="fas fa-chart-pie mt-1 mr-3"
+                      style="color: var(--accent-secondary)"
                     ></i>
                     <div>
                       <strong class="text-text-primary"
                         >Massive & Growing Market:</strong
                       >
                       Targeting the multi-billion dollar CAM market, crucial for
-                      EVs, grid storage, and consumer electronics – all
-                      experiencing exponential growth.
+                      EVs and grid storage, both experiencing exponential
+                      growth.
                     </div>
                   </li>
                   <li class="flex items-start">
                     <i
-                      class="fas fa-seedling text-accent-secondary mt-1 mr-3"
+                      class="fas fa-seedling mt-1 mr-3"
+                      style="color: var(--accent-secondary)"
                     ></i>
                     <div>
                       <strong class="text-text-primary"
                         >Unmatched Sustainability Profile:</strong
                       >
                       Addresses critical ESG concerns with drastically reduced
-                      energy, emissions, and zero waste.
+                      energy, emissions, and zero waste, aligning with global
+                      climate goals.
                     </div>
                   </li>
                   <li class="flex items-start">
                     <i
-                      class="fas fa-users-cog text-accent-secondary mt-1 mr-3"
+                      class="fas fa-users-cog mt-1 mr-3"
+                      style="color: var(--accent-secondary)"
                     ></i>
                     <div>
                       <strong class="text-text-primary"
@@ -1343,7 +1773,7 @@
                 </ul>
               </div>
 
-              <div class="card text-center p-8">
+              <div class="card text-center p-8 animated-element">
                 <p class="text-text-secondary text-xl mb-6">
                   We invite you to join us in shaping a cleaner, more efficient
                   energy future. For detailed information and to discuss
@@ -1363,16 +1793,48 @@
 
         <section id="news-page" class="page">
           <div class="container mx-auto">
-            <h2 class="section-title">Latest News & Updates</h2>
-            <p class="section-subtitle">
+            <h2 class="section-title animated-element">
+              Latest News & Updates
+            </h2>
+            <p class="section-subtitle animated-element">
               Stay informed about Crystron Technologies' progress,
               breakthroughs, and industry presence.
             </p>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <article class="news-card">
+              <!-- New Grant Article -->
+              <article class="news-card animated-element">
                 <img
-                  src = "data:image/jpeg;base64,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"
+                  src="https://www.pa.gov/content/dam/copapwp-pagov/en/global/images/CoPA%20Logo%20-%20Horizontal%20Lockup%201.svg"
+                  alt="Grant Announcement Graphic"
+                  class="news-card-image"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/101725/a0aec0?text=News+Image&font=inter';"
+                />
+                <h3 class="news-card-title">
+                  Crystron Awarded $300k Grant to Advance Clean Battery Tech
+                </h3>
+                <span class="news-card-date">August 1, 2024</span>
+                <p class="news-card-summary">
+                  Crystron Technologies is honored to receive a $300,000 grant
+                  to further develop and scale our innovative, low-cost cathode
+                  manufacturing process. This funding will accelerate our
+                  mission to create a sustainable domestic supply chain for
+                  critical battery materials.
+                </p>
+                <a
+                  href="https://www.linkedin.com/feed/update/urn:li:activity:7358130862762119172/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="news-card-read-more"
+                >
+                  Read on LinkedIn
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </article>
+
+              <article class="news-card animated-element">
+                <img
+                  src="/CrystronLogo-removebg-preview.png"
                   alt="Startup 302 Finalist Announcement Graphic"
                   class="news-card-image"
                   onerror="this.onerror=null; this.src='https://placehold.co/600x400/101725/a0aec0?text=News+Image&font=inter';"
@@ -1384,10 +1846,8 @@
                 <p class="news-card-summary">
                   Crystron Technologies has been selected as a finalist in the
                   prestigious Startup302 funding competition. This recognition
-                  highlights our innovative Venus3 CAM technology and its
-                  potential to revolutionize the battery industry. We look
-                  forward to presenting our vision for a sustainable energy
-                  future.
+                  highlights our innovative CAM technology and its potential to
+                  revolutionize the battery industry.
                 </p>
                 <a
                   href="https://www.startup302.org/meet-the-finalist"
@@ -1405,17 +1865,18 @@
 
         <section id="contact-page" class="page">
           <div class="container mx-auto">
-            <h2 class="section-title">Connect With Us</h2>
-            <p class="section-subtitle">
-              Whether you're interested in our Venus3 technology, exploring
-              investment opportunities, or seeking strategic partnerships, our
-              team is ready to engage. Let's build a sustainable energy future
-              together.
+            <h2 class="section-title animated-element">Connect With Us</h2>
+            <p class="section-subtitle animated-element">
+              Whether you're interested in our technology, exploring investment
+              opportunities, or seeking strategic partnerships, our team is
+              ready to engage. Let's build a sustainable energy future together.
             </p>
             <div
               class="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start max-w-7xl mx-auto"
             >
-              <div class="lg:col-span-3 contact-form card p-8 lg:p-10">
+              <div
+                class="lg:col-span-3 contact-form card p-8 lg:p-10 animated-element"
+              >
                 <h3
                   class="text-2xl lg:text-3xl font-bold mb-7 text-text-primary"
                 >
@@ -1448,7 +1909,7 @@
                       type="text"
                       id="subject"
                       name="subject"
-                      placeholder="Inquiry about Venus3 Technology / Investment"
+                      placeholder="Inquiry about Crystron Technology / Investment"
                       required
                     />
                   </div>
@@ -1475,7 +1936,7 @@
                 </form>
               </div>
               <div class="lg:col-span-2 space-y-8">
-                <div class="card p-7">
+                <div class="card p-7 animated-element">
                   <h4
                     class="text-xl lg:text-2xl font-semibold text-accent-primary mb-4 flex items-center"
                   >
@@ -1508,7 +1969,7 @@
                   </div>
                   <div id="map" class="mt-5"></div>
                 </div>
-                <div class="card p-7">
+                <div class="card p-7 animated-element">
                   <h4
                     class="text-xl lg:text-2xl font-semibold text-accent-primary mb-3 flex items-center"
                   >
@@ -1530,11 +1991,11 @@
       <footer class="text-center py-10 px-6">
         <div class="mb-5">
           <a href="#home" data-page="home" class="page-link inline-block">
+            <!-- Logo Placeholder -->
             <img
-              src="https://static.wixstatic.com/media/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png/v1/fill/w_160,h_60,al_c,q_85,usm_0.66_1.00_0.01,enc_avif/e981c7_2f2c904bf742411785b842bedac486c6~mv2.png"
+              src="/CrystronLogo-removebg-preview.png"
               alt="Crystron Technologies Logo"
-              class="logo-img-footer"
-              onerror="this.onerror=null; this.src='https://placehold.co/160x60/0a0f1a/a0aec0?text=Crystron&font=inter';"
+              class="logo-img-footer mx-auto"
             />
           </a>
         </div>
@@ -1575,44 +2036,24 @@
         const body = document.body;
 
         function applyTheme(theme) {
-          if (theme === "dark") {
-            body.classList.add("dark-mode");
-          } else {
-            body.classList.remove("dark-mode");
-          }
-          localStorage.setItem("theme", theme);
-          updateButtonIcons(theme);
-          // Future logic to update map tiles if necessary can go here
+          body.classList.toggle("dark-mode", theme === "dark");
         }
 
-        function updateButtonIcons(theme) {
-            const isDark = theme === 'dark';
-            if (themeToggleButton) {
-                const moonIcon = themeToggleButton.querySelector('.fa-moon');
-                const sunIcon = themeToggleButton.querySelector('.fa-sun');
-                if (moonIcon && sunIcon) {
-                    moonIcon.style.display = isDark ? 'inline-block' : 'none';
-                    sunIcon.style.display = isDark ? 'none' : 'inline-block';
-                }
-            }
-        }
-        
         function toggleTheme() {
-          const currentTheme = body.classList.contains("dark-mode")
-            ? "dark"
-            : "light";
-          const newTheme = currentTheme === "light" ? "dark" : "light";
+          const newTheme = body.classList.contains("dark-mode")
+            ? "light"
+            : "dark";
           applyTheme(newTheme);
+          localStorage.setItem("theme", newTheme);
         }
 
         if (themeToggleButton) {
           themeToggleButton.addEventListener("click", toggleTheme);
         }
 
-        // Load saved theme or default to light
+        // Default to light mode
         const savedTheme = localStorage.getItem("theme") || "light";
         applyTheme(savedTheme);
-
 
         function showPage(pageIdToShow) {
           const targetPage = document.getElementById(pageIdToShow);
@@ -1623,11 +2064,6 @@
               "Defaulting to home."
             );
             window.location.hash = "home";
-            if (document.getElementById("home-page")) {
-              pages.forEach((page) => page.classList.remove("active"));
-              document.getElementById("home-page").classList.add("active");
-              updateActiveLink("home");
-            }
             return;
           }
 
@@ -1654,11 +2090,10 @@
           document
             .querySelectorAll("#sidebar-nav .nav-link")
             .forEach((link) => {
-              if (link.dataset.page === pageName) {
-                link.classList.add("active-link");
-              } else {
-                link.classList.remove("active-link");
-              }
+              link.classList.toggle(
+                "active-link",
+                link.dataset.page === pageName
+              );
             });
         }
 
@@ -1676,32 +2111,10 @@
             const isOpen = sidebarNav.classList.toggle("open");
             mobileMenuToggle.setAttribute("aria-expanded", isOpen.toString());
             const icon = mobileMenuToggle.querySelector("i");
-            if (isOpen) {
-              icon.classList.remove("fa-bars");
-              icon.classList.add("fa-times");
-            } else {
-              icon.classList.remove("fa-times");
-              icon.classList.add("fa-bars");
-            }
+            icon.classList.toggle("fa-bars", !isOpen);
+            icon.classList.toggle("fa-times", isOpen);
           });
         }
-
-        mainContentArea.addEventListener("click", (event) => {
-          if (
-            window.innerWidth <= 1024 &&
-            sidebarNav.classList.contains("open")
-          ) {
-            if (
-              !sidebarNav.contains(event.target) &&
-              !mobileMenuToggle.contains(event.target)
-            ) {
-              sidebarNav.classList.remove("open");
-              mobileMenuToggle.setAttribute("aria-expanded", "false");
-              mobileMenuToggle.querySelector("i").classList.remove("fa-times");
-              mobileMenuToggle.querySelector("i").classList.add("fa-bars");
-            }
-          }
-        });
 
         if (contactForm) {
           contactForm.addEventListener("submit", async (e) => {
@@ -1710,39 +2123,22 @@
             formStatus.className =
               "mt-4 text-center text-base text-accent-secondary";
 
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
-
-            try {
-              // This is a simulated fetch call. A real backend is required.
-              console.log("Form submission data (simulated):", data);
-              
-              // Simulate a success response after a short delay
-              await new Promise(resolve => setTimeout(resolve, 1000));
-
-              formStatus.textContent = "Message sent successfully! (Simulated)";
-              formStatus.className = "mt-4 text-center text-base text-green-500";
-              contactForm.reset();
-              setTimeout(() => {
-                formStatus.textContent = "";
-              }, 5000);
-
-            } catch (error) {
-              console.error("Error submitting form (simulated):", error);
+            // This is a front-end simulation. A real backend is required to send emails.
+            setTimeout(() => {
               formStatus.textContent =
-                "An error occurred. Please try again. (Simulated)";
-              formStatus.className = "mt-4 text-center text-base text-red-500";
-            }
+                "Message sent successfully! (Simulation)";
+              formStatus.className =
+                "mt-4 text-center text-base text-green-500";
+              contactForm.reset();
+              setTimeout(() => (formStatus.textContent = ""), 5000);
+            }, 1000);
           });
         }
 
         function initMap() {
           if (typeof L === "undefined") {
-            console.error("Leaflet library not loaded.");
-            const mapDiv = document.getElementById("map");
-            if (mapDiv)
-              mapDiv.innerHTML =
-                '<p class="text-center text-text-secondary p-4">Map could not be loaded. Leaflet library missing.</p>';
+            document.getElementById("map").innerHTML =
+              '<p class="text-center text-text-secondary p-4">Map could not be loaded.</p>';
             return;
           }
           const locations = [
@@ -1754,7 +2150,7 @@
             {
               name: "Delaware R&D Center",
               coords: [39.775012, -75.572462],
-              address: "200 Powder Mill Rd, E500/2402B, Wilmington, DE 19803",
+              address: "200 Powder Mill Rd, Wilmington, DE 19803",
             },
             {
               name: "Pennsylvania Operations",
@@ -1764,34 +2160,24 @@
           ];
 
           const mapContainer = document.getElementById("map");
-          if (!mapContainer) {
-            console.error("Map container not found");
-            return;
-          }
-          if (mapContainer._leaflet_id) { 
-            return;
-          }
+          if (!mapContainer || mapContainer._leaflet_id) return;
 
-          const map = L.map("map").setView([39.9526, -75.1652], 8); 
-
+          const map = L.map("map").setView([39.9526, -75.1652], 8);
           L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
             attribution:
               '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            maxZoom: 22,
           }).addTo(map);
 
           const markerGroup = L.featureGroup().addTo(map);
-          
-          locations.forEach((location) => {
-            const marker = L.marker(location.coords)
-              .bindPopup(`<b>${location.name}</b><br>${location.address}`)
+          locations.forEach((loc) => {
+            L.marker(loc.coords)
+              .bindPopup(`<b>${loc.name}</b><br>${loc.address}`)
               .addTo(markerGroup);
           });
 
           if (locations.length > 0) {
-            map.fitBounds(markerGroup.getBounds(), { padding: [30, 30] }); 
+            map.fitBounds(markerGroup.getBounds(), { padding: [30, 30] });
           }
-
           setTimeout(() => map.invalidateSize(), 150);
         }
 
@@ -1799,56 +2185,56 @@
           new Date().getFullYear();
 
         function handleNavigation() {
-          const hash = window.location.hash.substring(1);
-          const pageName = hash && hash !== "#" ? hash : "home";
-          const pageIdToShow = pageName + "-page";
-
-          if (document.getElementById(pageIdToShow)) {
-            showPage(pageIdToShow);
-          } else if (
-            pageName !== "home" &&
-            document.getElementById("home-page")
-          ) {
-            window.location.hash = "home"; 
-          } else if (
-            pageName === "home" &&
-            document.getElementById("home-page")
-          ) {
-            showPage("home-page");
-          } else {
-            console.error("Default page 'home-page' not found.");
-          }
+          const pageName = window.location.hash.substring(1) || "home";
+          showPage(pageName + "-page");
         }
 
         window.addEventListener("hashchange", handleNavigation);
-        handleNavigation(); 
+        handleNavigation(); // Initial page load
 
-        document.querySelectorAll(".page-link").forEach((link) => {
-          const pageName = link.dataset.page;
-          if (pageName) {
-            link.href = `#${pageName}`;
-          }
-        });
+        // --- Partner Scroller Animation ---
+        const scrollers = document.querySelectorAll(".partner-scroller");
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          addAnimation();
+        }
 
-        const animatedElements = document.querySelectorAll(
-          ".card, .section-title, .section-subtitle, .hero-title, .hero-subtitle, .btn, .grid > div > img, .external-chart-img, .team-member-photo, #map, .key-features-list li, .news-card, .market-stat-card"
-        );
+        function addAnimation() {
+          scrollers.forEach((scroller) => {
+            scroller.setAttribute("data-animated", true);
+            const scrollerInner = scroller.querySelector(
+              ".partner-scroller-inner"
+            );
+            const scrollerContent = Array.from(scrollerInner.children);
+
+            // For infinite scroll, duplicate the items
+            scrollerContent.forEach((item) => {
+              const duplicatedItem = item.cloneNode(true);
+              duplicatedItem.setAttribute("aria-hidden", true);
+              scrollerInner.appendChild(duplicatedItem);
+            });
+          });
+        }
+
+        // Intersection Observer for animations
+        const animatedElements = document.querySelectorAll(".animated-element");
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                entry.target.style.animation = `fadeIn 0.7s ${
-                  entry.target.dataset.delay || "0s"
-                } ease-out forwards`;
+                entry.target.classList.add("is-visible");
+                if (entry.target.classList.contains("bar")) {
+                  entry.target.style.height = `calc(${entry.target.style.getPropertyValue(
+                    "--scale-y"
+                  )} * 100%)`;
+                }
                 observer.unobserve(entry.target);
               }
             });
           },
-          { threshold: 0.05 }
+          { threshold: 0.1 }
         );
 
         animatedElements.forEach((el) => {
-          el.style.opacity = "0"; 
           observer.observe(el);
         });
       });
