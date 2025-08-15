@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crystron Technologies - Pioneering Battery Innovation</title>
+    <title>Crystron Technologies</title>
     <meta
       name="description"
       content="Crystron Technologies is revolutionizing battery technology with our proprietary process for a cleaner, cheaper, and superior Cathode Active Material, enabling a circular economy."
@@ -2060,53 +2060,55 @@
           });
         }
 
-        // --- MODIFICATION: Updated Contact Form Submission Logic ---
+        // --- NEW: Formspree Contact Form Submission Logic ---
         if (contactForm) {
           contactForm.addEventListener("submit", async (e) => {
             e.preventDefault();
-            formStatus.textContent = "Sending message...";
-            formStatus.className =
+
+            const form = e.target;
+            const status = document.getElementById("form-submission-status");
+            const submitButton = document.getElementById("submit-button");
+            const data = new FormData(form);
+
+            status.textContent = "Sending message...";
+            status.className =
               "mt-4 text-center text-base text-accent-secondary";
             submitButton.disabled = true;
 
-            const formData = {
-              name: contactForm.name.value,
-              email: contactForm.email.value,
-              subject: contactForm.subject.value,
-              message: contactForm.message.value,
-            };
-
             try {
-              const response = await fetch("/api/send-email", {
+              // --- ACTION REQUIRED: Paste your Formspree endpoint URL below ---
+              const response = await fetch("https://formspree.io/f/xrbldjyb", {
                 method: "POST",
+                body: data,
                 headers: {
-                  "Content-Type": "application/json",
+                  Accept: "application/json",
                 },
-                body: JSON.stringify(formData),
               });
 
-              const result = await response.json();
-
               if (response.ok) {
-                formStatus.textContent =
-                  result.message || "Message sent successfully!";
-                formStatus.className =
-                  "mt-4 text-center text-base text-green-500";
-                contactForm.reset();
+                status.textContent = "Thanks for your submission!";
+                status.className = "mt-4 text-center text-base text-green-500";
+                form.reset();
               } else {
-                formStatus.textContent =
-                  result.message || "An error occurred. Please try again.";
-                formStatus.className =
-                  "mt-4 text-center text-base text-red-500";
+                const responseData = await response.json();
+                if (Object.hasOwn(responseData, "errors")) {
+                  status.textContent = responseData["errors"]
+                    .map((error) => error["message"])
+                    .join(", ");
+                } else {
+                  status.textContent =
+                    "Oops! There was a problem submitting your form";
+                }
+                status.className = "mt-4 text-center text-base text-red-500";
               }
             } catch (error) {
+              status.textContent =
+                "Oops! There was a problem submitting your form";
+              status.className = "mt-4 text-center text-base text-red-500";
               console.error("Submission error:", error);
-              formStatus.textContent =
-                "A network error occurred. Please check your connection and try again.";
-              formStatus.className = "mt-4 text-center text-base text-red-500";
             } finally {
               submitButton.disabled = false;
-              setTimeout(() => (formStatus.textContent = ""), 6000);
+              setTimeout(() => (status.textContent = ""), 6000);
             }
           });
         }
