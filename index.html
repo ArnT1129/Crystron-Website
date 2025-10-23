@@ -182,90 +182,97 @@
         background: var(--scrollbar-thumb-hover);
       }
 
+      /* Top horizontal navigation (replaces left sidebar) */
       #sidebar-nav {
-        width: 300px;
+        width: 100%;
+        height: 80px; /* top nav height */
         background-color: var(--bg-nav);
         color: var(--text-nav);
-        padding: 2.5rem 1.75rem;
-        height: 100vh;
+        padding: 0 1.5rem;
         position: fixed;
         top: 0;
         left: 0;
         display: flex;
-        flex-direction: column;
-        transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center; /* center the nav-links by default */
+        gap: 1rem;
+        transition: transform 0.28s ease-in-out, background-color 0.3s ease;
         z-index: 1000;
-        border-right: 1px solid var(--border-primary);
+        border-bottom: 1px solid var(--border-primary);
       }
       #sidebar-nav .logo-container {
-        margin-bottom: 3rem;
-        text-align: center;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        position: absolute; /* pin to left while links remain centered */
+        left: 1.25rem;
       }
       #sidebar-nav .logo-img {
-        height: 175px;
+        height: 72px; /* slightly larger */
         width: auto;
-        max-width: 100%;
-        transition: transform 0.3s ease;
+        max-width: 260px;
+        transition: transform 0.18s ease;
       }
       #sidebar-nav .logo-img:hover {
-        transform: scale(1.05);
+        transform: scale(1.02);
       }
 
-      /* --- NAVBAR MODIFICATION: Reduced font size and padding to fit all items --- */
+      /* Horizontal nav link styling for top bar */
       #sidebar-nav .nav-link {
-        display: block;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
         color: var(--text-nav);
-        padding: 0.85rem 1.15rem; /* Reduced vertical padding */
-        margin-bottom: 0.5rem; /* Reduced margin */
-        border-radius: 0.6rem;
-        font-weight: 500;
-        font-size: 1.05rem; /* Reduced font size */
-        transition: background-color 0.2s ease, color 0.2s ease,
-          transform 0.2s ease, box-shadow 0.2s ease;
+        padding: 0.6rem 0.9rem;
+        margin: 0 0.35rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 0.98rem;
+        transition: background-color 0.18s ease, color 0.18s ease,
+          transform 0.12s ease, box-shadow 0.12s ease;
         position: relative;
-        overflow: hidden;
+        overflow: visible;
       }
       #sidebar-nav .nav-link i {
-        margin-right: 1.1rem;
-        width: 22px;
+        margin-right: 0.4rem;
+        width: 20px;
         text-align: center;
       }
       #sidebar-nav .nav-link:hover {
-        background-color: rgba(var(--accent-primary-rgb, 43, 108, 176), 0.1);
+        background-color: rgba(var(--accent-primary-rgb, 43, 108, 176), 0.06);
         color: var(--accent-primary);
-        transform: translateX(5px);
-        box-shadow: 0 0 15px var(--accent-glow);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 18px -12px var(--accent-glow);
       }
       .dark-mode #sidebar-nav .nav-link:hover {
-        background-color: rgba(var(--accent-primary-rgb, 79, 209, 197), 0.1);
+        background-color: rgba(var(--accent-primary-rgb, 79, 209, 197), 0.06);
       }
       #sidebar-nav .nav-link.active-link {
-        background-color: var(--accent-primary);
-        color: var(--bg-nav);
-        font-weight: 600;
-        box-shadow: 0 0 20px var(--accent-glow);
-      }
-      #sidebar-nav .nav-link.active-link i {
-        color: var(--bg-nav);
+        background-color: transparent;
+        color: var(--accent-primary);
+        font-weight: 700;
+        box-shadow: none;
       }
 
       #sidebar-nav .theme-toggle-container {
-        margin-top: auto;
-        padding-top: 1.75rem;
-        border-top: 1px solid var(--border-primary);
+        display: flex;
+        align-items: center;
+        position: absolute; /* pin to right */
+        right: 1.25rem;
       }
       .theme-toggle-button {
         background-color: var(--bg-tertiary);
         color: var(--text-secondary);
-        padding: 0.85rem;
-        border-radius: 0.6rem;
-        display: flex;
+        padding: 0.55rem 0.75rem;
+        border-radius: 0.55rem;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
         font-weight: 500;
-        font-size: 1.15rem;
-        transition: background-color 0.2s ease, color 0.2s ease;
+        font-size: 0.95rem;
+        transition: background-color 0.18s ease, color 0.18s ease;
       }
       .theme-toggle-button:hover {
         background-color: var(--accent-primary);
@@ -281,13 +288,15 @@
         display: none;
       }
 
+      /* Push content down so it isn't hidden under the fixed top nav */
       #main-content-area {
-        margin-left: 300px;
-        width: calc(100% - 300px);
-        height: 100vh;
+        margin-left: 0;
+        margin-top: 80px; /* match top nav height */
+        width: 100%;
+        height: calc(100vh - 80px);
         overflow-y: auto;
         padding: 0;
-        transition: margin-left 0.3s ease-in-out;
+        transition: margin-top 0.28s ease-in-out;
       }
 
       .page {
@@ -611,16 +620,22 @@
       }
 
       @media (max-width: 1024px) {
+        /* Collapse top nav on smaller screens; toggle via .open */
         #sidebar-nav {
-          transform: translateX(-100%);
-          box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+          transform: translateY(-100%);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+          height: auto;
+          padding: 0.5rem 1rem;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0.25rem;
         }
         #sidebar-nav.open {
-          transform: translateX(0);
+          transform: translateY(0);
         }
         #main-content-area {
           width: 100%;
-          margin-left: 0;
+          margin-top: 80px;
         }
         #mobile-menu-toggle {
           display: block;
@@ -863,6 +878,30 @@
         border-radius: 14px;
         padding: 2rem;
         box-shadow: 0 10px 30px -15px var(--shadow-color);
+      }
+      /* Tech comparison header + layout styles */
+      .tech-comparison {
+        max-width: 1100px;
+        margin: 0 auto 2rem auto;
+      }
+      .tech-top-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-bottom: 1rem;
+        align-items: end;
+      }
+      .tech-top-row .section-heading {
+        font-size: 1.25rem;
+        font-weight: 800;
+        padding-bottom: 0.65rem;
+        border-bottom: 3px solid rgba(0,0,0,0.08);
+        text-align: left;
+      }
+      /* vertical dotted separators between columns (desktop) */
+      @media (min-width: 768px) {
+        .tech-grid > div:nth-child(2) { border-left: 2px dotted rgba(0,0,0,0.08); padding-left: 1.25rem; }
+        .tech-grid > div:nth-child(3) { border-left: 2px dotted rgba(0,0,0,0.08); padding-left: 1.25rem; }
       }
       .chart-container h3 {
         text-align: center;
@@ -1308,29 +1347,31 @@
           />
         </a>
       </div>
-      <nav class="flex-grow">
+
+      <nav class="nav-links" role="navigation" aria-label="Main Navigation">
         <a href="#home" data-page="home" class="nav-link page-link active-link"
-          ><i class="fas fa-home"></i>HOME</a
+          ><i class="fas fa-home"></i><span class="nav-text">HOME</span></a
         >
         <a href="#technology" data-page="technology" class="nav-link page-link"
-          ><i class="fas fa-cogs"></i>TECHNOLOGY</a
+          ><i class="fas fa-cogs"></i><span class="nav-text">TECHNOLOGY</span></a
         >
         <a href="#team" data-page="team" class="nav-link page-link"
-          ><i class="fas fa-users"></i>TEAM</a
+          ><i class="fas fa-users"></i><span class="nav-text">TEAM</span></a
         >
         <!-- <a href="#partners" data-page="partners" class="nav-link page-link"
           ><i class="fas fa-handshake"></i>PARTNERS</a
         > -->
         <a href="#investors" data-page="investors" class="nav-link page-link"
-          ><i class="fas fa-chart-line"></i>INVESTORS</a
+          ><i class="fas fa-chart-line"></i><span class="nav-text">INVESTORS</span></a
         >
         <a href="#news" data-page="news" class="nav-link page-link"
-          ><i class="fas fa-newspaper"></i>NEWS</a
+          ><i class="fas fa-newspaper"></i><span class="nav-text">NEWS</span></a
         >
         <a href="#contact" data-page="contact" class="nav-link page-link"
-          ><i class="fas fa-envelope"></i>CONTACT</a
+          ><i class="fas fa-envelope"></i><span class="nav-text">CONTACT</span></a
         >
       </nav>
+
       <div class="theme-toggle-container">
         <button
           id="theme-toggle-button"
@@ -1338,7 +1379,7 @@
           aria-label="Toggle Theme"
         >
           <i class="fas fa-sun mr-2"></i><i class="fas fa-moon mr-2"></i>
-          <span>Switch Theme</span>
+          <span>Switch</span>
         </button>
       </div>
     </aside>
@@ -1348,14 +1389,10 @@
         <section id="home-page" class="page active">
           <div class="w-full max-w-5xl mx-auto hero-section-content px-4">
             <h1 class="hero-title animated-element">
-              <span class="highlight">Transforming</span> the Future of <br />
-              <span class="highlight">Battery Technology</span>.
+              <span class="highlight"></span> Driving Energy Independence
+              Through <br />
+              <span class="highlight">Advanced Battery Materials</span>.
             </h1>
-            <p class="hero-subtitle animated-element">
-              Crystron Technologies is driving
-              <strong> energy independence </strong> through advanced battery
-              materials and <strong>circular manufacturing</strong>.
-            </p>
 
             <div class="space-x-4 mb-12 md:mb-16 animated-element">
               <a
@@ -1448,111 +1485,6 @@
               </div>
             </div>
 
-            <!-- Interactive Process Comparison -->
-            <div class="grid md:grid-cols-2 gap-8 items-start mb-12">
-              <!-- Left: LFP flow (compact) -->
-              <div class="card p-6 lfp-outline">
-                <h3 class="text-2xl font-bold text-red-600 mb-4">
-                  Current LFP Manufacturing
-                </h3>
-                <p class="text-text-secondary mb-4">
-                  Complex multi-stage route with separate pCAM and CAM phases
-                  and several waste streams.
-                </p>
-                <details class="process-compact" id="lfp-diagram">
-                  <summary class="text-lg font-semibold">
-                    Overview — click to expand
-                  </summary>
-                  <div class="mt-4 space-y-3">
-                    <div class="flex items-center gap-3">
-                      <span class="process-flag lfp">Requires pCAM</span>
-                      <div class="text-sm text-red-600">
-                        Produces Na₂SO₄ & process water
-                      </div>
-                    </div>
-                    <p class="text-sm text-text-secondary">
-                      A multi-stage pCAM + CAM route with separate
-                      precipitation, drying and calcination steps leading to
-                      higher energy and water use.
-                    </p>
-                    <div class="mt-2 compact-steps">
-                      <div class="step lfp-step icon-step">
-                        <i class="fas fa-flask"></i
-                        ><span>pCAM: Precipitation & Drying</span>
-                      </div>
-                      <div class="arrow-down">↓</div>
-                      <div class="step lfp-step icon-step">
-                        <i class="fas fa-cogs"></i
-                        ><span>CAM: Milling & Mixing</span>
-                      </div>
-                      <div class="arrow-down">↓</div>
-                      <div class="step lfp-step icon-step">
-                        <i class="fas fa-brush"></i
-                        ><span>Coating → Drying → Calendering</span>
-                      </div>
-                      <div class="arrow-down">↓</div>
-                      <div class="step lfp-step icon-step">
-                        <i class="fas fa-temperature-low"></i
-                        ><span>Final Calcination & Packaging</span>
-                      </div>
-                    </div>
-                  </div>
-                </details>
-              </div>
-
-              <!-- Right: Crystron flow (compact) -->
-              <div class="card p-6 crystron-outline">
-                <h3 class="text-2xl font-bold text-blue-600 mb-4">
-                  Crystron Process (Simplified)
-                </h3>
-                <p class="text-text-secondary mb-4">
-                  Integrated CAM→Cathode flow designed to eliminate water and
-                  toxic solid waste while lowering energy and cost.
-                </p>
-                <details class="process-compact" id="crystron-diagram">
-                  <summary class="text-lg font-semibold">
-                    Overview — click to expand
-                  </summary>
-                  <div class="mt-4 space-y-3">
-                    <div class="flex items-center gap-3">
-                      <span class="process-flag crystron"
-                        >No pCAM required</span
-                      >
-                      <div class="text-sm text-blue-700">
-                        Zero toxic solid waste; solvent recycling
-                      </div>
-                    </div>
-                    <p class="text-sm text-text-secondary">
-                      A streamlined, integrated CAM→Cathode flow that removes
-                      separate pCAM steps and associated waste streams, lowering
-                      energy and water use.
-                    </p>
-                    <div class="mt-2 compact-steps">
-                      <div class="step crystron-step icon-step">
-                        <i class="fas fa-cogs"></i
-                        ><span>Milling & Mixing (Fe + Li)</span>
-                      </div>
-                      <div class="arrow-down">↓</div>
-                      <div class="step crystron-step icon-step">
-                        <i class="fas fa-hand-holding-water"></i
-                        ><span>Binder & Slurry Preparation</span>
-                      </div>
-                      <div class="arrow-down">↓</div>
-                      <div class="step crystron-step icon-step">
-                        <i class="fas fa-brush"></i
-                        ><span>Coating → Drying (solvent recovery)</span>
-                      </div>
-                      <div class="arrow-down">↓</div>
-                      <div class="step crystron-step icon-step">
-                        <i class="fas fa-temperature-low"></i
-                        ><span>Calendering & Low-temp Calcination</span>
-                      </div>
-                    </div>
-                  </div>
-                </details>
-              </div>
-            </div>
-
             <!-- Charts row (data-driven comparison) -->
             <!-- Investor Comparison Banner -->
             <div class="max-w-5xl mx-auto my-8">
@@ -1588,30 +1520,44 @@
                 </div>
               </div>
             </div>
-            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
-              <div class="metric-card">
-                <h4 class="text-lg font-semibold mb-4 text-center">
-                  Energy Consumption (MJ/Kg)
-                </h4>
-                <canvas id="energyChart" height="200"></canvas>
+            <div class="tech-comparison">
+              <div class="tech-top-row">
+                <div class="section-heading">Performance</div>
+                <div class="section-heading">Efficiency</div>
+                <div class="section-heading">Sustainability</div>
               </div>
-              <div class="metric-card">
-                <h4 class="text-lg font-semibold mb-4 text-center">
-                  Water Consumption (Ton/Ton of CAM)
-                </h4>
-                <canvas id="waterChart" height="200"></canvas>
+              <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12 tech-grid">
+              <div class="space-y-6">
+                <div class="metric-card">
+                  <h4 class="text-lg font-semibold mb-4 text-center">Cell Voltage (Volts)</h4>
+                  <canvas id="voltageChart" height="200"></canvas>
+                </div>
+                <div class="metric-card">
+                  <h4 class="text-lg font-semibold mb-4 text-center">Energy Density (KWh/Kg)</h4>
+                  <canvas id="densityChart" height="200"></canvas>
+                </div>
               </div>
-              <div class="metric-card">
-                <h4 class="text-lg font-semibold mb-4 text-center">
-                  Production Cost ($/KWh)
-                </h4>
-                <canvas id="costChart" height="100"></canvas>
+
+              <div class="space-y-6">
+                <div class="metric-card">
+                  <h4 class="text-lg font-semibold mb-4 text-center">Energy Consumption (MJ/Kg)</h4>
+                  <canvas id="energyChart" height="200"></canvas>
+                </div>
+                <div class="metric-card">
+                  <h4 class="text-lg font-semibold mb-4 text-center">Production Cost ($/KWh)</h4>
+                  <canvas id="costChart" height="200"></canvas>
+                </div>
               </div>
-              <div class="metric-card">
-                <h4 class="text-lg font-semibold mb-4 text-center">
-                  Toxic Waste (Ton/Ton of CAM)
-                </h4>
-                <canvas id="wasteChart" height="200"></canvas>
+
+              <div class="space-y-6">
+                <div class="metric-card">
+                  <h4 class="text-lg font-semibold mb-4 text-center">Toxic Waste (Ton/Ton of CAM)</h4>
+                  <canvas id="wasteChart" height="200"></canvas>
+                </div>
+                <div class="metric-card">
+                  <h4 class="text-lg font-semibold mb-4 text-center">Water Use (Ton/Ton of CAM)</h4>
+                  <canvas id="waterChart" height="200"></canvas>
+                </div>
               </div>
             </div>
           </div>
@@ -2648,6 +2594,10 @@
               return 0;
             }
 
+            // New: Voltage and Density charts
+            const voltageCtx = document.getElementById("voltageChart");
+            const densityCtx = document.getElementById("densityChart");
+
             if (energyCtx)
               new Chart(energyCtx.getContext("2d"), {
                 type: "bar",
@@ -2672,18 +2622,74 @@
                       display: false,
                     },
                   },
-                  scales: {
-                    x: {
-                      ticks: { display: true, color: "var(--text-secondary)" },
-                      grid: { display: false },
+                    scales: {
+                      x: {
+                        ticks: { display: true, color: "var(--text-secondary)" },
+                        grid: { display: false },
+                      },
+                      y: { beginAtZero: true, suggestedMax: 15, ticks: { display: false } },
                     },
-                    y: { beginAtZero: true },
-                  },
                 },
                 plugins: [ChartDataLabels],
               });
 
-            if (costCtx)
+              // voltage chart (LFP 3.4V, Crystron 3.9V)
+              if (voltageCtx)
+                new Chart(voltageCtx.getContext("2d"), {
+                  type: "bar",
+                  data: {
+                    labels: ["LFP", "Crystron"],
+                    datasets: [
+                      {
+                        label: "Volts",
+                        data: [3.4, 3.9],
+                        backgroundColor: [cssLfp, cssCry],
+                        borderRadius: 10,
+                        maxBarThickness: 56,
+                      },
+                    ],
+                  },
+                  options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, datalabels: { display: false } },
+                    scales: {
+                      x: { ticks: { display: true, color: "var(--text-secondary)" }, grid: { display: false } },
+                      y: { beginAtZero: false,min: 3.0, suggestedMax: 4.2, ticks: { display: false } },
+                    },
+                  },
+                  plugins: [ChartDataLabels],
+                });
+
+              // density chart (KWh/Kg) LFP 561, Crystron 566
+              if (densityCtx)
+                new Chart(densityCtx.getContext("2d"), {
+                  type: "bar",
+                  data: {
+                    labels: ["LFP", "Crystron"],
+                    datasets: [
+                      {
+                        label: "KWh/Kg",
+                        data: [561, 566],
+                        backgroundColor: [cssLfp, cssCry],
+                        borderRadius: 10,
+                        maxBarThickness: 56,
+                      },
+                    ],
+                  },
+                  options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, datalabels: { display: false } },
+                    scales: {
+                      x: { ticks: { display: true, color: "var(--text-secondary)" }, grid: { display: false } },
+                      y: { beginAtZero: true, min: 550, suggestedMax: 570, ticks: { display: false } },
+                    },
+                  },
+                  plugins: [ChartDataLabels],
+                });
+
+              if (costCtx)
               new Chart(costCtx.getContext("2d"), {
                 type: "bar",
                 data: {
@@ -2710,7 +2716,7 @@
                       ticks: { display: true, color: "var(--text-secondary)" },
                       grid: { display: false },
                     },
-                    y: { beginAtZero: true },
+                    y: { beginAtZero: true, suggestedMax: 5, ticks: { display: false } },
                   },
                 },
                 plugins: [ChartDataLabels],
@@ -2743,7 +2749,7 @@
                       ticks: { display: true, color: "var(--text-secondary)" },
                       grid: { display: false },
                     },
-                    y: { beginAtZero: true },
+                    y: { beginAtZero: true, suggestedMax: 1.2, ticks: { display: false } },
                   },
                 },
                 plugins: [ChartDataLabels],
@@ -2776,7 +2782,7 @@
                       ticks: { display: true, color: "var(--text-secondary)" },
                       grid: { display: false },
                     },
-                    y: { beginAtZero: true },
+                    y: { beginAtZero: true, suggestedMax: 1100, ticks: { display: false } },
                   },
                 },
                 plugins: [ChartDataLabels],
