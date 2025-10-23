@@ -98,6 +98,10 @@
         --text-nav-light: #2d3748;
         --accent-primary-light: #2b6cb0;
         --accent-secondary-light: #319795;
+        /* Chart palette — tuned to be visually distinct for comparisons */
+        /* Subtle chart palette for investor-grade visuals */
+        --chart-lfp: #fda29b; /* muted warm (soft terracotta) */
+        --chart-crystron: #5b7fb6; /* muted steel blue */
         --accent-glow-light: rgba(43, 108, 176, 0.15);
         --border-primary-light: #e2e8f0;
         --border-accent-light: #2b6cb0;
@@ -982,6 +986,260 @@
         color: var(--accent-primary);
       }
 
+      /* New: process diagram + impact stat styles */
+      .process-diagram {
+        border-radius: 12px;
+        padding: 0.5rem;
+      }
+      .process-diagram .flow-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .process-diagram .step {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        min-width: 130px;
+        text-align: center;
+        box-shadow: 0 6px 18px -12px var(--shadow-color);
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+          background-color 0.18s ease;
+        font-weight: 600;
+      }
+      .process-diagram .step small {
+        display: block;
+        font-weight: 400;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+      .process-diagram .step:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px -12px var(--accent-glow);
+      }
+      .process-diagram .step.crystron {
+        background-color: rgba(var(--accent-primary-rgb), 0.08);
+        color: var(--accent-primary);
+      }
+      .process-diagram .arrow {
+        color: var(--text-secondary);
+        font-weight: 700;
+      }
+
+      .impact-stat {
+        padding: 1rem;
+        border-radius: 12px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.01)
+        );
+      }
+      .impact-stat .counter {
+        font-size: 2.5rem;
+        font-weight: 800;
+      }
+
+      .patent-card {
+        background: linear-gradient(
+          180deg,
+          var(--bg-secondary),
+          var(--bg-primary)
+        );
+        border: 1px solid var(--border-primary);
+      }
+
+      /* Compact details/summary styling to keep page clean */
+      details.process-compact {
+        background: transparent;
+        border-radius: 10px;
+        padding: 0.5rem 0;
+      }
+      details.process-compact summary {
+        list-style: none;
+        cursor: pointer;
+        outline: none;
+        display: block;
+        padding: 0.35rem 0.5rem;
+        border-radius: 8px;
+        transition: background 0.18s ease;
+        color: var(--text-primary);
+      }
+      details.process-compact summary:hover {
+        background: rgba(0, 0, 0, 0.03);
+      }
+      .compact-steps .step {
+        min-width: 100px;
+        padding: 0.45rem 0.75rem;
+        font-size: 0.95rem;
+      }
+
+      /* hovered highlight used by the JS mapping (subtle) */
+      .process-diagram .step.hovered,
+      .process-diagram .step.hovered:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 18px 40px -18px var(--accent-glow);
+        background-color: rgba(99, 179, 237, 0.08);
+      }
+
+      /* When the details are expanded, make the compact steps flow clearly */
+      /* Vertical flow for expanded details: top → bottom */
+      details.process-compact[open] .compact-steps {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+        margin-top: 0.6rem;
+      }
+      details.process-compact[open] .compact-steps .step {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--border-primary);
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        border-radius: 10px;
+      }
+      details.process-compact[open] .compact-steps .arrow-down {
+        display: block;
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        margin-left: 8px;
+      }
+      details.process-compact[open] .flow-line {
+        display: block;
+      }
+
+      /* Make chart canvases responsive and fill their card width */
+      .metric-card {
+        padding: 1.25rem;
+        background: transparent;
+      }
+      .metric-card canvas {
+        width: 100% !important;
+        height: 280px !important; /* fixed height but full width for better aspect */
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* Colored outlines for the two process cards (cleaner, investor-facing) */
+      .card.lfp-outline,
+      .card.crystron-outline {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.95),
+          rgba(250, 250, 252, 0.98)
+        );
+        box-shadow: 0 10px 30px -18px rgba(16, 24, 40, 0.12);
+        border-radius: 14px;
+        padding: 1.6rem;
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+      }
+      .card.lfp-outline:hover,
+      .card.crystron-outline:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 22px 45px -10px rgba(16, 24, 40, 0.18);
+      }
+      .card.lfp-outline {
+        border: 2px dashed rgba(239, 68, 68, 0.28);
+      }
+      .card.crystron-outline {
+        border: 2px dashed rgba(37, 99, 235, 0.22);
+      }
+
+      /* Subtle left accent on individual steps to reinforce identity */
+      .process-diagram .step.lfp-step,
+      .process-diagram .step.crystron-step {
+        background: linear-gradient(180deg, var(--bg-secondary), #fff);
+        border: 1px solid var(--border-primary);
+        border-radius: 10px;
+        padding: 0.9rem 1rem;
+        min-width: auto;
+        box-shadow: 0 6px 18px -12px rgba(2, 6, 23, 0.06);
+        position: relative;
+      }
+      .process-diagram .step.lfp-step::before,
+      .process-diagram .step.crystron-step::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .process-diagram .step.lfp-step::before {
+        background: #ef4444;
+      }
+      .process-diagram .step.crystron-step::before {
+        background: #2563eb;
+      }
+      .process-diagram .step.lfp-step {
+        padding-left: 2.25rem;
+      }
+      .process-diagram .step.crystron-step {
+        padding-left: 2.25rem;
+      }
+
+      /* Small flag/callout used to highlight differences (pCAM, waste) */
+      .process-flag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.45rem 0.9rem;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        box-shadow: 0 6px 18px -12px rgba(2, 6, 23, 0.06);
+      }
+      .process-flag.lfp {
+        background: linear-gradient(
+          90deg,
+          rgba(239, 68, 68, 0.06),
+          rgba(255, 255, 255, 0.02)
+        );
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.18);
+      }
+      .process-flag.crystron {
+        background: linear-gradient(
+          90deg,
+          rgba(37, 99, 235, 0.04),
+          rgba(255, 255, 255, 0.02)
+        );
+        color: #2563eb;
+        border: 1px solid rgba(37, 99, 235, 0.14);
+      }
+
+      /* Arrow styling between steps */
+      .arrow-down {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        margin-left: 0.65rem;
+      }
+
+      /* Icon + label step style */
+      .icon-step {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+      .icon-step i {
+        width: 28px;
+        height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+      }
+      .icon-step span {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
       /* Animation Classes */
       .animated-element {
         opacity: 0;
@@ -1017,6 +1275,10 @@
         "sameAs": ["https://www.linkedin.com/company/crystron/"]
       }
     </script>
+    <!-- Chart.js CDN for data-driven comparisons -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js DataLabels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
   </head>
   <body>
     <a
@@ -1090,11 +1352,11 @@
               <span class="highlight">Battery Technology</span>.
             </h1>
             <p class="hero-subtitle animated-element">
-              Crystron Technologies is accelerating
-              <strong>global electrification</strong> by developing novel
-              resource-efficient and low-cost clean cathodes through
-              <strong>circular manufacturing</strong>.
+              Crystron Technologies is driving
+              <strong> energy independence </strong> through advanced battery
+              materials and <strong>circular manufacturing</strong>.
             </p>
+
             <div class="space-x-4 mb-12 md:mb-16 animated-element">
               <a
                 href="#technology"
@@ -1152,241 +1414,204 @@
         </section>
 
         <section id="technology-page" class="page">
-          <div class="container mx-auto">
-            <h2 class="section-title animated-element">
-              A Leap in Cathode Manufacturing
-            </h2>
-            <p class="section-subtitle animated-element">
-              Our proprietary technology redefines Cathode Active Material (CAM)
-              manufacturing, overcoming the critical limitations of traditional
-              processes while championing sustainability and performance.
-            </p>
-
-            <!-- Issues with Current LFP -->
-            <div class="max-w-5xl mx-auto mb-16">
-              <h3
-                class="text-3xl font-bold text-center text-text-primary mb-8 animated-element"
-              >
-                The Problem with Conventional LFP Production
-              </h3>
-              <div class="grid md:grid-cols-2 gap-8">
-                <div class="card animated-element">
-                  <h4 class="text-xl font-bold flex items-center">
-                    <i class="fas fa-link text-red-500 mr-3"></i>Complex Supply
-                    Chain
-                  </h4>
-                  <p>
-                    Reliant on many input materials, the supply of which is
-                    dominated by Chinese companies, creating vulnerabilities.
-                  </p>
-                </div>
-                <div class="card animated-element">
-                  <h4 class="text-xl font-bold flex items-center">
-                    <i class="fas fa-cogs text-red-500 mr-3"></i>Inefficient
-                    Manufacturing
-                  </h4>
-                  <p>
-                    Involves multiple energy-intensive steps that result in
-                    sub-optimal throughput and higher operational complexity.
-                  </p>
-                </div>
-                <div class="card animated-element">
-                  <h4 class="text-xl font-bold flex items-center">
-                    <i class="fas fa-dollar-sign text-red-500 mr-3"></i>High
-                    Manufacturing Cost
-                  </h4>
-                  <p>
-                    Requires a large equipment footprint, high electricity
-                    consumption, and numerous input materials, driving up CAPEX
-                    and OPEX.
-                  </p>
-                </div>
-                <div class="card animated-element">
-                  <h4 class="text-xl font-bold flex items-center">
-                    <i class="fas fa-smog text-red-500 mr-3"></i>Significant
-                    Environmental Impact
-                  </h4>
-                  <p>
-                    Generates high volumes of toxic waste coupled with high
-                    water and electricity consumption, harming ecosystems.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Crystron Advantage -->
-            <div class="text-center my-16 md:my-24">
-              <h3
-                class="text-3xl font-bold text-center text-accent-primary mb-8 animated-element"
-              >
-                The Crystron Advantage: A Data-Driven Comparison
-              </h3>
-              <p
-                class="text-lg text-text-secondary text-center max-w-3xl mx-auto mb-12 animated-element"
-              >
-                Our process offers a cleaner, more efficient, and cost-effective
-                path to high-performance CAM production. The data speaks for
-                itself.
+          <div class="container mx-auto px-4 py-8">
+            <!-- Hero + Impact -->
+            <div
+              class="bg-gradient-to-r from-blue-900 to-cyan-700 rounded-2xl text-white p-10 mb-12 shadow-xl overflow-hidden"
+            >
+              <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+                A Transformational Cathode Platform
+              </h2>
+              <p class="text-lg md:text-xl text-blue-100 max-w-3xl">
+                We reimagined CAM and cathode manufacturing to remove waste,
+                remove water, cut energy and cost, and simplify the supply chain
+                all while improving manufacturability and performance.
               </p>
 
-              <!-- MODIFICATION: Comparison Graphs reordered -->
-              <div
-                class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
-              >
-                <!-- 1. Energy Consumption -->
-                <div class="comparison-chart animated-element">
-                  <h4>Energy Consumption (MJ/Kg)</h4>
-                  <div class="comparison-bars">
-                    <div class="comparison-bar-group">
-                      <div class="comparison-bar lfp" style="height: 100%">
-                        <span class="value">13.6</span>
-                      </div>
-                      <span class="label">LFP</span>
-                    </div>
-                    <div class="comparison-bar-group">
-                      <div
-                        class="comparison-bar crystron"
-                        style="height: 18.4%"
-                      >
-                        <span class="value">2.5</span>
-                      </div>
-                      <span class="label">Crystron</span>
-                    </div>
-                  </div>
-                  <p class="comparison-footer reduction">80% Lower Energy</p>
+              <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="impact-stat text-center" data-value="80">
+                  <div class="counter">0</div>
+                  <div class="text-blue-200">% Less Energy</div>
                 </div>
-                <!-- 2. Production Cost -->
-                <div class="comparison-chart animated-element">
-                  <h4>Production Cost ($/KWh)</h4>
-                  <div class="comparison-bars">
-                    <div class="comparison-bar-group">
-                      <div class="comparison-bar lfp" style="height: 100%">
-                        <span class="value">4.4</span>
-                      </div>
-                      <span class="label">LFP</span>
-                    </div>
-                    <div class="comparison-bar-group">
-                      <div
-                        class="comparison-bar crystron"
-                        style="height: 60.2%"
-                      >
-                        <span class="value">2.65</span>
-                      </div>
-                      <span class="label">Crystron</span>
-                    </div>
-                  </div>
-                  <p class="comparison-footer reduction">40% Lower Cost</p>
+                <div class="impact-stat text-center" data-value="40">
+                  <div class="counter">0</div>
+                  <div class="text-blue-200">% Lower Cost</div>
                 </div>
-                <!-- 3. Toxic Waste -->
-                <div class="comparison-chart animated-element">
-                  <h4>Toxic Waste Generation (Ton/Ton of CAM)</h4>
-                  <div class="comparison-bars">
-                    <div class="comparison-bar-group">
-                      <div class="comparison-bar lfp" style="height: 100%">
-                        <span class="value">1</span>
-                      </div>
-                      <span class="label">LFP</span>
-                    </div>
-                    <div class="comparison-bar-group">
-                      <div
-                        class="comparison-bar crystron"
-                        style="height: 2px; --scale-y: 0.002"
-                      >
-                        <span class="value">0</span>
-                      </div>
-                      <span class="label">Crystron</span>
-                    </div>
-                  </div>
-                  <p class="comparison-footer zero">Zero Toxic Waste</p>
+                <div class="impact-stat text-center" data-value="100">
+                  <div class="counter">0</div>
+                  <div class="text-blue-200">% Less Water</div>
                 </div>
-                <!-- 4. Water Consumption -->
-                <div class="comparison-chart animated-element">
-                  <h4>Water Consumption (Ton/Ton of CAM)</h4>
-                  <div class="comparison-bars">
-                    <div class="comparison-bar-group">
-                      <div class="comparison-bar lfp" style="height: 100%">
-                        <span class="value">1000</span>
-                      </div>
-                      <span class="label">LFP</span>
-                    </div>
-                    <div class="comparison-bar-group">
-                      <div
-                        class="comparison-bar crystron"
-                        style="height: 2px; --scale-y: 0.002"
-                      >
-                        <span class="value">0</span>
-                      </div>
-                      <span class="label">Crystron</span>
-                    </div>
-                  </div>
-                  <p class="comparison-footer zero">Zero Water Consumption</p>
+                <div class="impact-stat text-center" data-value="100">
+                  <div class="counter">0</div>
+                  <div class="text-blue-200">% Less Waste</div>
                 </div>
               </div>
             </div>
 
-            <!-- Our Solution Section -->
-            <div class="max-w-5xl mx-auto my-16">
-              <h3
-                class="text-3xl font-bold text-center text-text-primary mb-8 animated-element"
+            <!-- Interactive Process Comparison -->
+            <div class="grid md:grid-cols-2 gap-8 items-start mb-12">
+              <!-- Left: LFP flow (compact) -->
+              <div class="card p-6 lfp-outline">
+                <h3 class="text-2xl font-bold text-red-600 mb-4">
+                  Current LFP Manufacturing
+                </h3>
+                <p class="text-text-secondary mb-4">
+                  Complex multi-stage route with separate pCAM and CAM phases
+                  and several waste streams.
+                </p>
+                <details class="process-compact" id="lfp-diagram">
+                  <summary class="text-lg font-semibold">
+                    Overview — click to expand
+                  </summary>
+                  <div class="mt-4 space-y-3">
+                    <div class="flex items-center gap-3">
+                      <span class="process-flag lfp">Requires pCAM</span>
+                      <div class="text-sm text-red-600">
+                        Produces Na₂SO₄ & process water
+                      </div>
+                    </div>
+                    <p class="text-sm text-text-secondary">
+                      A multi-stage pCAM + CAM route with separate
+                      precipitation, drying and calcination steps leading to
+                      higher energy and water use.
+                    </p>
+                    <div class="mt-2 compact-steps">
+                      <div class="step lfp-step icon-step">
+                        <i class="fas fa-flask"></i
+                        ><span>pCAM: Precipitation & Drying</span>
+                      </div>
+                      <div class="arrow-down">↓</div>
+                      <div class="step lfp-step icon-step">
+                        <i class="fas fa-cogs"></i
+                        ><span>CAM: Milling & Mixing</span>
+                      </div>
+                      <div class="arrow-down">↓</div>
+                      <div class="step lfp-step icon-step">
+                        <i class="fas fa-brush"></i
+                        ><span>Coating → Drying → Calendering</span>
+                      </div>
+                      <div class="arrow-down">↓</div>
+                      <div class="step lfp-step icon-step">
+                        <i class="fas fa-temperature-low"></i
+                        ><span>Final Calcination & Packaging</span>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </div>
+
+              <!-- Right: Crystron flow (compact) -->
+              <div class="card p-6 crystron-outline">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">
+                  Crystron Process (Simplified)
+                </h3>
+                <p class="text-text-secondary mb-4">
+                  Integrated CAM→Cathode flow designed to eliminate water and
+                  toxic solid waste while lowering energy and cost.
+                </p>
+                <details class="process-compact" id="crystron-diagram">
+                  <summary class="text-lg font-semibold">
+                    Overview — click to expand
+                  </summary>
+                  <div class="mt-4 space-y-3">
+                    <div class="flex items-center gap-3">
+                      <span class="process-flag crystron"
+                        >No pCAM required</span
+                      >
+                      <div class="text-sm text-blue-700">
+                        Zero toxic solid waste; solvent recycling
+                      </div>
+                    </div>
+                    <p class="text-sm text-text-secondary">
+                      A streamlined, integrated CAM→Cathode flow that removes
+                      separate pCAM steps and associated waste streams, lowering
+                      energy and water use.
+                    </p>
+                    <div class="mt-2 compact-steps">
+                      <div class="step crystron-step icon-step">
+                        <i class="fas fa-cogs"></i
+                        ><span>Milling & Mixing (Fe + Li)</span>
+                      </div>
+                      <div class="arrow-down">↓</div>
+                      <div class="step crystron-step icon-step">
+                        <i class="fas fa-hand-holding-water"></i
+                        ><span>Binder & Slurry Preparation</span>
+                      </div>
+                      <div class="arrow-down">↓</div>
+                      <div class="step crystron-step icon-step">
+                        <i class="fas fa-brush"></i
+                        ><span>Coating → Drying (solvent recovery)</span>
+                      </div>
+                      <div class="arrow-down">↓</div>
+                      <div class="step crystron-step icon-step">
+                        <i class="fas fa-temperature-low"></i
+                        ><span>Calendering & Low-temp Calcination</span>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </div>
+            </div>
+
+            <!-- Charts row (data-driven comparison) -->
+            <!-- Investor Comparison Banner -->
+            <div class="max-w-5xl mx-auto my-8">
+              <div
+                class="card p-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
               >
-                Our Solution: A Clear Advantage
-              </h3>
-              <div class="card p-8 animated-element">
-                <ul class="space-y-4">
-                  <li class="flex items-start text-lg">
-                    <i
-                      class="fas fa-check-circle mr-4 mt-1"
-                      style="color: var(--accent-secondary)"
-                    ></i>
-                    <div>
-                      <strong class="text-text-primary"
-                        >Simpler Supply Chain:</strong
-                      >
-                      No pCAM needed. Uses fewer input materials that are
-                      abundantly available as by-products of steel & electrolyte
-                      making.
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-check-circle text-2xl text-green-500"></i>
+                  <div>
+                    <div class="font-semibold">No separate pCAM</div>
+                    <div class="text-sm text-text-secondary">
+                      Crystron integrates CAM and electrode formation.
                     </div>
-                  </li>
-                  <li class="flex items-start text-lg">
-                    <i
-                      class="fas fa-check-circle mr-4 mt-1"
-                      style="color: var(--accent-secondary)"
-                    ></i>
-                    <div>
-                      <strong class="text-text-primary"
-                        >Efficient Manufacturing:</strong
-                      >
-                      A streamlined process with fewer steps leads to
-                      significantly higher throughput and reliability.
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-recycle text-2xl text-blue-500"></i>
+                  <div>
+                    <div class="font-semibold">Zero toxic solid waste</div>
+                    <div class="text-sm text-text-secondary">
+                      No Na₂SO₄ byproduct and solvent recycling.
                     </div>
-                  </li>
-                  <li class="flex items-start text-lg">
-                    <i
-                      class="fas fa-check-circle mr-4 mt-1"
-                      style="color: var(--accent-secondary)"
-                    ></i>
-                    <div>
-                      <strong class="text-text-primary"
-                        >Lower Manufacturing Cost:</strong
-                      >
-                      Reduced equipment footprint and low electricity
-                      consumption drive >40% savings in both OPEX & CAPEX.
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-bolt text-2xl text-yellow-500"></i>
+                  <div>
+                    <div class="font-semibold">Lower energy & cost</div>
+                    <div class="text-sm text-text-secondary">
+                      Reduced calcination and processing steps.
                     </div>
-                  </li>
-                  <li class="flex items-start text-lg">
-                    <i
-                      class="fas fa-check-circle mr-4 mt-1"
-                      style="color: var(--accent-secondary)"
-                    ></i>
-                    <div>
-                      <strong class="text-text-primary"
-                        >Zero Environmental Impact:</strong
-                      >
-                      Our circular process features zero waste generation, zero
-                      water consumption, and full solvent recycling.
-                    </div>
-                  </li>
-                </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+              <div class="metric-card">
+                <h4 class="text-lg font-semibold mb-4 text-center">
+                  Energy Consumption (MJ/Kg)
+                </h4>
+                <canvas id="energyChart" height="200"></canvas>
+              </div>
+              <div class="metric-card">
+                <h4 class="text-lg font-semibold mb-4 text-center">
+                  Water Consumption (Ton/Ton of CAM)
+                </h4>
+                <canvas id="waterChart" height="200"></canvas>
+              </div>
+              <div class="metric-card">
+                <h4 class="text-lg font-semibold mb-4 text-center">
+                  Production Cost ($/KWh)
+                </h4>
+                <canvas id="costChart" height="100"></canvas>
+              </div>
+              <div class="metric-card">
+                <h4 class="text-lg font-semibold mb-4 text-center">
+                  Toxic Waste (Ton/Ton of CAM)
+                </h4>
+                <canvas id="wasteChart" height="200"></canvas>
               </div>
             </div>
           </div>
@@ -1443,7 +1668,7 @@
               </div>
               <div class="card text-center animated-element">
                 <img
-                  src="https://media.licdn.com/dms/image/v2/D4E03AQGrvgAbqh5rfw/profile-displayphoto-crop_800_800/B4EZg7PtHhGUAI-/0/1753340630447?e=1760572800&v=beta&t=sgy389W6eEjSZQ7DQAzE__CCgESye9Q-S4IBJVlcVJg"
+                  src="https://media.licdn.com/dms/image/v2/D4E03AQGrvgAbqh5rfw/profile-displayphoto-crop_800_800/B4EZg7PtHhGUAI-/0/1753340630447?e=1762387200&v=beta&t=1QEq2CisdiKpJ1g3ytHfXuEFpef98S2HC679Z6cCZD4"
                   alt="Dr Rajesh Tripathi"
                   class="team-member-photo"
                   onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=RT&font=inter';"
@@ -1671,6 +1896,20 @@
                   </li>
                   <li class="flex items-start">
                     <i
+                      class="fas fa-file-contract mt-1 mr-3"
+                      style="color: var(--accent-secondary)"
+                    ></i>
+                    <div>
+                      <strong class="text-text-primary"
+                        >Intellectual Property:</strong
+                      >
+                      Crystron currently has two patents pending — one covering
+                      our synthesis approach and another for the manufacturing
+                      process for the cathode material.
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <i
                       class="fas fa-chart-pie mt-1 mr-3"
                       style="color: var(--accent-secondary)"
                     ></i>
@@ -1742,6 +1981,36 @@
             </p>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- EDGE 2.0 Grant Pitch Competition Article (ADDED) -->
+              <article class="news-card animated-element">
+                <img
+                  src="data:image/png;base64,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"
+                  alt="Delaware EDGE 2.0 Announcement"
+                  class="news-card-image"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/101725/a0aec0?text=News+Image&font=inter';"
+                />
+                <h3 class="news-card-title">
+                  Crystron Selected as EDGE 2.0 Finalist by Delaware DSB
+                </h3>
+                <span class="news-card-date">October 16, 2025</span>
+                <p class="news-card-summary">
+                  Crystron Technologies has been selected as one of only three
+                  high-impact startups for the EDGE 2.0 Grant Pitch Competition.
+                  On October 29, 2025 we'll compete in a bonus round for $1M in
+                  funding through the Small State Business Credit Initiative
+                  (SSBCI) under the Delaware Accelerator and Seed Capital
+                  Program.
+                </p>
+                <a
+                  href="https://news.delaware.gov/2025/10/16/edge-2-0-finalists-and-pitch-competition-dates-announced/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="news-card-read-more"
+                >
+                  Read Full Article
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </article>
               <!-- New Grant Article -->
               <article class="news-card animated-element">
                 <img
@@ -1805,7 +2074,7 @@
 
               <article class="news-card animated-element">
                 <img
-                  src="/CrystronLogo-removebg-preview.png"
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATcAAACiCAMAAAATIHpEAAABiVBMVEX///8vLnk7sFvsIJn3oTcvLnrtIJnzdjwuIno3kGU7sloysFyGrFH+oDX3pTHxbHDsFpzrBZX1o8/lRy4xRHY8tlnqojn2lUXtL50qKXjwhVUcG3KvrsbybChSUo364dhqaZnzqNC3t83Z2OQREHDTpD6+v9FAP4T4zLopq1Hh4OkmJXYAAG0hIHTr6vHyfbvmUTJ8xo/1t3TqMH/H5s74nCbkSCUAM3zycTMVFHH52Lbc7+EAPYBnZpf2mTf0iDniXEnjNhOdnbuhsskARYT9dADT3+r8rnft9u/vXq/zfDruajjlQzj3xN/nOGJswIL98/n74/BItGaEhKqn1rOAf6hJSIgALXr8gwDDzdrzlW/+9Oz95dL7iyb+6dr9pmD8vJAxRXX3uaH0p4j30eWPzZ/ksXzvfKe3p0XrJovxgb674MWYqUzxfkntUKn0nnpuqErMsmP0rsH2zM7zlMfcqUv/y6mFm7kMUox/l7fhtWVVeKEmW5FkhauVss5DaZn8xJy7pkT7qGtpiABDAAAP6ElEQVR4nO2djV/bxhnHzxDDFpothLZEETgOVm1sWSJZaYxADquNMXkrCQK/xC+wJKxd02Zdl/EyoGH85bsXvZxsyRZnO/nEvd8HjHUnWbqvn+fuuTvpACEuFoGPfQGfqDg3NnFubOLc2MS5sYlzYxPnxibOjU0Ot/AfuILL5hb+/I9cwWVzE/72xVWuwHK4ff7FCFdgcW5s4tzYxLmxiXNjE+fGJs6NTZ7cJri6yYvbxGdc3eTJ7co1ri7y5PblFa4u4tzYxLmxiXNjE+fGJs6NTZwbm7pw+xOXtzpze/BnLm915jZ9nctb3biNcnmKc2MT58Ymzo1NnBubODc2cW5sCsxtkotWUG4379zgohSQ29hNwOUS58Ymzo1NnBubODc2cW5s4tzYxLmxiXNjE+fGJs6NTZwbmzg3NnFubOLc2DTM3DagfLJqUD5Zz54F+ewh5ba4fW9rIgk1snVve8WVdfvli/GlWajxn1/Nu+E9fffw5tjk5NjozYUbrzufYBi5beyPJJNXreJcTSa3ti27q70an11aGjcF8d2at456vYAGwMeI4LvRhecdzjGE3PahlbUomdxHObVXszYzG904Jvf8oc1szGb30J/c0HFbmWijhsmNrID5pVZqWLO3auBOGzVC7obfaYaN27YnNUzu77Ne1JDNPfreixom99DnPEPG7Y0vtomvvln14TZ+99uvRy8Jbri4rfhj++HalSs+4O5OTd3/hw+40ckfPc80XNz8qI1MfHYNFeiRF7bHU1BP/AxubPKp15mGitu+v7mRAj3w4oawTd3/7rofuVGvUw0Vt85eiuThqdjckKf6GpxXozpM3Fra0iQWeW+VyDQ43F9YoswNGxyhREW/ljzONUzctlzUNt+srKwswq4DLNFP16wioRpu9ueX87dvz5Mg2DQ3CG4MOurk2ztPn95ZcJPzquGGiNsGbW4TdqcUhiYTX1klQo46a3etXszixtTkBmORm1av9B0NzisWGSJudOyWpPryMDixzQ066uxtJ+ufS5abIkcdHXWGQu7Q4DxahiHiRrWmpDtqZ/zicLuy9JLOctwUhiIuf3xIgZts76cOEbdNb3ODDvwTxe2R65h5itt9l1k9p7m1V3BDxI1qFrbcOf+iuBVdObX7Drdvv3dl3ewYiQwnt013zl8cbt8cuLPuUtx+deUsOAY3+a7tZEPJ7eo9dw7Nbdmd9VeK279dOVST6tFHHUpuE/vunIDcbrtyqBZ1cqHtZEPEzewgILHZ2++U26Ij90wMG7cbH85PY6IMFb5UaSmpAjpcSbEe7ysmbu8+XLswp4WhpBhj8WISOlyLMx7uLyZuVOA76DhkTsQFZ+cW+vDc7tpq4fb2w8W9nyC3W84U16yb2wfsZ32K3MZ9uL12uI1Ott/60BM3NZZyVeK+3FKpWEztWryUNiBu/6W4zbuzfLnRI0lv2z+SnVssqkhIpRxhF89GIwLiJkSy2eyOuZcaNyJkP0nLztkHz2WzUQOTVHPRyA4knYpms0IIHx41D4c7QVXtg2bwNvlWVLQTJhyPhtOSlDA6WPlXDNzo7qnHlBYzt6wkh7EERcoiAlFRFswUGE+kMcxUVNIUMzUclrWEZZ4lBQYcUgqoOxI8TE7HgaHBw0P4cBiMpBGFkILCkpJ9yjAKU8QoYSihvXIgltBkchC5Ci+tUNwaAbm9pqs3j3tsGLnBUCvsSIYEQJROCWuIUCrtSkOMzbIhywwpRkxUcLpiAENxHY64JQRsfvZJ8bZscsNVgliV7G8Ffi0+JrdJcXsUkNsCzc3jMxm5RSxjI5ct5iA327JkRVGwveXEsGs3u9SAeHTCwoq4SYptwPDwYNzCLtiC5BkybycpbrPBuD2jsbX3sli5zeEIVdBCpYSM/ESB3GKGkcU05B3DMHLA5AbdWAwnSiGNoEurFDfbViC3lGHsyAQtPNywOXXmhnYQRdNqw3IJtGnjXnLC4bYakNu7zqOWrNyypE7BfhGLSoKSIzhxYSS7nsmJspTImRV5CVMS5yhu0FehKQqYG1SqJQ4Jwk2Qsrm5OUMmtqrNWLRWsBa3N5NoWsbi9mA8GDfa3LxjCTZupHKxLjKWSLu42d4ST0edKkfFnTCTsMVN0RKRiKYQbq3xWwBucsI8QRabnJAwd920RkZwgWxu4wG5uczN814uJm4EARVomRffys0tuoIz/VTLYds0CPfLcxNK7kz73Pfs2y1pbo8CcqPNzSvoZeX2jDYdSp25RYQWbkLC8mhyaZfnRp2KnFvMdeCG55yDcPuRNrd+3o9EvlzbUYNxy7Zxi7h3YODmhGzEB6z22oMbucUhCLfnrkln79vL2biZAYYYMmboYNOTWyy3E41Gd3LxdnvrJzeA2x3Lcdu5mXfUBOH2dqyruTFyU0UrVBNhg2lffDu3Z4YsKQoejiSHDI4bjruFkA+36fHA3J4GMDfWuDeWtmMvGD9Z/trGraoQwxRkK/IdHDcS/Qk+3CyDC8CNvg/OY6S3J24gVYL905CJTjK8uVUJXU2GPf3SoO2tGzdSwXXn9qPrXiQfbD2Mh8SjGuyTE3bpuCc3EiuETRADrt92lC7cMLiu3F67vPRO/7mhguYiuMMVMgvXwi0nYg5W2QbMjXTyEh24IXBdud2krc1/uLbX8d5YCFsc6Xa2cAuhkiiGteuAuZExKHNvu78wQXODdVw3bjdc5ub/kFbP4+RzxKhiHtywLYo2hsFyS+GzWd/SBtHKm83kVYrblUdduLk6pp4DIf3ipkp+3NS+cAvL9pnohsUcf3NGkMn4HZVgamOTHg950IUbNfk36huDMHOrajv2Fx0jfVU/ews5nYpLc4u4eiUzcjs3Z2dyGWHNo4j7wcffngZrFFi55URFMkw6ZASTrt/sYdeWrnciWBziGChpIcPazszcTFQzB45axpGknRS1aXWz3NoKPE5O9+e9ZmN65hYKKVIiahjRMBlrzALCLYQ3YrFcSbVG6URS5cSFgPGbUIrFZiIxYH0NqFMiirIVK7aOW8pSKFISza2050j5NsXtQQduzQWXuXV6/JSZGyqgrFhD22ky6RTHE3lhWdNElBLHHMKKlt2JKppZzoQ/NzJuGRLg4XgAklSQlgQyYmzar8mNJFl9F9EAXtoIOJ/1qwubX0+hB27xdNglzbxe1UnHzpq1xq/RcKxCNmTBlxtwZgtI/W6IzjlkMUVGjOWEw02IUHuExdbPs/SfQNweuR4K7DLTzjgeknaKGBLS9tecs6aXBBIhRDR7QiY9Q6xUjvhzm7G4C2QaEdhYBDTLt4O2QuQDrDhkx57QEqSoXyH/G2i+/jHNrUPo1gM3oBqCpMgydFVRKlET7IYkKgpKMyuamRBKEEUJTReXJEXRRJwTSUuSlG4raE4jh4esjzQ0lCJKEZSgJuAHiKTZseO3eMI8ZcR/nj/QfQ6P71PcOoVuvXADqJNloDnznHu0TZ0xjNwMlRabyRm5OAlb4rmcFV/FkNo/FB1uzNAZcXj4nGpv5KyoxIl7U/iUnW6jCMTtLs1trNtiGD3HvR9J7f2sDgrC7fEUxc37mVNavw9u33TnNkVx832q3tHvg1t3e7vr4tYxdMPi3Ewvpbj5r37haJi4bWysLG7v39vcSi66d+7ObYrmFqSww8Nt0Rxxuzoycmlud2luAbx0uLjZA7yX5fZ4iuLmN/PnFuc2bj1ib3LzXL6hTT1wa9bU/Lq9pebzKLrNQ8EXlJLPqzARVNHPOnqH9smrcAu99qjO3N64d+7C7THNrXvohsXMrb5aOFgXM/qhub1e1svlPND1zBGQ12BCtVw+BBkd6Ao4VdR8phyHSXqmrB5n9N6fiSHc0hQ3aq2a5LZ7Z7p/2vIcpWNuZCWMAKEbFiu3YqFQqav5k4x+RK49lTmt6mWwpv9WBRAdACdrp0fgLFPV9bj+HpwerZ2Aaub4OJM/1M9+uwwiT8XSoihqCSqFWpbgasvzpz843K5cuHJq1MoEeK2fTmPjtBi57RUKxODVE30Nv4HcwGlm/WitfEa4ZU4Oy+vrmRP9/Xs9r5YPz8qgqq+tnaqHa5DvADQx4hicK2OFfk581rXE4MslaiGM0S5j47TYuDULhSb8oyLDOdNPUFIqc3Ss69DeYEWWOTrLxyGjtWNwpJ8c6hlwCLf0fFU/hTtDe+u9fvMQ/Xy9y1E3XesSvKKzlsadBR2eXPd8UsFbbNx2C+f4b/X4TAVrGURhXcuU16CLZsploGWU4/fKYR6+PRbzVfE90OXfDpXTqnZ8ouWPy+X0etuF9K59n3UwtlvWwaBGLl8sUeuHfHc9WOiGxcatUrDeHf8GDjO4+VRVlbyq+AVt4V/yQ37NV3UQ5uZexMxpUvfpG3zxuivWShi1F5SX4ub07R1v9em5tlqhYb2tnsHa/mwQGC4v1/JIya3tRb91fsZfoXV+XszSXjo1hdf58VafnnduFnatt+sWt2alsQwOGquw2l2tVGDt18DbjRq4aOyCeqVRB8tFUKxUavVpUPFbPLcn7fuuKzXhuCmWs67UFO2mfurbc+KFivUufwziGRTDNaebq+DgYO8AFPfAcgOyhYl4e7oOo71i/QIswxhgGhKd3nUv4tEvbfivY2YZXNvCeQ43X2p95NbAzSlAbloFJxk0C9gsVM7BQQXaWwPmQa7nBWRv0PJ2G0Vkb02bW7PQdhn9UYd1876kzc2DWydz6x+388I0+qOeQWzrGRzANVGVd7ALX4tFZG+1Wn0XHOzBxGnolPVd6JrzJrdaBQxIfthGJn7xWafRDkJGfRdq7Od6DpUCIqJWVZBay+CJpCaq8qBfnsMopQJrtVqjUofbMLGI6rcipAjrN7CLuDXAgHT5dUEtbn7rgvaZGwx8UbUF6zc9czwoCgzqsA7t/zzXoaW6WB+CG6rOYL/+SNd1KwhpQnesNa3fJnRUgFNqOAXUaygF5ZHtAWnxkuseY2qdra2/6640EbfMmm5ZW72xWgfnDVTHVeAGrNsaYG8eVPaaoHKxB1PPkZ8WoMeC4sXAHBW66pb3OtsTi+D2ePs62wjbk7HO2Pq7Xk0TctNtbKB+cbEMI4wabAtQ29AEB9PF83nQQNwOUEsB47fVvQrmtjywhgFp23ddd/CybV13aGxfd2hJB8AN1A/Wy07dVl9dRmYGLQvGI6CI2oQ9yAq2EKCBwtxaAcYhNcKtOEBHRdreSjrs0Fvn/wi8pP6PwBIMf598Pdr9nzH3e32kKtXBgnEt2F1uVsD5AcR0AX12DzSgn8Lmo7I8Dc5hhGL56UV9AKzc2nizv7mF+wub7f+34tWtWdxfeNH6fysuoQ82vzCQntXH06c6L/OxxbmxiXNjE+fGJs6NTZwbmzg3NnFubOLc2MS5sYlzYxPnxibOjU2cG5s4NzZxbmzi3NjEubGJc2MT58Ymzo1NnBuT/g/i5KkMvXrxDAAAAABJRU5ErkJggg=="
                   alt="Startup 302 Finalist Announcement Graphic"
                   class="news-card-image"
                   onerror="this.onerror=null; this.src='https://placehold.co/600x400/101725/a0aec0?text=News+Image&font=inter';"
@@ -2244,9 +2513,281 @@
         animatedElements.forEach((el) => {
           observer.observe(el);
         });
+
+        // --- NEW: Impact counter animation when element becomes visible ---
+        const impactStats = document.querySelectorAll(".impact-stat");
+        const counterObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.dataset.value || "0", 10);
+                const counter = el.querySelector(".counter");
+                if (!counter) return;
+                let start = 0;
+                const duration = 1400;
+                const stepTime = 1000 / 60;
+                const steps = Math.max(1, Math.floor(duration / stepTime));
+                const increment = target / steps;
+                const timer = setInterval(() => {
+                  start += increment;
+                  if (start >= target) {
+                    counter.textContent = target + "%";
+                    clearInterval(timer);
+                  } else {
+                    counter.textContent = Math.floor(start) + "%";
+                  }
+                }, stepTime);
+                counterObserver.unobserve(el);
+              }
+            });
+          },
+          { threshold: 0.4 }
+        );
+        impactStats.forEach((s) => counterObserver.observe(s));
+
+        // --- NEW: Simple diagram hover linking ---
+        function mapHoverInteractions() {
+          // Prefer compact steps inside details if present, otherwise select any visible .step
+          const lfpSteps = Array.from(
+            document.querySelectorAll(
+              "#lfp-diagram .compact-steps .step, #lfp-diagram .step"
+            )
+          );
+          const crySteps = Array.from(
+            document.querySelectorAll(
+              "#crystron-diagram .compact-steps .step, #crystron-diagram .step"
+            )
+          );
+
+          lfpSteps.forEach((s, i) => {
+            s.addEventListener("mouseenter", () => {
+              s.classList.add("hovered");
+              // highlight a best-effort corresponding crystron step
+              const c = crySteps[Math.min(i, crySteps.length - 1)];
+              if (c) c.classList.add("hovered");
+            });
+            s.addEventListener("mouseleave", () => {
+              s.classList.remove("hovered");
+              const c = crySteps[Math.min(i, crySteps.length - 1)];
+              if (c) c.classList.remove("hovered");
+            });
+          });
+
+          crySteps.forEach((s, i) => {
+            s.addEventListener("mouseenter", () => {
+              s.classList.add("hovered");
+              const c = lfpSteps[Math.min(i, lfpSteps.length - 1)];
+              if (c) c.classList.add("hovered");
+            });
+            s.addEventListener("mouseleave", () => {
+              s.classList.remove("hovered");
+              const c = lfpSteps[Math.min(i, lfpSteps.length - 1)];
+              if (c) c.classList.remove("hovered");
+            });
+          });
+        }
+        mapHoverInteractions();
+
+        // --- NEW: Lightweight Chart.js initialization (if available) ---
+        function initCharts() {
+          if (typeof Chart === "undefined") return;
+          try {
+            const energyCtx = document.getElementById("energyChart");
+            const costCtx = document.getElementById("costChart");
+            const wasteCtx = document.getElementById("wasteChart");
+            const waterCtx = document.getElementById("waterChart");
+
+            // resolve CSS colors for charts
+            const cssVars = getComputedStyle(document.documentElement);
+            const cssLfp =
+              cssVars.getPropertyValue("--chart-lfp").trim() || "#64748b";
+            const cssCry =
+              cssVars.getPropertyValue("--chart-crystron").trim() || "#2b6cb0";
+
+            // helper: parse hex or rgb(a) and compute luminance
+            function colorLuminance(colorStr) {
+              if (!colorStr) return 0;
+              const s = String(colorStr).trim();
+              // hex (#rrggbb)
+              const hexMatch = s.match(/^#?([0-9a-fA-F]{6})$/);
+              if (hexMatch) {
+                const hex = hexMatch[1];
+                const r = parseInt(hex.substring(0, 2), 16);
+                const g = parseInt(hex.substring(2, 4), 16);
+                const b = parseInt(hex.substring(4, 6), 16);
+                return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+              }
+              // rgb or rgba
+              const rgbMatch = s.match(/rgba?\(([^)]+)\)/);
+              if (rgbMatch) {
+                const parts = rgbMatch[1].split(",").map((p) => parseFloat(p));
+                const r = parts[0] || 0;
+                const g = parts[1] || 0;
+                const b = parts[2] || 0;
+                return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+              }
+              // fallback — attempt to read computed color from a temporary element
+              try {
+                const el = document.createElement("span");
+                el.style.color = s;
+                document.body.appendChild(el);
+                const computed = getComputedStyle(el).color;
+                document.body.removeChild(el);
+                const cm = computed.match(/rgba?\(([^)]+)\)/);
+                if (cm) {
+                  const parts = cm[1].split(",").map((p) => parseFloat(p));
+                  const r = parts[0] || 0;
+                  const g = parts[1] || 0;
+                  const b = parts[2] || 0;
+                  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+                }
+              } catch (e) {
+                return 0;
+              }
+              return 0;
+            }
+
+            if (energyCtx)
+              new Chart(energyCtx.getContext("2d"), {
+                type: "bar",
+                data: {
+                  labels: ["LFP", "Crystron"],
+                  datasets: [
+                    {
+                      label: "MJ/kg",
+                      data: [13.6, 2.5],
+                      backgroundColor: [cssLfp, cssCry],
+                      borderRadius: 10,
+                      maxBarThickness: 56,
+                    },
+                  ],
+                },
+                options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: { display: false },
+                    datalabels: {
+                      display: false,
+                    },
+                  },
+                  scales: {
+                    x: {
+                      ticks: { display: true, color: "var(--text-secondary)" },
+                      grid: { display: false },
+                    },
+                    y: { beginAtZero: true },
+                  },
+                },
+                plugins: [ChartDataLabels],
+              });
+
+            if (costCtx)
+              new Chart(costCtx.getContext("2d"), {
+                type: "bar",
+                data: {
+                  labels: ["LFP", "Crystron"],
+                  datasets: [
+                    {
+                      label: "$/kWh",
+                      data: [4.4, 2.65],
+                      backgroundColor: [cssLfp, cssCry],
+                      borderRadius: 10,
+                      maxBarThickness: 56,
+                    },
+                  ],
+                },
+                options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: { display: false },
+                    datalabels: { display: false },
+                  },
+                  scales: {
+                    x: {
+                      ticks: { display: true, color: "var(--text-secondary)" },
+                      grid: { display: false },
+                    },
+                    y: { beginAtZero: true },
+                  },
+                },
+                plugins: [ChartDataLabels],
+              });
+
+            if (wasteCtx)
+              new Chart(wasteCtx.getContext("2d"), {
+                type: "bar",
+                data: {
+                  labels: ["LFP", "Crystron"],
+                  datasets: [
+                    {
+                      label: "Ton/Ton",
+                      data: [1, 0],
+                      backgroundColor: [cssLfp, cssCry],
+                      borderRadius: 10,
+                      maxBarThickness: 56,
+                    },
+                  ],
+                },
+                options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: { display: false },
+                    datalabels: { display: false },
+                  },
+                  scales: {
+                    x: {
+                      ticks: { display: true, color: "var(--text-secondary)" },
+                      grid: { display: false },
+                    },
+                    y: { beginAtZero: true },
+                  },
+                },
+                plugins: [ChartDataLabels],
+              });
+
+            if (waterCtx)
+              new Chart(waterCtx.getContext("2d"), {
+                type: "bar",
+                data: {
+                  labels: ["LFP", "Crystron"],
+                  datasets: [
+                    {
+                      label: "Ton/Ton",
+                      data: [1000, 0],
+                      backgroundColor: [cssLfp, cssCry],
+                      borderRadius: 10,
+                      maxBarThickness: 56,
+                    },
+                  ],
+                },
+                options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: { display: false },
+                    datalabels: { display: false },
+                  },
+                  scales: {
+                    x: {
+                      ticks: { display: true, color: "var(--text-secondary)" },
+                      grid: { display: false },
+                    },
+                    y: { beginAtZero: true },
+                  },
+                },
+                plugins: [ChartDataLabels],
+              });
+          } catch (e) {
+            console.warn("Chart init failed", e);
+          }
+        }
+        // Try to init charts after a short delay (Chart.js may be loaded via CDN elsewhere)
+        setTimeout(initCharts, 500);
       });
     </script>
   </body>
 </html>
-
-
