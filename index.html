@@ -198,7 +198,7 @@
         justify-content: center; /* center the nav-links by default */
         gap: 1rem;
         transition: transform 0.28s ease-in-out, background-color 0.3s ease;
-        z-index: 1000;
+        z-index: 3000; /* ensure header sits above content */
         border-bottom: 1px solid var(--border-primary);
       }
       #sidebar-nav .logo-container {
@@ -678,7 +678,10 @@
           margin-top: 80px;
         }
         #mobile-menu-toggle {
-          display: block;
+          display: inline-flex; /* make toggle visible up to tablet widths */
+          align-items: center;
+          justify-content: center;
+          z-index: 2200; /* above hero content */
         }
         .page {
           padding: 5rem 2rem 3rem 2rem;
@@ -1651,11 +1654,7 @@
               </div>
             </div>
             <div class="tech-comparison">
-              <div class="tech-top-row">
-                <div class="section-heading">Performance</div>
-                <div class="section-heading">Efficiency</div>
-                <div class="section-heading">Sustainability</div>
-              </div>
+              <!-- desktop-only top headings removed to rely on per-section headings for clarity on all viewports -->
               <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12 tech-grid">
               <div class="space-y-6">
                 <div class="mobile-section-heading">Performance</div>
