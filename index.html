@@ -677,11 +677,26 @@
           width: 100%;
           margin-top: 80px;
         }
+        /* make the header-local toggle visible; also provide a fixed fallback so it's always tappable */
         #mobile-menu-toggle {
           display: inline-flex; /* make toggle visible up to tablet widths */
           align-items: center;
           justify-content: center;
           z-index: 2200; /* above hero content */
+        }
+        /* Fixed fallback on narrow devices so the control is never hidden by content */
+        @media (max-width: 768px) {
+          #mobile-menu-toggle {
+            position: fixed;
+            top: 10px;
+            right: 12px;
+            display: inline-flex;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-primary);
+            padding: 0.45rem 0.6rem;
+            border-radius: 10px;
+            z-index: 5000;
+          }
         }
         .page {
           padding: 5rem 2rem 3rem 2rem;
@@ -710,10 +725,11 @@
           display: flex;
           flex-direction: column;
           gap: 0.75rem;
-          align-items: stretch;
+          align-items: center; /* center children in column */
           width: 100%;
           max-width: 420px;
           margin: 0.5rem auto 0 auto; /* center the CTA column */
+          text-align: center;
         }
         .hero-section-content .space-x-4 .btn {
           width: 100%;
