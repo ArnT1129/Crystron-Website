@@ -605,18 +605,16 @@
         font-size: 1rem;
       }
 
+      /* header-local mobile toggle (hidden on desktop) */
       #mobile-menu-toggle {
         display: none;
-        position: fixed;
-        top: 1.75rem;
-        right: 1.75rem;
-        z-index: 1001;
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-        border: 1px solid var(--border-primary);
-        border-radius: 0.6rem;
-        padding: 0.7rem 0.9rem;
-        font-size: 1.6rem;
+        background: transparent;
+        color: var(--text-nav);
+        border: none;
+        padding: 0.35rem 0.5rem;
+        font-size: 1.15rem;
+        border-radius: 8px;
+        cursor: pointer;
       }
 
       @media (max-width: 1024px) {
@@ -630,7 +628,6 @@
           align-items: stretch;
           gap: 0.35rem;
           justify-content: flex-start; /* keep content stacked */
-          --mobile-nav-height: 360px; /* used to push content down when open */
         }
         #sidebar-nav.open {
           transform: translateY(0);
@@ -1428,14 +1425,7 @@
       Skip to Main Content
     </a>
 
-    <button
-      id="mobile-menu-toggle"
-      aria-label="Toggle Menu"
-      aria-expanded="false"
-      aria-controls="sidebar-nav"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
+    <!-- mobile toggle moved into header for better UX on small screens -->
 
     <aside id="sidebar-nav">
       <div class="logo-container">
@@ -1481,6 +1471,16 @@
         >
           <i class="fas fa-sun mr-2"></i><i class="fas fa-moon mr-2"></i>
           <span>Switch</span>
+        </button>
+        <!-- mobile menu toggle placed here so there's a single header control on phones -->
+        <button
+          id="mobile-menu-toggle"
+          class="theme-toggle-button mobile-menu-toggle"
+          aria-label="Open Menu"
+          aria-controls="sidebar-nav"
+          aria-expanded="false"
+        >
+          <i class="fas fa-bars"></i>
         </button>
       </div>
     </aside>
@@ -2373,6 +2373,8 @@
             mobileMenuToggle.querySelector("i").classList.remove("fa-times");
             mobileMenuToggle.querySelector("i").classList.add("fa-bars");
             document.body.classList.remove("nav-open");
+            document.documentElement.style.removeProperty("--mobile-nav-height");
+            mainContentArea.style.marginTop = "80px";
           }
         }
 
@@ -2403,8 +2405,22 @@
             const icon = mobileMenuToggle.querySelector("i");
             icon.classList.toggle("fa-bars", !isOpen);
             icon.classList.toggle("fa-times", isOpen);
-            // also toggle a body class so we can adjust page flow (push content down)
+            // toggle a body class so we can adjust page flow (push content down)
             document.body.classList.toggle("nav-open", isOpen);
+            if (isOpen) {
+              // compute the nav height and set a CSS variable so the main content is pushed down exactly
+              const rect = sidebarNav.getBoundingClientRect();
+              const height = Math.ceil(rect.height) + "px";
+              document.documentElement.style.setProperty(
+                "--mobile-nav-height",
+                height
+              );
+              // ensure main content has updated margin
+              mainContentArea.style.marginTop = `var(--mobile-nav-height)`;
+            } else {
+              document.documentElement.style.removeProperty("--mobile-nav-height");
+              mainContentArea.style.marginTop = "80px";
+            }
           });
         }
 
