@@ -193,6 +193,14 @@
         top: 0;
         left: 0;
         display: flex;
+      /* Ensure hero CTA buttons stack and center cleanly on narrow phones */
+      .hero-section-content .space-x-4 {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.6rem !important;
+      }
         flex-direction: row;
         align-items: center;
         justify-content: center; /* center the nav-links by default */
@@ -688,14 +696,40 @@
         @media (max-width: 768px) {
           #mobile-menu-toggle {
             position: fixed;
-            top: 10px;
-            right: 12px;
+            /* respect safe area on iOS */
+            top: calc(env(safe-area-inset-top, 0px) + 8px);
+            right: calc(env(safe-area-inset-right, 0px) + 12px);
             display: inline-flex;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid var(--border-primary);
+            background: rgba(255,255,255,0.06);
+            color: var(--text-primary);
+            border: 1px solid rgba(0,0,0,0.06);
             padding: 0.45rem 0.6rem;
             border-radius: 10px;
-            z-index: 5000;
+            z-index: 99999; /* very high so it can't be covered */
+            box-shadow: 0 6px 18px rgba(2,6,23,0.12);
+          }
+        }
+
+        /* fallback fixed button (visible only on phones) */
+        #mobile-menu-toggle-fallback {
+          display: none; /* default off, enabled below for small screens */
+          position: fixed;
+          top: calc(env(safe-area-inset-top, 0px) + 10px);
+          right: calc(env(safe-area-inset-right, 0px) + 12px);
+          z-index: 100000;
+          background: rgba(0,0,0,0.6);
+          color: #fff;
+          border-radius: 10px;
+          padding: 0.5rem;
+          border: none;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+          #mobile-menu-toggle-fallback {
+            display: inline-flex;
           }
         }
         .page {
@@ -1466,6 +1500,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
   </head>
   <body>
+    <!-- Fallback mobile hamburger: fixed to viewport so it's always reachable on phones (only visible on small screens) -->
+    <button id="mobile-menu-toggle-fallback" aria-label="Open navigation" class="mobile-fallback-toggle" style="display:none"> 
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+    </button>
     <a
       href="#main-content-area"
       class="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-[2000] focus:p-4 focus:bg-accent-primary focus:text-white"
@@ -2962,5 +3000,35 @@
         setTimeout(initCharts, 500);
       });
     </script>
+      <script>
+        // Wire the fixed fallback toggle to the header toggle so it's always usable on phones
+        (function () {
+          document.addEventListener('DOMContentLoaded', function () {
+            try {
+              var mainToggle = document.getElementById('mobile-menu-toggle');
+              var fallback = document.getElementById('mobile-menu-toggle-fallback');
+              var sidebar = document.getElementById('sidebar-nav');
+              if (fallback && mainToggle && sidebar) {
+                // clicking fallback triggers the main toggle
+                fallback.addEventListener('click', function () {
+                  mainToggle.click();
+                });
+
+                // Sync aria-expanded state when menu toggles
+                mainToggle.addEventListener('click', function () {
+                  var isOpen = sidebar.classList.contains('open');
+                  fallback.setAttribute('aria-expanded', String(isOpen));
+                  mainToggle.setAttribute('aria-expanded', String(isOpen));
+                });
+
+                // set initial state
+                fallback.setAttribute('aria-expanded', mainToggle.getAttribute('aria-expanded') || 'false');
+              }
+            } catch (e) {
+              console && console.warn && console.warn('mobile fallback init error', e);
+            }
+          });
+        })();
+      </script>
   </body>
 </html>
