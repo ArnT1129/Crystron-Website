@@ -340,6 +340,54 @@
           opacity: 1;
         }
       }
+      
+      @keyframes bounce {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(10px);
+        }
+      }
+      
+      /* Value Prop Flow Animation */
+      @keyframes slideInFromLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      #value-prop-flow > div:nth-child(1) {
+        animation: slideInFromLeft 0.6s ease-out 0.1s both;
+      }
+      #value-prop-flow > div:nth-child(2) {
+        animation: slideInFromLeft 0.6s ease-out 0.3s both;
+      }
+      #value-prop-flow > div:nth-child(3) {
+        animation: slideInFromLeft 0.6s ease-out 0.5s both;
+      }
+      #value-prop-flow > div:nth-child(4) {
+        animation: slideInFromLeft 0.6s ease-out 0.7s both;
+      }
+      
+      /* Gradient Pastel Backgrounds */
+      .gradient-pastel-blue {
+        background: linear-gradient(135deg, rgba(43, 108, 176, 0.08), rgba(99, 179, 237, 0.05), rgba(43, 108, 176, 0.08));
+      }
+      .gradient-pastel-teal {
+        background: linear-gradient(135deg, rgba(49, 151, 149, 0.08), rgba(79, 209, 197, 0.05), rgba(49, 151, 149, 0.08));
+      }
+      .dark-mode .gradient-pastel-blue {
+        background: linear-gradient(135deg, rgba(79, 209, 197, 0.12), rgba(99, 179, 237, 0.08), rgba(79, 209, 197, 0.12));
+      }
+      .dark-mode .gradient-pastel-teal {
+        background: linear-gradient(135deg, rgba(99, 179, 237, 0.12), rgba(79, 209, 197, 0.08), rgba(99, 179, 237, 0.12));
+      }
 
       .section-title {
         font-size: clamp(2.85rem, 5.8vw, 4.5rem);
@@ -385,7 +433,7 @@
       }
 
       .card {
-        background-color: var(--bg-secondary);
+        background: linear-gradient(135deg, var(--bg-secondary), rgba(43, 108, 176, 0.03), rgba(49, 151, 149, 0.02));
         border-radius: 16px;
         padding: 2.75rem;
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
@@ -395,6 +443,10 @@
         flex-direction: column;
         position: relative;
         overflow: hidden;
+      }
+      .dark-mode .card {
+        background: linear-gradient(135deg, var(--bg-secondary), rgba(79, 209, 197, 0.06), rgba(99, 179, 237, 0.04));
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
       }
       .card::before {
         content: '';
@@ -528,21 +580,24 @@
         box-shadow: 0 8px 28px rgba(var(--accent-primary-rgb, 79, 209, 197), 0.5);
       }
       .btn-secondary {
-        background-color: transparent;
+        background: linear-gradient(135deg, transparent, rgba(43, 108, 176, 0.05));
         color: var(--accent-primary);
         border: 2.5px solid var(--accent-primary);
         font-weight: 500;
       }
       .btn-secondary:hover {
-        background-color: rgba(var(--accent-primary-rgb, 43, 108, 176), 0.12);
+        background: linear-gradient(135deg, rgba(43, 108, 176, 0.12), rgba(49, 151, 149, 0.08));
         color: var(--accent-primary);
         transform: translateY(-3px);
         box-shadow: 0 6px 20px rgba(var(--accent-primary-rgb, 43, 108, 176), 0.25);
         border-color: var(--accent-primary);
       }
+      .dark-mode .btn-secondary {
+        background: linear-gradient(135deg, transparent, rgba(79, 209, 197, 0.08));
+      }
       .dark-mode .btn-secondary:hover {
-        background-color: rgba(var(--accent-primary-rgb, 79, 209, 197), 0.15);
-        box-shadow: 0 6px 20px rgba(var(--accent-primary-rgb, 79, 209, 197), 0.3);
+        background: linear-gradient(135deg, rgba(79, 209, 197, 0.2), rgba(99, 179, 237, 0.15));
+        box-shadow: 0 6px 20px rgba(var(--accent-primary-rgb, 79, 209, 197), 0.4);
       }
 
       .contact-form input,
@@ -958,6 +1013,21 @@
       }
 
       /* News Page Specific Styles */
+      .news-carousel-container {
+        position: relative;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 60px;
+      }
+      .news-carousel-wrapper {
+        overflow: hidden;
+        position: relative;
+      }
+      .news-carousel {
+        display: flex;
+        transition: transform 0.5s ease;
+        gap: 2rem;
+      }
       .news-card {
         background-color: var(--bg-secondary);
         border-radius: 14px;
@@ -969,6 +1039,54 @@
         display: flex;
         flex-direction: column;
         height: 100%;
+        width: calc(33.333% - 1.33rem);
+        min-width: calc(33.333% - 1.33rem);
+        flex-shrink: 0;
+      }
+      @media (max-width: 768px) {
+        .news-carousel-container {
+          padding: 0 50px;
+        }
+      }
+      .news-carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--bg-secondary);
+        border: 2px solid var(--border-primary);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s ease;
+        color: var(--text-primary);
+        font-size: 1.5rem;
+      }
+      .news-carousel-arrow:hover {
+        background-color: var(--accent-primary);
+        border-color: var(--accent-primary);
+        color: white;
+        transform: translateY(-50%) scale(1.1);
+      }
+      .news-carousel-arrow.prev {
+        left: 0;
+      }
+      .news-carousel-arrow.next {
+        right: 0;
+      }
+      .news-carousel-arrow:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      .news-carousel-arrow:disabled:hover {
+        transform: translateY(-50%);
+        background-color: var(--bg-secondary);
+        border-color: var(--border-primary);
+        color: var(--text-primary);
       }
       .news-card:hover {
         transform: translateY(-8px) scale(1.02);
@@ -1664,42 +1782,211 @@
                 Get In Touch <i class="fas fa-paper-plane ml-2"></i>
               </a>
             </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator animated-element" onclick="scrollToMarketOpportunity()" style="text-align: center; margin-top: 2rem; animation: bounce 2s infinite; cursor: pointer; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+              <i class="fas fa-chevron-down" style="font-size: 2rem; color: var(--accent-primary); opacity: inherit;"></i>
+            </div>
           </div>
 
-          <!-- Updated Demand Section -->
-          <div class="w-full max-w-6xl mx-auto px-4 py-16 md:py-20">
-            <h2
-              class="text-3xl md:text-4xl font-bold text-text-primary text-center mb-5 animated-element"
-            >
-              The Surging Demand for Advanced Batteries
-            </h2>
-            <p
-              class="text-lg text-text-secondary text-center max-w-3xl mx-auto mb-10 md:mb-12 animated-element"
-            >
-              The global shift towards electrification is fueling unprecedented
-              growth in the lithium-ion battery market, with a projected 27%
-              CAGR to reach ~4,700 GWh by 2030, creating a significant
-              opportunity for innovative solutions.
-            </p>
-            <div class="chart-container animated-element">
-              <div class="bar-chart-large">
-                <div class="bar animated-element" style="height: 15%">
-                  <div class="bar-value">~700</div>
-                  <div class="bar-label">2022</div>
+          <!-- Market Opportunity Section -->
+          <div class="w-full max-w-7xl mx-auto px-4 py-16 md:py-24" id="market-opportunity">
+            <div class="text-center mb-16">
+              <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-6 animated-element">
+                Market Opportunity
+              </h2>
+              <p class="text-lg text-text-secondary max-w-3xl mx-auto animated-element">
+                Crystron's Cathode Active Material addresses critical supply shortages and manufacturing challenges in North America's battery market, positioning the company to capture significant market share in the rapidly expanding energy storage sector.
+              </p>
+            </div>
+
+            <!-- Supply Shortfall Visualization -->
+            <div class="card p-8 mb-12 animated-element gradient-pastel-blue">
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 class="text-2xl font-bold text-text-primary mb-4">North America Supply Gap</h3>
+
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between p-4 border-l-4 border-accent-primary rounded-r" style="background: linear-gradient(135deg, var(--bg-tertiary), rgba(43, 108, 176, 0.1));">
+                      <span class="text-text-primary font-medium">Projected Demand (2032)</span>
+                      <span class="text-accent-primary font-bold text-xl">~1,355 GWh</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 border-l-4 border-text-secondary rounded-r" style="background: linear-gradient(135deg, var(--bg-tertiary), rgba(74, 85, 104, 0.1));">
+                      <span class="text-text-primary font-medium">Available Capacity (2032)</span>
+                      <span class="text-text-secondary font-bold text-xl">~570 GWh</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 border-l-4 border-accent-secondary rounded-r" style="background: linear-gradient(135deg, var(--bg-tertiary), rgba(49, 151, 149, 0.1));">
+                      <span class="text-text-primary font-medium">Supply Shortfall</span>
+                      <span class="text-accent-secondary font-bold text-xl">58%</span>
+                    </div>
+                  </div>
+                  <p class="text-sm text-text-secondary mt-6 italic">Source: Argonne National Laboratory</p>
                 </div>
-                <div class="bar animated-element" style="height: 36%">
-                  <div class="bar-value">~1,700</div>
-                  <div class="bar-label">2025</div>
-                </div>
-                <div class="bar animated-element" style="height: 100%">
-                  <div class="bar-value">~4,700</div>
-                  <div class="bar-label">2030</div>
+                <div class="relative">
+                  <div class="relative" style="height: 280px; display: flex; align-items: flex-end; justify-content: center; gap: 2rem;">
+                    <!-- Demand Bar -->
+                    <div class="flex flex-col items-center">
+                      <div class="rounded-t-lg mb-2 transition-all hover:opacity-90" style="width: 80px; height: 100%; min-height: 200px; background: linear-gradient(180deg, var(--accent-secondary), var(--accent-primary));"></div>
+                      <span class="text-sm font-semibold" style="color: var(--text-primary);">1,355 GWh</span>
+                      <span class="text-xs" style="color: var(--text-secondary);">Demand</span>
+                    </div>
+                    <!-- Capacity Bar -->
+                    <div class="flex flex-col items-center">
+                      <div class="rounded-t-lg mb-2 transition-all hover:opacity-90" style="width: 80px; height: 42%; min-height: 84px; background: linear-gradient(180deg, var(--accent-secondary), var(--accent-primary)); opacity: 0.6;"></div>
+                      <span class="text-sm font-semibold" style="color: var(--text-primary);">570 GWh</span>
+                      <span class="text-xs" style="color: var(--text-secondary);">Capacity</span>
+                    </div>
+                    <!-- Gap Indicator -->
+                    <div class="absolute" style="top: -30px; left: 50%; transform: translateX(-50%); text-align: center;">
+                      <div class="mb-1" style="width: 120px; height: 3px; background-color: var(--accent-secondary); border-radius: 2px;"></div>
+                      <span class="text-xs font-semibold" style="color: var(--accent-secondary);">58% Gap</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <p class="text-center mt-12 text-text-secondary">
-                Global Li-ion battery cell demand, GWh, Base case. Source:
-                McKinsey Battery Insights
+            </div>
+
+            <!-- TAM Section with Simple Bar Chart -->
+            <div class="card p-8 mb-8 animated-element gradient-pastel-blue">
+              <div class="text-center mb-8">
+                <h3 class="text-3xl font-bold text-text-primary mb-2">The Surging Demand for Advanced Batteries</h3>
+                <p class="text-lg text-text-secondary max-w-3xl mx-auto">
+                  The global shift toward electrification and renewable energy is driving exceptional growth in the lithium-ion battery market. With a projected compound annual growth rate of 27%.
+                </p>
+              </div>
+              
+              <!-- Simple Bar Chart -->
+              <div class="mb-12">
+                <div class="relative" style="height: 350px; padding-top: 20px;">
+                  <canvas id="tamBarChart"></canvas>
+                </div>
+                <p class="text-center mt-6 text-text-secondary text-sm">Global Li-ion battery cell demand, GWh, Base case. Source: McKinsey Battery Insights</p>
+              </div>
+
+              <!-- TAM Tables -->
+              <div class="grid md:grid-cols-2 gap-6 mt-12">
+                <div class="card p-6 gradient-pastel-blue">
+                  <h4 class="text-xl font-bold text-text-primary mb-6 pb-3 border-b-2" style="border-color: var(--accent-primary);">Global CAM Market </h4>
+                  <div class="space-y-4">
+                    <div class="flex justify-between items-center p-4 rounded-lg transition-all hover:shadow-md" style="background: linear-gradient(135deg, var(--bg-secondary), rgba(43, 108, 176, 0.1)); border-left: 4px solid var(--accent-primary);">
+                      <div>
+                        <span class="text-text-secondary text-sm block mb-1">2025</span>
+                        <span class="text-text-primary font-semibold">Global Market</span>
+                      </div>
+                      <span class="text-accent-primary font-bold text-2xl">$38B</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 rounded-lg transition-all hover:shadow-md" style="background: linear-gradient(135deg, var(--bg-secondary), rgba(43, 108, 176, 0.1)); border-left: 4px solid var(--accent-primary);">
+                      <div>
+                        <span class="text-text-secondary text-sm block mb-1">2030</span>
+                        <span class="text-text-primary font-semibold">Global Market</span>
+                      </div>
+                      <span class="text-accent-primary font-bold text-2xl">$93B</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 rounded-lg transition-all hover:shadow-md" style="background: linear-gradient(135deg, var(--bg-secondary), rgba(43, 108, 176, 0.1)); border-left: 4px solid var(--accent-primary);">
+                      <div>
+                        <span class="text-text-secondary text-sm block mb-1">2035</span>
+                        <span class="text-text-primary font-semibold">Global Market</span>
+                      </div>
+                      <span class="text-accent-primary font-bold text-2xl">$153B</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card p-6 gradient-pastel-teal">
+                  <h4 class="text-xl font-bold text-text-primary mb-2">North America CAM Market </h4>
+                  <div class="space-y-4">
+                    <div class="flex justify-between items-center p-4 rounded-lg transition-all hover:shadow-md" style="background: linear-gradient(135deg, var(--bg-secondary), rgba(49, 151, 149, 0.1)); border-left: 4px solid var(--accent-secondary);">
+                      <div>
+                        <span class="text-text-secondary text-sm block mb-1">2025</span>
+                        <span class="text-text-primary font-semibold">North America</span>
+                      </div>
+                      <span class="text-accent-secondary font-bold text-2xl">$6B</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 rounded-lg transition-all hover:shadow-md" style="background: linear-gradient(135deg, var(--bg-secondary), rgba(49, 151, 149, 0.1)); border-left: 4px solid var(--accent-secondary);">
+                      <div>
+                        <span class="text-text-secondary text-sm block mb-1">2030</span>
+                        <span class="text-text-primary font-semibold">North America</span>
+                      </div>
+                      <span class="text-accent-secondary font-bold text-2xl">$16B</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 rounded-lg transition-all hover:shadow-md" style="background: linear-gradient(135deg, var(--bg-secondary), rgba(49, 151, 149, 0.1)); border-left: 4px solid var(--accent-secondary);">
+                      <div>
+                        <span class="text-text-secondary text-sm block mb-1">2035</span>
+                        <span class="text-text-primary font-semibold">North America</span>
+                      </div>
+                      <span class="text-accent-secondary font-bold text-2xl">$27B</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center mt-8 text-text-secondary text-sm italic">Source: BloombergNEF 2024, McKinsey Battery Insights 2022</p>
+            </div>
+          </div>
+
+          <!-- Value Proposition Section -->
+          <div class="w-full max-w-7xl mx-auto px-4 py-12 md:py-16" id="value-proposition" style="background: linear-gradient(135deg, rgba(43, 108, 176, 0.05), rgba(49, 151, 149, 0.08), rgba(43, 108, 176, 0.05));">
+            <div class="text-center mb-10">
+              <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-4 animated-element">
+                Value Proposition
+              </h2>
+              <p class="text-lg text-text-secondary max-w-3xl mx-auto animated-element">
+                Crystron's proprietary technology delivers significant competitive advantages across manufacturing efficiency, cost structure, and environmental impact.
               </p>
+            </div>
+
+            <!-- Animated Value Prop Flow -->
+            <div class="relative overflow-hidden mb-10">
+              <div class="flex flex-col md:flex-row gap-6 items-stretch" id="value-prop-flow">
+                <div class="card p-6 text-center flex-1 animated-element" style="background: linear-gradient(135deg, rgba(43, 108, 176, 0.1), rgba(43, 108, 176, 0.05)); border: 2px solid rgba(43, 108, 176, 0.3);">
+                  <div class="text-5xl font-bold mb-3" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">65%</div>
+                  <h3 class="text-lg font-semibold text-text-primary mb-2">Fewer Steps</h3>
+                  <p class="text-text-secondary text-sm">Streamlined manufacturing process reduces complexity and operational risk</p>
+                </div>
+                <div class="card p-6 text-center flex-1 animated-element" style="background: linear-gradient(135deg, rgba(43, 108, 176, 0.1), rgba(49, 151, 149, 0.1)); border: 2px solid rgba(43, 108, 176, 0.3);">
+                  <div class="text-5xl font-bold mb-3" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">40%</div>
+                  <h3 class="text-lg font-semibold text-text-primary mb-2">Lower Cost</h3>
+                  <p class="text-text-secondary text-sm">Reduced capital expenditure and operational expenses improve unit economics</p>
+                </div>
+                <div class="card p-6 text-center flex-1 animated-element" style="background: linear-gradient(135deg, rgba(49, 151, 149, 0.1), rgba(43, 108, 176, 0.1)); border: 2px solid rgba(49, 151, 149, 0.3);">
+                  <div class="text-5xl font-bold mb-3" style="background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">80%</div>
+                  <h3 class="text-lg font-semibold text-text-primary mb-2">Less Energy</h3>
+                  <p class="text-text-secondary text-sm">Significantly reduced energy consumption lowers operating costs and environmental footprint</p>
+                </div>
+                <div class="card p-6 text-center flex-1 animated-element transform scale-105" style="background: linear-gradient(135deg, rgba(49, 151, 149, 0.2), rgba(79, 209, 197, 0.15)); border: 3px solid var(--accent-secondary); box-shadow: 0 10px 30px rgba(49, 151, 149, 0.3); z-index: 10;">
+                  <div class="text-6xl font-bold mb-3" style="color: var(--accent-secondary); text-shadow: 0 0 20px rgba(49, 151, 149, 0.5);">0</div>
+                  <h3 class="text-xl font-bold text-text-primary mb-2">Zero Waste</h3>
+                  <p class="text-text-secondary font-medium">Elimination of toxic byproducts and water waste enables sustainable production</p>
+                  <div class="mt-3 inline-block px-4 py-2 rounded-full text-sm font-semibold" style="background: linear-gradient(135deg, var(--accent-secondary), rgba(49, 151, 149, 0.8)); color: white;">
+                    Our Biggest Win
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-8 animated-element" style="background: linear-gradient(135deg, var(--bg-secondary), rgba(43, 108, 176, 0.05));">
+              <h3 class="text-2xl font-bold text-text-primary mb-6 text-center">The Technical Edge</h3>
+              <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center p-4 rounded-lg" style="background: linear-gradient(135deg, rgba(43, 108, 176, 0.1), transparent);">
+                  <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));">
+                    <i class="fas fa-check-circle text-3xl text-white"></i>
+                  </div>
+                  <h4 class="font-semibold text-text-primary mb-2">No Separate pCAM</h4>
+                  <p class="text-text-secondary text-sm">Integrated process eliminates intermediate steps, reducing complexity and cost</p>
+                </div>
+                <div class="text-center p-4 rounded-lg" style="background: linear-gradient(135deg, rgba(49, 151, 149, 0.1), transparent);">
+                  <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-secondary), rgba(49, 151, 149, 0.8));">
+                    <i class="fas fa-recycle text-3xl text-white"></i>
+                  </div>
+                  <h4 class="font-semibold text-text-primary mb-2">Zero Toxic Waste</h4>
+                  <p class="text-text-secondary text-sm">Elimination of harmful byproducts through closed-loop manufacturing processes</p>
+                </div>
+                <div class="text-center p-4 rounded-lg" style="background: linear-gradient(135deg, rgba(43, 108, 176, 0.1), transparent);">
+                  <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-primary), rgba(43, 108, 176, 0.8));">
+                    <i class="fas fa-bolt text-3xl text-white"></i>
+                  </div>
+                  <h4 class="font-semibold text-text-primary mb-2">Lower Energy & Cost</h4>
+                  <p class="text-text-secondary text-sm">Reduced calcination requirements and processing steps lower operational expenses</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -1746,7 +2033,9 @@
                 class="card p-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
               >
                 <div class="flex items-center gap-3">
-                  <i class="fas fa-check-circle text-2xl text-green-500"></i>
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));">
+                    <i class="fas fa-check-circle text-xl text-white"></i>
+                  </div>
                   <div>
                     <div class="font-semibold">No separate pCAM</div>
                     <div class="text-sm text-text-secondary">
@@ -1755,7 +2044,9 @@
                   </div>
                 </div>
                 <div class="flex items-center gap-3">
-                  <i class="fas fa-recycle text-2xl text-blue-500"></i>
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-secondary), rgba(49, 151, 149, 0.8));">
+                    <i class="fas fa-recycle text-xl text-white"></i>
+                  </div>
                   <div>
                     <div class="font-semibold">Zero toxic solid waste</div>
                     <div class="text-sm text-text-secondary">
@@ -1764,7 +2055,9 @@
                   </div>
                 </div>
                 <div class="flex items-center gap-3">
-                  <i class="fas fa-bolt text-2xl text-yellow-500"></i>
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-primary), rgba(43, 108, 176, 0.8));">
+                    <i class="fas fa-bolt text-xl text-white"></i>
+                  </div>
                   <div>
                     <div class="font-semibold">Lower energy & cost</div>
                     <div class="text-sm text-text-secondary">
@@ -2179,7 +2472,12 @@
               breakthroughs, and industry presence.
             </p>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="news-carousel-container">
+              <button class="news-carousel-arrow prev" aria-label="Previous news" onclick="moveNewsCarousel(-1)">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="news-carousel-wrapper">
+                <div class="news-carousel" id="news-carousel">
               <article class="news-card animated-element">
                 <img
                   src="data:image/png;base64,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"
@@ -2187,7 +2485,7 @@
                   onerror="this.onerror=null; this.src='https://placehold.co/600x400/101725/a0aec0?text=News+Image&font=inter';"
                 />
                 <h3 class="news-card-title">
-                  Crystron Technologies Awarded $162,500 Delaware EDGE 2.0 Grant!
+                  Crystron Technologies Awarded $162,500 Delaware EDGE 2.0 Grant
                 </h3>
                 <span class="news-card-date">November 12, 2025</span>
                 <p class="news-card-summary">
@@ -2324,6 +2622,11 @@
                   <i class="fas fa-external-link-alt"></i>
                 </a>
               </article>
+                </div>
+              </div>
+              <button class="news-carousel-arrow next" aria-label="Next news" onclick="moveNewsCarousel(1)">
+                <i class="fas fa-chevron-right"></i>
+              </button>
             </div>
           </div>
         </section>
@@ -2442,11 +2745,22 @@
                     <i class="fas fa-envelope-open-text mr-3 text-2xl"></i
                     >General Inquiries
                   </h4>
-                  <a
-                    href="mailto:info@crystronmat.com"
-                    class="text-text-primary hover:text-accent-secondary transition text-lg lg:text-xl break-all"
-                    >info@crystronmat.com</a
-                  >
+                  <div class="flex items-center gap-3">
+                    <a
+                      href="mailto:info@crystronmat.com"
+                      class="text-text-primary hover:text-accent-secondary transition text-lg lg:text-xl break-all"
+                      >info@crystronmat.com</a
+                    >
+                    <button
+                      onclick="copyEmail(event)"
+                      class="p-2 rounded-lg transition"
+                      style="background-color: var(--bg-tertiary);"
+                      aria-label="Copy email address"
+                      title="Copy email"
+                    >
+                      <i class="fas fa-copy text-accent-primary"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -3085,6 +3399,94 @@
                 },
                 plugins: [ChartDataLabels],
               });
+
+            // TAM Simple Bar Chart
+            const tamBarCtx = document.getElementById("tamBarChart");
+            if (tamBarCtx) {
+              const cssVars = getComputedStyle(document.documentElement);
+              const accentPrimary = cssVars.getPropertyValue("--accent-primary").trim() || "#2b6cb0";
+              const accentSecondary = cssVars.getPropertyValue("--accent-secondary").trim() || "#319795";
+              const textSecondary = cssVars.getPropertyValue("--text-secondary").trim() || "#4a5568";
+              const textPrimary = cssVars.getPropertyValue("--text-primary").trim() || "#1a202c";
+
+              // Create gradient for bars
+              const ctx = tamBarCtx.getContext("2d");
+              const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+              gradient.addColorStop(0, accentSecondary);
+              gradient.addColorStop(1, accentPrimary);
+
+              new Chart(ctx, {
+                type: "bar",
+                data: {
+                  labels: ["2022", "2025", "2030"],
+                  datasets: [
+                    {
+                      label: "Demand (GWh)",
+                      data: [700, 1700, 4700],
+                      backgroundColor: gradient,
+                      borderRadius: 8,
+                      borderSkipped: false,
+                    },
+                  ],
+                },
+                options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  barThickness: 150,
+                  maxBarThickness: 200,
+                  plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                      backgroundColor: "var(--bg-secondary)",
+                      titleColor: textPrimary,
+                      bodyColor: textSecondary,
+                      borderColor: accentPrimary,
+                      borderWidth: 2,
+                      padding: 12,
+                      titleFont: { size: 14, weight: 'bold' },
+                      bodyFont: { size: 13 },
+                      callbacks: {
+                        label: function(context) {
+                          return "~" + context.parsed.y.toLocaleString() + " GWh";
+                        }
+                      }
+                    },
+                    datalabels: {
+                      display: true,
+                      color: textPrimary,
+                      anchor: 'end',
+                      align: 'top',
+                      offset: 8,
+                      font: { size: 14, weight: 'bold' },
+                      formatter: function(value) {
+                        return '~' + value.toLocaleString();
+                      }
+                    }
+                  },
+                  scales: {
+                    x: {
+                      ticks: { 
+                        color: textSecondary,
+                        font: { size: 14, weight: '600' }
+                      },
+                      grid: { display: false },
+                    },
+                    y: {
+                      beginAtZero: true,
+                      max: 5500,
+                      ticks: { 
+                        display: false,
+                      },
+                      grid: {
+                        display: false,
+                        drawBorder: false,
+                      },
+                    },
+                  },
+                },
+                plugins: ChartDataLabels ? [ChartDataLabels] : [],
+              });
+            }
           } catch (e) {
             console.warn("Chart init failed", e);
           }
@@ -3122,6 +3524,99 @@
             }
           });
         })();
+
+        // News Carousel Functionality
+        let newsCarouselIndex = 0;
+        const CARDS_PER_VIEW = 3; // Always show 3 cards
+
+        function moveNewsCarousel(direction) {
+          const carousel = document.getElementById('news-carousel');
+          if (!carousel) return;
+          
+          const cards = carousel.querySelectorAll('.news-card');
+          const totalCards = cards.length;
+          const maxIndex = Math.max(0, totalCards - CARDS_PER_VIEW);
+
+          // Shift by exactly one card
+          newsCarouselIndex += direction;
+          
+          if (newsCarouselIndex < 0) {
+            newsCarouselIndex = 0;
+          } else if (newsCarouselIndex > maxIndex) {
+            newsCarouselIndex = maxIndex;
+          }
+
+          // Calculate translateX based on card width and gap
+          if (cards.length > 0) {
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 32; // 2rem = 32px
+            const translateX = -(newsCarouselIndex * (cardWidth + gap));
+            carousel.style.transform = `translateX(${translateX}px)`;
+          }
+
+          // Update arrow states
+          const prevArrow = document.querySelector('.news-carousel-arrow.prev');
+          const nextArrow = document.querySelector('.news-carousel-arrow.next');
+          
+          if (prevArrow) {
+            prevArrow.disabled = newsCarouselIndex === 0;
+          }
+          if (nextArrow) {
+            nextArrow.disabled = newsCarouselIndex >= maxIndex;
+          }
+        }
+
+        // Initialize carousel on page load
+        document.addEventListener('DOMContentLoaded', () => {
+          const newsPage = document.getElementById('news-page');
+          if (newsPage) {
+            // Initialize to show first 3 cards (most recent)
+            newsCarouselIndex = 0;
+            moveNewsCarousel(0);
+          }
+        });
+
+        // Copy Email Function
+        function copyEmail(event) {
+          const email = 'info@crystronmat.com';
+          navigator.clipboard.writeText(email).then(() => {
+            // Show feedback
+            const button = event.target.closest('button');
+            if (button) {
+              const icon = button.querySelector('i');
+              if (icon) {
+                const originalClass = icon.className;
+                icon.className = 'fas fa-check';
+                icon.style.color = 'var(--accent-secondary)';
+                setTimeout(() => {
+                  icon.className = originalClass;
+                  icon.style.color = '';
+                }, 2000);
+              }
+            }
+          }).catch(err => {
+            console.error('Failed to copy email:', err);
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = email;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+              document.execCommand('copy');
+            } catch (e) {
+              console.error('Fallback copy failed:', e);
+            }
+            document.body.removeChild(textArea);
+          });
+        }
+
+        // Scroll to Market Opportunity Section
+        function scrollToMarketOpportunity() {
+          const marketSection = document.getElementById('market-opportunity');
+          if (marketSection) {
+            marketSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
       </script>
   </body>
 </html>
