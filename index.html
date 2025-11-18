@@ -830,7 +830,7 @@
           z-index: 2200; /* above hero content */
         }
         /* Fixed fallback on narrow devices so the control is never hidden by content */
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
           #mobile-menu-toggle {
             position: fixed;
             /* respect safe area on iOS */
@@ -848,7 +848,7 @@
         }
 
         /* fallback fixed button - only show on very small screens */
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
           #mobile-menu-toggle-fallback {
             display: inline-flex !important;
           }
