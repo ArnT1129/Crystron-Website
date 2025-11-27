@@ -1807,77 +1807,178 @@
     <style>
       /* Mobile optimizations and dark-mode tweaks inserted near body start */
       @media (max-width: 640px) {
-        .hero-title { font-size: 1.8rem !important; }
-        .hero-subhead { font-size: 1rem !important; padding: 0 1rem; }
-        .hero-section-content { padding-top: 28px; padding-bottom: 18px; }
-        .hero-section-content .btn { display: block !important; width: calc(100% - 40px) !important; max-width: 420px; margin: 0.5rem auto; }
-        .kpi-strip { padding: 0.5rem !important; }
-        .kpi-value { font-size: 1.1rem !important; }
-        .nav-link { padding: 0.7rem 0.9rem !important; font-size: 0.98rem !important; }
-        .news-card { padding: 1.25rem !important; }
-        .news-card-image { height: 160px !important; }
-        .news-carousel-arrow { width: 56px !important; height: 56px !important; }
-        .investor-kit-cta { display: none !important; }
+        .hero-title {
+          font-size: 1.8rem !important;
+        }
+        .hero-subhead {
+          font-size: 1rem !important;
+          padding: 0 1rem;
+        }
+        .hero-section-content {
+          padding-top: 28px;
+          padding-bottom: 18px;
+        }
+        .hero-section-content .btn {
+          display: block !important;
+          width: calc(100% - 40px) !important;
+          max-width: 420px;
+          margin: 0.5rem auto;
+        }
+        .kpi-strip {
+          padding: 0.5rem !important;
+        }
+        .kpi-value {
+          font-size: 1.1rem !important;
+        }
+        .nav-link {
+          padding: 0.7rem 0.9rem !important;
+          font-size: 0.98rem !important;
+        }
+        .news-card {
+          padding: 1.25rem !important;
+        }
+        .news-card-image {
+          height: 160px !important;
+        }
+        .news-carousel-arrow {
+          width: 56px !important;
+          height: 56px !important;
+        }
+        .investor-kit-cta {
+          display: none !important;
+        }
       }
 
       @media (max-width: 420px) {
-        .hero-title { font-size: 1.5rem !important; }
-        .kpi-item { min-width: 120px; }
-        .news-card-image { height: 140px !important; }
+        .hero-title {
+          font-size: 1.5rem !important;
+        }
+        .kpi-item {
+          min-width: 120px;
+        }
+        .news-card-image {
+          height: 140px !important;
+        }
       }
 
       /* Dark-mode specific overrides to ensure contrast and consistent look */
       .dark-mode .kpi-strip {
-        background: linear-gradient(90deg, rgba(10,15,26,0.12), rgba(16,23,35,0.06));
+        background: linear-gradient(
+          90deg,
+          rgba(10, 15, 26, 0.12),
+          rgba(16, 23, 35, 0.06)
+        );
       }
-      .dark-mode .kpi-item { background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.04); }
-      .dark-mode .kpi-value { color: var(--accent-secondary) !important; }
-      .dark-mode .hero-subhead { color: var(--text-secondary) !important; }
-      .dark-mode .investor-kit-cta { background: var(--accent-secondary) !important; box-shadow: 0 10px 24px rgba(0,0,0,0.4); }
-      .dark-mode .news-carousel-arrow { background: var(--bg-nav); color: var(--text-primary); border-color: var(--border-primary); }
+      .dark-mode .kpi-item {
+        background: rgba(255, 255, 255, 0.02);
+        border-color: rgba(255, 255, 255, 0.04);
+      }
+      .dark-mode .kpi-value {
+        color: var(--accent-secondary) !important;
+      }
+      .dark-mode .hero-subhead {
+        color: var(--text-secondary) !important;
+      }
+      .dark-mode .investor-kit-cta {
+        background: var(--accent-secondary) !important;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+      }
+      .dark-mode .news-carousel-arrow {
+        background: var(--bg-nav);
+        color: var(--text-primary);
+        border-color: var(--border-primary);
+      }
 
       /* Increase tap targets globally for mobile-friendly spacing */
       @media (max-width: 768px) {
-        a.btn, .nav-link { min-height: 48px; }
+        a.btn,
+        .nav-link {
+          min-height: 48px;
+        }
       }
       /* Hide dark mode toggle temporarily */
-      #theme-toggle-button { display: none !important; }
+      #theme-toggle-button {
+        display: none !important;
+      }
 
       /* Technology page mobile optimizations */
       @media (max-width: 768px) {
-        #technology-page .bg-gradient-to-r { padding: 1.25rem; border-radius: 14px; }
-        #technology-page .bg-gradient-to-r h2 { font-size: 1.6rem; }
-        #technology-page .bg-gradient-to-r p { font-size: 1rem; }
+        #technology-page .bg-gradient-to-r {
+          padding: 1.25rem;
+          border-radius: 14px;
+        }
+        #technology-page .bg-gradient-to-r h2 {
+          font-size: 1.6rem;
+        }
+        #technology-page .bg-gradient-to-r p {
+          font-size: 1rem;
+        }
         /* Make impact stats wrap into 2 columns */
-        #technology-page .bg-gradient-to-r .grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem !important; }
-        #technology-page .impact-stat .counter { font-size: 1.1rem !important; }
+        #technology-page .bg-gradient-to-r .grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 0.75rem !important;
+        }
+        #technology-page .impact-stat .counter {
+          font-size: 1.1rem !important;
+        }
 
         /* Stack manufacturing process cards vertically for small screens */
-        #technology-page .grid.md\:grid-cols-3, #technology-page .grid.md\:grid-cols-4 {
+        #technology-page .grid.md\:grid-cols-3,
+        #technology-page .grid.md\:grid-cols-4 {
           grid-template-columns: 1fr !important;
         }
-        #technology-page .p-6 { padding: 1rem !important; }
-        #technology-page .p-8 { padding: 0.9rem !important; }
+        #technology-page .p-6 {
+          padding: 1rem !important;
+        }
+        #technology-page .p-8 {
+          padding: 0.9rem !important;
+        }
 
         /* Make cards full width and remove side-by-side layout */
-        #technology-page .group\/card { width: 100% !important; margin-bottom: 1rem !important; }
-        #technology-page .border { border-width: 1px !important; }
+        #technology-page .group\/card {
+          width: 100% !important;
+          margin-bottom: 1rem !important;
+        }
+        #technology-page .border {
+          border-width: 1px !important;
+        }
 
         /* Ensure any illustrative images scale */
-        #technology-page img, #technology-page svg { max-width: 100% !important; height: auto !important; }
+        #technology-page img,
+        #technology-page svg {
+          max-width: 100% !important;
+          height: auto !important;
+        }
 
         /* Reduce large counters and badges */
-        #technology-page .text-4xl { font-size: 1.8rem !important; }
-        #technology-page .text-3xl { font-size: 1.6rem !important; }
+        #technology-page .text-4xl {
+          font-size: 1.8rem !important;
+        }
+        #technology-page .text-3xl {
+          font-size: 1.6rem !important;
+        }
       }
 
       @media (max-width: 420px) {
-        #technology-page .bg-gradient-to-r { padding: 1rem; }
-        #technology-page .bg-gradient-to-r .grid { grid-template-columns: 1fr !important; }
-        #technology-page .impact-stat .counter { font-size: 1rem !important; }
-        #technology-page .text-4xl { font-size: 1.5rem !important; }
-        #technology-page .text-3xl { font-size: 1.25rem !important; }
-        #technology-page .p-6, #technology-page .p-8 { padding: 0.8rem !important; }
+        #technology-page .bg-gradient-to-r {
+          padding: 1rem;
+        }
+        #technology-page .bg-gradient-to-r .grid {
+          grid-template-columns: 1fr !important;
+        }
+        #technology-page .impact-stat .counter {
+          font-size: 1rem !important;
+        }
+        #technology-page .text-4xl {
+          font-size: 1.5rem !important;
+        }
+        #technology-page .text-3xl {
+          font-size: 1.25rem !important;
+        }
+        #technology-page .p-6,
+        #technology-page .p-8 {
+          padding: 0.8rem !important;
+        }
       }
     </style>
     <!-- Fallback mobile hamburger: fixed to viewport so it's always reachable on phones (only visible on small screens) -->
@@ -3444,7 +3545,6 @@
                 <h3 class="text-2xl font-bold text-accent-primary">
                   Dr. Rajesh Tripathi
                 </h3>
-                src = ""
                 <p class="text-text-secondary mb-2 text-lg">
                   Chief Technology Officer
                 </p>
