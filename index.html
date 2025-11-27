@@ -100,8 +100,10 @@
         --accent-secondary-light: #319795;
         /* Chart palette — tuned to be visually distinct for comparisons */
         /* Subtle chart palette for investor-grade visuals */
-        --chart-lfp: #a0aec0; /* Muted Grey-Blue (Text Secondary) */
-        --chart-crystron: #2b6cb0; /* Blue (Accent Primary) */
+        --chart-lfp: #4f7a66; /* Muted green (LFP) - bold but muted */
+        --chart-crystron: #2563eb; /* Vibrant blue (Crystron) - stands out */
+        --process-lfp-rgb: 79,122,102; /* rgb for #4f7a66 */
+        --process-crystron-rgb: 37,99,235; /* rgb for #2563eb */
         --accent-glow-light: rgba(43, 108, 176, 0.15);
         --border-primary-light: #e2e8f0;
         --border-accent-light: #2b6cb0;
@@ -1665,10 +1667,12 @@
         box-shadow: 0 22px 45px -10px rgba(16, 24, 40, 0.18);
       }
       .card.lfp-outline {
-        border: 2px dashed rgba(239, 68, 68, 0.28);
+        border: 2px dashed rgba(var(--process-lfp-rgb,79,122,102), 0.28);
+        box-shadow: 0 8px 20px rgba(var(--process-lfp-rgb,79,122,102), 0.03) inset;
       }
       .card.crystron-outline {
-        border: 2px dashed rgba(37, 99, 235, 0.22);
+        border: 2px dashed rgba(var(--process-crystron-rgb,37,99,235), 0.28);
+        box-shadow: 0 10px 28px rgba(var(--process-crystron-rgb,37,99,235), 0.03) inset;
       }
 
       /* Subtle left accent on individual steps to reinforce identity */
@@ -1685,25 +1689,33 @@
       .process-diagram .step.lfp-step::before,
       .process-diagram .step.crystron-step::before {
         content: "";
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
         position: absolute;
         left: 12px;
         top: 50%;
         transform: translateY(-50%);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
       }
       .process-diagram .step.lfp-step::before {
-        background: #ef4444;
+        background: linear-gradient(180deg, rgba(var(--process-lfp-rgb,79,122,102),1), rgba(79,122,102,0.85));
+        border: 2px solid rgba(var(--process-lfp-rgb,79,122,102),0.12);
       }
       .process-diagram .step.crystron-step::before {
-        background: #2563eb;
+        background: linear-gradient(180deg, rgba(var(--process-crystron-rgb,37,99,235),1), rgba(37,99,235,0.85));
+        border: 2px solid rgba(var(--process-crystron-rgb,37,99,235),0.12);
       }
       .process-diagram .step.lfp-step {
-        padding-left: 2.25rem;
+        padding-left: 2.75rem;
+        border-left: 6px solid rgba(var(--process-lfp-rgb,79,122,102),0.08);
+        background: linear-gradient(180deg, rgba(var(--process-lfp-rgb,79,122,102),0.03), var(--bg-secondary));
       }
       .process-diagram .step.crystron-step {
-        padding-left: 2.25rem;
+        padding-left: 2.75rem;
+        border-left: 6px solid rgba(var(--process-crystron-rgb,37,99,235),0.10);
+        background: linear-gradient(180deg, rgba(var(--process-crystron-rgb,37,99,235),0.06), var(--bg-secondary));
+        box-shadow: 0 10px 30px rgba(var(--process-crystron-rgb,37,99,235),0.04);
       }
 
       /* Small flag/callout used to highlight differences (pCAM, waste) */
@@ -1720,20 +1732,20 @@
       .process-flag.lfp {
         background: linear-gradient(
           90deg,
-          rgba(239, 68, 68, 0.06),
-          rgba(255, 255, 255, 0.02)
+          rgba(var(--process-lfp-rgb,79,122,102), 0.10),
+          rgba(255, 255, 255, 0.03)
         );
-        color: #ef4444;
-        border: 1px solid rgba(239, 68, 68, 0.18);
+        color: #4f7a66;
+        border: 1px solid rgba(var(--process-lfp-rgb,79,122,102), 0.22);
       }
       .process-flag.crystron {
         background: linear-gradient(
           90deg,
-          rgba(37, 99, 235, 0.04),
-          rgba(255, 255, 255, 0.02)
+          rgba(var(--process-crystron-rgb,37,99,235), 0.12),
+          rgba(255, 255, 255, 0.03)
         );
         color: #2563eb;
-        border: 1px solid rgba(37, 99, 235, 0.14);
+        border: 1px solid rgba(var(--process-crystron-rgb,37,99,235), 0.22);
       }
 
       /* Arrow styling between steps */
@@ -1761,6 +1773,26 @@
       .icon-step span {
         font-weight: 600;
         color: var(--text-primary);
+      }
+
+      /* LFP / Crystron icon color accents inside steps */
+      .process-diagram .step.lfp-step .icon-step i {
+        color: var(--chart-lfp);
+        background: rgba(var(--process-lfp-rgb,79,122,102), 0.06);
+        border-radius: 8px;
+        padding: 0.25rem;
+      }
+      .process-diagram .step.crystron-step .icon-step i {
+        color: var(--chart-crystron);
+        background: rgba(var(--process-crystron-rgb,37,99,235), 0.08);
+        border-radius: 8px;
+        padding: 0.25rem;
+      }
+
+      .process-diagram .step.crystron:hover,
+      .process-diagram .step.crystron-step:hover {
+        box-shadow: 0 22px 48px rgba(var(--process-crystron-rgb,37,99,235), 0.12);
+        transform: translateY(-6px);
       }
 
       /* Animation Classes */
@@ -2957,18 +2989,18 @@
                   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Precursor Phase -->
                     <div
-                      class="p-6 rounded-2xl border border-slate-200 bg-white flex flex-col h-full hover:shadow-lg hover:border-blue-300 transition-all duration-300 hover:-translate-y-1 group/card"
+                      class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 flex flex-col h-full hover:shadow-md hover:border-slate-300 transition-all duration-300 group/card"
                       style="animation-delay: 0ms"
                     >
                       <div
-                        class="mb-4 border-b border-slate-100 pb-3 flex justify-between items-end"
+                        class="mb-4 border-b border-slate-200 pb-3 flex justify-between items-end"
                       >
                         <span
-                          class="text-lg font-bold text-slate-700 uppercase tracking-wider group-hover/card:text-blue-600 transition-colors"
+                          class="text-lg font-bold text-slate-500 uppercase tracking-wider group-hover/card:text-slate-700 transition-colors"
                           >Precursor Phase</span
                         >
                         <span
-                          class="text-4xl font-black text-blue-500 leading-none group-hover/card:text-blue-600 transition-colors"
+                          class="text-4xl font-black text-slate-300 leading-none group-hover/card:text-slate-400 transition-colors"
                           >04<span
                             class="text-sm font-medium text-slate-400 ml-1"
                             >Steps</span
@@ -2978,7 +3010,7 @@
 
                       <div class="flex-grow">
                         <ul
-                          class="text-base text-slate-700 space-y-2 list-disc list-inside marker:text-blue-500"
+                          class="text-base text-slate-500 space-y-2 list-disc list-inside marker:text-slate-400"
                         >
                           <li>Mining</li>
                           <li>Precipitation</li>
@@ -2987,11 +3019,11 @@
                         </ul>
                       </div>
 
-                      <div class="mt-6 pt-3 border-t border-slate-100">
+                      <div class="mt-6 pt-3 border-t border-slate-200">
                         <div
-                          class="flex items-center gap-2 text-xs font-bold text-slate-600 uppercase tracking-wide bg-white px-3 py-2 rounded-lg border border-blue-200 shadow-sm w-fit"
+                          class="flex items-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-wide bg-white px-3 py-2 rounded-lg border border-slate-200 shadow-sm w-fit"
                         >
-                          <i class="fas fa-trash-alt text-blue-300"></i>
+                          <i class="fas fa-trash-alt text-slate-400"></i>
                           Waste: Na₂SO₄
                         </div>
                       </div>
@@ -2999,18 +3031,18 @@
 
                     <!-- CAM Phase -->
                     <div
-                      class="p-6 rounded-2xl border border-slate-200 bg-white flex flex-col h-full hover:shadow-lg hover:border-blue-300 transition-all duration-300 hover:-translate-y-1 group/card"
+                      class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 flex flex-col h-full hover:shadow-md hover:border-slate-300 transition-all duration-300 group/card"
                       style="animation-delay: 100ms"
                     >
                       <div
-                        class="mb-4 border-b border-slate-100 pb-3 flex justify-between items-end"
+                        class="mb-4 border-b border-slate-200 pb-3 flex justify-between items-end"
                       >
                         <span
-                          class="text-lg font-bold text-slate-700 uppercase tracking-wider group-hover/card:text-blue-600 transition-colors"
+                          class="text-lg font-bold text-slate-500 uppercase tracking-wider group-hover/card:text-slate-700 transition-colors"
                           >CAM Phase</span
                         >
                         <span
-                          class="text-4xl font-black text-blue-500 leading-none group-hover/card:text-blue-600 transition-colors"
+                          class="text-4xl font-black text-slate-300 leading-none group-hover/card:text-slate-400 transition-colors"
                           >04<span
                             class="text-sm font-medium text-slate-400 ml-1"
                             >Steps</span
@@ -3020,7 +3052,7 @@
 
                       <div class="flex-grow">
                         <ul
-                          class="text-base text-slate-700 space-y-2 list-disc list-inside marker:text-blue-500"
+                          class="text-base text-slate-500 space-y-2 list-disc list-inside marker:text-slate-400"
                         >
                           <li>Milling</li>
                           <li>Drying</li>
@@ -3029,11 +3061,11 @@
                         </ul>
                       </div>
 
-                      <div class="mt-6 pt-3 border-t border-slate-100">
+                      <div class="mt-6 pt-3 border-t border-slate-200">
                         <div
-                          class="flex items-center gap-2 text-xs font-bold text-slate-600 uppercase tracking-wide bg-white px-3 py-2 rounded-lg border border-blue-200 shadow-sm w-fit"
+                          class="flex items-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-wide bg-white px-3 py-2 rounded-lg border border-slate-200 shadow-sm w-fit"
                         >
-                          <i class="fas fa-tint text-blue-300"></i>
+                          <i class="fas fa-tint text-slate-400"></i>
                           Waste: Water
                         </div>
                       </div>
@@ -3041,18 +3073,18 @@
 
                     <!-- Cathode Phase -->
                     <div
-                      class="p-6 rounded-2xl border border-slate-200 bg-white flex flex-col h-full hover:shadow-lg hover:border-blue-300 transition-all duration-300 hover:-translate-y-1 group/card"
+                      class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 flex flex-col h-full hover:shadow-md hover:border-slate-300 transition-all duration-300 group/card"
                       style="animation-delay: 200ms"
                     >
                       <div
-                        class="mb-4 border-b border-slate-100 pb-3 flex justify-between items-end"
+                        class="mb-4 border-b border-slate-200 pb-3 flex justify-between items-end"
                       >
                         <span
-                          class="text-lg font-bold text-slate-700 uppercase tracking-wider group-hover/card:text-blue-600 transition-colors"
+                          class="text-lg font-bold text-slate-500 uppercase tracking-wider group-hover/card:text-slate-700 transition-colors"
                           >Cathode Phase</span
                         >
                         <span
-                          class="text-4xl font-black text-blue-500 leading-none group-hover/card:text-blue-600 transition-colors"
+                          class="text-4xl font-black text-slate-300 leading-none group-hover/card:text-slate-400 transition-colors"
                           >07<span
                             class="text-sm font-medium text-slate-400 ml-1"
                             >Steps</span
@@ -3062,7 +3094,7 @@
 
                       <div class="flex-grow">
                         <ul
-                          class="text-base text-slate-700 space-y-1 list-disc list-inside marker:text-blue-500"
+                          class="text-base text-slate-500 space-y-1 list-disc list-inside marker:text-slate-400"
                         >
                           <li>Delivery</li>
                           <li>Mixing</li>
@@ -3073,11 +3105,11 @@
                         </ul>
                       </div>
 
-                      <div class="mt-6 pt-3 border-t border-slate-100">
+                      <div class="mt-6 pt-3 border-t border-slate-200">
                         <div
-                          class="flex items-center gap-2 text-xs font-bold text-slate-600 uppercase tracking-wide bg-white px-3 py-2 rounded-lg border border-blue-200 shadow-sm w-fit"
+                          class="flex items-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-wide bg-white px-3 py-2 rounded-lg border border-slate-200 shadow-sm w-fit"
                         >
-                          <i class="fas fa-bolt text-blue-300"></i>
+                          <i class="fas fa-bolt text-slate-400"></i>
                           High Energy
                         </div>
                       </div>
@@ -3106,7 +3138,7 @@
 
               <!-- Crystron Process Container -->
               <div
-                class="bg-white rounded-3xl shadow-xl border-4 border-blue-200 p-8 md:p-12 relative overflow-hidden mt-4"
+                class="bg-white rounded-3xl shadow-2xl border-4 border-accent-primary/30 p-6 md:p-12 relative overflow-hidden mt-4"
               >
                 <!-- Crystron Process (Highlighted) -->
                 <div class="relative">
@@ -3120,7 +3152,7 @@
                     </div>
                     <span
                       class="text-xs font-bold text-white bg-gradient-to-r from-teal-500 to-blue-600 px-4 py-2 rounded-full shadow-lg tracking-wide border border-white/20"
-                      >Streamlined • Zero Waste</span
+                      >Zero Waste</span
                     >
                   </div>
 
@@ -3171,7 +3203,7 @@
 
                   <!-- Steps -->
                   <div
-                    class="flex flex-wrap justify-between items-center gap-2 md:gap-4"
+                    class="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4"
                     id="crystron-steps-container"
                   >
                     <!-- Step 1 -->
@@ -3180,9 +3212,9 @@
                       style="animation-delay: 0ms"
                     >
                       <div
-                        class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white shadow-lg border border-accent-secondary/20 flex items-center justify-center text-accent-secondary group-hover:scale-110 transition-transform duration-300 relative z-10"
+                        class="w-16 h-16 md:w-14 md:h-14 rounded-2xl bg-white shadow-xl border-2 border-accent-primary flex items-center justify-center text-accent-primary group-hover:scale-110 transition-transform duration-300 relative z-10"
                       >
-                        <i class="fas fa-flask text-lg md:text-xl"></i>
+                        <i class="fas fa-flask text-2xl md:text-xl"></i>
                       </div>
                       <span
                         class="text-xs md:text-sm font-bold text-text-primary"
@@ -3191,7 +3223,7 @@
                     </div>
 
                     <i
-                      class="fas fa-chevron-right text-accent-primary/50 text-sm animate-pulse"
+                      class="fas fa-chevron-right text-accent-primary text-xl md:text-sm animate-pulse rotate-90 md:rotate-0 my-2 md:my-0"
                     ></i>
 
                     <!-- Step 2 -->
@@ -3200,9 +3232,9 @@
                       style="animation-delay: 400ms"
                     >
                       <div
-                        class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white shadow-lg border border-accent-secondary/20 flex items-center justify-center text-accent-secondary group-hover:scale-110 transition-transform duration-300 relative z-10"
+                        class="w-16 h-16 md:w-14 md:h-14 rounded-2xl bg-white shadow-xl border-2 border-accent-primary flex items-center justify-center text-accent-primary group-hover:scale-110 transition-transform duration-300 relative z-10"
                       >
-                        <i class="fas fa-layer-group text-lg md:text-xl"></i>
+                        <i class="fas fa-layer-group text-2xl md:text-xl"></i>
                       </div>
                       <span
                         class="text-xs md:text-sm font-bold text-text-primary"
@@ -3211,7 +3243,7 @@
                     </div>
 
                     <i
-                      class="fas fa-chevron-right text-accent-primary/50 text-sm animate-pulse"
+                      class="fas fa-chevron-right text-accent-primary text-xl md:text-sm animate-pulse rotate-90 md:rotate-0 my-2 md:my-0"
                       style="animation-delay: 400ms"
                     ></i>
 
@@ -3221,9 +3253,9 @@
                       style="animation-delay: 800ms"
                     >
                       <div
-                        class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white shadow-lg border border-accent-secondary/20 flex items-center justify-center text-accent-secondary group-hover:scale-110 transition-transform duration-300 relative z-10"
+                        class="w-16 h-16 md:w-14 md:h-14 rounded-2xl bg-white shadow-xl border-2 border-accent-primary flex items-center justify-center text-accent-primary group-hover:scale-110 transition-transform duration-300 relative z-10"
                       >
-                        <i class="fas fa-wind text-lg md:text-xl"></i>
+                        <i class="fas fa-wind text-2xl md:text-xl"></i>
                       </div>
                       <span
                         class="text-xs md:text-sm font-bold text-text-primary"
@@ -3232,7 +3264,7 @@
                     </div>
 
                     <i
-                      class="fas fa-chevron-right text-accent-primary/50 text-sm animate-pulse"
+                      class="fas fa-chevron-right text-accent-primary text-xl md:text-sm animate-pulse rotate-90 md:rotate-0 my-2 md:my-0"
                       style="animation-delay: 800ms"
                     ></i>
 
@@ -3242,10 +3274,10 @@
                       style="animation-delay: 1200ms"
                     >
                       <div
-                        class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white shadow-lg border border-accent-secondary/20 flex items-center justify-center text-accent-secondary group-hover:scale-110 transition-transform duration-300 relative z-10"
+                        class="w-16 h-16 md:w-14 md:h-14 rounded-2xl bg-white shadow-xl border-2 border-accent-primary flex items-center justify-center text-accent-primary group-hover:scale-110 transition-transform duration-300 relative z-10"
                       >
                         <i
-                          class="fas fa-compress-arrows-alt text-lg md:text-xl"
+                          class="fas fa-compress-arrows-alt text-2xl md:text-xl"
                         ></i>
                       </div>
                       <span
@@ -3255,7 +3287,7 @@
                     </div>
 
                     <i
-                      class="fas fa-chevron-right text-accent-primary/50 text-sm animate-pulse"
+                      class="fas fa-chevron-right text-accent-primary text-xl md:text-sm animate-pulse rotate-90 md:rotate-0 my-2 md:my-0"
                       style="animation-delay: 1200ms"
                     ></i>
 
