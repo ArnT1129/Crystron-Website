@@ -1804,14 +1804,187 @@
       }
 
       /* Animation Classes */
-      .animated-element {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      /* Enhanced LFP Card Styles */
+      .lfp-card-enhanced {
+        background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
       }
+      .lfp-card-enhanced:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border-color: #cbd5e1;
+      }
+      .lfp-card-header {
+        border-bottom: 1px solid #f1f5f9;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .lfp-card-title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #475569;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .lfp-card-steps {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #7498c5; /* Faint blue */
+        line-height: 1;
+      }
+      .lfp-card-steps span {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #94a3b8;
+        margin-left: 0.25rem;
+      }
+      .lfp-card-waste {
+        background: linear-gradient(to right, rgba(239, 68, 68, 0.05), rgba(255, 255, 255, 0));
+        border-left: 4px solid #fca5a5;
+        padding: 0.75rem 1rem;
+        margin-top: auto;
+        border-radius: 0 8px 8px 0;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #64748b;
+      }
+      .lfp-card-waste i {
+        color: #ef4444;
+        opacity: 0.7;
+      }
+      .learn-more-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background-color: #f1f5f9;
+        color: #475569;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+      .lfp-card-enhanced:hover .learn-more-btn {
+        background-color: var(--accent-primary);
+        color: white;
+      }
+
       .animated-element.is-visible {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      /* Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 5000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        backdrop-filter: blur(4px);
+      }
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .modal-content {
+        background: var(--bg-secondary);
+        width: 90%;
+        max-width: 600px;
+        border-radius: 16px;
+        padding: 2rem;
+        position: relative;
+        transform: translateY(20px) scale(0.95);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        border: 1px solid var(--border-primary);
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .modal-overlay.active .modal-content {
+        transform: translateY(0) scale(1);
+      }
+      .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: transparent;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: color 0.2s ease;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+      .modal-close:hover {
+        color: var(--text-primary);
+        background: rgba(0,0,0,0.05);
+      }
+      .dark-mode .modal-close:hover {
+        background: rgba(255,255,255,0.1);
+      }
+      .modal-header {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-primary);
+      }
+      .modal-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+      .modal-body h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+      .modal-body ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+      }
+      .modal-body li {
+        margin-bottom: 0.5rem;
+      }
+      .modal-alert {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        color: #b91c1c;
+        padding: 1rem;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .dark-mode .modal-alert {
+        background: rgba(248, 113, 113, 0.15);
+        color: #fca5a5;
+        border-color: rgba(248, 113, 113, 0.2);
       }
     </style>
     <script type="application/ld+json">
@@ -2997,128 +3170,90 @@
                   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Precursor Phase -->
                     <div
-                      class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 flex flex-col h-full hover:shadow-md hover:border-slate-300 transition-all duration-300 group/card"
+                      class="lfp-card-enhanced p-6 rounded-2xl flex flex-col h-full group/card cursor-pointer"
                       style="animation-delay: 0ms"
+                      onclick="openModal('modal-precursor')"
                     >
-                      <div
-                        class="mb-4 border-b border-slate-200 pb-3 flex justify-between items-end"
-                      >
-                        <span
-                          class="text-lg font-bold text-slate-500 uppercase tracking-wider group-hover/card:text-slate-700 transition-colors"
-                          >Precursor Phase</span
-                        >
-                        <span
-                          class="text-4xl font-black text-slate-300 leading-none group-hover/card:text-slate-400 transition-colors"
-                          >04<span
-                            class="text-sm font-medium text-slate-400 ml-1"
-                            >Steps</span
-                          ></span
-                        >
+                      <div class="lfp-card-header">
+                        <span class="lfp-card-title">Precursor Phase</span>
+                        <div class="lfp-card-steps">
+                          04<span>Steps</span>
+                        </div>
                       </div>
 
-                      <div class="flex-grow">
-                        <ul
-                          class="text-base text-slate-500 space-y-2 list-disc list-inside marker:text-slate-400"
-                        >
-                          <li>Mining</li>
-                          <li>Precipitation</li>
-                          <li>Drying</li>
-                          <li>Calcination</li>
-                        </ul>
+                      <div class="flex-grow flex flex-col justify-center items-start py-2 relative z-10">
+                         <p class="text-slate-500 mb-6 text-sm leading-relaxed font-medium">
+                           Involves extensive mining, precipitation, and initial chemical processing steps to prepare raw materials.
+                         </p>
+                         <span class="learn-more-btn">
+                           Learn More <i class="fas fa-arrow-right text-xs"></i>
+                         </span>
                       </div>
 
-                      <div class="mt-6 pt-3 border-t border-slate-200">
-                        <div
-                          class="flex items-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-wide bg-white px-3 py-2 rounded-lg border border-slate-200 shadow-sm w-fit"
-                        >
-                          <i class="fas fa-trash-alt text-slate-400"></i>
-                          Waste: Na₂SO₄
+                      <div class="mt-6 pt-2">
+                        <div class="lfp-card-waste">
+                          <i class="fas fa-trash-alt"></i>
+                          <span>Waste: Sodium Sulfate (Na₂SO₄)</span>
                         </div>
                       </div>
                     </div>
 
                     <!-- CAM Phase -->
                     <div
-                      class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 flex flex-col h-full hover:shadow-md hover:border-slate-300 transition-all duration-300 group/card"
+                      class="lfp-card-enhanced p-6 rounded-2xl flex flex-col h-full group/card cursor-pointer"
                       style="animation-delay: 100ms"
+                      onclick="openModal('modal-cam')"
                     >
-                      <div
-                        class="mb-4 border-b border-slate-200 pb-3 flex justify-between items-end"
-                      >
-                        <span
-                          class="text-lg font-bold text-slate-500 uppercase tracking-wider group-hover/card:text-slate-700 transition-colors"
-                          >CAM Phase</span
-                        >
-                        <span
-                          class="text-4xl font-black text-slate-300 leading-none group-hover/card:text-slate-400 transition-colors"
-                          >04<span
-                            class="text-sm font-medium text-slate-400 ml-1"
-                            >Steps</span
-                          ></span
-                        >
+                      <div class="lfp-card-header">
+                        <span class="lfp-card-title">CAM Phase</span>
+                        <div class="lfp-card-steps">
+                          04<span>Steps</span>
+                        </div>
                       </div>
 
-                      <div class="flex-grow">
-                        <ul
-                          class="text-base text-slate-500 space-y-2 list-disc list-inside marker:text-slate-400"
-                        >
-                          <li>Milling</li>
-                          <li>Drying</li>
-                          <li>Calcination</li>
-                          <li>QC & Pack</li>
-                        </ul>
+                      <div class="flex-grow flex flex-col justify-center items-start py-2 relative z-10">
+                         <p class="text-slate-500 mb-6 text-sm leading-relaxed font-medium">
+                           Energy-intensive milling, drying, and repeated calcination processes to form the active material.
+                         </p>
+                         <span class="learn-more-btn">
+                           Learn More <i class="fas fa-arrow-right text-xs"></i>
+                         </span>
                       </div>
 
-                      <div class="mt-6 pt-3 border-t border-slate-200">
-                        <div
-                          class="flex items-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-wide bg-white px-3 py-2 rounded-lg border border-slate-200 shadow-sm w-fit"
-                        >
-                          <i class="fas fa-tint text-slate-400"></i>
-                          Waste: Water
+                      <div class="mt-6 pt-2">
+                        <div class="lfp-card-waste">
+                          <i class="fas fa-tint"></i>
+                          <span>Waste: Contaminated Water</span>
                         </div>
                       </div>
                     </div>
 
                     <!-- Cathode Phase -->
                     <div
-                      class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 flex flex-col h-full hover:shadow-md hover:border-slate-300 transition-all duration-300 group/card"
+                      class="lfp-card-enhanced p-6 rounded-2xl flex flex-col h-full group/card cursor-pointer"
                       style="animation-delay: 200ms"
+                      onclick="openModal('modal-cathode')"
                     >
-                      <div
-                        class="mb-4 border-b border-slate-200 pb-3 flex justify-between items-end"
-                      >
-                        <span
-                          class="text-lg font-bold text-slate-500 uppercase tracking-wider group-hover/card:text-slate-700 transition-colors"
-                          >Cathode Phase</span
-                        >
-                        <span
-                          class="text-4xl font-black text-slate-300 leading-none group-hover/card:text-slate-400 transition-colors"
-                          >07<span
-                            class="text-sm font-medium text-slate-400 ml-1"
-                            >Steps</span
-                          ></span
-                        >
+                      <div class="lfp-card-header">
+                        <span class="lfp-card-title">Cathode Phase</span>
+                        <div class="lfp-card-steps">
+                          07<span>Steps</span>
+                        </div>
                       </div>
 
-                      <div class="flex-grow">
-                        <ul
-                          class="text-base text-slate-500 space-y-1 list-disc list-inside marker:text-slate-400"
-                        >
-                          <li>Delivery</li>
-                          <li>Mixing</li>
-                          <li>Coating</li>
-                          <li>Drying</li>
-                          <li>Calendar</li>
-                          <li>Baking</li>
-                        </ul>
+                      <div class="flex-grow flex flex-col justify-center items-start py-2 relative z-10">
+                         <p class="text-slate-500 mb-6 text-sm leading-relaxed font-medium">
+                           Complex mixing, coating, drying, and assembly steps requiring toxic solvents and high energy.
+                         </p>
+                         <span class="learn-more-btn">
+                           Learn More <i class="fas fa-arrow-right text-xs"></i>
+                         </span>
                       </div>
 
-                      <div class="mt-6 pt-3 border-t border-slate-200">
-                        <div
-                          class="flex items-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-wide bg-white px-3 py-2 rounded-lg border border-slate-200 shadow-sm w-fit"
-                        >
-                          <i class="fas fa-bolt text-slate-400"></i>
-                          High Energy
+                      <div class="mt-6 pt-2">
+                        <div class="lfp-card-waste">
+                          <i class="fas fa-bolt"></i>
+                          <span>Impact: High Energy Use</span>
                         </div>
                       </div>
                     </div>
@@ -5185,6 +5320,113 @@
             document.body.removeChild(textArea);
           });
       }
+    </script>
+    <!-- Modals -->
+    <div id="modal-precursor" class="modal-overlay" onclick="closeModal(event)">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModalButton(this)">&times;</button>
+        <div class="modal-header">
+          <h3 class="modal-title">Precursor Phase</h3>
+        </div>
+        <div class="modal-body">
+          <h4>Process Steps</h4>
+          <ul>
+            <li><strong>Mining:</strong> Extraction of raw materials from the earth.</li>
+            <li><strong>Precipitation:</strong> Chemical separation of desired elements.</li>
+            <li><strong>Drying:</strong> Removal of moisture from the precipitate.</li>
+            <li><strong>Calcination:</strong> Heating to high temperatures to alter chemical structure.</li>
+          </ul>
+          <h4>Environmental Impact</h4>
+          <div class="modal-alert">
+            <i class="fas fa-exclamation-triangle mr-2"></i>
+            <strong>Why it's problematic:</strong> This phase generates significant sodium sulfate (Na₂SO₄) waste, which can be difficult to dispose of and harmful to local ecosystems if not managed correctly. It also consumes substantial amounts of water and energy.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-cam" class="modal-overlay" onclick="closeModal(event)">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModalButton(this)">&times;</button>
+        <div class="modal-header">
+          <h3 class="modal-title">CAM Phase</h3>
+        </div>
+        <div class="modal-body">
+          <h4>Process Steps</h4>
+          <ul>
+            <li><strong>Milling:</strong> Grinding materials to a fine powder.</li>
+            <li><strong>Drying:</strong> Further moisture removal.</li>
+            <li><strong>Calcination:</strong> Repeated high-temperature heating.</li>
+            <li><strong>QC & Pack:</strong> Quality control testing and packaging.</li>
+          </ul>
+          <h4>Environmental Impact</h4>
+          <div class="modal-alert">
+            <i class="fas fa-exclamation-triangle mr-2"></i>
+            <strong>Why it's problematic:</strong> The repeated calcination steps are extremely energy-intensive, contributing to a high carbon footprint. Large volumes of water are also used and contaminated during the washing and processing stages.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-cathode" class="modal-overlay" onclick="closeModal(event)">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModalButton(this)">&times;</button>
+        <div class="modal-header">
+          <h3 class="modal-title">Cathode Phase</h3>
+        </div>
+        <div class="modal-body">
+          <h4>Process Steps</h4>
+          <ul>
+            <li><strong>Delivery:</strong> Transport of CAM to the battery factory.</li>
+            <li><strong>Mixing:</strong> Blending CAM with binders and additives.</li>
+            <li><strong>Coating:</strong> Applying the mixture to current collectors.</li>
+            <li><strong>Drying:</strong> Evaporating solvents.</li>
+            <li><strong>Calendaring:</strong> Compressing the electrode.</li>
+            <li><strong>Baking:</strong> Final heat treatment.</li>
+          </ul>
+          <h4>Environmental Impact</h4>
+          <div class="modal-alert">
+            <i class="fas fa-exclamation-triangle mr-2"></i>
+            <strong>Why it's problematic:</strong> While necessary, this phase adds logistical complexity and further energy consumption. Traditional processes often use toxic solvents (like NMP) that require expensive recovery systems.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+      }
+
+      function closeModal(event) {
+        if (event.target.classList.contains('modal-overlay')) {
+          event.target.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+
+      function closeModalButton(button) {
+        const modal = button.closest('.modal-overlay');
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+
+      // Close on Escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          const activeModals = document.querySelectorAll('.modal-overlay.active');
+          activeModals.forEach(modal => {
+            modal.classList.remove('active');
+          });
+          document.body.style.overflow = '';
+        }
+      });
     </script>
   </body>
 </html>
