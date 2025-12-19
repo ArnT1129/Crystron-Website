@@ -178,6 +178,16 @@
         overflow-x: hidden;
       }
 
+      /* Global responsive media defaults */
+      img,
+      video,
+      canvas,
+      svg {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
       ::-webkit-scrollbar {
         width: 8px;
       }
@@ -332,21 +342,14 @@
         display: none;
         min-height: 100vh;
         padding: 5rem 4rem;
-        opacity: 0;
+        opacity: 1;
         box-sizing: border-box;
       }
       .page.active {
         display: flex;
         flex-direction: column;
-        animation: fadeInPage 0.6s ease-out forwards;
-      }
-      @keyframes fadeInPage {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
+        /* Remove page-level fade/slide animation for snappier navigation */
+        animation: none;
       }
 
       @keyframes bounce {
@@ -382,6 +385,29 @@
       }
       #value-prop-flow > div:nth-child(4) {
         animation: slideInFromLeft 0.4s ease-out 0.7s both;
+      }
+
+      /* Enhanced staggered cards for Value Proposition on scroll */
+      .vp-card {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .vp-card.vp-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .vp-card-1.vp-visible {
+        transition-delay: 0.05s;
+      }
+      .vp-card-2.vp-visible {
+        transition-delay: 0.12s;
+      }
+      .vp-card-3.vp-visible {
+        transition-delay: 0.19s;
+      }
+      .vp-card-4.vp-visible {
+        transition-delay: 0.26s;
       }
 
       /* Gradient Pastel Backgrounds */
@@ -1034,6 +1060,37 @@
         .section-title {
           font-size: clamp(1.8rem, 5.2vw, 2.6rem);
         }
+
+        /* Tighten chart cards and comparison areas on phones */
+        .chart-container {
+          padding: 1.25rem 1rem;
+          box-shadow: 0 6px 18px -10px var(--shadow-color);
+        }
+        .comparison-chart {
+          min-height: 180px;
+        }
+        .comparison-chart canvas,
+        .metric-card canvas {
+          width: 100% !important;
+          height: 180px !important;
+        }
+
+        /* Keep long labels from forcing horizontal scroll in charts */
+        .chart-container p,
+        .chart-container h3 {
+          text-align: center;
+          word-break: keep-all;
+        }
+
+        /* Make TAM bar chart a bit shorter and tighten caption spacing */
+        .tam-chart-inner {
+          max-width: 100%;
+          height: 260px;
+          padding: 0.25rem 0;
+        }
+        .tam-chart-wrapper + p {
+          margin-top: 1.25rem;
+        }
       }
 
       body {
@@ -1339,6 +1396,8 @@
         border-radius: 14px;
         padding: 2rem;
         box-shadow: 0 10px 30px -15px var(--shadow-color);
+        width: 100%;
+        max-width: 100%;
       }
       /* Tech comparison header + layout styles */
       .tech-comparison {
@@ -1376,6 +1435,25 @@
         font-weight: 700;
         color: var(--text-primary);
         margin-bottom: 2rem;
+      }
+      .comparison-chart {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        min-height: 220px;
+      }
+
+      /* TAM bar chart spacing helpers */
+      .tam-chart-wrapper {
+        margin-bottom: 2.5rem;
+      }
+      .tam-chart-inner {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0.5rem 0;
+        height: 320px;
       }
       .bar-chart-large {
         display: flex;
@@ -1453,13 +1531,25 @@
         transition: height 1.2s ease-out;
       }
       .comparison-bar.lfp {
-        background: linear-gradient(180deg, rgba(43, 108, 176, 0.4), rgba(43, 108, 176, 0.6));
+        background: linear-gradient(
+          180deg,
+          rgba(43, 108, 176, 0.4),
+          rgba(43, 108, 176, 0.6)
+        );
       }
       .comparison-bar.crystron {
-        background: linear-gradient(180deg, var(--accent-secondary), var(--accent-primary));
+        background: linear-gradient(
+          180deg,
+          var(--accent-secondary),
+          var(--accent-primary)
+        );
       }
       .dark-mode .comparison-bar.lfp {
-        background: linear-gradient(180deg, rgba(79, 209, 197, 0.4), rgba(79, 209, 197, 0.6));
+        background: linear-gradient(
+          180deg,
+          rgba(79, 209, 197, 0.4),
+          rgba(79, 209, 197, 0.6)
+        );
       }
 
       .comparison-bar .value {
@@ -1541,6 +1631,17 @@
           135deg,
           rgba(255, 255, 255, 0.03),
           rgba(255, 255, 255, 0.01)
+        );
+        transition: transform 0.2s ease, box-shadow 0.2s ease,
+          background 0.2s ease;
+      }
+      .impact-stat:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px -12px var(--accent-glow);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.02)
         );
       }
       .impact-stat .counter {
@@ -2419,8 +2520,8 @@
               </div>
 
               <!-- Simple Bar Chart -->
-              <div class="mb-12">
-                <div class="relative" style="height: 350px; padding-top: 20px">
+              <div class="mb-12 tam-chart-wrapper">
+                <div class="relative tam-chart-inner">
                   <canvas id="tamBarChart"></canvas>
                 </div>
                 <p class="text-center mt-6 text-text-secondary text-sm">
@@ -2876,9 +2977,8 @@
               <p
                 class="text-lg text-text-secondary max-w-3xl mx-auto animated-element"
               >
-                Crystron's proprietary technology delivers significant
-                competitive advantages across manufacturing efficiency, cost
-                structure, and environmental impact.
+                Four numbers that explain why Crystron’s process wins on
+                manufacturing, cost, energy use, and sustainability.
               </p>
             </div>
 
@@ -2889,7 +2989,7 @@
                 id="value-prop-flow"
               >
                 <div
-                  class="card p-6 text-center flex-1 animated-element"
+                  class="card p-6 text-center flex-1 animated-element vp-card vp-card-1"
                   style="
                     background: linear-gradient(
                       135deg,
@@ -2918,12 +3018,11 @@
                     Fewer Steps
                   </h3>
                   <p class="text-text-secondary text-sm">
-                    Streamlined manufacturing process reduces complexity and
-                    operational risk
+                    Fewer process steps from raw material to finished cathode.
                   </p>
                 </div>
                 <div
-                  class="card p-6 text-center flex-1 animated-element"
+                  class="card p-6 text-center flex-1 animated-element vp-card vp-card-2"
                   style="
                     background: linear-gradient(
                       135deg,
@@ -2952,12 +3051,11 @@
                     Lower Cost
                   </h3>
                   <p class="text-text-secondary text-sm">
-                    Reduced capital expenditure and operational expenses improve
-                    unit economics
+                    Lower capex and opex per ton of cathode material.
                   </p>
                 </div>
                 <div
-                  class="card p-6 text-center flex-1 animated-element"
+                  class="card p-6 text-center flex-1 animated-element vp-card vp-card-3"
                   style="
                     background: linear-gradient(
                       135deg,
@@ -2986,12 +3084,11 @@
                     Less Energy
                   </h3>
                   <p class="text-text-secondary text-sm">
-                    Significantly reduced energy consumption lowers operating
-                    costs and environmental footprint
+                    Less energy required per kilogram of active material.
                   </p>
                 </div>
                 <div
-                  class="card p-6 text-center flex-1 animated-element transform scale-105"
+                  class="card p-6 text-center flex-1 animated-element vp-card vp-card-4 transform scale-105"
                   style="
                     background: linear-gradient(
                       135deg,
@@ -3016,8 +3113,7 @@
                     Zero Waste
                   </h3>
                   <p class="text-text-secondary font-medium">
-                    Elimination of toxic byproducts and water waste enables
-                    sustainable production
+                    Closed-loop process that avoids toxic waste and water use.
                   </p>
                   <div
                     class="mt-3 inline-block px-4 py-2 rounded-full text-sm font-semibold"
@@ -3149,15 +3245,14 @@
           <div class="container mx-auto px-4 py-8">
             <!-- Hero + Impact -->
             <div
-              class="bg-gradient-to-r from-blue-900 to-cyan-700 rounded-2xl text-white p-10 mb-12 shadow-xl overflow-hidden"
+              class="bg-gradient-to-r from-blue-900 to-cyan-700 rounded-2xl text-white p-10 mb-12 shadow-xl overflow-hidden text-center"
             >
               <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
                 A Transformational Cathode Platform
               </h2>
-              <p class="text-lg md:text-xl text-blue-100 max-w-3xl">
-                We reimagined CAM and cathode manufacturing to remove waste,
-                remove water, cut energy and cost, and simplify the supply chain
-                all while improving manufacturability and performance.
+              <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+                A single platform that cuts energy, water, waste, and cost while
+                simplifying the cathode supply chain.
               </p>
 
               <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -3204,18 +3299,27 @@
                 <!-- Decorative background glow -->
                 <div
                   class="absolute top-0 left-0 w-full h-2"
-                  style="background: linear-gradient(90deg, rgba(43, 108, 176, 0.2), rgba(49, 151, 149, 0.15))"
+                  style="
+                    background: linear-gradient(
+                      90deg,
+                      rgba(43, 108, 176, 0.2),
+                      rgba(49, 151, 149, 0.15)
+                    );
+                  "
                 ></div>
 
                 <!-- Legacy Process (Muted Blue & Animated) -->
                 <div class="relative">
                   <div class="flex items-center justify-between mb-8">
-                      <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-4">
                       <span
                         class="text-xl font-bold text-slate-800 tracking-widest uppercase"
                         >LFP Manufacturing Process</span
                       >
-                      <div class="h-1 w-20 rounded-full" style="background: rgba(43, 108, 176, 0.3)"></div>
+                      <div
+                        class="h-1 w-20 rounded-full"
+                        style="background: rgba(43, 108, 176, 0.3)"
+                      ></div>
                     </div>
                     <span
                       class="text-sm font-bold text-white bg-slate-600 px-4 py-1 rounded-full shadow-sm"
@@ -3332,9 +3436,10 @@
               >
                 <div
                   class="bg-white px-8 py-3 rounded-full shadow-lg border border-gray-100 flex items-center gap-4"
-                  style="transform: scale(1.05);"
+                  style="transform: scale(1.05)"
                 >
-                  <span class="text-base md:text-lg font-semibold text-gray-800 tracking-tight"
+                  <span
+                    class="text-base md:text-lg font-semibold text-gray-800 tracking-tight"
                     >Crystron eliminates the inefficiencies of the LFP
                     process</span
                   >
@@ -3544,21 +3649,58 @@
                   </div>
 
                   <!-- Innovation Highlights Section -->
-                  <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t-2 border-gray-100">
+                  <div
+                    class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t-2 border-gray-100"
+                  >
                     <!-- Innovation Card 1: Zero Waste -->
                     <div class="group relative">
-                      <div class="card p-6 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl" style="background: linear-gradient(135deg, rgba(49, 151, 149, 0.08), rgba(43, 108, 176, 0.05)); border: 2px solid rgba(49, 151, 149, 0.2);">
+                      <div
+                        class="card p-6 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                        style="
+                          background: linear-gradient(
+                            135deg,
+                            rgba(49, 151, 149, 0.08),
+                            rgba(43, 108, 176, 0.05)
+                          );
+                          border: 2px solid rgba(49, 151, 149, 0.2);
+                        "
+                      >
                         <div class="flex items-start gap-4">
-                          <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));">
+                          <div
+                            class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+                            style="
+                              background: linear-gradient(
+                                135deg,
+                                var(--accent-secondary),
+                                var(--accent-primary)
+                              );
+                            "
+                          >
                             <i class="fas fa-recycle text-white text-xl"></i>
                           </div>
                           <div class="flex-1">
-                            <h4 class="font-bold text-lg text-text-primary mb-2">Zero Waste</h4>
-                            <p class="text-sm text-text-secondary leading-relaxed">
-                              No toxic byproducts. All materials are recycled or reused in a closed-loop system.
+                            <h4
+                              class="font-bold text-lg text-text-primary mb-2"
+                            >
+                              Zero Waste
+                            </h4>
+                            <p
+                              class="text-sm text-text-secondary leading-relaxed"
+                            >
+                              No toxic byproducts. All materials are recycled or
+                              reused in a closed-loop system.
                             </p>
                             <div class="mt-3 flex items-center gap-2">
-                              <span class="text-xs font-bold px-2 py-1 rounded-full text-white" style="background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));">
+                              <span
+                                class="text-xs font-bold px-2 py-1 rounded-full text-white"
+                                style="
+                                  background: linear-gradient(
+                                    135deg,
+                                    var(--accent-secondary),
+                                    var(--accent-primary)
+                                  );
+                                "
+                              >
                                 100% Elimination
                               </span>
                             </div>
@@ -3569,18 +3711,53 @@
 
                     <!-- Innovation Card 2: Energy Efficiency -->
                     <div class="group relative">
-                      <div class="card p-6 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl" style="background: linear-gradient(135deg, rgba(43, 108, 176, 0.08), rgba(49, 151, 149, 0.05)); border: 2px solid rgba(43, 108, 176, 0.2);">
+                      <div
+                        class="card p-6 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                        style="
+                          background: linear-gradient(
+                            135deg,
+                            rgba(43, 108, 176, 0.08),
+                            rgba(49, 151, 149, 0.05)
+                          );
+                          border: 2px solid rgba(43, 108, 176, 0.2);
+                        "
+                      >
                         <div class="flex items-start gap-4">
-                          <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));">
+                          <div
+                            class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+                            style="
+                              background: linear-gradient(
+                                135deg,
+                                var(--accent-primary),
+                                var(--accent-secondary)
+                              );
+                            "
+                          >
                             <i class="fas fa-bolt text-white text-xl"></i>
                           </div>
                           <div class="flex-1">
-                            <h4 class="font-bold text-lg text-text-primary mb-2">Energy Efficient</h4>
-                            <p class="text-sm text-text-secondary leading-relaxed">
-                              Reduced calcination steps and optimized processing cut energy consumption dramatically.
+                            <h4
+                              class="font-bold text-lg text-text-primary mb-2"
+                            >
+                              Energy Efficient
+                            </h4>
+                            <p
+                              class="text-sm text-text-secondary leading-relaxed"
+                            >
+                              Reduced calcination steps and optimized processing
+                              cut energy consumption dramatically.
                             </p>
                             <div class="mt-3 flex items-center gap-2">
-                              <span class="text-xs font-bold px-2 py-1 rounded-full text-white" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));">
+                              <span
+                                class="text-xs font-bold px-2 py-1 rounded-full text-white"
+                                style="
+                                  background: linear-gradient(
+                                    135deg,
+                                    var(--accent-primary),
+                                    var(--accent-secondary)
+                                  );
+                                "
+                              >
                                 80% Less Energy
                               </span>
                             </div>
@@ -3591,18 +3768,53 @@
 
                     <!-- Innovation Card 3: Streamlined Process -->
                     <div class="group relative">
-                      <div class="card p-6 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl" style="background: linear-gradient(135deg, rgba(49, 151, 149, 0.08), rgba(43, 108, 176, 0.05)); border: 2px solid rgba(49, 151, 149, 0.2);">
+                      <div
+                        class="card p-6 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                        style="
+                          background: linear-gradient(
+                            135deg,
+                            rgba(49, 151, 149, 0.08),
+                            rgba(43, 108, 176, 0.05)
+                          );
+                          border: 2px solid rgba(49, 151, 149, 0.2);
+                        "
+                      >
                         <div class="flex items-start gap-4">
-                          <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));">
+                          <div
+                            class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+                            style="
+                              background: linear-gradient(
+                                135deg,
+                                var(--accent-secondary),
+                                var(--accent-primary)
+                              );
+                            "
+                          >
                             <i class="fas fa-stream text-white text-xl"></i>
                           </div>
                           <div class="flex-1">
-                            <h4 class="font-bold text-lg text-text-primary mb-2">Integrated Process</h4>
-                            <p class="text-sm text-text-secondary leading-relaxed">
-                              Direct CAM-to-cathode process simplifies supply chain and reduces costs.
+                            <h4
+                              class="font-bold text-lg text-text-primary mb-2"
+                            >
+                              Integrated Process
+                            </h4>
+                            <p
+                              class="text-sm text-text-secondary leading-relaxed"
+                            >
+                              Direct CAM-to-cathode process simplifies supply
+                              chain and reduces costs.
                             </p>
                             <div class="mt-3 flex items-center gap-2">
-                              <span class="text-xs font-bold px-2 py-1 rounded-full text-white" style="background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));">
+                              <span
+                                class="text-xs font-bold px-2 py-1 rounded-full text-white"
+                                style="
+                                  background: linear-gradient(
+                                    135deg,
+                                    var(--accent-secondary),
+                                    var(--accent-primary)
+                                  );
+                                "
+                              >
                                 5 Steps vs 15
                               </span>
                             </div>
@@ -3794,7 +4006,7 @@
               </div>
               <div class="card text-center animated-element">
                 <img
-                  src = "data:image/jpeg;base64,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"
+                  src="data:image/jpeg;base64,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"
                   alt="Dr Rajesh Tripathi"
                   class="team-member-photo"
                   onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=RT&font=inter';"
@@ -4498,7 +4710,8 @@
 
           updateActiveLink(pageIdToShow.replace("-page", ""));
 
-          mainContentArea.scrollTo({ top: 0, behavior: "smooth" });
+          // Jump to top instantly when changing pages (no smooth scroll)
+          mainContentArea.scrollTo({ top: 0, behavior: "auto" });
 
           if (pageIdToShow === "contact-page" && !mapInitialized) {
             initMap();
@@ -4720,6 +4933,23 @@
         animatedElements.forEach((el) => {
           observer.observe(el);
         });
+
+        // Value Proposition cards staggered entrance
+        const vpCards = document.querySelectorAll(".vp-card");
+        if (vpCards.length) {
+          const vpObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("vp-visible");
+                  vpObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.25 }
+          );
+          vpCards.forEach((card) => vpObserver.observe(card));
+        }
 
         // --- NEW: Crystron Process Animation Trigger ---
         const crystronContainer = document.getElementById(
@@ -5165,6 +5395,8 @@
               gradient.addColorStop(0, accentSecondary);
               gradient.addColorStop(1, accentPrimary);
 
+              const isNarrow = window.innerWidth <= 640;
+
               new Chart(ctx, {
                 type: "bar",
                 data: {
@@ -5176,14 +5408,17 @@
                       backgroundColor: gradient,
                       borderRadius: 8,
                       borderSkipped: false,
+                      // Make bars proportionally thinner on narrow screens
+                      barPercentage: isNarrow ? 0.45 : 0.7,
+                      categoryPercentage: isNarrow ? 0.6 : 0.8,
                     },
                   ],
                 },
                 options: {
                   responsive: true,
                   maintainAspectRatio: false,
-                  barThickness: 150,
-                  maxBarThickness: 200,
+                  // Let Chart.js calculate bar size; just cap the max width
+                  maxBarThickness: isNarrow ? 80 : 150,
                   plugins: {
                     legend: { display: false },
                     tooltip: {
