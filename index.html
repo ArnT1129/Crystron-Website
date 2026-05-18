@@ -2162,6 +2162,18 @@
         flex-direction: column;
         transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         cursor: pointer;
+        position: relative;
+      }
+      .blog-card::before {
+        content: "";
+        display: block;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        border-radius: 16px 16px 0 0;
+        transition: height 0.3s ease;
+      }
+      .blog-card:hover::before {
+        height: 6px;
       }
       .blog-card:hover {
         transform: translateY(-6px);
