@@ -24,8 +24,7 @@
       content="Discover Crystron's groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.crystrontech.com/" />
-    <link rel="canonical" href="https://www.crystrontech.com/" />
+    <meta property="og:url" content="https://www.crystrontech.com/#blog/blog-1" />
     <meta
       property="og:image"
       content="https://your-domain.com/crystron_og_image.png"
@@ -5268,48 +5267,18 @@
         document.getElementById("currentYear").textContent =
           new Date().getFullYear();
 
-        function getBlogPath(articleId) {
-          return "/blog/" + articleId + "/";
-        }
-
-        function updateCanonical(url) {
-          let canonical = document.querySelector('link[rel="canonical"]');
-          if (!canonical) {
-            canonical = document.createElement("link");
-            canonical.rel = "canonical";
-            document.head.appendChild(canonical);
-          }
-          canonical.href = url;
-        }
-
-        function parseRoute() {
-          const pathname = window.location.pathname;
-          if (pathname.startsWith("/blog/")) {
-            const parts = pathname.split("/").filter(Boolean);
-            if (parts[0] === "blog" && parts[1]) {
-              return { pageName: "blog", postId: parts[1] };
-            }
-          }
-
+        function handleNavigation() {
           const hash = window.location.hash.substring(1) || "home";
           const slashIdx = hash.indexOf("/");
           const pageName = slashIdx >= 0 ? hash.substring(0, slashIdx) : hash;
-          const postId = slashIdx >= 0 ? hash.substring(slashIdx + 1) : null;
-          return { pageName, postId };
-        }
-
-        function handleNavigation() {
-          const { pageName, postId } = parseRoute();
+          const postId   = slashIdx >= 0 ? hash.substring(slashIdx + 1) : null;
           showPage(pageName + "-page");
           if (postId) {
             requestAnimationFrame(() => openBlogModal(postId, false));
-          } else if (document.getElementById("blog-modal-overlay")?.classList.contains("open")) {
-            closeBlogModal();
           }
         }
 
         window.addEventListener("hashchange", handleNavigation);
-        window.addEventListener("popstate", handleNavigation);
         handleNavigation(); // Initial page load
 
         // --- Blog Modal Logic ---
@@ -5338,10 +5307,8 @@
           };
           set("og:title",       meta.title + " | Crystron Technologies");
           set("og:description", meta.description);
-          const articleUrl = window.location.origin + getBlogPath(articleId);
-          set("og:url",         articleUrl);
+          set("og:url",         window.location.origin + window.location.pathname + "#blog/" + articleId);
           set("og:type",        meta.type);
-          updateCanonical(articleUrl);
           document.title = meta.title + " | Crystron Technologies";
         }
 
@@ -5352,10 +5319,8 @@
           };
           set("og:title",       "Crystron Technologies - Pioneering Battery Innovation");
           set("og:description", "Discover Crystron's groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior.");
-          const homeUrl = window.location.origin + "/";
-          set("og:url",         homeUrl);
+          set("og:url",         window.location.origin + window.location.pathname);
           set("og:type",        "website");
-          updateCanonical(homeUrl);
           document.title = "Crystron Technologies";
         }
 
@@ -5369,7 +5334,7 @@
           document.body.style.overflow = "hidden";
           blogModalClose.focus();
           if (updateUrl) {
-            history.replaceState(null, "", getBlogPath(articleId));
+            history.replaceState(null, "", "#blog/" + articleId);
           }
           updateOGTags(articleId);
         };
@@ -5377,7 +5342,9 @@
         function closeBlogModal() {
           blogModalOverlay.classList.remove("open");
           document.body.style.overflow = "";
-          history.replaceState(null, "", "/");
+          if (window.location.hash.includes("/")) {
+            history.replaceState(null, "", "#blog");
+          }
           resetOGTags();
         }
 
