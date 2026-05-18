@@ -2289,25 +2289,6 @@
         border-radius: 20px 20px 0 0;
         z-index: 10;
       }
-      #blog-modal-share {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.4rem 1rem;
-        border-radius: 999px;
-        background: var(--accent-glow);
-        border: 1px solid var(--accent-primary);
-        color: var(--accent-primary);
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-        cursor: pointer;
-        transition: background 0.2s, color 0.2s, border-color 0.2s;
-      }
-      #blog-modal-share:hover {
-        background: var(--accent-primary);
-        color: #fff;
-      }
       #blog-modal-close {
         width: 34px;
         height: 34px;
@@ -2327,28 +2308,6 @@
         background: var(--accent-primary);
         color: #fff;
         border-color: var(--accent-primary);
-      }
-      #blog-share-toast {
-        position: fixed;
-        bottom: 2.5rem;
-        left: 50%;
-        transform: translateX(-50%) translateY(8px);
-        background: var(--bg-nav);
-        border: 1px solid var(--accent-primary);
-        color: var(--accent-primary);
-        padding: 0.55rem 1.4rem;
-        border-radius: 999px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.25s ease, transform 0.25s ease;
-        z-index: 99999;
-        white-space: nowrap;
-      }
-      #blog-share-toast.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
       }
       .blog-modal-inner {
         padding: 2.5rem 3rem 3rem;
@@ -4998,9 +4957,6 @@
     <div id="blog-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="blog-modal-title-el">
       <div id="blog-modal">
         <div id="blog-modal-toolbar">
-          <button id="blog-modal-share" aria-label="Copy link to this article">
-            <i class="fas fa-link"></i> Copy link
-          </button>
           <button id="blog-modal-close" aria-label="Close article">
             <i class="fas fa-times"></i>
           </button>
@@ -5008,7 +4964,6 @@
         <div class="blog-modal-inner" id="blog-modal-content"></div>
       </div>
     </div>
-    <div id="blog-share-toast">Link copied to clipboard</div>
 
     <!-- Blog article templates (hidden) -->
     <template id="blog-tpl-blog-1">
@@ -5295,17 +5250,6 @@
         }
 
         if (blogModalClose) blogModalClose.addEventListener("click", closeBlogModal);
-        if (blogModalShare) {
-          blogModalShare.addEventListener("click", async () => {
-            try {
-              await navigator.clipboard.writeText(window.location.href);
-              showBlogToast("Link copied to clipboard");
-            } catch (err) {
-              console.error("Failed to copy link:", err);
-              showBlogToast("Could not copy link. Try again.");
-            }
-          });
-        }
         if (blogModalOverlay) {
           blogModalOverlay.addEventListener("click", (e) => {
             if (e.target === blogModalOverlay) closeBlogModal();
