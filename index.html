@@ -24,7 +24,8 @@
       content="Discover Crystron's groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.crystrontech.com/#blog/blog-1" />
+    <meta property="og:url" content="https://www.crystrontech.com/" />
+    <link rel="canonical" href="https://www.crystrontech.com/" />
     <meta
       property="og:image"
       content="https://your-domain.com/crystron_og_image.png"
@@ -2308,25 +2309,7 @@
         background: var(--accent-primary);
         color: #fff;
       }
-      #blog-modal-linkedin {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.4rem 1rem;
-        border-radius: 999px;
-        background: rgba(10, 102, 194, 0.1);
-        border: 1px solid #0a66c2;
-        color: #0a66c2;
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-        cursor: pointer;
-        transition: background 0.2s, color 0.2s;
-      }
-      #blog-modal-linkedin:hover {
-        background: #0a66c2;
-        color: #fff;
-      }
+
       #blog-modal-close {
         width: 34px;
         height: 34px;
@@ -5017,9 +5000,6 @@
     <div id="blog-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="blog-modal-title-el">
       <div id="blog-modal">
         <div id="blog-modal-toolbar">
-          <button id="blog-modal-linkedin" aria-label="Share on LinkedIn">
-            <i class="fab fa-linkedin"></i> Share on LinkedIn
-          </button>
           <button id="blog-modal-share" aria-label="Copy link to this article">
             <i class="fas fa-link"></i> Copy link
           </button>
@@ -5288,27 +5268,57 @@
         document.getElementById("currentYear").textContent =
           new Date().getFullYear();
 
-        function handleNavigation() {
+        function getBlogPath(articleId) {
+          return "/blog/" + articleId + "/";
+        }
+
+        function updateCanonical(url) {
+          let canonical = document.querySelector('link[rel="canonical"]');
+          if (!canonical) {
+            canonical = document.createElement("link");
+            canonical.rel = "canonical";
+            document.head.appendChild(canonical);
+          }
+          canonical.href = url;
+        }
+
+        function parseRoute() {
+          const pathname = window.location.pathname;
+          if (pathname.startsWith("/blog/")) {
+            const parts = pathname.split("/").filter(Boolean);
+            if (parts[0] === "blog" && parts[1]) {
+              return { pageName: "blog", postId: parts[1] };
+            }
+          }
+
           const hash = window.location.hash.substring(1) || "home";
           const slashIdx = hash.indexOf("/");
           const pageName = slashIdx >= 0 ? hash.substring(0, slashIdx) : hash;
-          const postId   = slashIdx >= 0 ? hash.substring(slashIdx + 1) : null;
+          const postId = slashIdx >= 0 ? hash.substring(slashIdx + 1) : null;
+          return { pageName, postId };
+        }
+
+        function handleNavigation() {
+          const { pageName, postId } = parseRoute();
           showPage(pageName + "-page");
           if (postId) {
             requestAnimationFrame(() => openBlogModal(postId, false));
+          } else if (document.getElementById("blog-modal-overlay")?.classList.contains("open")) {
+            closeBlogModal();
           }
         }
 
         window.addEventListener("hashchange", handleNavigation);
+        window.addEventListener("popstate", handleNavigation);
         handleNavigation(); // Initial page load
 
         // --- Blog Modal Logic ---
-        const blogModalOverlay  = document.getElementById("blog-modal-overlay");
-        const blogModalContent  = document.getElementById("blog-modal-content");
-        const blogModalClose    = document.getElementById("blog-modal-close");
-        const blogModalShare    = document.getElementById("blog-modal-share");
-        const blogModalLinkedin = document.getElementById("blog-modal-linkedin");
-        const blogShareToast    = document.getElementById("blog-share-toast");
+        const blogModalOverlay = document.getElementById("blog-modal-overlay");
+        const blogModalContent = document.getElementById("blog-modal-content");
+        const blogModalClose   = document.getElementById("blog-modal-close");
+        const blogModalShare   = document.getElementById("blog-modal-share");
+        const blogShareToast   = document.getElementById("blog-share-toast");
+        let currentArticleId   = null;
 
         const blogArticlesMeta = {
           "blog-1": {
@@ -5328,8 +5338,10 @@
           };
           set("og:title",       meta.title + " | Crystron Technologies");
           set("og:description", meta.description);
-          set("og:url",         window.location.origin + window.location.pathname + "#blog/" + articleId);
+          const articleUrl = window.location.origin + getBlogPath(articleId);
+          set("og:url",         articleUrl);
           set("og:type",        meta.type);
+          updateCanonical(articleUrl);
           document.title = meta.title + " | Crystron Technologies";
         }
 
@@ -5340,21 +5352,24 @@
           };
           set("og:title",       "Crystron Technologies - Pioneering Battery Innovation");
           set("og:description", "Discover Crystron's groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior.");
-          set("og:url",         window.location.origin + window.location.pathname);
+          const homeUrl = window.location.origin + "/";
+          set("og:url",         homeUrl);
           set("og:type",        "website");
+          updateCanonical(homeUrl);
           document.title = "Crystron Technologies";
         }
 
         window.openBlogModal = function(articleId, updateUrl = true) {
           const tpl = document.getElementById("blog-tpl-" + articleId);
           if (!tpl) return;
+          currentArticleId = articleId;
           blogModalContent.innerHTML = "";
           blogModalContent.appendChild(tpl.content.cloneNode(true));
           blogModalOverlay.classList.add("open");
           document.body.style.overflow = "hidden";
           blogModalClose.focus();
           if (updateUrl) {
-            history.replaceState(null, "", "#blog/" + articleId);
+            history.replaceState(null, "", getBlogPath(articleId));
           }
           updateOGTags(articleId);
         };
@@ -5362,16 +5377,16 @@
         function closeBlogModal() {
           blogModalOverlay.classList.remove("open");
           document.body.style.overflow = "";
-          if (window.location.hash.includes("/")) {
-            history.replaceState(null, "", "#blog");
-          }
+          history.replaceState(null, "", "/");
           resetOGTags();
         }
 
         let toastTimer;
         if (blogModalShare) {
           blogModalShare.addEventListener("click", () => {
-            const url = window.location.href;
+            const url = currentArticleId
+              ? window.location.origin + "/blog/" + currentArticleId + "/"
+              : window.location.href;
             navigator.clipboard.writeText(url).then(() => {
               blogShareToast.classList.add("show");
               clearTimeout(toastTimer);
@@ -5389,13 +5404,6 @@
               clearTimeout(toastTimer);
               toastTimer = setTimeout(() => blogShareToast.classList.remove("show"), 2500);
             });
-          });
-        }
-
-        if (blogModalLinkedin) {
-          blogModalLinkedin.addEventListener("click", () => {
-            const url = encodeURIComponent(window.location.origin + window.location.pathname);
-            window.open("https://www.linkedin.com/sharing/share-offsite/?url=" + url, "_blank", "width=600,height=600");
           });
         }
 
