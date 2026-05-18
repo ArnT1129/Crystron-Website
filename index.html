@@ -24,7 +24,7 @@
       content="Discover Crystron's groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.crystrontech.com/#blog/blog-1" />
+    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE" />
     <meta
       property="og:image"
       content="https://your-domain.com/crystron_og_image.png"
@@ -2308,7 +2308,6 @@
         background: var(--accent-primary);
         color: #fff;
       }
-
       #blog-modal-close {
         width: 34px;
         height: 34px;
@@ -5268,14 +5267,8 @@
           new Date().getFullYear();
 
         function handleNavigation() {
-          const hash = window.location.hash.substring(1) || "home";
-          const slashIdx = hash.indexOf("/");
-          const pageName = slashIdx >= 0 ? hash.substring(0, slashIdx) : hash;
-          const postId   = slashIdx >= 0 ? hash.substring(slashIdx + 1) : null;
+          const pageName = window.location.hash.substring(1) || "home";
           showPage(pageName + "-page");
-          if (postId) {
-            requestAnimationFrame(() => openBlogModal(postId, false));
-          }
         }
 
         window.addEventListener("hashchange", handleNavigation);
@@ -5284,94 +5277,21 @@
         // --- Blog Modal Logic ---
         const blogModalOverlay = document.getElementById("blog-modal-overlay");
         const blogModalContent = document.getElementById("blog-modal-content");
-        const blogModalClose   = document.getElementById("blog-modal-close");
-        const blogModalShare   = document.getElementById("blog-modal-share");
-        const blogShareToast   = document.getElementById("blog-share-toast");
-        let currentArticleId   = null;
+        const blogModalClose = document.getElementById("blog-modal-close");
 
-        const blogArticlesMeta = {
-          "blog-1": {
-            title: "One Structural Flaw Drives Almost Everything",
-            description: "Why making a lithium iron phosphate battery is so complicated — and why it doesn't have to be",
-            type: "article"
-          }
-        };
-
-        function updateOGTags(articleId) {
-          const meta = blogArticlesMeta[articleId];
-          if (!meta) return;
-          const set = (prop, val) => {
-            let el = document.querySelector('meta[property="' + prop + '"]');
-            if (!el) { el = document.createElement("meta"); el.setAttribute("property", prop); document.head.appendChild(el); }
-            el.setAttribute("content", val);
-          };
-          set("og:title",       meta.title + " | Crystron Technologies");
-          set("og:description", meta.description);
-          set("og:url",         window.location.origin + window.location.pathname + "#blog/" + articleId);
-          set("og:type",        meta.type);
-          document.title = meta.title + " | Crystron Technologies";
-        }
-
-        function resetOGTags() {
-          const set = (prop, val) => {
-            const el = document.querySelector('meta[property="' + prop + '"]');
-            if (el) el.setAttribute("content", val);
-          };
-          set("og:title",       "Crystron Technologies - Pioneering Battery Innovation");
-          set("og:description", "Discover Crystron's groundbreaking Cathode Active Material technology that's cleaner, cheaper, and superior.");
-          set("og:url",         window.location.origin + window.location.pathname);
-          set("og:type",        "website");
-          document.title = "Crystron Technologies";
-        }
-
-        window.openBlogModal = function(articleId, updateUrl = true) {
+        window.openBlogModal = function(articleId) {
           const tpl = document.getElementById("blog-tpl-" + articleId);
           if (!tpl) return;
-          currentArticleId = articleId;
           blogModalContent.innerHTML = "";
           blogModalContent.appendChild(tpl.content.cloneNode(true));
           blogModalOverlay.classList.add("open");
           document.body.style.overflow = "hidden";
           blogModalClose.focus();
-          if (updateUrl) {
-            history.replaceState(null, "", "#blog/" + articleId);
-          }
-          updateOGTags(articleId);
         };
 
         function closeBlogModal() {
           blogModalOverlay.classList.remove("open");
           document.body.style.overflow = "";
-          if (window.location.hash.includes("/")) {
-            history.replaceState(null, "", "#blog");
-          }
-          resetOGTags();
-        }
-
-        let toastTimer;
-        if (blogModalShare) {
-          blogModalShare.addEventListener("click", () => {
-            const url = currentArticleId
-              ? window.location.origin + "/blog/" + currentArticleId + "/"
-              : window.location.href;
-            navigator.clipboard.writeText(url).then(() => {
-              blogShareToast.classList.add("show");
-              clearTimeout(toastTimer);
-              toastTimer = setTimeout(() => blogShareToast.classList.remove("show"), 2500);
-            }).catch(() => {
-              const el = document.createElement("textarea");
-              el.value = url;
-              el.style.position = "fixed";
-              el.style.opacity = "0";
-              document.body.appendChild(el);
-              el.select();
-              document.execCommand("copy");
-              document.body.removeChild(el);
-              blogShareToast.classList.add("show");
-              clearTimeout(toastTimer);
-              toastTimer = setTimeout(() => blogShareToast.classList.remove("show"), 2500);
-            });
-          });
         }
 
         if (blogModalClose) blogModalClose.addEventListener("click", closeBlogModal);
