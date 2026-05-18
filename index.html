@@ -5266,78 +5266,32 @@
         document.getElementById("currentYear").textContent =
           new Date().getFullYear();
 
-        const blogHashPrefix = "blog";
-        const getBlogHash = (articleId) =>
-          `${blogHashPrefix}?article=${encodeURIComponent(articleId)}`;
-
-        function parseHash(hash) {
-          const cleaned = hash.replace(/^#/, "");
-          const [pagePart, queryString] = cleaned.split("?");
-          const params = new URLSearchParams(queryString || "");
-          return {
-            pageName: pagePart || "home",
-            articleId: params.get("article"),
-          };
-        }
-
         function handleNavigation() {
-          const { pageName, articleId } = parseHash(window.location.hash || "");
+          const pageName = window.location.hash.substring(1) || "home";
           showPage(pageName + "-page");
-          if (pageName === "blog" && articleId) {
-            window.openBlogModal(articleId, false);
-          } else if (blogModalOverlay && blogModalOverlay.classList.contains("open")) {
-            closeBlogModal();
-          }
         }
+
+        window.addEventListener("hashchange", handleNavigation);
+        handleNavigation(); // Initial page load
 
         // --- Blog Modal Logic ---
         const blogModalOverlay = document.getElementById("blog-modal-overlay");
         const blogModalContent = document.getElementById("blog-modal-content");
         const blogModalClose = document.getElementById("blog-modal-close");
-        const blogModalShare = document.getElementById("blog-modal-share");
-        const blogShareToast = document.getElementById("blog-share-toast");
-        let currentArticleId = null;
-        let blogToastTimeout = null;
 
-        window.addEventListener("hashchange", handleNavigation);
-        handleNavigation(); // Initial page load
-
-        function showBlogToast(message) {
-          if (!blogShareToast) return;
-          blogShareToast.textContent = message;
-          blogShareToast.classList.add("show");
-          if (blogToastTimeout) clearTimeout(blogToastTimeout);
-          blogToastTimeout = setTimeout(() => {
-            blogShareToast.classList.remove("show");
-          }, 2500);
-        }
-
-        window.openBlogModal = function(articleId, updateHash = true) {
+        window.openBlogModal = function(articleId) {
           const tpl = document.getElementById("blog-tpl-" + articleId);
           if (!tpl) return;
-          currentArticleId = articleId;
           blogModalContent.innerHTML = "";
           blogModalContent.appendChild(tpl.content.cloneNode(true));
           blogModalOverlay.classList.add("open");
           document.body.style.overflow = "hidden";
           blogModalClose.focus();
-
-          if (updateHash) {
-            const targetHash = `#${getBlogHash(articleId)}`;
-            if (window.location.hash !== targetHash) {
-              window.history.replaceState(null, "", targetHash);
-            }
-          }
         };
 
         function closeBlogModal() {
           blogModalOverlay.classList.remove("open");
           document.body.style.overflow = "";
-          currentArticleId = null;
-          const currentHash = window.location.hash || "";
-          if (currentHash.startsWith(`#${blogHashPrefix}?article=`)) {
-            window.history.replaceState(null, "", "#blog");
-          }
         }
 
         if (blogModalClose) blogModalClose.addEventListener("click", closeBlogModal);
