@@ -10,6 +10,9 @@ node_modules/
 # Vercel build output directory
 .vercel/
 
+# Vite production build output
+dist/
+
 # macOS specific files
 .DS_Store
 

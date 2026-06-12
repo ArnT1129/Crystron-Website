@@ -1,0 +1,89 @@
+    <!-- Fallback mobile hamburger: fixed to viewport so it's always reachable on phones (only visible on small screens) -->
+    <button
+      id="mobile-menu-toggle-fallback"
+      aria-label="Open navigation"
+      class="mobile-fallback-toggle"
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M3 12h18M3 6h18M3 18h18"></path>
+      </svg>
+    </button>
+    <a
+      href="#main-content-area"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-[2000] focus:p-4 focus:bg-accent-primary focus:text-white"
+    >
+      Skip to Main Content
+    </a>
+
+    <!-- mobile toggle moved into header for better UX on small screens -->
+
+    <aside id="sidebar-nav">
+      <div class="logo-container">
+        <a href="#home" data-page="home" class="page-link">
+          <!-- Logo Placeholder -->
+          <img
+            src="/CrystronLogo-removebg-preview.png"
+            alt="Crystron Technologies Logo"
+            class="logo-img"
+          />
+        </a>
+      </div>
+
+      <nav class="nav-links" role="navigation" aria-label="Main Navigation">
+        <a href="#home" data-page="home" class="nav-link page-link active-link"
+          ><span class="nav-text">HOME</span></a
+        >
+        <a href="#technology" data-page="technology" class="nav-link page-link"
+          ><span class="nav-text">TECHNOLOGY</span></a
+        >
+        <a href="#team" data-page="team" class="nav-link page-link"
+          ><span class="nav-text">TEAM</span></a
+        >
+        <!-- <a href="#partners" data-page="partners" class="nav-link page-link"
+          >PARTNERS</a
+        > -->
+        <a href="#news" data-page="news" class="nav-link page-link"
+          ><span class="nav-text">NEWS</span></a
+        >
+        <a href="#blog" data-page="blog" class="nav-link page-link"
+          ><span class="nav-text">BLOG</span></a
+        >
+        <a href="#investors" data-page="investors" class="nav-link page-link"
+          ><span class="nav-text">INVESTORS</span></a
+        >
+        <a href="#contact" data-page="contact" class="nav-link page-link"
+          ><span class="nav-text">CONTACT</span></a
+        >
+      </nav>
+
+      <div class="theme-toggle-container">
+        <button
+          id="theme-toggle-button"
+          class="theme-toggle-button"
+          aria-label="Toggle Theme"
+        >
+          <i class="fas fa-sun mr-2"></i><i class="fas fa-moon mr-2"></i>
+          <span>Switch</span>
+        </button>
+        <!-- mobile menu toggle placed here so there's a single header control on phones -->
+        <button
+          id="mobile-menu-toggle"
+          class="theme-toggle-button mobile-menu-toggle"
+          aria-label="Open Menu"
+          aria-controls="sidebar-nav"
+          aria-expanded="false"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </aside>

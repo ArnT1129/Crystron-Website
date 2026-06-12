@@ -1,0 +1,120 @@
+        <section id="contact-page" class="page">
+          <div class="industrial-section">
+            <div class="section-kicker">
+              <span class="eyebrow animated-element">Contact</span>
+              <h2 class="section-title animated-element">Connect With Us</h2>
+              <p class="section-subtitle animated-element">
+                Whether you're interested in our technology, exploring investment
+                opportunities, or seeking strategic partnerships, our team is
+                ready to engage. Let's build a sustainable energy future together.
+              </p>
+            </div>
+
+            <div class="contact-layout">
+              <div class="contact-form industrial-panel animated-element">
+                <div class="panel-heading compact">
+                  <div>
+                    <span class="eyebrow">Message</span>
+                    <h3>Send a Direct Message</h3>
+                  </div>
+                </div>
+                <form id="contactForm" class="space-y-6">
+                  <div>
+                    <label for="name">Full Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="e.g., Dr. Evelyn Reed"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="email">Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="evelyn.reed@example.com"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="subject">Subject</label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      placeholder="Inquiry about Crystron Technology / Investment"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="message">Your Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="6"
+                      placeholder="Please provide details about your inquiry..."
+                      required
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    id="submit-button"
+                    class="btn btn-primary w-full"
+                  >
+                    <i class="fas fa-paper-plane"></i>Submit Inquiry
+                  </button>
+                  <p
+                    id="form-submission-status"
+                    class="mt-5 text-center text-base"
+                  ></p>
+                </form>
+              </div>
+
+              <div class="contact-aside">
+                <div class="industrial-panel animated-element">
+                  <div class="panel-heading compact">
+                    <div>
+                      <span class="eyebrow">Locations</span>
+                      <h3>Our Locations</h3>
+                    </div>
+                  </div>
+                  <div class="location-list">
+                    <div>
+                      <strong>Registered Office:</strong>
+                      <p>1209 Orange St, Wilmington, DE 19801</p>
+                    </div>
+                    <div>
+                      <strong>Delaware R&D Center:</strong>
+                      <p>200 Powder Mill Rd, E500/2402B, Wilmington, DE 19803</p>
+                    </div>
+                    <div>
+                      <strong>Pennsylvania Operations:</strong>
+                      <p>851 Duportail Rd, Chesterbrook, PA 19087</p>
+                    </div>
+                  </div>
+                  <div id="map"></div>
+                </div>
+
+                <div class="industrial-panel contact-email-card animated-element">
+                  <div>
+                    <span class="eyebrow">General Inquiries</span>
+                    <a href="mailto:info@crystronmat.com" class="contact-email-link">
+                      info@crystronmat.com
+                    </a>
+                  </div>
+                  <button
+                    onclick="copyEmail(event)"
+                    class="copy-email-button"
+                    aria-label="Copy email address"
+                    title="Copy email"
+                  >
+                    <i class="fas fa-copy"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
