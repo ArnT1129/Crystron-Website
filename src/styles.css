@@ -4058,7 +4058,8 @@ body,
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  background-image: url("/assets/hero-industrial-v1.png");
+  background-color: #061018;
+  background-image: url("/assets/hero-cathode-v1.png");
   background-size: cover;
   background-position: center;
   color: #ffffff;
@@ -4067,6 +4068,7 @@ body,
 .group14-hero-overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(90deg, rgba(4, 12, 20, 0.9) 0%, rgba(4, 12, 20, 0.72) 36%, rgba(4, 12, 20, 0.28) 72%, rgba(4, 12, 20, 0.18) 100%),
     linear-gradient(0deg, rgba(4, 12, 20, 0.72) 0%, rgba(4, 12, 20, 0.1) 46%, rgba(4, 12, 20, 0.28) 100%);
@@ -4075,7 +4077,7 @@ body,
 
 .group14-hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: min(100%, 1280px);
   min-height: auto !important;
   margin: 0 auto;
@@ -4997,15 +4999,15 @@ footer a:hover {
   border-bottom-color: rgba(141, 245, 236, 0.18);
   border-radius: 10px;
   background:
-    radial-gradient(circle at 14% -10%, rgba(141, 245, 236, 0.1), transparent 20rem),
-    radial-gradient(circle at 78% 120%, rgba(25, 183, 200, 0.08), transparent 18rem),
-    linear-gradient(135deg, rgba(15, 31, 39, 0.36), rgba(4, 12, 18, 0.16));
+    radial-gradient(circle at 14% -10%, rgba(141, 245, 236, 0.07), transparent 20rem),
+    radial-gradient(circle at 78% 120%, rgba(25, 183, 200, 0.05), transparent 18rem),
+    linear-gradient(135deg, rgba(15, 31, 39, 0.24), rgba(4, 12, 18, 0.08));
   box-shadow:
-    0 18px 52px -34px rgba(0, 0, 0, 0.88),
-    inset 0 1px 0 rgba(246, 251, 255, 0.16),
-    inset 0 -1px 0 rgba(141, 245, 236, 0.06);
-  backdrop-filter: blur(15px) saturate(1.14);
-  -webkit-backdrop-filter: blur(15px) saturate(1.14);
+    0 18px 52px -36px rgba(0, 0, 0, 0.78),
+    inset 0 1px 0 rgba(246, 251, 255, 0.13),
+    inset 0 -1px 0 rgba(141, 245, 236, 0.04);
+  backdrop-filter: blur(13px) saturate(1.12);
+  -webkit-backdrop-filter: blur(13px) saturate(1.12);
 }
 
 #sidebar-nav::before,
@@ -5020,9 +5022,9 @@ footer a:hover {
   inset: 1px;
   border-radius: inherit;
   background:
-    linear-gradient(115deg, rgba(255, 255, 255, 0.12), transparent 24%, rgba(141, 245, 236, 0.05) 54%, transparent 78%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 48%);
-  opacity: 0.58;
+    linear-gradient(115deg, rgba(255, 255, 255, 0.08), transparent 24%, rgba(141, 245, 236, 0.035) 54%, transparent 78%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 48%);
+  opacity: 0.5;
   mix-blend-mode: screen;
 }
 
@@ -5032,8 +5034,8 @@ footer a:hover {
   right: 1px;
   height: 1px;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(246, 251, 255, 0.62), rgba(141, 245, 236, 0.26), transparent);
-  opacity: 0.78;
+  background: linear-gradient(90deg, transparent, rgba(246, 251, 255, 0.48), rgba(141, 245, 236, 0.2), transparent);
+  opacity: 0.66;
 }
 
 #sidebar-nav .logo-container,
@@ -5158,8 +5160,8 @@ footer a:hover {
     transform: translateY(calc(-100% - 26px));
     border-radius: 22px;
     background:
-      radial-gradient(circle at 18% 0%, rgba(141, 245, 236, 0.14), transparent 17rem),
-      linear-gradient(135deg, rgba(20, 43, 52, 0.76), rgba(5, 13, 20, 0.62));
+      radial-gradient(circle at 18% 0%, rgba(141, 245, 236, 0.1), transparent 17rem),
+      linear-gradient(135deg, rgba(20, 43, 52, 0.58), rgba(5, 13, 20, 0.44));
   }
 
   #sidebar-nav.open {
