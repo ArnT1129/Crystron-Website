@@ -189,6 +189,11 @@
         overflow-x: hidden;
         width: 100%;
         min-height: 100vh;
+        margin: 0;
+      }
+
+      .hidden {
+        display: none !important;
       }
 
       /* Global responsive media defaults */
@@ -1264,14 +1269,14 @@
       }
       .news-card-image {
         width: 100%;
-        height: 200px;
+        height: 170px;
         object-fit: contain;
         border-radius: 10px;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.15rem;
         border: 1px solid var(--border-primary);
       }
       .news-card-title {
-        font-size: 1.75rem;
+        font-size: 1.25rem;
         font-weight: 700;
         color: var(--text-primary);
         margin-bottom: 0.75rem;
@@ -1284,11 +1289,7 @@
         display: block;
       }
       .news-card-summary {
-        font-size: 1rem;
-        color: var(--text-secondary);
-        line-height: 1.6;
-        flex-grow: 1;
-        margin-bottom: 1.5rem;
+        display: none;
       }
       .news-card-read-more {
         color: var(--accent-primary);
@@ -1296,6 +1297,7 @@
         text-decoration: none;
         transition: color 0.2s ease;
         margin-top: auto;
+        padding-top: 0.75rem;
       }
       .news-card-read-more:hover {
         color: var(--accent-secondary);
@@ -1596,6 +1598,654 @@
       }
       .comparison-footer.zero {
         color: var(--accent-primary);
+      }
+
+      .market-unified-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+        gap: 2.25rem;
+        align-items: stretch;
+      }
+      .market-figure-grid,
+      .value-proof-grid,
+      .complexity-grid,
+      .metric-meter-grid {
+        display: grid;
+        gap: 1rem;
+      }
+      .market-figure-grid {
+        grid-template-columns: 1fr;
+      }
+      .market-figure {
+        padding: 1.25rem;
+        border: 1px solid var(--border-primary);
+        border-radius: 12px;
+        background: linear-gradient(
+          135deg,
+          var(--bg-secondary),
+          rgba(43, 108, 176, 0.07)
+        );
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 18px 44px -34px var(--shadow-color);
+      }
+      .market-figure::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-secondary),
+          var(--accent-primary)
+        );
+        opacity: 0.85;
+      }
+      .market-figure strong {
+        display: block;
+        color: var(--accent-primary);
+        font-size: 2.15rem;
+        line-height: 1;
+        margin-bottom: 0.45rem;
+      }
+      .market-figure span {
+        display: block;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
+      .market-figure.highlight {
+        border-color: var(--border-accent);
+        background: linear-gradient(
+          135deg,
+          rgba(49, 151, 149, 0.1),
+          rgba(43, 108, 176, 0.08)
+        );
+      }
+      .cam-callout-card {
+        padding: 1rem 1.25rem;
+        border-left: 3px solid var(--accent-primary);
+        background: var(--bg-tertiary);
+        border-radius: 0 10px 10px 0;
+      }
+      .cam-callout-body strong {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.35rem;
+      }
+      .cam-callout-body span {
+        display: block;
+        font-size: 0.83rem;
+        color: var(--text-secondary);
+        line-height: 1.55;
+      }
+      .market-snapshot-panel {
+        padding: 1.5rem;
+        border-radius: 16px;
+        border: 1px solid var(--border-primary);
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.78),
+          rgba(43, 108, 176, 0.06)
+        );
+        box-shadow: 0 24px 70px -46px var(--shadow-color);
+        display: flex;
+        flex-direction: column;
+      }
+      .market-left-col {
+        display: flex;
+        flex-direction: column;
+      }
+      .market-left-col .tam-chart-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .dark-mode .market-snapshot-panel {
+        background: linear-gradient(
+          145deg,
+          rgba(16, 23, 35, 0.92),
+          rgba(79, 209, 197, 0.08)
+        );
+      }
+      .market-growth-row {
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-primary);
+      }
+      .market-growth-row:last-child {
+        border-bottom: 0;
+      }
+      .market-growth-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: baseline;
+        margin-bottom: 0.85rem;
+      }
+      .market-growth-head h5 {
+        color: var(--text-primary);
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: 0;
+        margin: 0;
+      }
+      .market-growth-head span {
+        color: var(--accent-secondary);
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+      .market-growth-track {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 0.85rem;
+        align-items: center;
+      }
+      .market-growth-value {
+        color: var(--text-primary);
+        font-weight: 800;
+        font-size: 1.05rem;
+        white-space: nowrap;
+      }
+      .market-growth-bar {
+        height: 14px;
+        border-radius: 0;
+        background: transparent;
+        overflow: visible;
+      }
+      .market-growth-fill {
+        width: 0;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          rgba(99, 179, 237, 0.25) 0%,
+          var(--accent-secondary) 45%,
+          var(--accent-primary) 100%
+        );
+        clip-path: polygon(0 20%, calc(100% - 10px) 20%, 100% 50%, calc(100% - 10px) 80%, 0 80%);
+        transition: width 1.1s ease;
+      }
+      .animated-element.is-visible .market-growth-fill {
+        width: 100%;
+      }
+      .market-snapshot-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.55rem 0.8rem;
+        border-radius: 999px;
+        color: #fff;
+        font-weight: 800;
+        font-size: 0.82rem;
+        background: linear-gradient(
+          135deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        box-shadow: 0 16px 34px -22px var(--accent-primary);
+      }
+
+      .value-proof-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+        max-width: 980px;
+        margin: 0 auto;
+        gap: 1rem;
+      }
+      .value-proof-card {
+        padding: 1.35rem 1.45rem;
+        border: 1px solid var(--border-primary);
+        border-radius: 16px;
+        background: linear-gradient(
+          145deg,
+          var(--bg-secondary),
+          rgba(43, 108, 176, 0.06)
+        );
+        position: relative;
+        overflow: hidden;
+        min-height: 205px;
+        box-shadow: 0 18px 52px -40px var(--shadow-color);
+        transition: transform 0.25s ease, box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+      .value-proof-card::after {
+        content: "";
+        position: absolute;
+        right: -42px;
+        bottom: -46px;
+        width: 138px;
+        height: 138px;
+        border-radius: 50%;
+        border: 1px solid var(--card-ring, rgba(49, 151, 149, 0.16));
+        background: var(--card-glow, rgba(49, 151, 149, 0.04));
+      }
+      .value-proof-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 5px;
+        background: linear-gradient(
+          90deg,
+          var(--card-accent-a, var(--accent-secondary)),
+          var(--card-accent-b, var(--accent-primary))
+        );
+      }
+      .value-proof-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--border-accent);
+        box-shadow: 0 22px 58px -42px var(--accent-primary);
+      }
+      .value-proof-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--card-accent-b, var(--accent-primary)),
+          var(--card-accent-a, var(--accent-secondary))
+        );
+        margin-bottom: 0.95rem;
+        box-shadow: 0 14px 30px -20px var(--accent-primary);
+      }
+      .value-proof-card strong {
+        display: block;
+        color: var(--card-accent-b, var(--accent-primary));
+        font-size: clamp(2.1rem, 3.2vw, 3rem);
+        line-height: 1;
+        margin-bottom: 0.55rem;
+        letter-spacing: -0.03em;
+      }
+      .value-proof-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.4rem;
+      }
+      .value-proof-card p {
+        font-size: 0.92rem;
+        line-height: 1.55;
+        margin: 0;
+        max-width: 94%;
+      }
+      .value-proof-tag {
+        display: inline-flex;
+        margin-top: 0.85rem;
+        padding: 0.34rem 0.65rem;
+        border-radius: 999px;
+        color: var(--card-accent-b, var(--accent-primary));
+        background: var(--card-glow, var(--accent-glow));
+        border: 1px solid var(--card-ring, rgba(43, 108, 176, 0.16));
+        font-weight: 800;
+        font-size: 0.66rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .value-proof-card:nth-child(1) {
+        --card-accent-a: #4a9a97;
+        --card-accent-b: #4a7db8;
+        --card-glow: rgba(74, 125, 184, 0.07);
+        --card-ring: rgba(74, 125, 184, 0.15);
+      }
+      .value-proof-card:nth-child(2) {
+        --card-accent-a: #3aa4b0;
+        --card-accent-b: #4a7db8;
+        --card-glow: rgba(74, 125, 184, 0.07);
+        --card-ring: rgba(74, 125, 184, 0.15);
+      }
+      .value-proof-card:nth-child(3) {
+        --card-accent-a: #2dd4bf;
+        --card-accent-b: #319795;
+        --card-glow: rgba(45, 212, 191, 0.1);
+        --card-ring: rgba(49, 151, 149, 0.2);
+      }
+      .value-proof-card:nth-child(4) {
+        --card-accent-a: #63b3ed;
+        --card-accent-b: #319795;
+        --card-glow: rgba(99, 179, 237, 0.1);
+        --card-ring: rgba(99, 179, 237, 0.2);
+      }
+      .value-proof-card.featured {
+        border-color: var(--border-accent);
+        background: linear-gradient(
+          145deg,
+          rgba(49, 151, 149, 0.1),
+          var(--bg-secondary)
+        );
+      }
+
+      .tech-material-band {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+        align-items: stretch;
+        margin: 0 auto 4rem;
+        max-width: 1180px;
+      }
+      .tech-material-copy {
+        padding: 2rem;
+        border-radius: 20px;
+        border: 1px solid var(--border-primary);
+        background: linear-gradient(
+          145deg,
+          var(--bg-secondary),
+          rgba(49, 151, 149, 0.09)
+        );
+        box-shadow: 0 20px 58px -46px var(--shadow-color);
+      }
+      .tech-material-copy h3 {
+        font-size: clamp(1.6rem, 3vw, 2.5rem);
+        line-height: 1.08;
+        margin-bottom: 1rem;
+      }
+      .tech-material-copy p {
+        color: var(--text-secondary);
+        line-height: 1.75;
+        margin: 0;
+      }
+      .tech-material-visual {
+        min-height: 300px;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--border-primary);
+      }
+      @media (max-width: 900px) {
+        .tech-material-band {
+          grid-template-columns: 1fr;
+        }
+      }
+      .tech-process-image-panel {
+        border: 1px solid var(--border-primary);
+        border-radius: 18px;
+        overflow: hidden;
+        background: var(--bg-secondary);
+        box-shadow: 0 24px 70px -45px var(--shadow-color);
+      }
+      .tech-process-image-panel img {
+        width: 100%;
+        display: block;
+      }
+      .tech-process-caption {
+        padding: 1rem 1.25rem;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.55;
+        border-top: 1px solid var(--border-primary);
+      }
+      .complexity-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 1.5rem;
+      }
+      .complexity-card {
+        padding: 1.25rem;
+        border: 1px solid var(--border-primary);
+        border-radius: 10px;
+        background: linear-gradient(
+          135deg,
+          var(--bg-secondary),
+          rgba(43, 108, 176, 0.05)
+        );
+      }
+      .complexity-card i {
+        color: var(--accent-primary);
+        font-size: 1.35rem;
+        margin-bottom: 0.85rem;
+      }
+      .complexity-card h4 {
+        font-size: 1.05rem;
+        margin-bottom: 0.45rem;
+      }
+      .complexity-card p {
+        font-size: 0.94rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+      .process-contrast-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        gap: 1.6rem;
+        align-items: stretch;
+        margin: 1.75rem 0 3rem;
+      }
+      .process-lane {
+        padding: 2rem;
+        border-radius: 20px;
+        border: 1px solid var(--border-primary);
+        background: var(--bg-secondary);
+        box-shadow: 0 20px 60px -44px var(--shadow-color);
+      }
+      .process-lane.lfp {
+        background: linear-gradient(
+          145deg,
+          var(--bg-secondary),
+          rgba(79, 122, 102, 0.1)
+        );
+      }
+      .process-lane.crystron {
+        border-color: var(--border-accent);
+        background: linear-gradient(
+          145deg,
+          rgba(49, 151, 149, 0.12),
+          var(--bg-secondary)
+        );
+      }
+      .process-lane h4 {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        font-size: 1.35rem;
+        margin-bottom: 1.35rem;
+      }
+      .process-chip-list {
+        display: grid;
+        gap: 0.85rem;
+      }
+      .process-chip {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 1.05rem;
+        border-radius: 14px;
+        color: var(--text-secondary);
+        background: rgba(255, 255, 255, 0.48);
+        border: 1px solid var(--border-primary);
+        font-size: 1rem;
+        line-height: 1.42;
+      }
+      .dark-mode .process-chip {
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .process-chip i {
+        color: var(--accent-primary);
+        width: 20px;
+        text-align: center;
+        font-size: 1.08rem;
+      }
+      .process-chip-text {
+        min-width: 0;
+      }
+      .chem-formula {
+        white-space: nowrap;
+      }
+      .process-chip.warn i {
+        color: #b45309;
+      }
+      .process-chip.good i {
+        color: var(--accent-secondary);
+      }
+      .process-vs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-primary);
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .process-vs::before,
+      .process-vs::after {
+        content: "";
+        width: 1px;
+        height: 78px;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          var(--border-accent),
+          transparent
+        );
+      }
+      .process-vs span {
+        display: inline-flex;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border-accent);
+        background: var(--bg-secondary);
+        box-shadow: 0 16px 34px -24px var(--accent-primary);
+      }
+
+      .metric-meter-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+      }
+      .metric-meter-card {
+        padding: 1.55rem;
+        border: 1px solid var(--border-primary);
+        border-radius: 18px;
+        background: linear-gradient(
+          145deg,
+          var(--bg-secondary),
+          rgba(43, 108, 176, 0.06)
+        );
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 22px 60px -45px var(--shadow-color);
+        transition: transform 0.25s ease, border-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .metric-meter-card:hover {
+        transform: translateY(-7px);
+        border-color: var(--border-accent);
+        box-shadow: 0 32px 80px -50px var(--accent-primary);
+      }
+      .metric-meter-card h4 {
+        font-size: 1.15rem;
+        margin-bottom: 0.35rem;
+      }
+      .metric-meter-card p {
+        color: var(--text-secondary);
+        font-size: 0.94rem;
+        line-height: 1.45;
+        margin-bottom: 1.15rem;
+      }
+      .metric-detail {
+        display: inline-flex;
+        margin-top: 0.2rem;
+        padding: 0.38rem 0.72rem;
+        border-radius: 999px;
+        color: var(--accent-primary);
+        background: var(--accent-glow);
+        border: 1px solid rgba(43, 108, 176, 0.16);
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+      .meter-track {
+        display: none;
+      }
+      .meter-fill {
+        width: 0 !important;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(
+          90deg,
+          var(--accent-secondary),
+          var(--accent-primary)
+        );
+        transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .animated-element.is-visible .meter-fill {
+        width: var(--fill) !important;
+      }
+      .meter-legend {
+        display: none;
+      }
+      .metric-meter-value {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-primary);
+        font-weight: 700;
+        font-size: 1.25rem;
+      }
+      .metric-orb {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        margin: 0 0 1.2rem;
+        background:
+          radial-gradient(circle at center, var(--bg-secondary) 58%, transparent 60%),
+          conic-gradient(var(--accent-secondary) calc(var(--score) * 1%), var(--bg-tertiary) 0);
+        box-shadow: inset 0 0 0 1px var(--border-primary),
+          0 18px 42px -30px var(--accent-primary);
+        transition: transform 0.3s ease;
+      }
+      .metric-meter-card:hover .metric-orb {
+        transform: scale(1.06);
+      }
+      .metric-meter-card.featured-metric {
+        grid-column: span 1;
+        border-color: var(--border-accent);
+      }
+      .metric-meter-card::after {
+        content: "";
+        position: absolute;
+        right: -36px;
+        top: -36px;
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        border: 1px solid rgba(49, 151, 149, 0.18);
+        opacity: 0.8;
+      }
+
+      @media (max-width: 900px) {
+        .market-unified-grid,
+        .value-proof-grid,
+        .complexity-grid,
+        .metric-meter-grid,
+        .process-contrast-panel {
+          grid-template-columns: 1fr;
+        }
+        .process-vs {
+          flex-direction: row;
+        }
+        .process-vs::before,
+        .process-vs::after {
+          width: 88px;
+          height: 1px;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            var(--border-accent),
+            transparent
+          );
+        }
+        .market-figure-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 520px) {
+        .market-figure-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
       /* New: process diagram + impact stat styles */
@@ -2192,7 +2842,7 @@
         border-color: var(--accent-primary);
       }
       .blog-card-header {
-        padding: 2rem 2rem 0;
+        padding: 1.5rem 1.5rem 0;
       }
       .blog-card-category {
         display: inline-block;
@@ -2208,23 +2858,26 @@
         margin-bottom: 1rem;
       }
       .blog-card-title {
-        font-size: 1.35rem;
+        font-size: 1.22rem;
         font-weight: 700;
         color: var(--text-primary);
         line-height: 1.35;
         margin-bottom: 0.5rem;
       }
       .blog-card-subtitle {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         font-weight: 500;
         color: var(--accent-secondary);
-        margin-bottom: 1rem;
+        margin-bottom: 0;
         line-height: 1.5;
         font-style: italic;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
       .blog-card-body {
-        padding: 1rem 2rem 1.5rem;
-        flex-grow: 1;
+        display: none;
       }
       .blog-card-excerpt {
         font-size: 0.95rem;
@@ -2232,11 +2885,12 @@
         line-height: 1.7;
       }
       .blog-card-footer {
-        padding: 1.25rem 2rem;
+        padding: 1rem 1.5rem;
         border-top: 1px solid var(--border-primary);
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-top: 1.25rem;
       }
       .blog-card-date {
         font-size: 0.85rem;
@@ -2864,7 +3518,11 @@
                 text-align: center;
                 margin-top: 2rem;
                 animation: bounce 2s infinite;
+                cursor: pointer;
               "
+              onclick="document.getElementById('market-opportunity').scrollIntoView({behavior:'smooth'})"
+              role="button"
+              aria-label="Scroll to Market Opportunity"
             >
               <i
                 class="fas fa-chevron-down"
@@ -2898,55 +3556,87 @@
               </p>
             </div>
 
-            <!-- Supply Shortfall Visualization -->
-            <!-- Global Li-Ion Battery Demand -->
             <div class="card p-8 mb-12 animated-element gradient-pastel-blue">
-              <div class="text-left mb-8">
-                <h3 class="text-3xl font-bold text-text-primary mb-2">
-                  Global Li-Ion Battery Demand
-                </h3>
-                <p class="text-lg text-text-secondary max-w-3xl">
-                  The global shift toward electrification and renewable energy
-                  is driving exceptional growth in the lithium-ion battery
-                  market. With a projected compound annual growth rate of 27%.
-                </p>
-              </div>
-
-              <!-- Simple Bar Chart -->
-              <div class="mb-12 tam-chart-wrapper">
-                <div class="relative tam-chart-inner">
-                  <canvas id="tamBarChart"></canvas>
+              <div class="market-unified-grid">
+                <div class="market-left-col">
+                  <div class="text-left mb-8">
+                    <h3 class="text-3xl font-bold text-text-primary mb-2">
+                      Battery Demand Is Pulling CAM With It
+                    </h3>
+                    <p class="text-lg text-text-secondary max-w-3xl">
+                      The cell market and the active material market
+                      are scaling together. Crystron sits at the point where
+                      demand turns into a manufacturing bottleneck.
+                    </p>
+                  </div>
+                  <div class="tam-chart-wrapper">
+                    <div class="relative tam-chart-inner">
+                      <canvas id="tamBarChart"></canvas>
+                    </div>
+                    <p class="text-center text-text-secondary text-sm" style="margin-top: auto; padding-top: 1.5rem;">
+                      Global Li-ion battery demand, GWh, base case.
+                      Source: McKinsey Insights
+                    </p>
+                  </div>
                 </div>
-                <p class="text-center mt-6 text-text-secondary text-sm">
-                  Global Li-ion battery cell demand, GWh, Base case. Source:
-                  McKinsey Battery Insights
-                </p>
-              </div>
-            </div>
-
-            <!-- Funnel Connector -->
-            <div class="flex justify-center my-4 relative z-10">
-              <div
-                class="rounded-full p-3 shadow-lg animate-bounce-slow"
-                style="
-                  background: var(--bg-primary);
-                  border: 2px solid var(--accent-secondary);
-                "
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="var(--accent-secondary)"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                  />
-                </svg>
+                <div class="market-snapshot-panel animated-element">
+                  <div class="flex items-start justify-between gap-4 mb-4">
+                    <div>
+                      <h4 class="text-xl font-bold text-text-primary mb-2">
+                        CAM Market Snapshot
+                      </h4>
+                      <p class="text-sm text-text-secondary leading-relaxed">
+                        The addressable material market expands as cell demand
+                        scales.
+                      </p>
+                    </div>
+                    <span class="market-snapshot-badge">
+                      <i class="fas fa-chart-line"></i> 2035
+                    </span>
+                  </div>
+                  <div class="market-growth-row">
+                    <div class="market-growth-head">
+                      <h5>Global CAM Market</h5>
+                      <span>4.0x growth</span>
+                    </div>
+                    <div class="market-growth-track">
+                      <span class="market-growth-value">$38B</span>
+                      <div class="market-growth-bar">
+                        <div
+                          class="market-growth-fill"
+                          style="--fill: 100%"
+                        ></div>
+                      </div>
+                      <span class="market-growth-value">$153B</span>
+                    </div>
+                  </div>
+                  <div class="market-growth-row">
+                    <div class="market-growth-head">
+                      <h5>North America CAM Market</h5>
+                      <span>4.5x growth</span>
+                    </div>
+                    <div class="market-growth-track">
+                      <span class="market-growth-value">$6B</span>
+                      <div class="market-growth-bar">
+                        <div
+                          class="market-growth-fill"
+                          style="--fill: 100%"
+                        ></div>
+                      </div>
+                      <span class="market-growth-value">$27B</span>
+                    </div>
+                  </div>
+                  <div class="cam-callout-card mt-5">
+                    <div class="cam-callout-body">
+                      <strong>Cathode Active Material (CAM)</strong>
+                      <span>The limiting input behind every scaled Li-ion cell factory. At 35–40% of total cell cost, it is the single largest cost driver in battery manufacturing.</span>
+                    </div>
+                  </div>
+                  <p class="text-sm text-text-secondary italic" style="margin-top: auto; padding-top: 1.25rem;">
+                    CAM figures: BloombergNEF 2024, McKinsey Insights
+                    2022
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -3121,7 +3811,7 @@
             </div>
 
             <!-- Funnel Connector -->
-            <div class="flex justify-center my-4 relative z-10">
+            <div class="hidden justify-center my-4 relative z-10">
               <div
                 class="rounded-full p-3 shadow-lg animate-bounce-slow"
                 style="
@@ -3147,7 +3837,7 @@
             </div>
 
             <!-- CAM Market Tables -->
-            <div class="card p-8 mb-8 animated-element gradient-pastel-blue">
+            <div class="hidden card p-8 mb-8 animated-element gradient-pastel-blue">
               <div class="text-left mb-8">
                 <h3 class="text-3xl font-bold text-text-primary mb-2">
                   Explosive Market Growth
@@ -3322,7 +4012,7 @@
             </div>
 
             <!-- Funnel Connector (To Value Prop) -->
-            <div class="flex justify-center my-4 relative z-10">
+            <div class="hidden justify-center my-4 relative z-10">
               <div
                 class="rounded-full p-3 shadow-lg animate-bounce-slow"
                 style="
@@ -3370,13 +4060,64 @@
               <p
                 class="text-lg text-text-secondary max-w-3xl mx-auto animated-element"
               >
-                Four numbers that explain why Crystron’s process wins on
-                manufacturing, cost, energy use, and sustainability.
+                Equal-performing batteries through a manufacturing route that
+                is easier to build, easier to run, and cleaner to scale.
               </p>
             </div>
 
+            <div class="value-proof-grid animated-element">
+              <div class="value-proof-card">
+                <div class="value-proof-icon">
+                  <i class="fas fa-diagram-project"></i>
+                </div>
+                <strong>65%</strong>
+                <h3>Fewer Process Steps</h3>
+                <p>
+                  A shorter route from input materials to finished cathode
+                  reduces qualification burden and plant complexity.
+                </p>
+                <span class="value-proof-tag">Simpler Scale-Up</span>
+              </div>
+              <div class="value-proof-card">
+                <div class="value-proof-icon">
+                  <i class="fas fa-dollar-sign"></i>
+                </div>
+                <strong>40%</strong>
+                <h3>Lower Production Cost</h3>
+                <p>
+                  Fewer unit operations and lower energy intensity improve the
+                  cost structure per kilogram of active material.
+                </p>
+                <span class="value-proof-tag">Better Unit Economics</span>
+              </div>
+              <div class="value-proof-card">
+                <div class="value-proof-icon">
+                  <i class="fas fa-bolt"></i>
+                </div>
+                <strong>80%</strong>
+                <h3>Less Energy</h3>
+                <p>
+                  Reduced thermal processing lowers operating expense and makes
+                  scale-up less infrastructure-heavy.
+                </p>
+                <span class="value-proof-tag">Lower Plant Load</span>
+              </div>
+              <div class="value-proof-card featured">
+                <div class="value-proof-icon">
+                  <i class="fas fa-recycle"></i>
+                </div>
+                <strong>0</strong>
+                <h3>Toxic Waste Stream</h3>
+                <p>
+                  A closed-loop process avoids the waste and water burden built
+                  into conventional LFP production.
+                </p>
+                <span class="value-proof-tag">Closed Loop</span>
+              </div>
+            </div>
+
             <!-- Animated Value Prop Flow -->
-            <div class="relative overflow-hidden mb-10">
+            <div class="hidden relative overflow-hidden mb-10">
               <div
                 class="flex flex-col md:flex-row gap-6 items-stretch"
                 id="value-prop-flow"
@@ -3526,7 +4267,7 @@
             </div>
 
             <div
-              class="card p-8 animated-element"
+              class="hidden card p-8 animated-element"
               style="
                 background: linear-gradient(
                   135deg,
@@ -3641,11 +4382,12 @@
               class="bg-gradient-to-r from-blue-900 to-cyan-700 rounded-2xl text-white p-10 mb-12 shadow-xl overflow-hidden text-center"
             >
               <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
-                A Transformational Cathode Platform
+                Equal Performance. Easier Manufacturing.
               </h2>
               <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
-                A single platform that cuts energy, water, waste, and cost while
-                simplifying the cathode supply chain.
+                Crystron targets LFP-class battery performance with a cleaner,
+                shorter cathode manufacturing route that removes waste-heavy
+                process complexity.
               </p>
 
               <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -3668,6 +4410,24 @@
               </div>
             </div>
 
+            <div class="tech-material-band animated-element">
+              <div class="tech-material-copy">
+                <h3>Same battery target. Cleaner material path.</h3>
+                <p>
+                  Crystron is built around the manufacturing reality of CAM:
+                  reduce the number of process fixes, remove waste-heavy
+                  precursor conversion, and still deliver the voltage, energy,
+                  and safety profile customers expect from LFP-class batteries.
+                </p>
+              </div>
+              <div class="generated-visual-card tech-material-visual">
+                <img
+                  src="public/images/cathode-material-closeup.png"
+                  alt="Rendered close-up of teal cathode active material particles on a coated substrate"
+                />
+              </div>
+            </div>
+
             <!-- Manufacturing Process Visual (Redesigned) -->
             <div
               id="manufacturing-process"
@@ -3680,14 +4440,87 @@
                   The Crystron Advantage
                 </h3>
                 <p class="text-lg text-text-secondary max-w-2xl mx-auto">
-                  We've reimagined the supply chain, eliminating the entire pCAM
-                  stage to create a streamlined, zero-waste production pipeline.
+                  Conventional LFP relies on process fixes for structural
+                  limitations. Crystron simplifies the path to the cathode while
+                  maintaining the battery metrics customers care about.
                 </p>
+              </div>
+
+              <div class="tech-process-image-panel animated-element mb-8">
+                <img
+                  src="crystron-process-no-logo.png"
+                  alt="Crystron simplified five-step cathode manufacturing process"
+                />
+                <div class="tech-process-caption">
+                  Crystron's simplified process moves through mixing, coating,
+                  drying, calendaring, and cathode formation without the
+                  separate pCAM burden, waste streams, and repeated
+                  high-temperature operations required by conventional LFP.
+                </div>
+              </div>
+
+              <div class="process-contrast-panel animated-element">
+                <div class="process-lane lfp">
+                  <h4>
+                    <i class="fas fa-layer-group"></i>
+                    LFP: performance through compensation
+                  </h4>
+                  <div class="process-chip-list">
+                    <div class="process-chip warn">
+                      <i class="fas fa-vial"></i>
+                      Separate pCAM stage before cathode material
+                    </div>
+                    <div class="process-chip warn">
+                      <i class="fas fa-flask"></i>
+                      <span class="process-chip-text">
+                        Sodium sulfate
+                        (<span class="chem-formula"
+                          >Na<sub>2</sub>SO<sub>4</sub></span
+                        >) waste from precursor conversion
+                      </span>
+                    </div>
+                    <div class="process-chip warn">
+                      <i class="fas fa-fire"></i>
+                      Repeated high-temperature processing and atmosphere
+                      control
+                    </div>
+                    <div class="process-chip warn">
+                      <i class="fas fa-compress"></i>
+                      Nanosizing, water handling, and more quality gates to
+                      work around limited lithium pathways
+                    </div>
+                  </div>
+                </div>
+                <div class="process-vs"><span>vs</span></div>
+                <div class="process-lane crystron">
+                  <h4>
+                    <i class="fas fa-forward"></i>
+                    Crystron: direct route to the cathode
+                  </h4>
+                  <div class="process-chip-list">
+                    <div class="process-chip good">
+                      <i class="fas fa-check"></i>
+                      Five-step process: mixing to finished cathode
+                    </div>
+                    <div class="process-chip good">
+                      <i class="fas fa-check"></i>
+                      No separate pCAM burden
+                    </div>
+                    <div class="process-chip good">
+                      <i class="fas fa-check"></i>
+                      Lower energy, water, and toxic-waste footprint
+                    </div>
+                    <div class="process-chip good">
+                      <i class="fas fa-check"></i>
+                      Comparable battery performance with easier manufacturing
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- LFP Process Container -->
               <div
-                class="bg-slate-50 rounded-3xl shadow-xl border-2 border-slate-200 p-8 md:p-12 relative overflow-hidden mb-8"
+                class="hidden bg-slate-50 rounded-3xl shadow-xl border-2 border-slate-200 p-8 md:p-12 relative overflow-hidden mb-8"
               >
                 <!-- Decorative background glow -->
                 <div
@@ -3825,7 +4658,7 @@
 
               <!-- Transition Arrow -->
               <div
-                class="flex flex-col items-center justify-center -my-4 relative z-20"
+                class="hidden flex-col items-center justify-center -my-4 relative z-20"
               >
                 <div
                   class="bg-white px-8 py-3 rounded-full shadow-lg border border-gray-100 flex items-center gap-4"
@@ -3845,7 +4678,7 @@
 
               <!-- Crystron Process Container -->
               <div
-                class="rounded-3xl shadow-2xl p-6 md:p-12 relative overflow-hidden mt-4"
+                class="hidden rounded-3xl shadow-2xl p-6 md:p-12 relative overflow-hidden mt-4"
                 style="
                   border: 4px solid transparent;
                   background-image: linear-gradient(
@@ -4221,10 +5054,67 @@
             </div>
 
             <!-- Performance Section -->
-            <h3 class="text-2xl font-bold mb-6 text-text-primary">
-              Performance
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="text-center mb-8">
+              <h3 class="text-3xl md:text-4xl font-bold mb-3 text-text-primary">
+                Performance Snapshot
+              </h3>
+              <p class="text-lg text-text-secondary max-w-3xl mx-auto">
+                The point is not just cleaner production. Crystron keeps the
+                battery performance story strong while making the factory story
+                dramatically simpler.
+              </p>
+            </div>
+            <div class="metric-meter-grid mb-12 animated-element">
+              <div class="metric-meter-card">
+                <div class="metric-orb" style="--score: 15">
+                  <span class="metric-meter-value">+15%</span>
+                </div>
+                <h4>Voltage</h4>
+                <p>Higher voltage supports stronger cell-level power.</p>
+                <span class="metric-detail">3.9V vs 3.4V LFP</span>
+              </div>
+              <div class="metric-meter-card">
+                <div class="metric-orb" style="--score: 20">
+                  <span class="metric-meter-value">+20%</span>
+                </div>
+                <h4>Energy Density</h4>
+                <p>Comparable energy output without a harder process.</p>
+                <span class="metric-detail">More energy per cell</span>
+              </div>
+              <div class="metric-meter-card featured-metric">
+                <div class="metric-orb" style="--score: 80">
+                  <span class="metric-meter-value">80%</span>
+                </div>
+                <h4>Energy Consumption</h4>
+                <p>Lower process energy reduces operating cost.</p>
+                <span class="metric-detail">Less process energy</span>
+              </div>
+              <div class="metric-meter-card">
+                <div class="metric-orb" style="--score: 40">
+                  <span class="metric-meter-value">40%</span>
+                </div>
+                <h4>Production Cost</h4>
+                <p>Fewer steps and lower energy simplify economics.</p>
+                <span class="metric-detail">Lower manufacturing cost</span>
+              </div>
+              <div class="metric-meter-card featured-metric">
+                <div class="metric-orb" style="--score: 0">
+                  <span class="metric-meter-value">0</span>
+                </div>
+                <h4>Toxic Waste</h4>
+                <p>Closed-loop manufacturing removes the waste stream.</p>
+                <span class="metric-detail">No toxic waste stream</span>
+              </div>
+              <div class="metric-meter-card featured-metric">
+                <div class="metric-orb" style="--score: 0">
+                  <span class="metric-meter-value">0</span>
+                </div>
+                <h4>Water Use</h4>
+                <p>No water-heavy pCAM route in the simplified process.</p>
+                <span class="metric-detail">No water-heavy pCAM route</span>
+              </div>
+            </div>
+            <div class="hidden grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               <!-- Voltage Comparison -->
               <div
                 class="chart-container bg-white p-6 rounded-2xl shadow-lg border border-gray-100"
@@ -4263,10 +5153,10 @@
             </div>
 
             <!-- Efficiency Section -->
-            <h3 class="text-2xl font-bold mb-6 text-text-primary mt-12">
+            <h3 class="hidden text-2xl font-bold mb-6 text-text-primary mt-12">
               Efficiency
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="hidden grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               <!-- Energy Consumption Chart -->
               <div
                 class="chart-container bg-white p-6 rounded-2xl shadow-lg border border-gray-100"
@@ -4305,10 +5195,10 @@
             </div>
 
             <!-- Sustainability Section -->
-            <h3 class="text-2xl font-bold mb-6 text-text-primary">
+            <h3 class="hidden text-2xl font-bold mb-6 text-text-primary">
               Sustainability
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="hidden grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               <!-- Toxic Waste Chart -->
               <div
                 class="chart-container bg-white p-6 rounded-2xl shadow-lg border border-gray-100"
