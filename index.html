@@ -4495,6 +4495,137 @@
         #news-page .news-card:first-child .news-card-image { height: 150px; }
       }
 
+      /* Approved site snapshot — Team, News, Blog, titles, and Applications refinements saved 2026-06-22. */
+      /* Final conversation-approved Blog treatment: familiar layout, sharper surfaces. */
+      #blog-page .section-title {
+        max-width: none;
+        margin: 0 auto 1.75rem;
+        padding-bottom: 1.5rem;
+        text-align: center;
+      }
+      #blog-page .section-title::after { display: block; }
+      #blog-page .section-subtitle {
+        max-width: 850px;
+        margin: 0 auto 4rem;
+        font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+        line-height: 1.7;
+        text-align: center;
+      }
+      #blog-page .blog-series-banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.25rem;
+        margin: 0 0 1.5rem;
+        padding: 1.2rem 1.4rem;
+        border: 1px solid var(--border-primary);
+        border-radius: 6px;
+        background: linear-gradient(135deg, var(--accent-glow), transparent 72%);
+      }
+      #blog-page .blog-series-pill,
+      #blog-page .blog-series-count { border-radius: 4px; }
+      #blog-page .blog-series-pill {
+        padding: .3rem .7rem;
+        border: 0;
+        background: var(--accent-primary);
+        color: #fff;
+      }
+      #blog-page .blog-series-count {
+        padding: .35rem .7rem;
+        border: 1px solid var(--border-accent);
+        background: var(--accent-glow);
+      }
+      #blog-page .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+        margin-top: 0;
+        background: transparent;
+        border: 0;
+      }
+      #blog-page .blog-card,
+      #blog-page .blog-card:nth-child(3) {
+        grid-column: auto;
+        grid-row: auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: none;
+        grid-template-rows: none;
+        border: 1px solid var(--border-primary);
+        border-radius: 6px;
+        background: var(--bg-secondary);
+        box-shadow: 0 4px 16px rgba(0,0,0,.045);
+        overflow: hidden;
+      }
+      #blog-page .blog-card::before {
+        display: block;
+        height: 2px;
+        border-radius: 0;
+        background: var(--logo-gradient);
+      }
+      #blog-page .blog-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--border-accent);
+        box-shadow: 0 9px 22px rgba(0,0,0,.075);
+      }
+      #blog-page .blog-card:hover::before { height: 2px; }
+      #blog-page .blog-card-header { padding: 1.5rem 1.5rem 0; }
+      #blog-page .blog-card-category {
+        margin-bottom: 1rem;
+        padding: .25rem .55rem;
+        border: 1px solid var(--border-accent);
+        border-radius: 4px;
+        background: var(--accent-glow);
+        color: var(--accent-primary);
+      }
+      #blog-page .blog-card-title,
+      #blog-page .blog-card:nth-child(3) .blog-card-title {
+        max-width: none;
+        color: var(--editorial-ink);
+        font-size: 1.25rem;
+        line-height: 1.3;
+      }
+      #blog-page .blog-card-subtitle {
+        color: var(--editorial-muted);
+        font-style: italic;
+        line-height: 1.55;
+      }
+      #blog-page .blog-card-body,
+      #blog-page .blog-card:nth-child(3) .blog-card-body { display: none; }
+      #blog-page .blog-card-footer,
+      #blog-page .blog-card:nth-child(3) .blog-card-footer {
+        grid-column: auto;
+        margin-top: auto;
+        padding: 1rem 1.5rem;
+        border-top: 1px solid var(--border-primary);
+      }
+      #blog-page .blog-card-cta { color: var(--accent-primary); }
+      #blog-modal { border-radius: 8px; }
+      #blog-modal-toolbar { border-radius: 8px 8px 0 0; }
+      #blog-modal-close { border-radius: 5px; }
+
+      /* One final title scale for every interior page, including custom heroes. */
+      #technology-page > .container > .bg-gradient-to-r h2,
+      #applications-page .applications-intro h2,
+      .page:not(#home-page) .section-title {
+        font-size: clamp(2.65rem, 5.5vw, 4.35rem);
+        line-height: 1.05;
+        letter-spacing: -.045em;
+      }
+      #applications-page .applications-intro { max-width: 1040px; }
+      @media (min-width: 901px) {
+        #blog-page .section-title { white-space: nowrap; }
+      }
+      @media (max-width: 900px) {
+        #blog-page .blog-grid { grid-template-columns: 1fr; gap: 1rem; }
+      }
+      @media (max-width: 640px) {
+        #blog-page .blog-series-banner { align-items: flex-start; padding: 1rem; }
+        #blog-page .blog-card,
+        #blog-page .blog-card:nth-child(3) { display: flex; }
+      }
+
       @media (max-width: 1180px) {
         #home-page .hero-section-content { grid-template-columns: 1fr; min-height: auto; padding-top: 4rem; }
         .home-hero-visual, .home-hero-visual img { min-height: 440px; }
@@ -6397,9 +6528,9 @@
                 <span class="application-card-label"><small>03</small> Data Centers <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
               </button>
               <button class="application-card animated-element" type="button" data-application="technology" aria-pressed="false">
-                <img src="technology.png" alt="Laptop, smartphone, and compact battery cells" loading="lazy" />
+                <img src="technology.png" alt="Consumer electronics including a laptop, smartphone, and compact battery cells" loading="lazy" />
                 <span class="application-card-shade"></span>
-                <span class="application-card-label"><small>04</small> Consumer Electr <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                <span class="application-card-label"><small>04</small> Consumer Electronics <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
               </button>
             </div>
 
@@ -6450,7 +6581,7 @@
           <div class="container mx-auto">
             <span class="editorial-kicker page-kicker animated-element">Built by operators and scientists</span>
             <h2 class="section-title animated-element">
-              The Minds Behind Crystron
+              The Minds Behind Crystron.
             </h2>
             <p class="section-subtitle animated-element">
               A fusion of seasoned leadership, deep scientific expertise, and
@@ -7034,7 +7165,7 @@
         <section id="blog-page" class="page">
           <div class="container mx-auto" style="width:100%;">
             <span class="editorial-kicker page-kicker animated-element">Ideas from the material layer</span>
-            <h2 class="section-title animated-element">Blog</h2>
+            <h2 class="section-title animated-element">Where Better Batteries Begin.</h2>
             <p class="section-subtitle animated-element">
               Insights on battery science, company progress, and the future of energy storage.
             </p>
@@ -7686,9 +7817,9 @@
           },
           grid: {
             number: "Featured application · 03",
-            title: "Storage economics designed for a renewable grid.",
-            copy: "Grid storage demands safe, durable batteries in enormous volumes. Crystron's efficient material platform is designed to improve supply economics and manufacturing sustainability for stationary systems that must operate year after year.",
-            benefits: ["Long service life", "Volume economics", "Cleaner manufacturing"],
+            title: "Reliable backup power for always-on infrastructure.",
+            copy: "Data centers demand dependable backup power, rapid response, and resilient battery supply at growing scale. Crystron's efficient material platform is designed to improve supply economics and manufacturing sustainability for infrastructure that cannot afford downtime.",
+            benefits: ["High reliability", "Resilient supply", "Cleaner manufacturing"],
           },
           technology: {
             number: "Featured application · 04",
@@ -7715,10 +7846,10 @@
           },
           grid: {
             number: "Featured application 03",
-            needTitle: "Long-life storage at infrastructure-scale economics.",
-            need: "Stationary storage requires safe chemistry, long service life, predictable cost, and material availability at the enormous volumes required by the grid.",
-            responseTitle: "Lower resource intensity for high-volume storage.",
-            response: "Crystron's efficient material platform is designed to strengthen supply economics and reduce manufacturing resource intensity for durable, high-volume storage systems.",
+            needTitle: "Uninterrupted power at infrastructure-scale economics.",
+            need: "Data centers require safe chemistry, rapid backup response, predictable cost, and dependable material availability as computing infrastructure scales.",
+            responseTitle: "A more resilient material path for backup power.",
+            response: "Crystron's efficient material platform is designed to strengthen supply economics and reduce manufacturing resource intensity for dependable, high-volume backup systems.",
           },
           technology: {
             number: "Featured application 04",
