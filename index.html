@@ -3425,7 +3425,10 @@
       }
       .applications-intro {
         max-width: 790px;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: clamp(2rem, 4vw, 3.5rem);
+        text-align: center;
       }
       .applications-kicker {
         display: inline-flex;
@@ -3457,6 +3460,8 @@
         font-size: clamp(1rem, 1.5vw, 1.2rem);
         line-height: 1.75;
         max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
       }
       .applications-grid {
         display: grid;
@@ -3888,8 +3893,9 @@
         background: linear-gradient(90deg, rgba(4,18,35,.96), rgba(4,18,35,.26)), url("technology-lab.png") right center/cover;
         box-shadow: none;
       }
-      #technology-page > .container > .bg-gradient-to-r h2 { max-width: 700px; font-size: clamp(2.25rem, 4.2vw, 3.7rem); line-height: 1.02; letter-spacing: -.05em; }
-      #technology-page > .container > .bg-gradient-to-r > p { text-align: left; margin-left: 0; max-width: 640px; color: #d6e3ee; }
+      #technology-page > .container > .bg-gradient-to-r > .editorial-kicker { align-self: center; }
+      #technology-page > .container > .bg-gradient-to-r h2 { align-self: center; max-width: 700px; margin-left: auto; margin-right: auto; text-align: center; font-size: clamp(2.25rem, 4.2vw, 3.7rem); line-height: 1.02; letter-spacing: -.05em; }
+      #technology-page > .container > .bg-gradient-to-r > p { align-self: center; text-align: center; margin-left: auto; margin-right: auto; max-width: 640px; color: #d6e3ee; }
       #technology-page > .container > .bg-gradient-to-r > .grid { width: 100%; border-top: 1px solid rgba(255,255,255,.25); padding-top: 1.5rem; }
       .tech-material-band, .tech-process-image-panel, .process-contrast-panel { border-radius: 8px; }
 
@@ -3985,6 +3991,11 @@
       #team-page .section-title::after,
       #investors-page .section-title::after,
       #blog-page .section-title::after { display: block; }
+      #investors-page .section-title {
+        max-width: none;
+        white-space: nowrap;
+        font-size: clamp(2.25rem, 4.6vw, 4.15rem);
+      }
       #team-page .section-subtitle,
       #investors-page .section-subtitle,
       #blog-page .section-subtitle {
@@ -4021,6 +4032,7 @@
         .value-proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       }
       @media (max-width: 760px) {
+        #investors-page .section-title { white-space: normal; }
         .page:not(#home-page) { padding-top: 1.5rem !important; }
         .applications-shell { width: min(100% - 1.25rem, 1180px); padding-top: 0 !important; }
         .applications-grid { grid-template-columns: 1fr; }
@@ -4153,7 +4165,7 @@
               </div>
             </div>
             <figure class="home-hero-visual animated-element">
-              <img src="material-powder-crystal.png" alt="Dark engineered cathode powder with crystalline structures on a precision sample tray" />
+              <img src="material-powder-crystal-bright.png" alt="Engineered cathode powder and crystalline structures on a bright precision sample tray" />
               <figcaption><span>Material platform</span><strong>Designed for a shorter path to scale.</strong></figcaption>
             </figure>
 
