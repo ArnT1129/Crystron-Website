@@ -1771,26 +1771,29 @@
 
       .tech-material-band {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.25rem;
+        grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+        gap: clamp(1rem, 2vw, 1.75rem);
         align-items: stretch;
         margin: 0 auto 4rem;
         max-width: 1180px;
       }
       .tech-material-copy {
-        padding: 2rem;
-        border-radius: 20px;
+        padding: clamp(1.5rem, 3vw, 2.35rem);
+        border-radius: 8px;
         border: 1px solid var(--border-primary);
         background: linear-gradient(
-          145deg,
+          150deg,
           var(--bg-secondary),
-          rgba(49, 151, 149, 0.09)
+          rgba(49, 151, 149, 0.08)
         );
-        box-shadow: 0 20px 58px -46px var(--shadow-color);
+        box-shadow: 0 18px 52px -44px var(--shadow-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
       .tech-material-copy h3 {
-        font-size: clamp(1.6rem, 3vw, 2.5rem);
-        line-height: 1.08;
+        font-size: clamp(1.75rem, 3vw, 2.65rem);
+        line-height: 1.05;
         margin-bottom: 1rem;
       }
       .tech-material-copy p {
@@ -1798,15 +1801,107 @@
         line-height: 1.75;
         margin: 0;
       }
+      .tech-material-points {
+        display: grid;
+        gap: 0.65rem;
+        margin-top: 1.35rem;
+      }
+      .tech-material-point {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        color: var(--text-primary);
+        font-size: 0.94rem;
+        font-weight: 700;
+      }
+      .tech-material-point i {
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-primary);
+        background: rgba(49, 151, 149, 0.1);
+        border: 1px solid rgba(49, 151, 149, 0.18);
+        flex: 0 0 auto;
+      }
       .tech-material-visual {
         min-height: 300px;
-        border-radius: 20px;
+        border-radius: 8px;
         overflow: hidden;
         border: 1px solid var(--border-primary);
+        background: #05080d;
+        box-shadow: 0 24px 70px -45px var(--shadow-color);
+        margin: 0;
+        position: relative;
+      }
+      .tech-material-visual img {
+        width: 100%;
+        height: 100%;
+        min-height: 390px;
+        object-fit: cover;
+        display: block;
+        filter: contrast(1.04) brightness(0.94);
+      }
+      .tech-material-visual::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(180deg, rgba(4, 18, 35, 0) 48%, rgba(4, 18, 35, 0.62) 100%),
+          linear-gradient(90deg, rgba(49, 151, 149, 0.16), rgba(37, 99, 235, 0.03) 38%, rgba(4, 18, 35, 0.18));
+        mix-blend-mode: screen;
+        opacity: 0.72;
+      }
+      .tech-material-caption {
+        position: absolute;
+        z-index: 1;
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1rem;
+        color: #fff;
+      }
+      .tech-material-caption strong {
+        display: block;
+        font-size: clamp(1rem, 1.8vw, 1.35rem);
+        line-height: 1.2;
+      }
+      .tech-material-caption span,
+      .tech-material-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: #d9f8ff;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .tech-material-chip {
+        flex: 0 0 auto;
+        padding: 0.48rem 0.68rem;
+        border: 1px solid rgba(217, 248, 255, 0.36);
+        border-radius: 999px;
+        background: rgba(3, 12, 22, 0.68);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
       }
       @media (max-width: 900px) {
         .tech-material-band {
           grid-template-columns: 1fr;
+        }
+        .tech-material-visual img {
+          min-height: 320px;
+        }
+        .tech-material-caption {
+          align-items: flex-start;
+          flex-direction: column;
         }
       }
       .tech-process-image-panel {
@@ -2296,6 +2391,7 @@
         font-style: italic;
         display: -webkit-box;
         -webkit-line-clamp: 2;
+        line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
@@ -4072,6 +4168,33 @@
       @media (prefers-reduced-motion: reduce) {
         .application-card, .application-card img, .application-card-label i { transition: none; }
       }
+
+      /* Scroll progress indicator retained from the elevation pass. */
+      #scroll-progress {
+        position: fixed;
+        top: 74px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        z-index: 3100;
+        pointer-events: none;
+        background: transparent;
+      }
+      #scroll-progress::before {
+        content: "";
+        display: block;
+        width: var(--scroll-progress, 0%);
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        box-shadow: 0 0 18px rgba(56, 155, 157, 0.32);
+        transition: width 0.12s ease-out;
+      }
+      @media (max-width: 760px) {
+        #scroll-progress { top: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #scroll-progress::before { transition: none; }
+      }
     </style>
     <!-- Fallback mobile hamburger: fixed to viewport so it's always reachable on phones (only visible on small screens) -->
     <button
@@ -4159,12 +4282,14 @@
       </div>
     </aside>
 
+    <div id="scroll-progress" aria-hidden="true"></div>
+
     <div id="main-content-area">
       <main id="main-content">
         <section id="home-page" class="page active">
           <div class="w-full max-w-7xl mx-auto hero-section-content px-4">
             <div class="home-hero-copy">
-              <span class="editorial-kicker animated-element">Cathode materials, reconsidered</span>
+              <span class="editorial-kicker animated-element">Cathode materials, simplified.</span>
             <h1 class="hero-title animated-element">
                 Build the materials that power <span class="highlight">independence.</span>
             </h1>
@@ -4559,62 +4684,11 @@
               </div>
             </div>
           </div>
+          </div>
         </section>
 
         <section id="technology-page" class="page">
           <div class="container mx-auto px-4 py-8">
-            <!-- Hero + Impact -->
-            <div
-              class="bg-gradient-to-r from-blue-900 to-cyan-700 rounded-2xl text-white p-10 mb-12 shadow-xl overflow-hidden text-center"
-            >
-              <span class="editorial-kicker editorial-kicker-light">The platform</span>
-              <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
-                Performance without the process burden.
-              </h2>
-              <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
-                Crystron targets LFP-class battery performance with a cleaner,
-                shorter cathode manufacturing route that removes waste-heavy
-                process complexity.
-              </p>
-
-              <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="impact-stat text-center" data-value="80">
-                  <div class="counter">0</div>
-                  <div class="text-blue-200">% Less Energy</div>
-                </div>
-                <div class="impact-stat text-center" data-value="40">
-                  <div class="counter">0</div>
-                  <div class="text-blue-200">% Lower Cost</div>
-                </div>
-                <div class="impact-stat text-center" data-value="100">
-                  <div class="counter">0</div>
-                  <div class="text-blue-200">% Less Water</div>
-                </div>
-                <div class="impact-stat text-center" data-value="100">
-                  <div class="counter">0</div>
-                  <div class="text-blue-200">% Less Waste</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="tech-material-band animated-element">
-              <div class="tech-material-copy">
-                <h3>Same battery target. Cleaner material path.</h3>
-                <p>
-                  Crystron is built around the manufacturing reality of CAM:
-                  reduce the number of process fixes, remove waste-heavy
-                  precursor conversion, and still deliver the voltage, energy,
-                  and safety profile customers expect from LFP-class batteries.
-                </p>
-              </div>
-              <div class="generated-visual-card tech-material-visual">
-                <img
-                  src="cathode-material-closeup.png"
-                  alt="Rendered close-up of teal cathode active material particles on a coated substrate"
-                />
-              </div>
-            </div>
-
             <!-- Manufacturing Process Visual (Redesigned) -->
             <div
               id="manufacturing-process"
@@ -4635,7 +4709,7 @@
 
               <div class="tech-process-image-panel animated-element mb-8">
                 <img
-                  src="crystron-process-no-logo.png"
+                  src="crystron-process-smooth-coating.png"
                   alt="Crystron simplified five-step cathode manufacturing process"
                 />
                 <div class="tech-process-caption">
@@ -4765,6 +4839,71 @@
                 <p>No water-heavy pCAM route in the simplified process.</p>
                 <span class="metric-detail">No water-heavy pCAM route</span>
               </div>
+            </div>
+
+            <div
+              class="bg-gradient-to-r from-blue-900 to-cyan-700 rounded-2xl text-white p-10 mb-12 shadow-xl overflow-hidden text-center"
+            >
+              <span class="editorial-kicker editorial-kicker-light">The platform</span>
+              <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+                Performance without the process burden.
+              </h2>
+              <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+                Crystron targets cleaner cathode manufacturing with a shorter,
+                lower-burden route that removes waste-heavy process complexity.
+              </p>
+
+              <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="impact-stat text-center" data-value="80">
+                  <div class="counter">0</div>
+                  <div class="text-blue-200">% Less Energy</div>
+                </div>
+                <div class="impact-stat text-center" data-value="40">
+                  <div class="counter">0</div>
+                  <div class="text-blue-200">% Lower Cost</div>
+                </div>
+                <div class="impact-stat text-center" data-value="100">
+                  <div class="counter">0</div>
+                  <div class="text-blue-200">% Less Water</div>
+                </div>
+                <div class="impact-stat text-center" data-value="100">
+                  <div class="counter">0</div>
+                  <div class="text-blue-200">% Less Waste</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <div class="tech-material-band animated-element">
+              <div class="tech-material-copy">
+                <h3>Real cathode material, not a rendering.</h3>
+                <p>
+                  This SEM view shows our material at the particle level. The platform is built
+                  to simplify the route to usable CAM while preserving the
+                  morphology and performance discipline battery customers need.
+                </p>
+                <div class="tech-material-points" aria-label="Microscopy highlights">
+                  <div class="tech-material-point">
+                    <i class="fas fa-microscope" aria-hidden="true"></i>
+                     Microscope image from Crystron's material
+                  </div>
+                  <div class="tech-material-point">
+                    <i class="fas fa-circle-nodes" aria-hidden="true"></i>
+                    Spherical particle morphology at micron scale
+                  </div>
+                </div>
+              </div>
+              <figure class="tech-material-visual">
+                <img
+                  src="cathode-material-sem-clean.png"
+                  alt="Scanning electron microscope image of Crystron cathode active material particles"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="tech-material-caption">
+                  <span class="tech-material-chip">5000x / 5 um scale</span>
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
@@ -5878,6 +6017,7 @@
         const sidebarNav = document.getElementById("sidebar-nav");
         const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
         const mainContentArea = document.getElementById("main-content-area");
+        const scrollProgress = document.getElementById("scroll-progress");
         const contactForm = document.getElementById("contactForm");
         const formStatus = document.getElementById("form-submission-status");
         const submitButton = document.getElementById("submit-button");
@@ -5908,6 +6048,24 @@
         const savedTheme = localStorage.getItem("theme") || "light";
         applyTheme(savedTheme);
 
+        function updateScrollProgress() {
+          if (!mainContentArea || !scrollProgress) return;
+          const scrollable =
+            mainContentArea.scrollHeight - mainContentArea.clientHeight;
+          const progress =
+            scrollable > 0
+              ? Math.min((mainContentArea.scrollTop / scrollable) * 100, 100)
+              : 0;
+          scrollProgress.style.setProperty("--scroll-progress", `${progress}%`);
+        }
+
+        if (mainContentArea) {
+          mainContentArea.addEventListener("scroll", updateScrollProgress, {
+            passive: true,
+          });
+          window.addEventListener("resize", updateScrollProgress);
+        }
+
         function showPage(pageIdToShow) {
           const targetPage = document.getElementById(pageIdToShow);
           if (!targetPage) {
@@ -5927,6 +6085,7 @@
 
           // Jump to top instantly when changing pages (no smooth scroll)
           mainContentArea.scrollTo({ top: 0, behavior: "auto" });
+          updateScrollProgress();
 
           if (pageIdToShow === "contact-page" && !mapInitialized) {
             initMap();
@@ -6580,3 +6739,4 @@
     </script>
   </body>
 </html>
+
