@@ -103,7 +103,7 @@ export default {
       body: JSON.stringify({
         message: {
           subject: `Application: ${application.roleTitle} — ${application.name}`,
-          body: { contentType: "HTML", content: emailHtml(application, resume, extra) },
+          body: { contentType: "HTML", content: emailHtml(application, resume, extra, new URL(request.url).origin) },
           toRecipients: recipients.map((address) => ({ emailAddress: { address } })),
           replyTo: [{ emailAddress: { address: application.email, name: application.name } }],
           attachments,
@@ -192,7 +192,8 @@ function fileSummary(file) {
   return `${file.name} (${Math.max(1, Math.round(file.size / 1024))} KB)`;
 }
 
-function emailHtml(application, resume, extra) {
+// siteOrigin is the site the form was submitted from (www.crystrontech.com, or a preview URL).
+function emailHtml(application, resume, extra, siteOrigin) {
   const rows = [
     ["Role", application.roleTitle],
     ["Name", application.name],
@@ -214,7 +215,7 @@ function emailHtml(application, resume, extra) {
     ? `<h3 style="margin:24px 0 8px;font-size:15px;color:#1a202c">Message from the applicant</h3><p style="margin:0;white-space:pre-wrap;color:#1a202c">${escapeHtml(application.message)}</p>`
     : "";
   const roleLink = application.roleId
-    ? `<p style="margin:24px 0 0;font-size:12px;color:#647586">Posting: https://crystronmat.com/#careers/${encodeURIComponent(application.roleId)} · Reply to this email to respond to the applicant.</p>`
+    ? `<p style="margin:24px 0 0;font-size:12px;color:#647586">Posting: ${escapeHtml(siteOrigin)}/#careers/${encodeURIComponent(application.roleId)} · Reply to this email to respond to the applicant.</p>`
     : "";
   return `<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;max-width:640px">
 <h2 style="margin:0 0 4px;font-size:20px;color:#1a202c">New application: ${escapeHtml(application.roleTitle)}</h2>

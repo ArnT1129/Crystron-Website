@@ -1,9 +1,9 @@
 /*
-  Crystron careers — job postings shown at crystronmat.com/#careers
+  Crystron careers — job postings shown at www.crystrontech.com/#careers
 
   To post a role: copy the example below, fill it in, and set `open: true`.
   To take a role down: set `open: false` (or delete it).
-  Each role gets its own shareable link: crystronmat.com/#careers/<id>
+  Each role gets its own shareable link: www.crystrontech.com/#careers/<id>
 
   Fields
     id                lowercase-with-dashes, unique; used in the role's link
@@ -20,7 +20,7 @@
 */
 window.CRYSTRON_JOBS = [
   {
-    // SAMPLE POSTING for previewing the page. Before this goes live on crystronmat.com,
+    // SAMPLE POSTING for previewing the page. Before this goes live on crystrontech.com,
     // replace it with a real role or set `open: false`.
     id: "sample-process-engineer",
     open: true,
