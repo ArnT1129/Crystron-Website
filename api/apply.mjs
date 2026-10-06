@@ -28,6 +28,8 @@ const FILE_TYPES = {
 };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Finds addresses in CAREERS_TO whether they're split by commas, semicolons, or spaces.
+const EMAILS_IN_TEXT = /[^\s@<>,;"']+@[^\s@<>,;"']+\.[^\s@<>,;"']+/g;
 const FALLBACK_CONTACT = "info@crystronmat.com";
 const REQUIRED_SETTINGS = ["MS_TENANT_ID", "MS_CLIENT_ID", "MS_CLIENT_SECRET", "CAREERS_SENDER", "CAREERS_TO"];
 
@@ -39,13 +41,16 @@ export default {
       return reply({ error: "Method not allowed." }, 405, { Allow: "POST" });
     }
 
-    const missing = REQUIRED_SETTINGS.filter((name) => !process.env[name]);
-    const recipients = (process.env.CAREERS_TO || "")
-      .split(",")
-      .map((address) => address.trim())
-      .filter((address) => EMAIL_PATTERN.test(address));
+    const missing = REQUIRED_SETTINGS.filter((name) => !setting(name));
+    const recipients = (setting("CAREERS_TO").match(EMAILS_IN_TEXT) || []).filter(
+      (address, i, all) => all.findIndex((other) => other.toLowerCase() === address.toLowerCase()) === i
+    );
     if (missing.length || recipients.length === 0) {
-      console.error(`Careers form is not configured. Missing or invalid: ${missing.join(", ") || "CAREERS_TO"}`);
+      console.error(
+        missing.length
+          ? `Careers form is not configured. Missing Vercel environment variables for this deployment: ${missing.join(", ")}`
+          : "Careers form is not configured. CAREERS_TO doesn't contain any valid email addresses."
+      );
       return reply({ error: `Applications are temporarily unavailable. Please email ${FALLBACK_CONTACT}.` }, 500);
     }
 
@@ -96,7 +101,7 @@ export default {
     const token = await getGraphToken();
     if (!token) return sendFailed();
 
-    const sender = process.env.CAREERS_SENDER.trim();
+    const sender = setting("CAREERS_SENDER");
     const response = await fetch(`https://graph.microsoft.com/v1.0/users/${encodeURIComponent(sender)}/sendMail`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -126,14 +131,13 @@ export default {
 
 async function getGraphToken() {
   if (cachedToken && cachedToken.expiresAt > Date.now() + 60_000) return cachedToken.value;
-  const { MS_TENANT_ID, MS_CLIENT_ID, MS_CLIENT_SECRET } = process.env;
   const response = await fetch(
-    `https://login.microsoftonline.com/${encodeURIComponent(MS_TENANT_ID.trim())}/oauth2/v2.0/token`,
+    `https://login.microsoftonline.com/${encodeURIComponent(setting("MS_TENANT_ID"))}/oauth2/v2.0/token`,
     {
       method: "POST",
       body: new URLSearchParams({
-        client_id: MS_CLIENT_ID.trim(),
-        client_secret: MS_CLIENT_SECRET.trim(),
+        client_id: setting("MS_CLIENT_ID"),
+        client_secret: setting("MS_CLIENT_SECRET"),
         scope: "https://graph.microsoft.com/.default",
         grant_type: "client_credentials",
       }),
@@ -150,6 +154,11 @@ async function getGraphToken() {
   const { access_token: value, expires_in: expiresIn } = await response.json();
   cachedToken = { value, expiresAt: Date.now() + expiresIn * 1000 };
   return value;
+}
+
+// Values pasted into Vercel sometimes keep stray spaces or wrapping quotes.
+function setting(name) {
+  return (process.env[name] || "").trim().replace(/^["']|["']$/g, "").trim();
 }
 
 function reply(body, status = 200, headers = {}) {
