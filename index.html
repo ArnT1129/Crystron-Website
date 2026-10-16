@@ -3920,6 +3920,15 @@
         top: 3px;
         font-size: .78rem;
       }
+      @media (min-width: 761px) {
+        /* With an odd number of people, center the last card on its own row.
+           Width = one column: half the grid minus half of its 2rem gap. */
+        #team-page .grid > .card:last-child:nth-child(odd) {
+          grid-column: 1 / -1;
+          justify-self: center;
+          width: calc(50% - 1rem);
+        }
+      }
 
       #news-page .news-carousel-container { margin-top: 1rem; overflow: visible; }
       #news-page .news-carousel-wrapper { overflow: hidden; }
@@ -5505,6 +5514,38 @@
                   <li>
                     PhD in Chemical Engineering from the University of Delaware.
                   </li>
+                </ul>
+              </div>
+              <div class="card text-center animated-element">
+                <img
+                  src="arnav-tiwari-headshot.jpg"
+                  alt="Arnav Tiwari"
+                  class="team-member-photo"
+                  onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=AT&font=inter';"
+                />
+                <h3 class="text-2xl font-bold text-accent-primary">
+                  Arnav Tiwari
+                </h3>
+                <p class="text-text-secondary mb-2 text-lg">
+                  Head of Product Development
+                </p>
+                <ul class="team-member-details">
+                  <li>
+                    Synthesizes Crystron's cathode material through furnace and
+                    batch runs.
+                  </li>
+                  <li>
+                    Fabricates coin, pouch, and half cells from in-house material.
+                  </li>
+                  <li>
+                    Runs electrochemical testing and analyzes cell performance
+                    data.
+                  </li>
+                  <li>
+                    Builds internal software tools that streamline lab and R&D
+                    workflows.
+                  </li>
+                  <li>Studying Chemical Engineering at Georgia Tech.</li>
                 </ul>
               </div>
               <div class="card text-center animated-element">
