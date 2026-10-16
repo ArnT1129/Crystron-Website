@@ -83,7 +83,10 @@ export default {
     const extra = upload(form, "additional_document");
     if (!resume) return reply({ error: "Please attach your resume." }, 400);
     if (resume.size + (extra?.size || 0) > MAX_ATTACHMENT_BYTES) {
-      return reply({ error: "Attachments must be 2.5 MB or less in total." }, 413);
+      return reply(
+        { error: `Attachments must be 2.5 MB or less in total. Please upload smaller files, or email your application to ${FALLBACK_CONTACT}.` },
+        413
+      );
     }
 
     const attachments = [];

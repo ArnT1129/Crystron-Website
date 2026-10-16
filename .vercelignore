@@ -1,0 +1,15 @@
+# Files Vercel should never publish on crystrontech.com.
+# Anything listed here 404s on the live site even though it stays in the repo.
+
+# Internal notes and draft images
+/CLAUDE.md
+/README.md
+/ChatGPT Image*.png
+
+# Local tools and build output (matters for `vercel deploy` from this folder)
+/.vscode
+/.agents
+/.claude
+/.codex
+/.codex-cleaner-worktree
+/web
