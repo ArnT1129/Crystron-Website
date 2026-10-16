@@ -25,3 +25,10 @@ yarn-error.log*
 # If you choose to ignore it, Vercel will generate one based on package.json.
 # For simplicity in this guide, we can let Vercel handle it if you omit it from commit.
 # package-lock.json
+
+# Local build output and tool worktrees (not part of the site)
+.next/
+.codex-cleaner-worktree/
+
+.vercel
+.env*

@@ -7001,9 +7001,14 @@
             ["What you'll do", job.responsibilities],
             ["What we're looking for", job.qualifications],
             ["Nice to have", job.niceToHave],
+            // Roles that need their own headings list them as sections: [{ heading, items }].
+            ...[].concat(job.sections || []).map((section) => [
+              (section || {}).heading,
+              (section || {}).items,
+            ]),
           ].forEach(([heading, items]) => {
             const entries = (Array.isArray(items) ? items : []).filter(Boolean);
-            if (!entries.length) return;
+            if (!heading || !entries.length) return;
             const list = createEl("ul");
             entries.forEach((entry) => list.append(createEl("li", "", entry)));
             blocks.push(createEl("h4", "", heading), list);
