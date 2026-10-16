@@ -3890,6 +3890,7 @@
       #team-page .card > p { margin: 0 0 .55rem; color: var(--editorial-muted); font-size: 1rem; }
       #team-page .team-member-linkedin {
         display: inline-flex;
+        align-self: center; /* cards are flex columns; without this it stretches and hugs the left */
         align-items: center;
         gap: .35rem;
         margin-bottom: 1rem;
@@ -3920,13 +3921,28 @@
         top: 3px;
         font-size: .78rem;
       }
-      @media (min-width: 761px) {
-        /* With an odd number of people, center the last card on its own row.
-           Width = one column: half the grid minus half of its 2rem gap. */
-        #team-page .grid > .card:last-child:nth-child(odd) {
-          grid-column: 1 / -1;
-          justify-self: center;
-          width: calc(50% - 1rem);
+      @media (min-width: 761px) and (max-width: 979px) {
+        /* Too narrow for three across: one centered column, so nobody ends
+           up alone on a row of two. */
+        #team-page .grid {
+          grid-template-columns: minmax(0, 560px);
+          justify-content: center;
+        }
+      }
+      @media (min-width: 980px) {
+        /* Three across. Each card spans two of six tracks so a short last
+           row can be offset by half a card and stay centered. */
+        #team-page .grid {
+          grid-template-columns: repeat(6, minmax(0, 1fr));
+          gap: clamp(1.25rem, 2vw, 2rem);
+        }
+        #team-page .grid > .card { grid-column: span 2; }
+        #team-page .grid > .card:nth-child(3n+1):nth-last-child(2) { grid-column: 2 / span 2; }
+        #team-page .grid > .card:nth-child(3n+1):last-child { grid-column: 3 / span 2; }
+        #team-page .card { padding: clamp(1.5rem, 2.2vw, 2.1rem); }
+        #team-page .team-member-photo {
+          width: clamp(150px, 14vw, 190px);
+          height: clamp(150px, 14vw, 190px);
         }
       }
 
@@ -4214,6 +4230,52 @@
       }
       @media (min-width: 901px) and (max-width: 1100px) {
         #sidebar-nav .nav-link { padding: 0.5rem 0.45rem; font-size: 0.8rem; }
+      }
+
+      /* Top bar: slightly see-through, with the page scrolling beneath it. */
+      #sidebar-nav {
+        background: color-mix(in srgb, var(--bg-secondary) 75%, transparent);
+        -webkit-backdrop-filter: blur(14px) saturate(160%);
+        backdrop-filter: blur(14px) saturate(160%);
+      }
+      #sidebar-nav .nav-link:focus-visible,
+      #sidebar-nav .logo-container a:focus-visible,
+      #mobile-menu-toggle-fallback:focus-visible {
+        outline: 2px solid var(--accent-primary);
+        outline-offset: 3px;
+      }
+
+      /* Slide away on the way down, back on the way up (body.nav-hidden is set in JS).
+         The progress line rides along so it stays pinned to the top edge. */
+      @media (min-width: 901px) {
+        #main-content-area {
+          margin-top: 0 !important;
+          height: 100vh;
+          padding-top: 75px; /* clears the bar at rest */
+        }
+        #sidebar-nav,
+        #scroll-progress { transition: transform .45s cubic-bezier(.22, 1, .36, 1); }
+        body.nav-hidden #sidebar-nav { transform: translateY(calc(-100% - 6px)); }
+        body.nav-hidden #scroll-progress { transform: translateY(-74px); }
+        body.nav-hidden #sidebar-nav,
+        body.nav-hidden #scroll-progress { transition: transform .32s cubic-bezier(.5, 0, .75, 0); }
+        body.nav-hidden #sidebar-nav:focus-within { transform: none; }
+      }
+      @media (max-width: 900px) {
+        #mobile-menu-toggle-fallback { transition: transform .45s cubic-bezier(.22, 1, .36, 1), opacity .25s ease; }
+        body.nav-hidden #mobile-menu-toggle-fallback {
+          transform: translateY(calc(-100% - 24px));
+          opacity: 0;
+          transition: transform .32s cubic-bezier(.5, 0, .75, 0), opacity .25s ease .05s;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #sidebar-nav,
+        #scroll-progress,
+        #mobile-menu-toggle-fallback,
+        body.nav-hidden #sidebar-nav,
+        body.nav-hidden #scroll-progress,
+        body.nav-hidden #mobile-menu-toggle-fallback { transition: none; }
       }
 
       /* Careers */
@@ -5518,43 +5580,6 @@
               </div>
               <div class="card text-center animated-element">
                 <img
-                  src="arnav-tiwari-headshot.jpg"
-                  alt="Arnav Tiwari"
-                  class="team-member-photo"
-                  onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=AT&font=inter';"
-                />
-                <h3 class="text-2xl font-bold text-accent-primary">
-                  Arnav Tiwari
-                </h3>
-                <p class="text-text-secondary mb-2 text-lg">
-                  Head of Product Development
-                </p>
-                <a
-                  href="https://www.linkedin.com/in/arnav-tiwari-/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="team-member-linkedin"
-                  ><i class="fab fa-linkedin mr-1"></i>LinkedIn Profile</a
-                >
-                <ul class="team-member-details">
-                  <li>
-                    Leads cell development to validate Crystron's cathode
-                    material.
-                  </li>
-                  <li>
-                    Conducts electrochemical testing and data analysis to drive
-                    insights.
-                  </li>
-                  <li>
-                    Builds internal tools and software to streamline R&D
-                    workflows.
-                  </li>
-                  <li>Synthesizes cathode material through calcination.</li>
-                  <li>B.S. in Chemical Engineering at Georgia Tech.</li>
-                </ul>
-              </div>
-              <div class="card text-center animated-element">
-                <img
                   src="https://static.wixstatic.com/media/e981c7_9677d58962e341babd5b418ac9fd09cd~mv2.jpg/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_avif/AJ_22_Headshot_Casual1.jpg"
                   alt="Anurag Jain"
                   class="team-member-photo"
@@ -5588,6 +5613,37 @@
                     Master’s in Tech Management from UPenn & Wharton Business
                     School.
                   </li>
+                </ul>
+              </div>
+              <div class="card text-center animated-element">
+                <img
+                  src="arnav-tiwari-headshot.jpg"
+                  alt="Arnav Tiwari"
+                  class="team-member-photo"
+                  onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=AT&font=inter';"
+                />
+                <h3 class="text-2xl font-bold text-accent-primary">
+                  Arnav Tiwari
+                </h3>
+                <p class="text-text-secondary mb-2 text-lg">
+                  Product Engineer
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/arnav-tiwari-/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="team-member-linkedin"
+                  ><i class="fab fa-linkedin mr-1"></i>LinkedIn Profile</a
+                >
+                <ul class="team-member-details">
+                  <li>Develops cells to validate Crystron's cathode material.</li>
+                  <li>
+                    Runs electrochemical testing and analyzes cell performance
+                    data.
+                  </li>
+                  <li>Builds internal tools and software that speed up R&D.</li>
+                  <li>Synthesizes cathode material through calcination.</li>
+                  <li>B.S. in Chemical Engineering at Georgia Tech.</li>
                 </ul>
               </div>
             </div>
@@ -6620,6 +6676,36 @@
             passive: true,
           });
           window.addEventListener("resize", updateScrollProgress);
+        }
+
+        // Hide the nav while reading down the page; bring it back on any scroll up.
+        let lastNavScrollY = 0;
+        let navTicking = false;
+        function updateNavVisibility() {
+          navTicking = false;
+          const y = mainContentArea.scrollTop;
+          const delta = y - lastNavScrollY;
+          if (y <= 120) {
+            document.body.classList.remove("nav-hidden");
+          } else if (Math.abs(delta) >= 6) {
+            const hide = delta > 0 && !sidebarNav.classList.contains("open");
+            document.body.classList.toggle("nav-hidden", hide);
+          } else {
+            return; // ignore tiny jitters; they accumulate until they count
+          }
+          lastNavScrollY = y;
+        }
+        if (mainContentArea && sidebarNav) {
+          mainContentArea.addEventListener(
+            "scroll",
+            () => {
+              if (!navTicking) {
+                navTicking = true;
+                requestAnimationFrame(updateNavVisibility);
+              }
+            },
+            { passive: true }
+          );
         }
 
         function showPage(pageIdToShow) {
