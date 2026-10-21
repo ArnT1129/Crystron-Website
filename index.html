@@ -27,7 +27,7 @@
     <meta property="og:url" content="https://www.crystrontech.com/" />
     <meta
       property="og:image"
-      content="https://www.crystrontech.com/material-powder-crystal-bright.png"
+      content="https://www.crystrontech.com/images/home/cathode-powder.jpg"
     />
     <meta property="og:image:alt" content="Crystron Technologies Logo" />
     <meta property="og:site_name" content="Crystron Technologies" />
@@ -44,11 +44,11 @@
     />
     <meta
       name="twitter:image"
-      content="https://www.crystrontech.com/material-powder-crystal-bright.png"
+      content="https://www.crystrontech.com/images/home/cathode-powder.jpg"
     />
 
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
-    <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192" />
+    <link rel="icon" href="/images/brand/icon-192.png" type="image/png" sizes="192x192" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -68,6 +68,7 @@
       crossorigin=""
     />
     <script
+      defer
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
@@ -396,28 +397,12 @@
           rgba(43, 108, 176, 0.08)
         );
       }
-      .gradient-pastel-teal {
-        background: linear-gradient(
-          135deg,
-          rgba(49, 151, 149, 0.08),
-          rgba(79, 209, 197, 0.05),
-          rgba(49, 151, 149, 0.08)
-        );
-      }
       .dark-mode .gradient-pastel-blue {
         background: linear-gradient(
           135deg,
           rgba(79, 209, 197, 0.12),
           rgba(99, 179, 237, 0.08),
           rgba(79, 209, 197, 0.12)
-        );
-      }
-      .dark-mode .gradient-pastel-teal {
-        background: linear-gradient(
-          135deg,
-          rgba(99, 179, 237, 0.12),
-          rgba(79, 209, 197, 0.08),
-          rgba(99, 179, 237, 0.12)
         );
       }
 
@@ -548,57 +533,8 @@
         list-style-position: inside;
         padding-left: 0.5rem;
       }
-      .card .text-accent {
-        color: var(--accent-primary);
-      }
       .card .text-accent-secondary {
         color: var(--accent-secondary);
-      }
-      .card .icon-feature {
-        font-size: 2.75rem;
-        color: var(--accent-primary);
-        margin-bottom: 1.5rem;
-        display: inline-block;
-        padding: 1.2rem;
-        background: linear-gradient(
-          135deg,
-          rgba(var(--accent-primary-rgb, 43, 108, 176), 0.12),
-          rgba(var(--accent-secondary-rgb, 49, 151, 149), 0.12)
-        );
-        border-radius: 16px;
-        box-shadow: 0 4px 12px
-          rgba(var(--accent-primary-rgb, 43, 108, 176), 0.15);
-      }
-      .dark-mode .card .icon-feature {
-        background: linear-gradient(
-          135deg,
-          rgba(var(--accent-primary-rgb, 79, 209, 197), 0.15),
-          rgba(var(--accent-secondary-rgb, 99, 179, 237), 0.15)
-        );
-        box-shadow: 0 4px 12px
-          rgba(var(--accent-primary-rgb, 79, 209, 197), 0.2);
-      }
-      .market-stat-card .card-icon {
-        font-size: 2.75rem;
-        color: var(--accent-primary);
-        margin-bottom: 1.25rem;
-        display: block;
-        text-align: center;
-      }
-      .market-stat-card h3 {
-        font-size: 1.65rem;
-        font-weight: 600;
-        text-align: center;
-        color: var(--text-primary);
-        letter-spacing: -0.01em;
-      }
-      .market-stat-card p {
-        font-size: 1.05rem;
-        font-weight: 400;
-        text-align: center;
-        color: var(--text-secondary);
-        flex-grow: 1;
-        line-height: 1.75;
       }
 
       .btn {
@@ -640,44 +576,6 @@
       .dark-mode .btn-primary:hover {
         box-shadow: 0 8px 28px
           rgba(var(--accent-primary-rgb, 79, 209, 197), 0.5);
-      }
-      .btn-secondary {
-        background: linear-gradient(
-          135deg,
-          transparent,
-          rgba(43, 108, 176, 0.05)
-        );
-        color: var(--accent-primary);
-        border: 2.5px solid var(--accent-primary);
-        font-weight: 500;
-      }
-      .btn-secondary:hover {
-        background: linear-gradient(
-          135deg,
-          rgba(43, 108, 176, 0.12),
-          rgba(49, 151, 149, 0.08)
-        );
-        color: var(--accent-primary);
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px
-          rgba(var(--accent-primary-rgb, 43, 108, 176), 0.25);
-        border-color: var(--accent-primary);
-      }
-      .dark-mode .btn-secondary {
-        background: linear-gradient(
-          135deg,
-          transparent,
-          rgba(79, 209, 197, 0.08)
-        );
-      }
-      .dark-mode .btn-secondary:hover {
-        background: linear-gradient(
-          135deg,
-          rgba(79, 209, 197, 0.2),
-          rgba(99, 179, 237, 0.15)
-        );
-        box-shadow: 0 6px 20px
-          rgba(var(--accent-primary-rgb, 79, 209, 197), 0.4);
       }
 
       .contact-form input,
@@ -950,23 +848,6 @@
         }
 
         /* Hero CTAs: stack and center (UPDATED) */
-        .hero-section-content .space-x-4 {
-          display: flex;
-          flex-direction: row;
-          gap: 0.75rem;
-          align-items: center; /* centers children horizontally */
-          justify-content: center;
-          width: 100%;
-          max-width: 420px;
-          margin: 0.5rem auto 0 auto;
-          text-align: center;
-        }
-        .hero-section-content .space-x-4 .btn {
-          max-width: 200px; /* Adjust this value if you need them wider or narrower */
-          justify-content: center;
-          padding: 0.85rem 1rem;
-          font-size: 1rem;
-        }
 
         /* Make impact stats less tall and more compact */
         .impact-stat .counter {
@@ -974,13 +855,6 @@
         }
 
         /* Tech grid: ensure single column flow and remove heavy borders */
-        .tech-grid {
-          grid-template-columns: 1fr !important;
-        }
-        .tech-grid > div {
-          border-left: none !important;
-          padding-left: 0 !important;
-        }
 
         /* Disable heavy hover lift effects to avoid layout shifts on mobile */
         .card:hover {
@@ -999,17 +873,7 @@
         }
 
         /* Hide the top-row three headings on small screens (we show per-column headings) */
-        .tech-top-row {
-          display: none;
-        }
 
-        .mobile-section-heading {
-          display: block;
-          font-size: 1.05rem;
-          font-weight: 700;
-          color: var(--text-primary);
-          padding: 0.6rem 0 0.4rem 0;
-        }
 
         /* Reduce technology hero heading size to avoid one-letter lines */
         #technology-page .bg-gradient-to-r h2 {
@@ -1023,24 +887,8 @@
         }
 
         /* Tighten chart cards and comparison areas on phones */
-        .chart-container {
-          padding: 1.25rem 1rem;
-          box-shadow: 0 6px 18px -10px var(--shadow-color);
-        }
-        .comparison-chart {
-          min-height: 180px;
-        }
-        .comparison-chart canvas {
-          width: 100% !important;
-          height: 180px !important;
-        }
 
         /* Keep long labels from forcing horizontal scroll in charts */
-        .chart-container p,
-        .chart-container h3 {
-          text-align: center;
-          word-break: keep-all;
-        }
 
         /* Make TAM bar chart a bit shorter and tighten caption spacing */
         .tam-chart-inner {
@@ -1085,28 +933,6 @@
         color: var(--accent-primary);
       }
 
-      .key-features-list {
-        list-style: none;
-        padding-left: 0;
-        margin-top: 1.5rem;
-      }
-      .key-features-list li {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: var(--text-secondary);
-      }
-      .key-features-list li i {
-        color: var(--accent-primary);
-        margin-right: 0.75rem;
-        margin-top: 0.25rem;
-        font-size: 1.2em;
-      }
-      .key-features-list li strong {
-        color: var(--text-primary);
-        font-weight: 600;
-      }
 
       /* News Page Specific Styles */
       .news-carousel-container {
@@ -1251,58 +1077,8 @@
       }
 
       /* Chart and Diagram Styles */
-      .chart-container {
-        background-color: var(--bg-secondary);
-        border: 1px solid var(--border-primary);
-        border-radius: 14px;
-        padding: 2rem;
-        box-shadow: 0 10px 30px -15px var(--shadow-color);
-        width: 100%;
-        max-width: 100%;
-      }
       /* Tech comparison header + layout styles */
-      .tech-comparison {
-        max-width: 1100px;
-        margin: 0 auto 2rem auto;
-      }
-      .tech-top-row {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin-bottom: 1rem;
-        align-items: end;
-      }
-      .tech-top-row .section-heading {
-        font-size: 1.25rem;
-        font-weight: 800;
-        padding-bottom: 0.65rem;
-        border-bottom: 3px solid rgba(0, 0, 0, 0.08);
-        text-align: left;
-      }
       /* vertical dotted separators between columns (desktop) */
-      @media (min-width: 768px) {
-        .tech-grid > div:nth-child(2) {
-          border-left: 2px dotted rgba(0, 0, 0, 0.08);
-          padding-left: 1.25rem;
-        }
-        .tech-grid > div:nth-child(3) {
-          border-left: 2px dotted rgba(0, 0, 0, 0.08);
-          padding-left: 1.25rem;
-        }
-      }
-      .chart-container h3 {
-        text-align: center;
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 2rem;
-      }
-      .comparison-chart {
-        position: relative;
-        width: 100%;
-        max-width: 100%;
-        min-height: 220px;
-      }
 
       /* TAM bar chart spacing helpers */
       .tam-chart-wrapper {
@@ -1316,132 +1092,9 @@
         padding: 0.5rem 0;
         height: 320px;
       }
-      .bar-chart-large {
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-end;
-        height: 250px; /* Adjusted height for home page */
-        width: 100%;
-        border-left: 2px solid var(--border-primary);
-        border-bottom: 2px solid var(--border-primary);
-        padding: 0 1rem;
-        position: relative;
-      }
-      .bar-chart-large .bar {
-        width: 15%; /* Adjusted width for 3 bars */
-        background: linear-gradient(
-          to top,
-          var(--accent-primary),
-          var(--accent-secondary)
-        );
-        border-radius: 6px 6px 0 0;
-        position: relative;
-        transform-origin: bottom;
-      }
-      .bar-chart-large .bar-label {
-        position: absolute;
-        bottom: -2.5rem;
-        width: 100%;
-        text-align: center;
-        font-weight: 600;
-        color: var(--text-secondary);
-      }
-      .bar-chart-large .bar-value {
-        position: absolute;
-        top: -2rem;
-        width: 100%;
-        text-align: center;
-        font-weight: 700;
-        color: var(--text-primary);
-      }
 
       /* Comparison Chart Styles */
-      .comparison-chart {
-        background-color: var(--bg-secondary);
-        border-radius: 14px;
-        padding: 2rem;
-        border: 1px solid var(--border-primary);
-      }
-      .comparison-chart h4 {
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 2rem;
-      }
-      .comparison-bars {
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-end;
-        height: 200px;
-        gap: 10%;
-      }
-      .comparison-bar-group {
-        width: 20%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        height: 100%;
-        justify-content: flex-end;
-      }
-      .comparison-bar {
-        width: 100%;
-        border-radius: 4px 4px 0 0;
-        position: relative;
-        transform-origin: bottom;
-        transition: height 1.2s ease-out;
-      }
-      .comparison-bar.lfp {
-        background: linear-gradient(
-          180deg,
-          rgba(43, 108, 176, 0.4),
-          rgba(43, 108, 176, 0.6)
-        );
-      }
-      .comparison-bar.crystron {
-        background: linear-gradient(
-          180deg,
-          var(--accent-secondary),
-          var(--accent-primary)
-        );
-      }
-      .dark-mode .comparison-bar.lfp {
-        background: linear-gradient(
-          180deg,
-          rgba(79, 209, 197, 0.4),
-          rgba(79, 209, 197, 0.6)
-        );
-      }
 
-      .comparison-bar .value {
-        position: absolute;
-        top: -1.75rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        text-align: center;
-        font-weight: 700;
-        font-size: 0.9rem;
-      }
-      .comparison-bar-group .label {
-        margin-top: 0.75rem;
-        font-weight: 500;
-      }
-      .comparison-footer {
-        text-align: center;
-        margin-top: 1.5rem;
-        font-size: 1.25rem;
-        font-weight: 700;
-      }
-      .comparison-footer.reduction {
-        color: var(--accent-secondary);
-      }
-      .dark-mode .comparison-footer.reduction {
-        color: var(--accent-secondary-dark);
-      }
-      .comparison-footer.zero {
-        color: var(--accent-primary);
-      }
 
       .market-unified-grid {
         display: grid;
@@ -1455,55 +1108,6 @@
       .metric-meter-grid {
         display: grid;
         gap: 1rem;
-      }
-      .market-figure-grid {
-        grid-template-columns: 1fr;
-      }
-      .market-figure {
-        padding: 1.25rem;
-        border: 1px solid var(--border-primary);
-        border-radius: 12px;
-        background: linear-gradient(
-          135deg,
-          var(--bg-secondary),
-          rgba(43, 108, 176, 0.07)
-        );
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 18px 44px -34px var(--shadow-color);
-      }
-      .market-figure::after {
-        content: "";
-        position: absolute;
-        inset: auto 0 0;
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          var(--accent-secondary),
-          var(--accent-primary)
-        );
-        opacity: 0.85;
-      }
-      .market-figure strong {
-        display: block;
-        color: var(--accent-primary);
-        font-size: 2.15rem;
-        line-height: 1;
-        margin-bottom: 0.45rem;
-      }
-      .market-figure span {
-        display: block;
-        color: var(--text-secondary);
-        font-size: 0.9rem;
-        line-height: 1.45;
-      }
-      .market-figure.highlight {
-        border-color: var(--border-accent);
-        background: linear-gradient(
-          135deg,
-          rgba(49, 151, 149, 0.1),
-          rgba(43, 108, 176, 0.08)
-        );
       }
       .cam-callout-card {
         padding: 1rem 1.25rem;
@@ -1913,34 +1517,6 @@
         line-height: 1.55;
         border-top: 1px solid var(--border-primary);
       }
-      .complexity-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        margin-top: 1.5rem;
-      }
-      .complexity-card {
-        padding: 1.25rem;
-        border: 1px solid var(--border-primary);
-        border-radius: 10px;
-        background: linear-gradient(
-          135deg,
-          var(--bg-secondary),
-          rgba(43, 108, 176, 0.05)
-        );
-      }
-      .complexity-card i {
-        color: var(--accent-primary);
-        font-size: 1.35rem;
-        margin-bottom: 0.85rem;
-      }
-      .complexity-card h4 {
-        font-size: 1.05rem;
-        margin-bottom: 0.45rem;
-      }
-      .complexity-card p {
-        font-size: 0.94rem;
-        line-height: 1.6;
-        margin: 0;
-      }
       .process-contrast-panel {
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -2093,26 +1669,6 @@
         font-size: 0.78rem;
         font-weight: 800;
       }
-      .meter-track {
-        display: none;
-      }
-      .meter-fill {
-        width: 0 !important;
-        height: 100%;
-        border-radius: inherit;
-        background: linear-gradient(
-          90deg,
-          var(--accent-secondary),
-          var(--accent-primary)
-        );
-        transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-      }
-      .animated-element.is-visible .meter-fill {
-        width: var(--fill) !important;
-      }
-      .meter-legend {
-        display: none;
-      }
       .metric-meter-value {
         display: flex;
         align-items: center;
@@ -2176,14 +1732,6 @@
             transparent
           );
         }
-        .market-figure-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-      @media (max-width: 520px) {
-        .market-figure-grid {
-          grid-template-columns: 1fr;
-        }
       }
       #technology-page .bg-gradient-to-r {
         background-image: linear-gradient(90deg, #1f8b91 0%, #1653a0 100%) !important;
@@ -2213,107 +1761,6 @@
       }
 
       /* Modal Styles */
-      .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 5000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-        backdrop-filter: blur(4px);
-      }
-      .modal-overlay.active {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .modal-content {
-        background: var(--bg-secondary);
-        width: 90%;
-        max-width: 600px;
-        border-radius: 16px;
-        padding: 2rem;
-        position: relative;
-        transform: translateY(20px) scale(0.95);
-        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        border: 1px solid var(--border-primary);
-        max-height: 90vh;
-        overflow-y: auto;
-      }
-      .modal-overlay.active .modal-content {
-        transform: translateY(0) scale(1);
-      }
-      .modal-close {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: transparent;
-        border: none;
-        color: var(--text-secondary);
-        font-size: 1.5rem;
-        cursor: pointer;
-        transition: color 0.2s ease;
-        width: 32px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-      }
-      .modal-close:hover {
-        color: var(--text-primary);
-        background: rgba(0, 0, 0, 0.05);
-      }
-      .dark-mode .modal-close:hover {
-        background: rgba(255, 255, 255, 0.1);
-      }
-      .modal-header {
-        margin-bottom: 1.5rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid var(--border-primary);
-      }
-      .modal-title {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: var(--text-primary);
-      }
-      .modal-body h4 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-top: 1.5rem;
-        margin-bottom: 0.75rem;
-      }
-      .modal-body ul {
-        list-style-type: disc;
-        padding-left: 1.5rem;
-        color: var(--text-secondary);
-        margin-bottom: 1.5rem;
-      }
-      .modal-body li {
-        margin-bottom: 0.5rem;
-      }
-      .modal-alert {
-        background: rgba(239, 68, 68, 0.1);
-        border: 1px solid rgba(239, 68, 68, 0.2);
-        color: #b91c1c;
-        padding: 1rem;
-        border-radius: 8px;
-        font-size: 0.95rem;
-        line-height: 1.6;
-      }
-      .dark-mode .modal-alert {
-        background: rgba(248, 113, 113, 0.15);
-        color: #fca5a5;
-        border-color: rgba(248, 113, 113, 0.2);
-      }
 
       /* ===== BLOG PAGE ===== */
       .blog-grid {
@@ -2678,7 +2125,7 @@
         "@type": "Organization",
         "name": "Crystron Technologies Inc.",
         "url": "https://www.crystrontech.com/",
-        "logo": "https://www.crystrontech.com/CrystronLogo.png",
+        "logo": "https://www.crystrontech.com/images/brand/crystron-logo-large.png",
         "description": "Crystron Technologies accelerates global electrification by developing novel resource-efficient and low-cost clean cathodes through circular manufacturing.",
         "address": {
           "@type": "PostalAddress",
@@ -2696,28 +2143,18 @@
         "sameAs": ["https://www.linkedin.com/company/crystron/"]
       }
     </script>
-    <!-- Chart.js CDN for data-driven comparisons -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Chart.js DataLabels plugin -->
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <!-- Chart.js + data labels for the home page demand chart. Deferred so they don't
+         block the first paint; the chart is drawn after DOMContentLoaded, when both have run. -->
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
   </head>
   <body>
     <style>
       /* Mobile optimizations and dark-mode tweaks inserted near body start */
       @media (max-width: 640px) {
-        .hero-subhead {
-          font-size: 1rem !important;
-          padding: 0 1rem;
-        }
         .hero-section-content {
           padding-top: 28px;
           padding-bottom: 18px;
-        }
-        .kpi-strip {
-          padding: 0.5rem !important;
-        }
-        .kpi-value {
-          font-size: 1.1rem !important;
         }
         .nav-link {
           padding: 0.7rem 0.9rem !important;
@@ -2729,42 +2166,15 @@
         .news-card-image {
           height: 160px !important;
         }
-        .investor-kit-cta {
-          display: none !important;
-        }
       }
 
       @media (max-width: 420px) {
-        .kpi-item {
-          min-width: 120px;
-        }
         .news-card-image {
           height: 140px !important;
         }
       }
 
       /* Dark-mode specific overrides to ensure contrast and consistent look */
-      .dark-mode .kpi-strip {
-        background: linear-gradient(
-          90deg,
-          rgba(10, 15, 26, 0.12),
-          rgba(16, 23, 35, 0.06)
-        );
-      }
-      .dark-mode .kpi-item {
-        background: rgba(255, 255, 255, 0.02);
-        border-color: rgba(255, 255, 255, 0.04);
-      }
-      .dark-mode .kpi-value {
-        color: var(--accent-secondary) !important;
-      }
-      .dark-mode .hero-subhead {
-        color: var(--text-secondary) !important;
-      }
-      .dark-mode .investor-kit-cta {
-        background: var(--accent-secondary) !important;
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
-      }
       .dark-mode .news-carousel-arrow {
         background: var(--bg-nav);
         color: var(--text-primary);
@@ -2809,21 +2219,11 @@
         #technology-page .grid.md\:grid-cols-4 {
           grid-template-columns: 1fr !important;
         }
-        #technology-page .p-6 {
-          padding: 1rem !important;
-        }
         #technology-page .p-8 {
           padding: 0.9rem !important;
         }
 
         /* Make cards full width and remove side-by-side layout */
-        #technology-page .group\/card {
-          width: 100% !important;
-          margin-bottom: 1rem !important;
-        }
-        #technology-page .border {
-          border-width: 1px !important;
-        }
 
         /* Ensure any illustrative images scale */
         #technology-page img,
@@ -3355,17 +2755,6 @@
       #home-page .text-center h2 { font-family: "DM Sans", sans-serif; letter-spacing: -0.04em; }
 
       /* Shared visual banners */
-      .page-visual-banner {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        height: clamp(300px, 42vw, 520px);
-        margin: 0 0 clamp(3rem, 6vw, 5.5rem);
-        border-radius: 8px;
-        background: #0a1a2d;
-      }
-      .page-visual-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
-      .page-visual-banner::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(4,19,36,.9)); }
 
       /* Technology */
       #technology-page > .container > .bg-gradient-to-r {
@@ -3378,7 +2767,7 @@
         justify-content: center;
         align-items: flex-start;
         text-align: left;
-        background: linear-gradient(90deg, rgba(4,18,35,.96), rgba(4,18,35,.26)), url("technology.png") right center/cover;
+        background: linear-gradient(90deg, rgba(4,18,35,.96), rgba(4,18,35,.26)), url("/images/applications/consumer-electronics.webp") right center/cover;
         box-shadow: none;
       }
       #technology-page > .container > .bg-gradient-to-r > .editorial-kicker { align-self: center; }
@@ -3447,11 +2836,6 @@
         letter-spacing: .08em;
         text-transform: uppercase;
       }
-      .complexity-grid { gap: 2rem; }
-      .complexity-card i { margin-bottom: 1rem; }
-      .editorial-proof-grid { gap: 2rem !important; border-top: 0 !important; }
-      .editorial-proof-grid .card > .flex { display: block; }
-      .editorial-proof-grid .card .mt-3 { margin-top: .65rem; }
 
       /* Investors, news, blog, contact */
       .news-carousel-container { margin-top: 1rem; }
@@ -3535,24 +2919,6 @@
         line-height: 1.65;
         color: var(--editorial-muted);
       }
-      .editorial-page-meta {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: end;
-        gap: 2rem;
-        margin: 2.75rem 0 4.75rem;
-        padding: 1rem 0;
-        border-top: 1px solid var(--border-primary);
-        border-bottom: 1px solid var(--border-primary);
-      }
-      .editorial-page-meta span {
-        color: var(--editorial-muted);
-        font-size: .72rem;
-        font-weight: 700;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-      }
-      .editorial-page-meta span:last-child { color: var(--accent-primary); text-align: right; }
 
       /* Team */
       #team-page .grid {
@@ -3775,8 +3141,6 @@
       #blog-page .blog-card-cta { color: var(--editorial-ink); }
 
       @media (max-width: 760px) {
-        .editorial-page-meta { grid-template-columns: 1fr; gap: .35rem; margin: 2rem 0 3rem; }
-        .editorial-page-meta span:last-child { text-align: left; }
         #team-page .grid,
         #news-page .news-carousel,
         #blog-page .blog-grid { grid-template-columns: 1fr; }
@@ -4161,7 +3525,6 @@
         #home-page .hero-section-content { padding-top: 2.5rem; gap: 2.25rem; }
         #home-page .hero-title { font-size: clamp(2.65rem, 14vw, 4.2rem); }
         .home-hero-visual, .home-hero-visual img { min-height: 360px; }
-        .page-visual-banner { height: 300px; }
         #technology-page > .container > .bg-gradient-to-r { min-height: 390px; padding: 1.5rem; }
         #technology-page > .container > .bg-gradient-to-r > .grid { grid-template-columns: 1fr 1fr !important; }
       }
@@ -4808,7 +4171,7 @@
         data-page="home"
         class="page-link mobile-topbar-logo"
         aria-label="Crystron Technologies home"
-        ><img src="/CrystronLogo-removebg-preview.png" alt=""
+        ><img src="/images/brand/crystron-logo.png" alt=""
       /></a>
     </div>
     <a
@@ -4822,7 +4185,7 @@
       <div class="logo-container">
         <a href="#home" data-page="home" class="page-link">
           <img
-            src="/CrystronLogo-removebg-preview.png"
+            src="/images/brand/crystron-logo.png"
             alt="Crystron Technologies Logo"
             class="logo-img"
           />
@@ -4901,7 +4264,7 @@
               </div>
             </div>
             <figure class="home-hero-visual animated-element">
-              <img src="material-powder-crystal-bright.png" alt="Engineered cathode powder and crystalline structures on a bright precision sample tray" />
+              <img src="/images/home/cathode-powder.webp" alt="Engineered cathode powder and crystalline structures on a bright precision sample tray" />
               <figcaption><span>Material platform</span><strong>Designed for a shorter path to scale.</strong></figcaption>
             </figure>
 
@@ -5339,7 +4702,7 @@
 
               <div class="tech-process-image-panel animated-element mb-8">
                 <img
-                  src="crystron-process-smooth-coating.png"
+                  src="/images/technology/process.webp"
                   alt="Crystron simplified five-step cathode manufacturing process"
                 />
                 <div class="tech-process-caption">
@@ -5493,7 +4856,7 @@
               </div>
               <figure class="tech-material-visual">
                 <img
-                  src="cathode-material-sem-clean.png"
+                  src="/images/technology/sem-particles.webp"
                   alt="Scanning electron microscope image of Crystron cathode active material particles"
                   loading="lazy"
                   decoding="async"
@@ -5519,22 +4882,22 @@
 
             <div class="applications-grid" aria-label="Crystron application sectors">
               <button class="application-card is-active animated-element" type="button" data-application="defense" aria-pressed="true">
-                <img src="defense.png" alt="Rugged unmanned vehicle and field power equipment" loading="eager" />
+                <img src="/images/applications/defense.webp" alt="Rugged unmanned vehicle and field power equipment" loading="eager" />
                 <span class="application-card-shade"></span>
                 <span class="application-card-label"><small>01</small> Defense <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
               </button>
               <button class="application-card animated-element" type="button" data-application="ev" aria-pressed="false">
-                <img src="ev.png" alt="Modern electric vehicle with a battery pack" loading="lazy" />
+                <img src="/images/applications/ev.webp" alt="Modern electric vehicle with a battery pack" loading="lazy" />
                 <span class="application-card-shade"></span>
                 <span class="application-card-label"><small>02</small> EVs <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
               </button>
               <button class="application-card animated-element" type="button" data-application="grid" aria-pressed="false">
-                <img src= "grid-storage.png" alt="Grid battery storage beside a solar field" loading="lazy" />
+                <img src="/images/applications/grid-storage.webp" alt="Grid battery storage beside a solar field" loading="lazy" />
                 <span class="application-card-shade"></span>
                 <span class="application-card-label"><small>03</small> Data Centers <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
               </button>
               <button class="application-card animated-element" type="button" data-application="technology" aria-pressed="false">
-                <img src="technology.png" alt="Consumer electronics including a laptop, smartphone, and compact battery cells" loading="lazy" />
+                <img src="/images/applications/consumer-electronics.webp" alt="Consumer electronics including a laptop, smartphone, and compact battery cells" loading="lazy" />
                 <span class="application-card-shade"></span>
                 <span class="application-card-label"><small>04</small> Consumer Electronics <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
               </button>
@@ -5747,7 +5110,7 @@
               </div>
               <div class="card text-center animated-element">
                 <img
-                  src="arnav-tiwari-headshot.jpg"
+                  src="/images/team/arnav-tiwari.jpg"
                   alt="Arnav Tiwari"
                   class="team-member-photo"
                   onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=AT&font=inter';"
@@ -5778,7 +5141,7 @@
               <!-- Still to come: LinkedIn links for Todd, Mike, and Andrea. -->
               <div class="card text-center animated-element">
                 <img
-                  src="todd-hunt-headshot.jpg"
+                  src="/images/team/todd-hunt.jpg"
                   alt="Todd Hunt"
                   class="team-member-photo"
                   onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=TH&font=inter';"
@@ -5810,7 +5173,7 @@
               </div>
               <div class="card text-center animated-element">
                 <img
-                  src="mike-lemon-headshot.jpg"
+                  src="/images/team/mike-lemon.jpg"
                   alt="Mike Lemon"
                   class="team-member-photo"
                   onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=ML&font=inter';"
@@ -5836,7 +5199,7 @@
               </div>
               <div class="card text-center animated-element">
                 <img
-                  src="andrea-klenotiz-headshot.jpg"
+                  src="/images/team/andrea-klenotiz.jpg"
                   alt="Andrea Klenotiz"
                   class="team-member-photo"
                   onerror="this.onerror=null; this.src='https://placehold.co/230x230/101725/e0e7ff?text=AK&font=inter';"
@@ -6470,7 +5833,7 @@
         <div class="mb-5">
           <a href="#home" data-page="home" class="page-link inline-block">
             <img
-              src="/CrystronLogo-removebg-preview.png"
+              src="/images/brand/crystron-logo.png"
               alt="Crystron Technologies Logo"
               class="logo-img-footer mx-auto"
             />
