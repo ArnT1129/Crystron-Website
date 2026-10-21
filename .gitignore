@@ -7,8 +7,6 @@
 
 # Local build output and tool folders (not part of the site)
 node_modules/
-.next/
-.codex-cleaner-worktree/
 
 # OS and log files
 .DS_Store
