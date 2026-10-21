@@ -893,14 +893,8 @@
           border-bottom: 1px solid var(--border-primary);
         }
 
-        /* When menu is opened on mobile, push main content down so it's not covered */
-        body.nav-open #main-content-area {
-          margin-top: var(--mobile-nav-height);
-        }
-
         #main-content-area {
           width: 100%;
-          margin-top: 80px;
         }
         /* make the header-local toggle visible; also provide a fixed fallback so it's always tappable */
         #mobile-menu-toggle {
@@ -992,11 +986,6 @@
         .card:hover {
           transform: none;
           box-shadow: 0 8px 20px -10px var(--shadow-color);
-        }
-
-        /* Make nav-open pushed height dynamic fallback smaller on very small screens */
-        body.nav-open #main-content-area {
-          margin-top: calc(var(--mobile-nav-height, 320px));
         }
 
         /* Ensure the mobile menu toggle inside header is visible and styled */
@@ -2716,9 +2705,6 @@
     <style>
       /* Mobile optimizations and dark-mode tweaks inserted near body start */
       @media (max-width: 640px) {
-        .hero-title {
-          font-size: 1.8rem !important;
-        }
         .hero-subhead {
           font-size: 1rem !important;
           padding: 0 1rem;
@@ -2726,12 +2712,6 @@
         .hero-section-content {
           padding-top: 28px;
           padding-bottom: 18px;
-        }
-        .hero-section-content .btn {
-          display: block !important;
-          width: calc(100% - 40px) !important;
-          max-width: 420px;
-          margin: 0.5rem auto;
         }
         .kpi-strip {
           padding: 0.5rem !important;
@@ -2749,19 +2729,12 @@
         .news-card-image {
           height: 160px !important;
         }
-        .news-carousel-arrow {
-          width: 56px !important;
-          height: 56px !important;
-        }
         .investor-kit-cta {
           display: none !important;
         }
       }
 
       @media (max-width: 420px) {
-        .hero-title {
-          font-size: 1.5rem !important;
-        }
         .kpi-item {
           min-width: 120px;
         }
@@ -4660,6 +4633,139 @@
         .job-apply-submit.btn { transition: none; }
         .job-modal { animation: none; }
       }
+
+      /* ── Phones and small tablets ───────────────────────────────────────── */
+      .mobile-topbar { display: none; }
+      @media (max-width: 900px) {
+        /* Slim bar with the logo; the menu panel drops down over it and the page. */
+        .mobile-topbar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 2900;
+          display: flex;
+          align-items: center;
+          height: calc(64px + env(safe-area-inset-top, 0px));
+          padding: env(safe-area-inset-top, 0px) 14px 0;
+          background: color-mix(in srgb, var(--bg-secondary) 82%, transparent);
+          -webkit-backdrop-filter: blur(14px) saturate(160%);
+          backdrop-filter: blur(14px) saturate(160%);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+          transition: transform .45s cubic-bezier(.22, 1, .36, 1);
+        }
+        .mobile-topbar-logo { display: flex; align-items: center; border-radius: 10px; }
+        .mobile-topbar-logo img { height: 56px; width: auto; }
+        .mobile-topbar-logo:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+        body.nav-hidden .mobile-topbar {
+          transform: translateY(-100%);
+          transition: transform .32s cubic-bezier(.5, 0, .75, 0);
+        }
+
+        /* The page scrolls beneath the bar. dvh tracks the visible screen, so iOS
+           doesn't scroll the whole page as well as the content area. */
+        body { min-height: 100vh; min-height: 100dvh; }
+        #main-content-area {
+          margin-top: 0 !important;
+          height: 100vh;
+          height: 100dvh;
+          padding-top: calc(64px + env(safe-area-inset-top, 0px));
+        }
+
+        /* Menu button: a quiet icon in the bar that becomes a close button while open. */
+        #mobile-menu-toggle-fallback {
+          top: calc(env(safe-area-inset-top, 0px) + 10px);
+          right: calc(env(safe-area-inset-right, 0px) + 10px);
+          width: 44px;
+          height: 44px;
+          padding: 0;
+          border-radius: 12px;
+          background: transparent;
+          color: var(--text-nav);
+        }
+        #mobile-menu-toggle-fallback:hover { background: rgba(0, 0, 0, 0.05); }
+        #mobile-menu-toggle-fallback:active { transform: scale(.94); }
+        #mobile-menu-toggle-fallback .icon-close,
+        body.nav-open #mobile-menu-toggle-fallback .icon-open { display: none; }
+        body.nav-open #mobile-menu-toggle-fallback .icon-close { display: block; }
+        #sidebar-nav { background: color-mix(in srgb, var(--bg-secondary) 97%, transparent); }
+        /* Full-width menu rows mark the current page with the left accent only. */
+        #sidebar-nav .nav-link::after { display: none; }
+      }
+
+      @media (max-width: 640px) {
+        /* One 20px gutter owned by the page; inner wrappers stop adding their own. */
+        .page { padding-left: 20px; padding-right: 20px; }
+        .page .container,
+        .page .max-w-7xl,
+        .page .hero-section-content { padding-left: 0; padding-right: 0; }
+        .page .card { padding: 1.25rem; }
+
+        /* Labels stay readable (12px minimum). */
+        .editorial-kicker,
+        .applications-kicker,
+        .value-proof-tag,
+        .metric-detail,
+        .tech-material-chip,
+        .blog-series-pill,
+        .blog-card-category,
+        .career-role-team,
+        .careers-meta,
+        .application-card-label small,
+        .home-hero-visual figcaption span,
+        .tech-material-caption .tech-material-chip,
+        #blog-page .blog-card-category { font-size: .75rem; }
+        .editorial-kicker,
+        .applications-kicker { letter-spacing: .12em; text-wrap: balance; }
+        /* Centered labels put their rule above the text, so a wrapped label stays centered. */
+        .page-kicker,
+        .applications-intro .applications-kicker { flex-direction: column; gap: .55rem; text-align: center; }
+
+        /* Home */
+        #home-page .hero-title { font-size: clamp(2.25rem, 10.5vw, 3rem); line-height: 1.04; }
+        .home-hero-actions { flex-direction: column; align-items: stretch; gap: .35rem; }
+        .home-hero-actions .btn { justify-content: center; }
+        .home-hero-actions .editorial-text-link { align-self: flex-start; }
+        .market-snapshot-panel { padding: 1.1rem; }
+        .market-snapshot-panel > .flex:first-child { flex-direction: column; align-items: flex-start; gap: .6rem; }
+        .market-snapshot-badge { order: -1; }
+        .market-growth-head span,
+        .gradient-pastel-blue .space-y-4 > div > span:last-child { white-space: nowrap; }
+        .gradient-pastel-blue .space-y-4 > div { gap: .75rem; }
+
+        /* Technology */
+        .process-lane { padding: 1.25rem; }
+
+        /* News: arrows sit under the card instead of on top of it. */
+        #news-page .news-carousel-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem .75rem;
+          padding: 0;
+        }
+        #news-page .news-carousel-wrapper { grid-column: 1 / -1; grid-row: 1; }
+        #news-page .news-carousel-arrow,
+        #news-page .news-carousel-arrow:hover { position: static; grid-row: 2; transform: none; }
+        #news-page .news-carousel-arrow.prev { grid-column: 1; justify-self: end; }
+        #news-page .news-carousel-arrow.next { grid-column: 2; justify-self: start; }
+
+        /* Investors: let the icon flow with the wrapped button text. */
+        #investors-page .btn.text-xl { display: block; font-size: 1.05rem; text-align: center; }
+
+        /* Comfortable tap targets for text links and small controls. */
+        #team-page .team-member-linkedin { padding-block: .6rem; margin-bottom: .4rem; }
+        .editorial-text-link,
+        .applications-cta { padding-top: .75rem; }
+        #contact-page a[href^="mailto:"] { display: inline-block; padding-block: .4rem; }
+        #contact-page button[aria-label="Copy email address"] {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 44px;
+          min-height: 44px;
+        }
+        .leaflet-touch .leaflet-bar a { width: 36px; height: 36px; line-height: 36px; }
+      }
     </style>
     <!-- Fallback mobile hamburger: fixed to viewport so it's always reachable on phones (only visible on small screens) -->
     <button
@@ -4668,8 +4774,9 @@
       class="mobile-fallback-toggle"
     >
       <svg
-        width="20"
-        height="20"
+        class="icon-open"
+        width="22"
+        height="22"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -4680,7 +4787,30 @@
       >
         <path d="M3 12h18M3 6h18M3 18h18"></path>
       </svg>
+      <svg
+        class="icon-close"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
     </button>
+    <!-- Phones and small tablets: slim bar with the logo (the full nav lives in the menu panel). -->
+    <div class="mobile-topbar">
+      <a
+        href="#home"
+        data-page="home"
+        class="page-link mobile-topbar-logo"
+        aria-label="Crystron Technologies home"
+        ><img src="/CrystronLogo-removebg-preview.png" alt=""
+      /></a>
+    </div>
     <a
       href="#main-content-area"
       class="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-[2000] focus:p-4 focus:bg-accent-primary focus:text-white"
@@ -4976,7 +5106,7 @@
                   <h4
                     class="text-xl font-bold text-text-primary text-center mb-6"
                   >
-                    North American Li-Ion Demand
+                    North American <span class="whitespace-nowrap">Li-Ion</span> Demand
                   </h4>
                   <div class="flex justify-center gap-4 mb-4">
                     <div class="flex items-center gap-2">
@@ -6822,10 +6952,9 @@
             mobileMenuToggle.querySelector("i").classList.remove("fa-times");
             mobileMenuToggle.querySelector("i").classList.add("fa-bars");
             document.body.classList.remove("nav-open");
-            document.documentElement.style.removeProperty(
-              "--mobile-nav-height"
-            );
-            mainContentArea.style.marginTop = "80px";
+            document
+              .getElementById("mobile-menu-toggle-fallback")
+              ?.setAttribute("aria-expanded", "false");
           }
         }
 
@@ -6856,24 +6985,9 @@
             const icon = mobileMenuToggle.querySelector("i");
             icon.classList.toggle("fa-bars", !isOpen);
             icon.classList.toggle("fa-times", isOpen);
-            // toggle a body class so we can adjust page flow (push content down)
+            // The menu panel drops over the page; this class swaps the button to a close icon.
             document.body.classList.toggle("nav-open", isOpen);
-            if (isOpen) {
-              // compute the nav height and set a CSS variable so the main content is pushed down exactly
-              const rect = sidebarNav.getBoundingClientRect();
-              const height = Math.ceil(rect.height) + "px";
-              document.documentElement.style.setProperty(
-                "--mobile-nav-height",
-                height
-              );
-              // ensure main content has updated margin
-              mainContentArea.style.marginTop = `var(--mobile-nav-height)`;
-            } else {
-              document.documentElement.style.removeProperty(
-                "--mobile-nav-height"
-              );
-              mainContentArea.style.marginTop = "80px";
-            }
+            if (isOpen) document.body.classList.remove("nav-hidden");
           });
         }
 
